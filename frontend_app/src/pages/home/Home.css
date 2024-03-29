@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+
+
+#play-screen {
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+}
+
+.btn__play {
+    font-family: 'Bungee';
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 40vh;
+    padding: 15px 25px;
+    height: 5vh;
+    background-color: transparent;
+    color: #e3eef1;
+    border: 3px solid rgb(35, 71, 103);
+    border-radius:15px;
+    letter-spacing:5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.btn__play:hover {
+    color: #fff;
+}
+
+.link-login {
+	font-weight: bold;
+	color: #e3eef1;
+	font-size: 30px;
+	text-decoration: none;
+}
