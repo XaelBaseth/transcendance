@@ -1,4 +1,4 @@
-import "./UserProfile.css"
+import "./Profile.css"
 import WinrateCircularBar from "../../components/profile/WinrateCircularBar"
 import StatDisplay from "../../components/profile/StatDisplay"
 import MainStat from "../../components/profile/MainStat"

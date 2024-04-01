@@ -1,4 +1,4 @@
-import "../../pages/profile/UserProfile.css"
+import "../../pages/profile/Profile.css"
 
 export default function MainStat({title, stat} : {title: string, stat: number}) {
     return (

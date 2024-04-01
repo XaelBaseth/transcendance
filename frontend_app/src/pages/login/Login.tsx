@@ -14,7 +14,6 @@ export default function Login({ setLoggedIn }: {
 
     const handleSignUp = async (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
-		
 		try {
 			await signUp(nickname, password);
 			setLoggedIn(true);
@@ -31,12 +30,11 @@ export default function Login({ setLoggedIn }: {
 
 	const handleLogIn = async (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
-		
 		try {
 			setLoggedIn(true);
 			setErrorMsg('');
 			setTimeout(() => {
-				navigate('/profile');
+				navigate('/');
 			}, 1500);
 		} catch (error) {
 			if ((error as Error).message === 'No such nickname') {

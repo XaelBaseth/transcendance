@@ -8,6 +8,7 @@ import Login from './pages/login/Login';
 
 import './App.css';
 import { UserProfile } from './pages/profile/Profile';
+import GamePage from './pages/gamepage/Gamepage';
 
 
 function App() {
@@ -29,12 +30,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login setLoggedIn={setLoggedIn}/>} />
             <Route path="/profile" element={<UserProfile />} />
+			<Route path='/gamepage' element={<GamePage />} />
           </Routes>
         </IsLoggedInContext.Provider>  
       </section>
       
     </div>
-  )
+  );
 }
 
 export default App

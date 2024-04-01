@@ -1,4 +1,4 @@
-import "../../pages/profile/UserProfile.css"
+import "../../pages/profile/Profile.css"
 
 export default function WinrateCircularBar(props: {winRate: number}) {
     let circularProgress = document.querySelector<HTMLElement>(".circular-progress");
