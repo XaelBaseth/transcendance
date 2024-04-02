@@ -1,0 +1,42 @@
+#social-dashboard {
+	flex: 2 auto;
+	height : 92vh;
+	margin-top : 8vh;
+	background-color: var(--bg-color); /* vient de App.css */
+	color: var(--font-color); /* vient de App.css */
+}
+
+#social-dashboard button {
+	border: transparent;
+	font-family: var(--font-type);
+	margin: auto;
+	color:  rgb(24, 46, 65);
+    text-shadow:
+	0 0 7px #efefef,
+	0 0 10px #90d0f0,
+	0 0 42px rgb(60, 116, 166),
+	0 0 77px rgb(60, 116, 166),
+	0 0 80px rgb(24, 46, 65);
+}
+
+.social-btn {
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	margin : 15vh 10vw;
+}
+
+.social-btn > button {
+	padding: 1vw 4vw;
+	border-radius: 20px;
+	font-weight: 800;
+}
+
+.btn {
+	background-color: #000;
+}
+
+.clicked-btn, .btn:hover {
+	background-color: var(--filter-btn-secondary-color);
+}
