@@ -1,4 +1,4 @@
-import "../../pages/profile/Profile.css"
+import "../../pages/profile/UserProfile.css"
 
 export default function StatDisplay(props : {title: string, stat: number}) {
     let stat_theme: string | undefined = undefined;

@@ -1,4 +1,4 @@
-import "../../pages/profile/Profile.css"
+import "../../pages/profile/UserProfile.css"
 
 export default function MessageUserBtn() {
    return (

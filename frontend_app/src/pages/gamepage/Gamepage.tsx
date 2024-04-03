@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 
-import './GamePage.css'
+import './Gamepage.css'
 
 export default function GamePage() {
 	const navigate = useNavigate();

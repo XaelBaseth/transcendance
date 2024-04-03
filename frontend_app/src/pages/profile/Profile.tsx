@@ -1,4 +1,4 @@
-import "./Profile.css"
+import "./UserProfile.css"
 import WinrateCircularBar from "../../components/profile/WinrateCircularBar"
 import StatDisplay from "../../components/profile/StatDisplay"
 import MainStat from "../../components/profile/MainStat"
@@ -48,5 +48,5 @@ export function UserProfile() {
                 {/**Match History goes here */}
             </div>
         </div>
-    )
+    );
 }

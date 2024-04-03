@@ -126,3 +126,14 @@ input[type="checkbox"]:checked ~ .span3{
 	width:50%;
 	transform:translate(30px,-11px) rotateZ(45deg)
   }
+
+.logout_btn {
+	font-size: 14px;
+	color: #fff;
+	background-color: black;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+	margin: 0 auto;
+}

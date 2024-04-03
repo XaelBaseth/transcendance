@@ -1,4 +1,4 @@
-import React, {createContext} from "react";
+import React, { createContext } from "react";
 
 {/** a React context is a global value via through thwe the entire
     React app.*/}

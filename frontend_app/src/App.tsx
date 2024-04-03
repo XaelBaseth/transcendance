@@ -2,13 +2,15 @@ import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
 import { IsLoggedInContext } from './context/context';
+import { UserProfile } from './pages/profile/Profile';
+import { Social } from './pages/social/Social';
 import Navbar from './components/navbar/Navbar';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-
-import './App.css';
-import { UserProfile } from './pages/profile/Profile';
 import GamePage from './pages/gamepage/Gamepage';
+import './App.css';
+import Settings from './pages/settings/Settings';
+
 
 
 function App() {
@@ -30,7 +32,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login setLoggedIn={setLoggedIn}/>} />
             <Route path="/profile" element={<UserProfile />} />
-			<Route path='/gamepage' element={<GamePage />} />
+			      <Route path='/gamepage' element={<GamePage />} />
+            <Route path='/social' element={<Social />} />
+            <Route path='/settings' element={<Settings />} />
           </Routes>
         </IsLoggedInContext.Provider>  
       </section>
@@ -40,4 +44,3 @@ function App() {
 }
 
 export default App
-

@@ -1,5 +1,5 @@
 import axios from "axios";
-import users from './login.json'; //DEV ONLY! IMPLEMENT BACK-END LAZY
+import users from './login.json'; //DEV ONLY! IMPLEMENT BACK-END LAZY CUNT
 
 
 const BASE_URL = "localhost:3000"

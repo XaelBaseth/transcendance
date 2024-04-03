@@ -1,5 +1,5 @@
 import { IUser } from "../../api/types";
-import "../../pages/profile/Profile.css"
+import "../../pages/profile/UserProfile.css"
 
 let achievementNumber = 0;
 
