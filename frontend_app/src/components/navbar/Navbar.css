@@ -28,6 +28,7 @@
 	height: 100%;
 	display: flex;
 	justify-content: center;
+	backdrop-filter: blur(10px);
 	position: fixed;
 	top: 8%;
 	left: -100%;
