@@ -9,5 +9,4 @@ export interface IUser {
 	aces: number;
 	score: number;
 	rank: number;
-	isActive: string;
 }

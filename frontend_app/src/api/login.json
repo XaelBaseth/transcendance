@@ -1,8 +1,16 @@
 {
    "users": [
      {
-       "nickname": "test",
-       "password": "test"
+		"id": 0,
+		"createdAt": "2024-04-04",
+		"nickname": "user",
+		"avatar": "./public/assets/avatar.jpg",
+		"password": "P4ssword",
+		"email": "user@mail.com",
+	
+		"aces": 3,
+		"score": 9,
+		"rank": 1
      }
    ]
  }

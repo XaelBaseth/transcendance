@@ -1,6 +1,6 @@
 import "../../pages/profile/UserProfile.css"
 
-export default function WinrateCircularBar(props: {winRate: number}) {
+export default function WinrateCircularBar(props : {winRate: number}) {
     let circularProgress = document.querySelector<HTMLElement>(".circular-progress");
     let progressValue = document.querySelector<HTMLElement>(".progress-value");
 
