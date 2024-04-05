@@ -1,0 +1,9 @@
+#navicon--avatar {
+    margin-top: 10px;
+  }
+
+#nav--avatar {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+  }

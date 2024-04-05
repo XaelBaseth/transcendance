@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./
+      dockerfile: ./nginx/Dockerfile
+      args:
+        - NGINX_PROTOCOL=https
+    ports:
+      - '8000:8000'
+    restart: always
+    networks:
+      - main
+    volumes:
+      - /var/www/html
+    env_file: .env
+
+networks:
+  main:
+    name: main
+    driver: bridge

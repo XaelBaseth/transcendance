@@ -7,8 +7,6 @@ export default function Avatar () {
             <NavLink className='link-profile' to="/profile">
                 <img src={process.env.PUBLIC_URL +'/assets/toothlessAvatar.png'} alt='toothlessAvatar'id='nav--avatar'/>
             </NavLink>
-            {/* User status */}
-            {/* <div id='active--dot' /> */}
         </div>
     )
 }

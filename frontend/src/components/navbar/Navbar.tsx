@@ -1,4 +1,4 @@
-import React, { useState, ChangeEventHandler, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Avatar from '../avatar/Avatar';

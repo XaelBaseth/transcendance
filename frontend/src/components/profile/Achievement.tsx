@@ -1,4 +1,4 @@
-import { IUser } from "../../api/types";
+//import { IUser } from "../../api/types";
 import "../../pages/profile/UserProfile.css"
 
 let achievementNumber = 0;

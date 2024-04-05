@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUser } from "./types";
+//import { IUser } from "./types";
 
 
 const BASE_URL = "localhost:3000"
