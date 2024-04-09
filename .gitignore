@@ -1,0 +1,9 @@
+#virtualenv
+backend/venv/
+
+#back
+
+#front
+
+frontend/.env
+frontend/node_modules  
