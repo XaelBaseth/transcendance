@@ -15,7 +15,7 @@ export default function StatDisplay(props : {title: string, stat: number}) {
             break;
     }
     return (
-        <div className={`stat__container ${stat_theme}`} >
+        <div className={`stat_container ${stat_theme}`} >
             <span>{props.stat} {props.title}</span>
         </div>
     );
