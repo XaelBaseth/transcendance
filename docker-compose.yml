@@ -1,0 +1,26 @@
+services:
+  db:
+    container_name: db
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - main
+  
+  django:
+    container_name: django
+    depends_on:
+      - db
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+    restart: always
+    networks:
+      - main
+    env_file: .env
+
+networks:
+  main:
+    name: main
+    driver: bridge
