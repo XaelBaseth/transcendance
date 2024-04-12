@@ -1,7 +1,7 @@
 all: build
-	docker compose up -d
+	 $(MAKE) up
 
-build: 
+build:
 	docker compose build
 
 up:
@@ -13,11 +13,10 @@ stop:
 clean:
 	docker compose -f docker-compose.yml down -v
 
-
 fclean:
 	$(MAKE) clean
 	docker system prune --force --volumes --all
 
-re: stop clean build
+re: stop fclean build up
 
 .PHONY: all build up stop clean fclean re

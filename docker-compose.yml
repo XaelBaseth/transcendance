@@ -13,8 +13,8 @@ services:
     depends_on:
       - db
     build:
-      context: ./
-      dockerfile: ./backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     restart: always
     networks:
       - main
