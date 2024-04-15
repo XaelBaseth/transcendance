@@ -82,7 +82,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'transcendance.urls'
+ROOT_URLCONF = 'source.urls'
 
 TEMPLATES = [
     {

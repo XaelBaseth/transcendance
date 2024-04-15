@@ -2,7 +2,7 @@ FROM node:lts-alpine as build
 
 RUN mkdir /app
 
-COPY ./front-end /app/frontend
+COPY ./frontend /app/frontend
 
 WORKDIR /app/frontend
 

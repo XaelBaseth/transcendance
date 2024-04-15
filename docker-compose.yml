@@ -37,8 +37,8 @@ services:
       django:
         condition: service_healthy
     build:
-      context: ./nginx
-      dockerfile: ./Dockerfile
+      context: ./
+      dockerfile: ./nginx/Dockerfile
       args:
         - NGINX_PROTOCOL=https
     ports:
