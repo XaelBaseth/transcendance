@@ -7,17 +7,28 @@ services:
       - .env
     networks:
       - main
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 5s
+      retries: 3
+      timeout: 5s
   
   django:
     container_name: django
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     build:
       context: ./backend
       dockerfile: Dockerfile
     restart: always
     networks:
       - main
+    healthcheck:
+      test: ["CMD-SHELL", "curl localhost:8000 || exit 1"]
+      interval: 3s
+      timeout: 10s
+      retries: 3
     env_file: .env
 
 networks:

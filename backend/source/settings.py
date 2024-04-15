@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     
     'rest_framework',
-    'corseheaders',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
