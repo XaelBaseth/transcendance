@@ -11,25 +11,27 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import environ
+
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+SECRET_KEY = os.environ['SECRET_KEY']
+POSTGRES_DB = os.environ['POSTGRES_DB']
+POSTGRES_USER = os.environ['POSTGRES_USER']
+POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
+DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
+DATABASE_PORT = os.environ['DATABASE_PORT']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ENV_FILE = BASE_DIR / '.env'
-
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-
-environ.Env.read_env(ENV_FILE)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$v(rj^yqh8fv)8-g$+t%_908gkhqearv+8)@c885!dq@)x_obk' #Update and change it in the .env file
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -96,11 +98,11 @@ WSGI_APPLICATION = 'source.wsgi.application'
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRES_BD'),
-        'USER': env('POSTRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': env('DATABASE_HOST_NAME'),
-        'PORT': env('DATABSE_PORT'),
+        'NAME': POSTGRES_DB,
+        'USER': POSTGRES_USER,
+        'PASSWORD': POSTGRES_PASSWORD,
+        'HOST': DATABASE_HOST_NAME,
+        'PORT': DATABASE_PORT,
     }
 }
 
