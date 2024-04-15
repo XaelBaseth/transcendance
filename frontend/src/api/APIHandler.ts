@@ -2,7 +2,7 @@ import axios from "axios";
 //import { IUser } from "./types";
 
 
-const BASE_URL = "localhost:3000"
+const BASE_URL = "localhost:8000"
 
 axios.defaults.withCredentials = true;
 
@@ -114,8 +114,6 @@ export async function logOut() {
 		console.log("Error signup: ", error);
 	}
 }
-
-
 
 
 /*#######################*/
