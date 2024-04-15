@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signUp } from '../../api/APIHandler';
+import { signUp, logIn } from '../../api/APIHandler';
 import './Login.css';
 
 export default function Login({ setLoggedIn }: { 
@@ -33,6 +33,7 @@ export default function Login({ setLoggedIn }: {
 		event.preventDefault();
 		
 		try {
+			//const response = await logIn(nickname, password);
 			setLoggedIn(true);
 			setErrorMsg('');
 			setTimeout(() => {

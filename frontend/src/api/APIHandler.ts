@@ -1,8 +1,8 @@
 import axios from "axios";
-//import { IUser } from "./types";
+import { IUser } from "./types";
 
 
-const BASE_URL = "localhost:8000"
+const BASE_URL = "http://localhost:8000"
 
 axios.defaults.withCredentials = true;
 
@@ -130,5 +130,10 @@ export async function logOut() {
 export async function checkIfLogged(): Promise<boolean> {
 
 	const response = await axios.get<boolean>(`${BASE_URL}`);
+	return response.data;
+}
+
+export async function fetchUserByNickname(nickname: string): Promise<IUser> {
+	const response = await api.get<IUser>(`/users/${nickname}`);
 	return response.data;
 }
