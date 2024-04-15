@@ -45,12 +45,6 @@ api.interceptors.response.use(
 /*##        AUTH       ##*/
 /*#######################*/
 
-/*
-    An interceptor in Axios is a function that Axios calls for every 
-    request or response. Interceptors can be used to transform the 
-    request before Axios sends it or to transform the response before 
-    Axios returns the response to your code.
-*/
 
 export async function signUp(newNickname: string, password: string) {
 
@@ -120,12 +114,6 @@ export async function logOut() {
 /*##        USER       ##*/
 /*#######################*/
 
-/*
-    An interceptor in Axios is a function that Axios calls for every 
-    request or response. Interceptors can be used to transform the 
-    request before Axios sends it or to transform the response before 
-    Axios returns the response to your code.
-*/
 
 export async function checkIfLogged(): Promise<boolean> {
 
@@ -135,5 +123,15 @@ export async function checkIfLogged(): Promise<boolean> {
 
 export async function fetchUserByNickname(nickname: string): Promise<IUser> {
 	const response = await api.get<IUser>(`/users/${nickname}`);
+	return response.data;
+}
+
+export async function fetchMe(): Promise<IUser> {
+	const response = await api.get<IUser>(`/users/me`);
+	return response.data;
+}
+
+export async function fetchUsers(): Promise<IUser[]> {
+	const response = await api.get<IUser[]>(`/users`);
 	return response.data;
 }

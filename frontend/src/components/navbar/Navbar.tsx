@@ -56,7 +56,7 @@ export default function Navbar(props :{
 			{
 				isLoggedIn === true &&
 				<div className='nav--avatar'>
-					<Avatar />
+					<Avatar setLoggedIn={setLoggedIn}/>
 					<button className="logout_btn" onClick={handleLogout}>Logout</button>
 				</div>
 			}

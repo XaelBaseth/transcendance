@@ -7,6 +7,7 @@ export default function Sidebar (props :{sidebar:boolean}) {
 		  <ul className='nav-menu-items' >
 			<SidebarElem title="Social"			path="/social"		/>
 			<SidebarElem title="Settings"		path="/settings"	/>
+		  	<SidebarElem title="Leaderboard"	path="/leaderboard" />
 		  </ul>
 		</nav> 
 	);

@@ -30,30 +30,31 @@ services:
       timeout: 10s
       retries: 3
     env_file: .env
-
+  
   nginx:
-  container_name: nginx
-  depends_on:
-    django:
-      condition: service_healthy
-  build:
-    context: ./
-    dockerfile: ./nginx/Dockerfile
-    args:
-      - NGINX_PROTOCOL=https
-  ports:
-    - '8000:8000'
-  restart: always
-  networks:
-    - main
-  volumes:
-    - /var/www/html
-  healthcheck:
-    test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
-    interval: 3s
-    timeout: 10s
-    retries: 3
-  env_file: .env
+    container_name: nginx
+    depends_on:
+      django:
+        condition: service_healthy
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile
+      args:
+        - NGINX_PROTOCOL=https
+    ports:
+      - '8000:8000'
+    restart: always
+    networks:
+      - main
+    volumes:
+      - /var/www/html
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
+      interval: 3s
+      timeout: 10s
+      retries: 3
+    env_file: .env
+
 
 networks:
   main:

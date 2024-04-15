@@ -16,7 +16,7 @@ export function Achievement(props: {user: IUser}) {
 	})
     return (
         <article id="achievements">
-            <h1>ACHIEVEMENTS </h1>
+            <h1>ACHIEVEMENTS ({achievementNumber}/{userAchievements?.length})</h1>
             <div className="all-achievements">
                 {displayAchivements}
             </div>

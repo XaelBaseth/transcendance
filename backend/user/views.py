@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from rest_framework import generics
-from .serializers import UserSerializer
-from .models import AppUser
+from django.http import JsonResponse
 
 # Create your views here.
 
-class UserView(generics.CreateAPIView):
-    queryset = AppUser.objects.all()
-    serializer_class = UserSerializer
+def signup(request):
+    #Implement logic here
+    return JsonResponse({'message': 'User signed up successfully.'})
+
+def login(request):
+    #Implement logic here
+    return JsonResponse({'message': 'User logged in successfully.'})

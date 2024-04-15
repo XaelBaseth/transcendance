@@ -11,6 +11,7 @@ import GamePage from './pages/gamepage/Gamepage';
 import './App.css';
 import Settings from './pages/settings/Settings';
 import ErrorPage from './pages/error/Error';
+import { Leaderboard } from './pages/leaderboard/Leaderboard';
 
 
 
@@ -36,6 +37,7 @@ function App() {
 			      <Route path='/gamepage' element={<GamePage />} />
             <Route path='/social' element={<Social />} />
             <Route path='/settings' element={<Settings />} />
+            <Route path='/leaderboard' element={<Leaderboard />} />
             <Route path='/*' element={<ErrorPage />} />
           </Routes>
         </IsLoggedInContext.Provider>  
