@@ -1,0 +1,1224 @@
+django  | Migrations for 'user':
+django  |   user/migrations/0001_initial.py
+db      | The files belonging to this database system will be owned by user "postgres".
+db      | This user must also own the server process.
+db      | 
+db      | The database cluster will be initialized with locale "en_US.utf8".
+django  |     - Create model AppUser
+django  | Operations to perform:
+django  |   Apply all migrations: admin, auth, contenttypes, sessions, user
+django  | Running migrations:
+django  |   Applying contenttypes.0001_initial... OK
+django  |   Applying contenttypes.0002_remove_content_type_name... OK
+django  |   Applying auth.0001_initial... OK
+django  |   Applying auth.0002_alter_permission_name_max_length... OK
+django  |   Applying auth.0003_alter_user_email_max_length... OK
+django  |   Applying auth.0004_alter_user_username_opts... OK
+django  |   Applying auth.0005_alter_user_last_login_null... OK
+django  |   Applying auth.0006_require_contenttypes_0002... OK
+django  |   Applying auth.0007_alter_validators_add_error_messages... OK
+django  |   Applying auth.0008_alter_user_username_max_length... OK
+django  |   Applying auth.0009_alter_user_last_name_max_length... OK
+db      | The default database encoding has accordingly been set to "UTF8".
+nginx   | ...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+...+......+..............+.......+..+.+..+...+.+........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*........+......+...+.+...+........+..........+........+.......+...+..+....+...+........+...+......+....+..+............+.+..............+......+..........+...........+....+............+............+........+..........+...+..+..........+............+............+........+.+..+.......+......+.....+.+.....+....+.....................+...+..+.+........+.........+.+.........+......+..+...+.........+.+....................+...............+....+.....+...+..................+..........+......+.....+................+..+.......+.....+.........+......+...+.....................+....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+nginx   | .....+........+...+.+...+..+.........+.........+.+..+.......+......+..+...+..........+.....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..+...+..+............+.+.....+....+.....+...............+....+..+...+......+...+.+....................+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+.+......+..........................+.............+........................+..+...+............+.+..............+....+.........+..+....+.....+.......+........+.+......+........+.........+......+......+......+...............+.........+.+...+..+.......+............+...............+.........+......+........+...+..................+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+nginx   | -----
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:37 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:40 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:43 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:46 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:52 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:55 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:12:58 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:01 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:04 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:07 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+db      | The default text search configuration will be set to "english".
+db      | 
+db      | Data page checksums are disabled.
+db      | 
+db      | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+db      | creating subdirectories ... ok
+db      | selecting dynamic shared memory implementation ... posix
+db      | selecting default max_connections ... 100
+db      | selecting default shared_buffers ... 128MB
+db      | selecting default time zone ... Etc/UTC
+db      | creating configuration files ... ok
+db      | running bootstrap script ... ok
+db      | performing post-bootstrap initialization ... ok
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:11 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:23 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:26 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:29 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:32 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:35 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:38 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:41 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:44 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:47 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:50 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:53 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:56 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:13:59 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:02 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:05 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:08 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:11 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:23 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+db      | initdb: warning: enabling "trust" authentication for local connections
+django  |   Applying auth.0010_alter_group_name_max_length... OK
+django  |   Applying auth.0011_update_proxy_permissions... OK
+django  |   Applying auth.0012_alter_user_first_name_max_length... OK
+django  |   Applying user.0001_initial... OK
+django  |   Applying admin.0001_initial... OK
+django  |   Applying admin.0002_logentry_remove_auto_add... OK
+django  |   Applying admin.0003_logentry_add_action_flag_choices... OK
+django  |   Applying sessions.0001_initial... OK
+django  | Watching for file changes with StatReloader
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:33] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:36] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:39] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:43] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:49] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+db      | syncing data to disk ... ok
+db      | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+db      | 
+db      | 
+db      | Success. You can now start the database server using:
+db      | 
+db      |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+db      | 
+django  | [16/Apr/2024 12:12:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:55] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:12:58] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:01] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:04] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:07] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:10] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:13] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:16] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:26 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:29 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+db      | waiting for server to start....2024-04-16 12:12:25.650 UTC [48] LOG:  starting PostgreSQL 16.2 (Debian 16.2-1.pgdg120+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+db      | 2024-04-16 12:12:25.651 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db      | 2024-04-16 12:12:25.654 UTC [51] LOG:  database system was shut down at 2024-04-16 12:12:25 UTC
+db      | 2024-04-16 12:12:25.656 UTC [48] LOG:  database system is ready to accept connections
+db      |  done
+db      | server started
+db      | 
+db      | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+db      | 
+db      | 2024-04-16 12:12:25.771 UTC [48] LOG:  received fast shutdown request
+db      | waiting for server to shut down....2024-04-16 12:12:25.772 UTC [48] LOG:  aborting any active transactions
+db      | 2024-04-16 12:12:25.773 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+db      | 2024-04-16 12:12:25.773 UTC [49] LOG:  shutting down
+db      | 2024-04-16 12:12:25.774 UTC [49] LOG:  checkpoint starting: shutdown immediate
+db      | 2024-04-16 12:12:25.779 UTC [49] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.006 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14EAA68, redo lsn=0/14EAA68
+db      | 2024-04-16 12:12:25.781 UTC [48] LOG:  database system is shut down
+db      |  done
+db      | server stopped
+db      | 
+db      | PostgreSQL init process complete; ready for start up.
+db      | 
+db      | 2024-04-16 12:12:25.920 UTC [1] LOG:  starting PostgreSQL 16.2 (Debian 16.2-1.pgdg120+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+db      | 2024-04-16 12:12:25.920 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db      | 2024-04-16 12:12:25.920 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db      | 2024-04-16 12:12:25.922 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:19] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:22] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:25] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:28] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:31] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:34] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:37] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:40] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:43] "GET / HTTP/1.1" 404 2579
+db      | 2024-04-16 12:12:25.925 UTC [62] LOG:  database system was shut down at 2024-04-16 12:12:25 UTC
+db      | 2024-04-16 12:12:25.928 UTC [1] LOG:  database system is ready to accept connections
+db      | 2024-04-16 12:12:30.244 UTC [72] FATAL:  database "admin" does not exist
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:32 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:35 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | [16/Apr/2024 12:13:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:49] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:56] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:13:59] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:05] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:11] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+db      | 2024-04-16 12:12:35.298 UTC [82] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:12:40.345 UTC [89] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:12:45.399 UTC [96] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:12:50.455 UTC [103] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:12:55.503 UTC [110] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:00.557 UTC [118] FATAL:  database "admin" does not exist
+django  | [16/Apr/2024 12:14:14] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:17] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:20] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:23] "GET / HTTP/1.1" 404 2579
+db      | 2024-04-16 12:13:05.611 UTC [125] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:10.665 UTC [132] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:15.710 UTC [139] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:20.765 UTC [146] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:25.814 UTC [153] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:30.861 UTC [161] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:35.907 UTC [168] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:40.966 UTC [175] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:46.013 UTC [182] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:51.065 UTC [189] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:13:56.116 UTC [197] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:01.163 UTC [204] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:06.215 UTC [211] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:11.263 UTC [218] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:16.309 UTC [225] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:21.361 UTC [232] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:26.413 UTC [240] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:31.460 UTC [247] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:36.513 UTC [254] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:41.571 UTC [261] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:46.623 UTC [268] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:51.676 UTC [275] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:14:56.729 UTC [283] FATAL:  database "admin" does not exist
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:26] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:29] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:32] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:35] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:38] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:41] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:44] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:47] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:50] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:53] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:14:56] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+db      | 2024-04-16 12:15:01.781 UTC [290] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:06.833 UTC [297] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:11.879 UTC [304] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:16.932 UTC [310] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:21.993 UTC [317] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:27.040 UTC [325] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:32.094 UTC [332] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:37.145 UTC [338] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:42.192 UTC [345] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:47.244 UTC [352] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:52.297 UTC [359] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:15:57.341 UTC [367] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:02.390 UTC [374] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:07.441 UTC [381] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:12.484 UTC [388] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:17.534 UTC [395] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:22.585 UTC [402] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:27.635 UTC [410] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:32.688 UTC [417] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:37.734 UTC [424] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:42.782 UTC [431] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:47.829 UTC [438] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:16:52.881 UTC [445] FATAL:  database "admin" does not exist
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:38 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:41 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:44 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:48 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:51 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:54 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:14:57 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:00 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:03 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:06 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:09 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:12 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:15 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:18 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:21 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:24 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:27 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:30 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:33 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:36 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:39 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:42 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:45 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+db      | 2024-04-16 12:16:57.925 UTC [452] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:02.977 UTC [459] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:08.029 UTC [466] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:13.076 UTC [473] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:18.129 UTC [480] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:23.177 UTC [487] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:25.925 UTC [60] LOG:  checkpoint starting: time
+db      | 2024-04-16 12:17:28.225 UTC [495] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:33.273 UTC [502] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:38.321 UTC [509] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:40.800 UTC [60] LOG:  checkpoint complete: wrote 151 buffers (0.9%); 0 WAL file(s) added, 0 removed, 0 recycled; write=14.856 s, sync=0.015 s, total=14.875 s; sync files=107, longest=0.006 s, average=0.001 s; distance=716 kB, estimate=716 kB; lsn=0/159DD60, redo lsn=0/159DD28
+db      | 2024-04-16 12:17:43.365 UTC [516] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:48.415 UTC [523] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:53.466 UTC [530] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:17:58.510 UTC [538] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:03.564 UTC [545] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:08.617 UTC [552] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:13.664 UTC [559] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:18.717 UTC [566] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:23.769 UTC [573] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:28.822 UTC [581] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:33.874 UTC [588] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:38.927 UTC [595] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:43.974 UTC [602] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:49.028 UTC [609] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:18:54.076 UTC [616] FATAL:  database "admin" does not exist
+django  | [16/Apr/2024 12:14:59] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:05] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:11] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:15] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:18] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:21] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:24] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:27] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:30] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:33] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+db      | 2024-04-16 12:18:59.125 UTC [624] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:04.176 UTC [631] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:09.227 UTC [638] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:14.274 UTC [645] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:19.335 UTC [652] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:24.388 UTC [659] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:29.437 UTC [667] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:34.488 UTC [673] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:39.540 UTC [680] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:44.588 UTC [687] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:49.641 UTC [694] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:54.690 UTC [701] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:19:59.742 UTC [709] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:04.796 UTC [716] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:09.848 UTC [723] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:14.898 UTC [730] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:19.951 UTC [737] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:25.002 UTC [744] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:30.046 UTC [752] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:35.095 UTC [759] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:40.148 UTC [766] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:45.193 UTC [773] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:50.241 UTC [780] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:20:55.288 UTC [787] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:00.343 UTC [795] FATAL:  database "admin" does not exist
+django  | [16/Apr/2024 12:15:36] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:39] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:42] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:45] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:48] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:51] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:54] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:15:57] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:00] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:03] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:06] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:09] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:12] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:15] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:18] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:21] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:24] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:27] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:31] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:34] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:37] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:40] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:43] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:49] "GET / HTTP/1.1" 404 2579
+db      | 2024-04-16 12:21:05.401 UTC [802] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:10.450 UTC [809] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:15.498 UTC [816] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:20.549 UTC [823] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:25.602 UTC [830] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:30.662 UTC [838] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:35.715 UTC [845] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:40.774 UTC [852] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:45.826 UTC [859] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:50.880 UTC [866] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:21:55.933 UTC [873] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:00.990 UTC [881] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:06.044 UTC [888] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:11.097 UTC [895] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:16.149 UTC [902] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:21.207 UTC [909] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:26.256 UTC [917] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:31.310 UTC [924] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:36.372 UTC [931] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:41.419 UTC [938] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:46.468 UTC [944] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:51.521 UTC [951] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:22:56.568 UTC [959] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:01.622 UTC [965] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:06.675 UTC [972] FATAL:  database "admin" does not exist
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:48 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:51 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:54 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:15:57 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:00 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:03 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:06 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:09 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:12 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:15 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:18 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:22 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:25 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:28 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:31 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:34 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:37 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:40 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:43 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:46 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:52 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:55 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:16:58 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:01 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:55] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:16:58] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:01] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:04] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:07] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:10] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:13] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:16] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:19] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:22] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:25] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:04 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:07 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:10 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:13 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:16 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:19 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:22 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:25 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:28 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:31 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:34 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:37 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:40 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:43 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:46 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:53 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:56 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:17:59 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:02 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:05 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:08 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:11 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:28] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:31] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:34] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:37] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:40] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:43] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:49] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:53] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:56] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:17:59] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:23 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:26 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:29 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:32 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:35 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:38 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:41 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:44 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:47 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:50 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:53 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:56 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:18:59 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:02 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:05 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:08 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:12 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:15 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:18 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:21 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:24 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:27 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:30 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:33 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:36 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:39 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+db      | 2024-04-16 12:23:11.727 UTC [979] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:16.785 UTC [986] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:21.837 UTC [993] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:26.889 UTC [1001] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:31.945 UTC [1008] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:37.008 UTC [1015] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:42.063 UTC [1022] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:47.124 UTC [1029] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:52.175 UTC [1036] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:23:57.228 UTC [1044] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:02.281 UTC [1051] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:07.335 UTC [1058] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:12.387 UTC [1065] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:17.440 UTC [1072] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:22.490 UTC [1079] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:27.550 UTC [1087] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:32.602 UTC [1094] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:37.653 UTC [1101] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:42.713 UTC [1108] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:47.767 UTC [1115] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:52.821 UTC [1122] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:24:57.870 UTC [1130] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:02.924 UTC [1137] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:07.973 UTC [1143] FATAL:  database "admin" does not exist
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:42 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:45 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:48 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:51 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:54 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:19:57 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:00 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:03 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:06 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:09 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:12 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:15 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:18 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:21 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:24 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:27 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:30 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:33 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:37 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:40 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:43 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:46 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:52 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:55 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+db      | 2024-04-16 12:25:13.032 UTC [1149] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:18.083 UTC [1156] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:23.134 UTC [1163] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:28.189 UTC [1171] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:33.251 UTC [1178] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:38.305 UTC [1185] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:43.361 UTC [1192] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:48.409 UTC [1199] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:53.466 UTC [1206] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:25:58.519 UTC [1214] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:03.568 UTC [1221] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:08.628 UTC [1228] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:13.685 UTC [1235] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:18.742 UTC [1242] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:23.794 UTC [1249] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:28.854 UTC [1257] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:33.908 UTC [1264] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:38.962 UTC [1271] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:44.015 UTC [1278] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:49.067 UTC [1285] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:54.121 UTC [1292] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:26:59.178 UTC [1300] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:04.232 UTC [1307] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:09.286 UTC [1314] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:14.337 UTC [1321] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:19.390 UTC [1328] FATAL:  database "admin" does not exist
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:20:58 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | [16/Apr/2024 12:18:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:05] "GET / HTTP/1.1" 404 2579
+db      | 2024-04-16 12:27:24.455 UTC [1335] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:29.503 UTC [1343] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:34.552 UTC [1350] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:39.602 UTC [1357] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:44.652 UTC [1364] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:49.707 UTC [1371] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:54.757 UTC [1378] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:27:59.807 UTC [1386] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:28:04.852 UTC [1393] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:28:09.912 UTC [1400] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:28:14.968 UTC [1407] FATAL:  database "admin" does not exist
+db      | 2024-04-16 12:28:20.023 UTC [1414] FATAL:  database "admin" does not exist
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:01 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:04 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:07 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:10 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:13 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:16 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:19 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:22 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:25 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:11] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:14] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:17] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:20] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:23] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:26] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:29] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:32] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:35] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:38] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:41] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:44] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:28 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:31 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:34 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:37 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:40 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:43 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:46 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:52 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:55 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:21:58 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:02 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:05 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:08 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:11 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:23 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:26 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:29 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:32 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:35 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:38 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | [16/Apr/2024 12:18:47] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:50] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:53] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:56] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:18:59] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:41 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:44 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:47 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:50 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:53 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:56 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:22:59 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:02 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:05 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:08 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:05] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:12] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:15] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:18] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:21] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:24] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:27] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:30] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:33] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:36] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:39] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:11 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:24 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:27 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:30 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:33 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:36 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:39 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:42 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:45 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:48 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:51 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:54 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:23:57 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:00 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:03 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:06 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:09 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:12 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:15 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:18 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:21 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:24 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:27 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:30 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:42] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:45] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:48] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:51] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:54] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:19:57] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:00] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:03] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:06] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:09] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:12] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:15] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:18] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:21] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:24] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:27] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:30] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:33] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:37] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:40] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:43] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:49] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:33 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:36 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:55] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:20:58] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:01] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:04] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:07] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:10] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:13] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:16] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:19] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:22] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:25] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:28] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:31] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:34] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:37] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:40] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:39 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:42 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:45 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:52 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:43] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:49] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:55] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:21:59] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:05] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:11] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:14] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:17] "GET / HTTP/1.1" 404 2579
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:55 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:24:58 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:01 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:04 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:07 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:10 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:13 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:16 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:19 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:22 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:25 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:28 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:31 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:34 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:37 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:40 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:43 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:46 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:49 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:52 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:55 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:25:58 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:01 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:04 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:07 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:20] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:23] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:26] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:29] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:32] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:35] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:38] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:41] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:44] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:47] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:50] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:10 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:23 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:26 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:29 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:32 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:35 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:38 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:41 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:44 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:47 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:50 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:53 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:56 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:26:59 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:02 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:05 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:08 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:11 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:14 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:17 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:20 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:23 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:24 +0000] "GET / HTTP/1.1" 400 255 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:24 +0000] "GET /favicon.ico HTTP/1.1" 400 255 "http://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:26 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:29 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:32 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:35 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:38 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:39 +0000] "GET / HTTP/1.1" 200 374 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:39 +0000] "GET /static/css/main.39de8d7c.css HTTP/1.1" 200 14081 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:39 +0000] "GET /src/index.tsx HTTP/1.1" 200 374 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:39 +0000] "GET /static/js/main.48e5f25a.js HTTP/1.1" 200 364422 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:39 +0000] "GET /assets/toothlessDancing.mp4 HTTP/1.1" 206 718550 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:39 +0000] "GET /favicon.ico HTTP/1.1" 200 374 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:42 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:45 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:48 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:51 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:53 +0000] "GET / HTTP/1.1" 200 374 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:53 +0000] "GET /src/index.tsx HTTP/1.1" 200 374 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:53 +0000] "GET /favicon.ico HTTP/1.1" 200 374 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:54 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:27:57 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:27:57 +0000] "OPTIONS /auth/signup HTTP/1.1" 400 255 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:00 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | [16/Apr/2024 12:22:53] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:56] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:22:59] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:05] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:11] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:14] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:17] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:20] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:24] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:27] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:30] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:33] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:36] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:39] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:42] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:45] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:48] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:51] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:54] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:23:57] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:00] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:03] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:06] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:03 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:06 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:28:08 +0000] "OPTIONS /auth/signup HTTP/1.1" 400 255 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:09 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:28:10 +0000] "OPTIONS /auth/signup HTTP/1.1" 400 255 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.18.0.1 - - [16/Apr/2024:12:28:10 +0000] "OPTIONS /auth/signup HTTP/1.1" 400 255 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:12 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:15 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [16/Apr/2024:12:28:18 +0000] "GET / HTTP/1.1" 400 255 "-" "curl/7.88.1"
+django  | [16/Apr/2024 12:24:09] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:12] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:15] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:18] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:21] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:24] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:27] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:30] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:33] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:36] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:39] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:42] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:45] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:49] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:55] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:24:58] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:01] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:04] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:07] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:10] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:13] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:16] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:19] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:22] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:25] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:28] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:31] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:34] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:37] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:40] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:43] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:46] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:49] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:52] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:55] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:25:58] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:01] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:04] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:07] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:10] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:14] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:17] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:20] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:23] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:26] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:29] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:32] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:35] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:38] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:41] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:44] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:47] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:50] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:53] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:56] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:26:59] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:02] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:05] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:08] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:11] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:14] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:17] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:20] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:23] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:26] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:29] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:32] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:35] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:38] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:42] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:45] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:48] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:51] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:54] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:27:57] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:00] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:03] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:06] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:09] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:12] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:15] "GET / HTTP/1.1" 404 2579
+django  | Not Found: /
+django  | [16/Apr/2024 12:28:18] "GET / HTTP/1.1" 404 2579

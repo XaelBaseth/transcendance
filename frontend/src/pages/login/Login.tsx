@@ -6,7 +6,7 @@ import './Login.css';
 export default function Login({ setLoggedIn }: { 
 	setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>}) {
 	
-	const [nickname, setNickname] = useState<string>("");
+	const [username, setusername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
 	const [successMsg, setSuccessMsg] = useState<string>("");
@@ -16,7 +16,7 @@ export default function Login({ setLoggedIn }: {
 		event.preventDefault();
 		
 		try {
-			await signUp(nickname, password);
+			await signUp(username, password);
 			setLoggedIn(true);
 			setSuccessMsg("Successfully signed up! ")
 			setErrorMsg('');
@@ -25,7 +25,7 @@ export default function Login({ setLoggedIn }: {
 			}, 2000);
 		} catch (error) {
 			setSuccessMsg('');
-			setErrorMsg("A user with this nickname already exists");
+			setErrorMsg("A user with this username already exists");
 		}
 	}
 
@@ -33,14 +33,14 @@ export default function Login({ setLoggedIn }: {
 		event.preventDefault();
 		
 		try {
-			//const response = await logIn(nickname, password);
+			//const response = await logIn(username, password);
 			setLoggedIn(true);
 			setErrorMsg('');
 			setTimeout(() => {
 				navigate('/profile');
 			}, 1500);
 		} catch (error) {
-			if ((error as Error).message === 'No such nickname') {
+			if ((error as Error).message === 'No such username') {
 				setErrorMsg("User does not exist: please sign up before")
 			}
 			else {
@@ -56,7 +56,7 @@ export default function Login({ setLoggedIn }: {
 			<form  className="connection-form">
 
 			<label className="login_label" htmlFor="username">Username</label>
-			<input onChange={(event) => {setNickname(event.target.value)}} type="text" placeholder="username" id="username" />
+			<input onChange={(event) => {setusername(event.target.value)}} type="text" placeholder="username" id="username" />
 
 			<label  className="login_label" htmlFor="password">Password</label>
 			<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder="Password" id="password" />

@@ -31,8 +31,17 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=50, unique=True)
     username = models.CharField(max_length=20, default="Jouez a ff14")
+    created_at = models.DateTimeField(auto_now_add=True)
+    bio = models.TextField(blank=True)
+
+    aces = models.IntegerField(default=0)
+    score = models.IntegerField(default=0)
+    rank = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     objects = AppUserManager()
     def __str__(self):
         return f"ID: {self.user_id}| EMAIL: {self.email} | USERNAME: {self.username}"
+

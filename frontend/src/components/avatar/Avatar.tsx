@@ -33,7 +33,7 @@ export default function Avatar ( {setLoggedIn}: {setLoggedIn: React.Dispatch<Rea
     return (
         <div id='navicon--avatar'>
             <NavLink className='link-profile' to="/settings">
-                <img src={userQuery.data?.avatar} alt={userQuery.data?.nickname} id='nav--avatar'/>
+                <img src={userQuery.data?.avatar} alt={userQuery.data?.username} id='nav--avatar'/>
             </NavLink>
             <div id="active-dot"></div>
         </div>

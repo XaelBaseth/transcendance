@@ -2,7 +2,7 @@ import "./UserProfile.css"
 import { useParams } from 'react-router-dom';
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { IUser } from "../../api/types";
-import { fetchUserByNickname } from '../../api/APIHandler'
+import { fetchUserByusername } from '../../api/APIHandler'
 import WinrateCircularBar from "../../components/profile/WinrateCircularBar"
 import StatDisplay from "../../components/profile/StatDisplay"
 import MainStat from "../../components/profile/MainStat"
@@ -12,13 +12,13 @@ import UserInfos from "../../components/profile/UserInfos";
 
 export function UserProfile() {
 
-    const { nickname } = useParams<{nickname?: string }>();
+    const { username } = useParams<{username?: string }>();
 
     const userQuery : UseQueryResult<IUser>= useQuery({
-        queryKey: ['user', nickname],
+        queryKey: ['user', username],
         queryFn: () => {
-            if (nickname) {
-                return fetchUserByNickname(nickname)}
+            if (username) {
+                return fetchUserByusername(username)}
             }
     });
 
@@ -44,7 +44,7 @@ export function UserProfile() {
                             <article id="bio">
                                 <div style={{ backgroundImage: `url(${user.avatar})` }} id="hexagon-avatar"></div>
                                 {
-                                    user && user.nickname &&
+                                    user && user.username &&
                                     <UserInfos user={user} />
                                 }   
                             </article>

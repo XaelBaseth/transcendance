@@ -128,7 +128,7 @@
 /* ***   INPUT TEXT COMPONENT   ***/
 /* ********************************/
 
-/* Can be 'nickname', 'bio' or 'email' title */
+/* Can be 'username', 'bio' or 'email' title */
 .text_settings_property {
 	text-align: center;
 	font-family: 'Bruno Ace SC', cursive;

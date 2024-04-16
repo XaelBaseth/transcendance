@@ -46,12 +46,12 @@ api.interceptors.response.use(
 /*#######################*/
 
 
-export async function signUp(newNickname: string, password: string) {
+export async function signUp(newusername: string, password: string) {
 
 	try {
 		const response = await api.post(`${BASE_URL}/auth/signup`,
 			{
-				nickname: newNickname,
+				username: newusername,
 				password: password
 			},
 			{
@@ -63,16 +63,16 @@ export async function signUp(newNickname: string, password: string) {
 		);
 		return response.data;
 	} catch (error) {
-		throw new Error('A user with this nickname already exists');
+		throw new Error('A user with this username already exists');
 	}
 }
 
-export async function logIn(newNickname: string, password: string) {
+export async function logIn(newusername: string, password: string) {
     try {
         // Make a POST request to your backend's login endpoint
         const response = await api.post(`${BASE_URL}/auth/login`, 
 		{ 
-			nickname: newNickname, 
+			username: newusername, 
 			password: password 
 		},
 		{
@@ -88,8 +88,8 @@ export async function logIn(newNickname: string, password: string) {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error.response && error.response.data && error.response.data.message) {
-                if (error.response.data.message === 'No such nickname') {
-                    throw new Error('No such nickname');
+                if (error.response.data.message === 'No such username') {
+                    throw new Error('No such username');
                 } else {
                     throw new Error('Password does not match');
                 }
@@ -121,8 +121,8 @@ export async function checkIfLogged(): Promise<boolean> {
 	return response.data;
 }
 
-export async function fetchUserByNickname(nickname: string): Promise<IUser> {
-	const response = await api.get<IUser>(`/users/${nickname}`);
+export async function fetchUserByusername(username: string): Promise<IUser> {
+	const response = await api.get<IUser>(`/users/${username}`);
 	return response.data;
 }
 
@@ -132,6 +132,6 @@ export async function fetchMe(): Promise<IUser> {
 }
 
 export async function fetchUsers(): Promise<IUser[]> {
-	const response = await api.get<IUser[]>(`/users`);
+	const response = await api.get<IUser[]>(`/users/`);
 	return response.data;
 }

@@ -17,12 +17,12 @@ export default function UserInfos( {user} : {user: IUser}) {
     const [currentStatus, setCurrentStatus] = useState<string>('OFFLINE');
 
 	useEffect(() => {
-		if (userQuery.data && userQuery.data.nickname && user && user.nickname) {
-			(userQuery.data.nickname === user.nickname)
+		if (userQuery.data && userQuery.data.username && user && user.username) {
+			(userQuery.data.username === user.username)
 			? setEnableSocials(false)
 			: setEnableSocials(true);
 		}
-	}, [userQuery.isSuccess, userQuery.data, user, user.nickname, setEnableSocials]);	
+	}, [userQuery.isSuccess, userQuery.data, user, user.username, setEnableSocials]);	
 	
 	useEffect(() => {
 		if (user && user.isActive === 'ONLINE') {
@@ -46,7 +46,7 @@ export default function UserInfos( {user} : {user: IUser}) {
     return (
         <div className='user-infos'>
             <div className='titles'>
-                <h2>{user.nickname}</h2>
+                <h2>{user.username}</h2>
             </div>
             {
                 enableSocials === true &&

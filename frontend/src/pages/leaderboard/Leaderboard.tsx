@@ -15,14 +15,14 @@ export function TopThreeDetail(props: { user: IUser}) {
 
 	return (
 		<div key={props.user.id} className="podium" id={podium}>
-			<NavLink to={`/user/${props.user.nickname}`} >
+			<NavLink to={`/user/${props.user.username}`} >
 			<img 
 				src={props.user.avatar}
-				alt={props.user.nickname}
+				alt={props.user.username}
 			/>
 			</NavLink>
 			<h3>{props.user.score}</h3>
-			<h1>{props.user.nickname}</h1>
+			<h1>{props.user.username}</h1>
 			<p>Rank {props.user.rank}</p>
 		</div>
 		);
@@ -39,14 +39,14 @@ export function OnePerf( {user} : {user: IUser} ) {
 	}
 	return (
 	<div key={user.id} className="stats" id="other">
-			<NavLink to={`/user/${user.nickname}`} >
+			<NavLink to={`/user/${user.username}`} >
 				<img 
 					src={user.avatar}
-					alt={user.nickname}
+					alt={user.username}
 				/>
 			</NavLink>
 			<div className="user-ids">
-				<h2 >{user.nickname}</h2>
+				<h2 >{user.username}</h2>
 			</div>
 			<div id="vertical-sep"></div>
 			<div className="one-stat">

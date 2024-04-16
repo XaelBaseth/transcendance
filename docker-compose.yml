@@ -8,7 +8,7 @@ services:
     networks:
       - main
     healthcheck:
-      test: ["CMD", "pg_isready"]
+      test: ["CMD", "pg_isready", "-U", "$POSTGRES_USER"]
       interval: 5s
       retries: 3
       timeout: 5s
@@ -40,7 +40,7 @@ services:
       context: ./
       dockerfile: ./nginx/Dockerfile
       args:
-        - NGINX_PROTOCOL=https
+        - NGINX_PROTOCOL=${NGINX_PROTOCOL}
     ports:
       - '8000:8000'
     restart: always

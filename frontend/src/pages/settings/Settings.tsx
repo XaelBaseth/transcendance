@@ -243,7 +243,7 @@ export default function Settings() {
                 <img src="" alt="" />
                 <div className='settings__container'>
                     <AvatarCardSettings />
-                    <TextCardSettings property="nickname"/>
+                    <TextCardSettings property="username"/>
                     <TextCardSettings property="bio"/>
                     <TextCardSettings property="email"/>
                     <PasswordCardSettings />
