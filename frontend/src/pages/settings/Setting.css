@@ -6,15 +6,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 10vh 25vw 3vh 25vw;
+	margin: 8vh 35vw 1vh 12vw;
 }
 
 .settings {
 	min-height: 92vh;
 	padding: 2em;
 	border-radius: 24px;
-	background-color: rgba(255,255,255,0.13);
-    backdrop-filter: blur(10px);
+	background-color: #00000023;
+    backdrop-filter: blur(20px);
 }
 
 .settings > h1 {
@@ -62,7 +62,7 @@
 }
 
 .avatar_block:nth-child(2) > h5 {
-	font-family: 'Bruno Ace SC', cursive;
+	font-family: 'Pixelyfie Sans', cursive;
 	color: black;
 	text-align: left;
 	font-size: 1.1em;
@@ -91,7 +91,8 @@
 
 #file + label {
     font-weight: 600;
-    color: black;
+	background-color: #bbb4da67;
+    color: #dad4de;
     display: inline;
 	cursor: pointer;
 	padding: 7px 0;
@@ -99,15 +100,16 @@
 
 #file + label:hover {
     font-weight: 600;
-    color: white;
+    color: #f4f0e3;
     display: inline;
 	cursor: pointer;
 	padding: 7px 0;
 }
 
 #file + label > span {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 0.8em;
+	font-family: 'Pixelify Sans';
+    letter-spacing:2px;
+	font-size: 16px;
 	padding: 5px 10px;
 
 }

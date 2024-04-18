@@ -1,42 +1,41 @@
 #social-dashboard {
 	flex: 2 auto;
 	height : 92vh;
-	margin-top : 8vh;
+	margin-top : 20px;
 	background-color: var(--bg-color); /* vient de App.css */
 	color: var(--font-color); /* vient de App.css */
 }
 
 #social-dashboard button {
-	border: transparent;
-	font-family: var(--font-type);
-	margin: auto;
-	color:  rgb(24, 46, 65);
-    text-shadow:
-	0 0 7px #efefef,
-	0 0 10px #90d0f0,
-	0 0 42px rgb(60, 116, 166),
-	0 0 77px rgb(60, 116, 166),
-	0 0 80px rgb(24, 46, 65);
+	background-color: #bbb4da;
+    font-family: var(--font-type);
+    margin-left: -80px;
+	margin-right: 600px;
+    color: #dad4de;
+    border: 5px solid #dad4de;
+    /*text-shadow: 0 0 10px #7e6389a6, 0 0 42px #fff, 0 0 77px #808080, 0 0 80px #000;*/
+    margin-bottom: 10px; /* Ajoute un espacement entre les boutons */
+    width: auto; /* Permet aux boutons de s'ajuster à leur contenu */
+	transition: color 0s;
 }
 
 .social-btn {
 	display:flex;
+	flex-direction: column;
 	justify-content: space-around;
-	align-items: center;
+	align-items: left;
 	flex-wrap: wrap;
-	margin : 15vh 10vw;
+	margin : 12vh 15vw;
 }
 
 .social-btn > button {
-	padding: 1vw 4vw;
+	padding: 1vw 2vw;
 	border-radius: 20px;
 	font-weight: 800;
 }
 
-.btn {
-	background-color: #000;
-}
-
-.clicked-btn, .btn:hover {
-	background-color: var(--filter-btn-secondary-color);
+#social-dashboard button:hover {
+	background-color: #dad4de;
+	border : 5px solid #bbb4da;
+	color : #bbb4da;
 }

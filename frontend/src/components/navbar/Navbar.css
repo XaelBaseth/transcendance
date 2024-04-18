@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 /*Navbar top screen*/
 .navbar {
@@ -16,9 +17,11 @@
 	font-family: 'Bungee';
 	display: flex; 
 	font-size: 40px;
-	border: none;
+	/*border: 5px solid #f4f0e3;*/
+	padding : 0px 15px;
+	border-radius:10px;
 	text-decoration: none;
-	color: #fff;
+	color: #f4f0e3;
 	position: relative;
   }
 
@@ -42,20 +45,25 @@
 
 /*Logout_btn*/
 .logout_btn {
-	font-size: 14px;
+	font-size: 16px;
 	color: #fff;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.4);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	cursor: pointer;
 	margin: 0 auto;
+	transition : color 0s;
+}
+
+.logout_btn:hover {
+	color : #000;
 }
 
 /*sidebar*/
 .nav-menu {
-	background-color: rgba(0, 0, 0, 0.1);
-	width: 250px;
+	background-color: #f4f0e38c;
+	width: 200px;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -73,26 +81,30 @@
 
 .nav-text a {
 	text-decoration: none;
-	color: #000;
+	font-weight: bold;
+	color: #7b9dd2;
 	font-size: 30px;
 	height: 100%;
 	display: flex;
+	margin-left : auto;
 	align-items: center;
-	padding: 0 30px;
+	padding: 0 20px;
 	border-radius: 4px;
+	transition: color 0s;
   }
 
-.nav-text:hover{
- 	color: #fff;
+.nav-text a:hover{
+ 	color: #f4f0e3;
   }
 
 .nav-menu-items {
-	font-size: 18px;
+	font-size: 30px;
 	flex-direction: column;
+	margin-left: -100px;
   }
 
 .item_title{
-	font-family: 'Bungee';
+	font-family: 'Pixelify Sans';
 	font-size: large;
 	text-align: center;
  }
@@ -100,6 +112,7 @@
 .sidebar_image {
 	height: 30px;
 	width: 30px;
+	padding : 10px;
 	top: 50;
 	border-radius: 5px;
  }
@@ -114,7 +127,7 @@
   }
 
 .nav-elements span{
-	background: #000;
+	background: #59c2a8;
 	border-radius: 5px;
 	height: 7px;
 	margin: 7px;

@@ -14,12 +14,11 @@
     align-items: center;
     justify-content: center;
     margin-left : 69vh;
-    margin-top: 47vh;
+    margin-top: 49vh;
     padding: 15px 15px;
     /*height: 5vh;*/
-    background-color: rgb(89,194,168);
-    color: #DEB357;
-    border: 6px solid #DEB357;
+    background-color: #dad4de;
+    border: 6px solid #bbb4da;
     border-radius:20px;
     letter-spacing:5px;
     cursor: pointer;
@@ -28,10 +27,11 @@
     position: absolute;
     top: 50%;
     transform: translateY(-500%);
+    transition: color 0.3s;
 }
 
-.btn__play:hover {
-    color: #fff;
+.btn__play :hover {
+    color: #bbb4da;
 }
 
 .link-login {
