@@ -1,3 +1,5 @@
+@import url('https://fonts.google.com/share?selection.family=Pixelify+Sans:wght@400..700');
+
 .videobg{
 	position: fixed;
     overflow: hidden;
@@ -7,6 +9,8 @@
     min-height: 100%;
     width: auto;
     height: auto;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-45%);
     z-index: -10;
 }
+
+

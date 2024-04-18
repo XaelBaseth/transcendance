@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 
 #play-screen {
@@ -8,21 +9,25 @@
 }
 
 .btn__play {
-    font-family: 'Bungee';
+    font-family: 'Pixelify Sans';
     display: flex;
     align-items: center;
-    justify-content: center; 
-    margin-top: 40vh;
-    padding: 15px 25px;
-    height: 5vh;
-    background-color: transparent;
-    color: #e3eef1;
-    border: 3px solid rgb(35, 71, 103);
-    border-radius:15px;
+    justify-content: center;
+    margin-left : 69vh;
+    margin-top: 47vh;
+    padding: 15px 15px;
+    /*height: 5vh;*/
+    background-color: rgb(89,194,168);
+    color: #DEB357;
+    border: 6px solid #DEB357;
+    border-radius:20px;
     letter-spacing:5px;
     cursor: pointer;
     font-weight: bold;
     transition: .5s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-500%);
 }
 
 .btn__play:hover {
@@ -31,7 +36,7 @@
 
 .link-login {
 	font-weight: bold;
-	color: #e3eef1;
+	color: #ffffff;
 	font-size: 30px;
 	text-decoration: none;
 }

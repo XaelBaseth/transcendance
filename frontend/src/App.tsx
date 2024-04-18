@@ -26,7 +26,7 @@ function App() {
         <Navbar setLoggedIn={setLoggedIn} />
         <div id="videoContainer">
           <video className='videobg' autoPlay loop muted preload='auto' content='width=device-width, initial-scale=1.0'>
-          <source src={process.env.PUBLIC_URL + '/assets/toothlessDancing.mp4'} type='video/mp4' />
+          <source src={process.env.PUBLIC_URL + '/assets/BG(2).mp4'} type='video/mp4' />
           </video>
         </div>
         <Toaster/>
