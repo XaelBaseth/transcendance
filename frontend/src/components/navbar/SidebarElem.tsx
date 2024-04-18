@@ -3,14 +3,16 @@ import './Navbar.css';
 
 export default function SidebarElem(props : { 
 	title: string,
-	path: string}) {
+	path: string,
+	image: string}) {
 	return (
 		<>
-			<li className='nav-text'>
+			<ul className='nav-text'>
 				<NavLink to={props.path} >
-				<span className='item_title'> {props.title}</span>	
+					<img src={props.image} alt='{props.title}' className='sidebar_image'/>
+					<span className='item_title'> {props.title}</span>	
 				</NavLink>
-			</li>
+			</ul>
 		</>
 	);
 }

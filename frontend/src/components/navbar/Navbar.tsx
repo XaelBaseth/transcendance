@@ -11,7 +11,7 @@ import "./Navbar.css";
 export default function Navbar(props :{
 		setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>}) {
   
-		const [sidebar, setSidebar] = useState<boolean>(false);
+		const [sidebar] = useState<boolean>(true);
   		const isLoggedIn = useContext(IsLoggedInContext);
 		const { setLoggedIn } = props;
 		const navigate = useNavigate();
@@ -29,20 +29,17 @@ export default function Navbar(props :{
 			}
 		}
 
-
-		const showSidebar = () => setSidebar(!sidebar);
-
  return (
   <>
     <div className='navbar'>
 		<label className="nav-elements" id="burger-menu" htmlFor="check">
-			<input type="checkbox" id="check" onClick={showSidebar}/> 
+			<input type="checkbox" id="check"/> 
 			<span className='span1'></span>
 			<span className='span2'></span>
 			<span className='span3'></span> 
 		</label>
 		<div className="navbar__center">
-			<NavLink to="/" className="navbar__title">PONG</NavLink>
+			<NavLink to="/" className="navbar__title">POKEPONG</NavLink>
 		</div>
 		<>
 			{
