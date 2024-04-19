@@ -15,9 +15,11 @@
 
 .navbar__title {
 	font-family: 'Bungee';
-	display: flex; 
+	display: fixed; 
 	font-size: 40px;
-	/*border: 5px solid #f4f0e3;*/
+	margin-left: 170px;
+	margin-right: 100px;
+	margin-top: 0px;
 	padding : 0px 15px;
 	border-radius:10px;
 	text-decoration: none;
@@ -45,9 +47,13 @@
 
 /*Logout_btn*/
 .logout_btn {
-	font-size: 16px;
-	color: #fff;
-	background-color: rgba(0, 0, 0, 0.4);
+	width: 100px; /* Largeur fixe de 200 pixels */
+    height: 35px;
+	font-size: 23px;
+    font-family: 'Pixelify Sans';
+	padding : 7px;
+	color: var(--bouton_text);
+	background-color: var(--bouton_BG);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -57,19 +63,20 @@
 }
 
 .logout_btn:hover {
-	color : #000;
+	background-color: var(--bouton_BG_hover);
 }
 
 /*sidebar*/
 .nav-menu {
-	background-color: #f4f0e38c;
-	width: 200px;
+	/*background-color: #f4f0e38c;*/
+	width: 190px;
 	height: 100%;
 	display: flex;
 	justify-content: center;
-	backdrop-filter: blur(10px);
+	border-radius: 5px;
+	/*backdrop-filter: blur(10px);*/
 	position: fixed;
-	top: 8%;
+	top: 0%;
 	z-index: 100;
   }
 
@@ -82,7 +89,7 @@
 .nav-text a {
 	text-decoration: none;
 	font-weight: bold;
-	color: #7b9dd2;
+	color: var(--bouton_text);
 	font-size: 30px;
 	height: 100%;
 	display: flex;
@@ -94,14 +101,40 @@
   }
 
 .nav-text a:hover{
- 	color: #f4f0e3;
+ 	color: var(--bouton_text_hover);
   }
 
 .nav-menu-items {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	font-size: 30px;
+	margin-left: -140px;
+	margin-top: 70px;
+
+  }
+
+.flag_btn {
+	position: fixed;
+	flex-direction: column;
+    bottom: 25px;
+    left: -100px;
+    display: flex;
+	gap: 0px;
+}
+
+.settings_btn {
+	font-weight: bold;
+	color: var(--bouton_text);
 	font-size: 30px;
 	flex-direction: column;
-	margin-left: -100px;
-  }
+	margin-top: 93vh;
+	margin-left : -36vh;
+	align-items: center;
+	transition: color 0s;
+	z-index: 3;
+	flex-wrap: nowrap;
+}
 
 .item_title{
 	font-family: 'Pixelify Sans';
@@ -127,26 +160,26 @@
   }
 
 .nav-elements span{
-	background: #59c2a8;
+	background: #aedcc9;
 	border-radius: 5px;
 	height: 7px;
-	margin: 7px;
+	margin: 20px;
   }
 
 /* Les barres du burger menu  */
 
 .span1{
-	width: 50%;
+	width: 0%;
 	flex-direction: column;
   }
 
 .span2{
-	width: 100%;
+	width: 0%;
 	flex-direction: column;
   }
 
 .span3{
-	width: 75%;
+	width: 0%;
 	flex-direction: column;
   }
 

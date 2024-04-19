@@ -12,7 +12,7 @@ import './App.css';
 import Settings from './pages/settings/Settings';
 import ErrorPage from './pages/error/Error';
 import { Leaderboard } from './pages/leaderboard/Leaderboard';
-
+import Pong from './pages/Pong/Pong';
 
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
             <Route path='/social' element={<Social />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/leaderboard' element={<Leaderboard />} />
+            <Route path='/pong' element={<Pong />} />
             <Route path='/*' element={<ErrorPage />} />
           </Routes>
         </IsLoggedInContext.Provider>  
