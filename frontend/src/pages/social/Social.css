@@ -41,4 +41,86 @@
 #social-dashboard button:hover {
 	background-color: var(--bouton_BG_hover);
 	border : 5px solid var(--bouton_border_hover);
+
+/*SeachBar*/
+
+.text_serachBar{
+	padding-top: 200px;
+	font-family: var(--font-type);
+}
+
+.search_bar {
+	/* margin-top: 100px; */
+	margin-left: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+}
+
+#search_input {
+	outline: 0;
+	border: 1px solid var(--search-bar-main-bg-element);
+	background-color: var(--search-bar-main-bg-element);
+}
+
+#search_input:hover, #search_input:focus {
+    border: 1.5px solid var(--sides-color);
+    background-color: var(--search-bar-main-bg-element);
+  }
+
+.searched_user {
+	background-color: var(--filter-btn-main-color);
+	margin: 0 2vw;
+	padding: 0 1vw;
+	border-radius: 20px;
+}
+
+.searched_user:hover {
+	background-color: var(--search-bar-main-bg-element);
+	margin: 0 2vw;
+}
+
+.search_user_infos {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	gap : 0.5vw;
+}
+
+.search_user_infos > a {
+	text-decoration: none;
+	color: var(--search-bar-add-btn);
+	padding: 0.5em 0.5em;
+	/* background-color: rgb(44, 35, 35); */
+	border-radius: 50%;
+	margin-left :0.5vw;
+}
+
+.search_user_infos:hover > a {
+	text-decoration: none;
+	background-color: var(--heading-color);
+}
+
+#search_user_avatar {
+	height: 6vh;
+	width: auto;
+	border-radius: 50%;
+}
+
+#title {
+	text-shadow: none;
+	color:  rgb(24, 46, 65);
+	text-shadow:
+	0 0 7px #efefef,
+	0 0 10px #90d0f0,
+	0 0 42px rgb(60, 116, 166),
+	0 0 77px rgb(60, 116, 166),
+	0 0 80px rgb(24, 46, 65);
+	font-size: 1em;
+}
+
+#title > em {
+	color:rgb(26, 60, 155);
+	font-family: var(--font-type);
 }

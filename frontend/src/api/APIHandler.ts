@@ -135,3 +135,21 @@ export async function fetchUsers(): Promise<IUser[]> {
 	const response = await api.get<IUser[]>(`/users/`);
 	return response.data;
 }
+
+
+/*#######################*/
+/*##        SOCIAL     ##*/
+/*#######################*/
+
+export async function postSearchQuery(userInput: string) {
+
+	try {
+		const response = await api.post(`/search`, {
+			searchQuery: userInput,
+		});
+		return response;
+	} catch (error) {
+		throw new Error('Meilisearch: error caught during search');
+	}
+
+}
