@@ -6,4 +6,21 @@
     --bouton_BG_hover: #a0ced9;
     --bouton_border_hover:#f7f2e8;
     --bouton_text_hover: #ea9ab2;
+
+    --pong_BG: #f7f2e8;
+    --pong_borber: #5c775b;
+
+    --setting_BG: #f7f2e8ce;
+    --setting_border: #a0ced9;
+    --setting_textD: #e27396;
+    --setting_textL: #ea9ab2;
+
+    --template_BG: #fcf5c7a6;
+    --template_border: #5c775b;
+    --template_textG: #5c775b;
+    --template_textP: #e27396;
+    --template_textLP: #ea9ab2;
+
+    --navbar_text: #5c775b;
+    --navbar_BG: #f7f2e8;
 }

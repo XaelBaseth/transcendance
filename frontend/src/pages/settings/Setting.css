@@ -1,3 +1,4 @@
+@import "../../colors.css";
 /* ********************************/
 /* ***      MAIN SETTINGS       ***/
 /* ********************************/
@@ -13,14 +14,16 @@
 	min-height: 92vh;
 	padding: 2em;
 	border-radius: 24px;
-	background-color: #00000023;
+	background-color: var(--setting_BG);
+    border: 5px solid var(--setting_border);
     backdrop-filter: blur(20px);
 }
 
 .settings > h1 {
 	text-align: center;
 	font-size: 2.5em;
-	font-family: 'Bruno Ace SC', cursive;
+	font-family: 'Pixelify Sans';
+	color: var(--setting_textD)
 }
 
 /* ********************************/
@@ -62,8 +65,8 @@
 }
 
 .avatar_block:nth-child(2) > h5 {
-	font-family: 'Pixelyfie Sans', cursive;
-	color: black;
+	font-family: 'Pixelify Sans';
+	color: var(--setting_textD);
 	text-align: left;
 	font-size: 1.1em;
 	margin-bottom: 0.5vh;
@@ -87,12 +90,12 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+	color : #000;
 }
 
 #file + label {
     font-weight: 600;
-	background-color: #bbb4da67;
-    color: #dad4de;
+    color: var(--setting_textD);
     display: inline;
 	cursor: pointer;
 	padding: 7px 0;
@@ -100,7 +103,7 @@
 
 #file + label:hover {
     font-weight: 600;
-    color: #f4f0e3;
+    color: var(--setting_textL);
     display: inline;
 	cursor: pointer;
 	padding: 7px 0;
@@ -122,7 +125,7 @@
 	background-color: black;
 	padding: 10px 20px;
 	border-radius: 50px;
-	font-family: 'Bruno Ace SC', cursive;
+	font-family: 'Pixelify Sans';
 	cursor: pointer;
 }
 
@@ -132,32 +135,49 @@
 
 /* Can be 'username', 'bio' or 'email' title */
 .text_settings_property {
-	text-align: center;
-	font-family: 'Bruno Ace SC', cursive;
-	color: black;
+	text-align: left;
+	font-family: 'Pixelify Sans';
+	color: var(--setting_textD);
 }
 
 .text_settings_input {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 0 8vw; 
+	margin: 0 8vw;
 }
-
+/* inside box 1e et 3e btn*/
 .text_input[type=text] {
 	padding:10px;
 	border:0;
+    font-size: 15px;
 	border-radius:5px;
-	margin: 10px 5px;
+	margin: 10px 0px;
 	margin-right: 10px;
-	font-family: 'Bruno Ace SC', cursive;
-	color: white;
+	font-family: 'Pixelify Sans';
 	resize: vertical;
 }
 
+.text_test{
+	padding:10px;
+	border:0;
+    font-size: 15px;
+	border-radius:5px;
+	margin: 10px 0px;
+	margin-right: 10px;
+	font-family: 'Pixelify Sans';
+	resize: vertical;
+	color: var(--setting_textD);
+}
+
+.text_input::placeholder{
+    color: var(--setting_textL);   
+}
+
+/* ligne sous box d'ecriture 3er btn settings */
 .text_input[type=text]:hover {
 	border:0;
-	border-bottom:0.5px solid #eee;
+	border-bottom: 2px solid #a0ced9;
 }
 
 .text_settings_btn {
@@ -184,8 +204,8 @@
 }
 
 .password__card > h2 {
-	font-family: 'Bruno Ace SC', cursive;
-	color: black;
+	font-family: 'Pixelify Sans';
+	color: var(--setting_textD);
 	text-align: left;
 	font-size: 1.1em;
 	margin-bottom: 0.8vh;
@@ -193,10 +213,10 @@
 
 .password__card > h4 {
 	text-align: left;
-	font-family: 'Bruno Ace SC', cursive;
+	font-family: 'Pixelify Sans';
 	font-size: 0.9em;
 	font-weight: 400;
-	color: black;
+	color: var(--setting_textL);
 }
 
 .input_container {
@@ -205,7 +225,7 @@
 
 
 .input_container > span {
-	color:black;
+	color:var(--setting_border);
 	position: absolute;
     top: 50%;
     right: 10px;
@@ -220,27 +240,31 @@
 	border-radius:5px;
 	margin: 10px 5px;
 	margin-right: 10px;
-	font-family: 'Bruno Ace SC', cursive;
-	color: black;
+	font-family: 'Pixelify Sans';
+	color: var(--setting_textD);
+	font-size: 15px;
+    letter-spacing:1px;
 }
 
 .password__input:hover {
 	border:0;
-	border-bottom:0.5px solid #000000;
+	border-bottom:0.5px solid #a0ced9;
 }
 
 #password__btn {
 	display: inline-block;
 	cursor: pointer;
 	padding: 10px 20px;
-	border: solid black 2px;
+	border: solid var(--setting_border) 4px;
 	margin-bottom: 1em;
 	border-radius: 50px;
-	font-family: 'Bruno Ace SC', cursive;
+	font-family: 'Pixelify Sans';
 	font-size: 14px;
 	font-weight: 0;
-	color: #000;
+	color: var(--setting_textD);
 	background-color: transparent;
+	font-size: 15px;
+    letter-spacing:1px;
 }
 
 /* ********************************/
@@ -254,8 +278,8 @@
 }
 
 .delete_settings__title {
-	font-family: 'Bruno Ace SC', cursive;
-	color: black;
+	font-family: 'Pixelify Sans';
+	color: var(--setting_textD);
 	text-align: left;
 	font-size: 1.1em;
 	margin-bottom: 0.8vh;
@@ -266,29 +290,30 @@
 	text-align: left;
 	margin-bottom: 15px;
 }
-
+/* Pas compris pourquoi un mot delete avant une string : Delete your account*/
 .delete_settings__btn {
 	display: inline-block;
+	font-family: 'Pixelify Sans';
 	cursor: pointer;
 	padding: 10px 20px;
-	border: solid white 2px;
+	border: solid #a0ced9 4px;
 	margin-bottom: 1em;
 	border-radius: 50px;
-	color: #000;
+	color: var(--setting_textL);
 	background-color: transparent;
 }
 
 
 .delete_settings__btn > span {
 	padding-left: 15px;
-	font-family: 'Bruno Ace SC', cursive;
+	font-family: 'Pixelify Sans';
 	font-size: 14px;
 	font-weight: 400;
-	color: #000;
+	color: var(--setting_textD);
 }
 
 .delete_settings__btn > span:hover {
-	color: #000000;
+	color: #deb357;
 }
 
 .delete_settings__alert {

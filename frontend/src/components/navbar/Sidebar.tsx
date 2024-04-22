@@ -5,10 +5,10 @@ export default function Sidebar (props :{sidebar:boolean}) {
     return (
 		<nav className={props.sidebar ? 'nav-menu active' : 'nav-menu'}>
 		  <ul className='nav-menu-items' >
-			<SidebarElem title="Profil" path="/social" image='assets/icone_profil.png'/>
+			<SidebarElem title="Profil" path="/" image='assets/icone_profil.png'/>
 			<SidebarElem title="Social" path="/social" image='assets/social_icone.png'/>
 		  	<SidebarElem title="Leaderboard" path="/leaderboard" image='assets/leaderboard_icone.png'/>
-			<SidebarElem title="Match History" path="/social" image='assets/history_icone.png'/>
+			<SidebarElem title="Match History" path="/" image='assets/history_icone.png'/>
 		  </ul>
 		  <ul className="flag_btn">
 			<SidebarElem title="" path="/english" image='assets/UK.png'/>

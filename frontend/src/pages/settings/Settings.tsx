@@ -31,18 +31,17 @@ export function TextCardSettings({ property } : {property: string}) {
     return (
             <>
             <div className="text_settings__card">
-                <div className="text_settings_proper">property</div>
+                <div className="text_settings_property">{property}</div>
                 <div className="text_setting_input">
                     <input  type="text"
                             name={property}
                             id={property}
                             placeholder="placeholder"
                             onChange={handleChange}
-                            className="text_input"        
+                            className="text_input"
                     />
                     <button className="text_settings_btn"
                             onClick={handleUpdate}>
-                            Button
                     </button>
                 </div>
             </div>
@@ -243,9 +242,9 @@ export default function Settings() {
                 <img src="" alt="" />
                 <div className='settings__container'>
                     <AvatarCardSettings />
-                    <TextCardSettings property="username"/>
-                    <TextCardSettings property="bio"/>
-                    <TextCardSettings property="email"/>
+                    <TextCardSettings property="Enter your pseudo"/>
+                    <TextCardSettings property="Enter a bio"/>
+                    <TextCardSettings property="Enter your email"/>
                     <PasswordCardSettings />
                     <DeleteAccountCardSettings />
                 </div>

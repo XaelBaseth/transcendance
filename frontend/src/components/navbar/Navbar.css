@@ -17,8 +17,7 @@
 	font-family: 'Bungee';
 	display: fixed; 
 	font-size: 40px;
-	margin-left: 170px;
-	margin-right: 100px;
+	margin-left: 0vh;
 	margin-top: 0px;
 	padding : 0px 15px;
 	border-radius:10px;
@@ -68,8 +67,8 @@
 
 /*sidebar*/
 .nav-menu {
-	/*background-color: #f4f0e38c;*/
-	width: 190px;
+	background-color: var(--template_BG);
+	width: 23vh;
 	height: 100%;
 	display: flex;
 	justify-content: center;
