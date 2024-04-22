@@ -1,7 +1,6 @@
 	import { useNavigate } from "react-router-dom";
 	import { SocketContext } from "../../context/context"; 
 	import { toast } from 'react-hot-toast';
-
 	import './Gamepage.css'
 	import { useContext } from "react";
 
@@ -10,11 +9,9 @@
 	const navigate = useNavigate();
 
 	socket?.on("match ready", (mode: string) => {
-		const duration = 2500; // 2.5 seconds
+		const duration = 2500;
 
 		setTimeout(() => {
-			// Only send "match declined" if the match is still in the waiting state
-			// toast.dismiss("matchmaking");
 			socket.off("match ready");
 			if (mode === "Custom") {
 				navigate("/custompong");
@@ -47,10 +44,10 @@
 	</button>
 	);
 
-	const handleCustom = () => {
+	const handleOther = () => {
 	if (socket) {
 		socket.emit("Join Queue", "Custom");
-		toast.loading(<span>Looking for a custom match... {leaveQueueButton} </span>, {
+		toast.loading(<span>Looking for a match... {leaveQueueButton} </span>, {
 			id: "matchmaking",
 			icon: "🔍",
 		
@@ -60,10 +57,10 @@
 	}
 	};
 
-	const handleClassic = () => {
+	const handlePong = () => {
 	if (socket) {
 		socket.emit("Join Queue", "Classic");
-		toast.loading(<span>Looking for a classic match... {leaveQueueButton} </span>, {
+		toast.loading(<span>Looking for a match... {leaveQueueButton} </span>, {
 			id: "matchmaking",
 			icon: "🔍",
 		});
@@ -72,15 +69,32 @@
 	}
 	};
 
+	const handleTournament = () => {
+		/**handle the tournament implementation (create a room ?) */
+		if (socket) {
+			socket.emit("Join Queue", "Tournament");
+			toast.loading(<span>Preparing the room... {leaveQueueButton} </span>, {
+				id: "matchmaking",
+				icon: "🔍",
+			});
+		} else {
+			console.log("Socket is null");
+		}
+	};
+
 	return (
 	<div id="play-screen2">
-			<div className="button1" onClick={handleClassic} data-text="MODE CLASSIC"
+			<div className="button1" onClick={handlePong} data-text="MODE PONG"
 			title="Use the up and down arrows of your keyboard to play !">
-				CLASSIC MODE
+				PONG MODE
 			</div>
-			<div className="button2" onClick={handleCustom} data-text="MODE CUSTOM"
-			title="Use the powerup to change de direction of the arrows !">
-				CUSTOM MODE
+			<div className="button2" onClick={handleOther} data-text="MODE OTHER"
+			title="Come try out our /!\/!\PUT A NEW GAME/!\/!\ !">
+				OTHER GAME MODE
+			</div>
+			<div className="button3" onClick={handleTournament} data-text="MODE TOURNAMENT"
+			title="Compet in a tournament to see who is the best (it's you!)!">
+				TOURNAMENT MODE
 			</div>
 	</div>
 	);

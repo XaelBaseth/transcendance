@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.1",
+    "@babel/plugin-transform-private-methods": "^7.24.1",
     "@tanstack/react-query": "^5.29.2",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.3.0",
@@ -12,11 +14,11 @@
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
     "axios": "^1.6.8",
+    "isomorphic-dompurify": "^2.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "^5.0.1",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
     "typescript": "^4.9.5",
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@types/validator": "^13.11.9"
+    "@types/validator": "^13.11.9",
+    "react-scripts": "^5.0.1"
   }
 }

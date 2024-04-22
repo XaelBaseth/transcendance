@@ -1,0 +1,23 @@
+/* Display Components */
+    
+.all-current {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin : 2vh 10vw 0vh 10vw;
+	padding-bottom: 700px;
+}
+
+/*Active friends */
+
+.profile_infos_activeFriends {
+	display: flex;
+	justify-content: center;
+	align-items: first baseline;
+	gap: 1vw;
+}
+
+.profile_infos_allfriends > div:hover {
+	cursor: pointer;
+}

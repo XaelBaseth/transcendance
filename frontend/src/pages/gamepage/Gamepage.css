@@ -29,11 +29,27 @@
 	transition: .5s;
 } 
 
+.button3 {
+	display: flex;
+	margin-left: 100px;
+	background-color: #fff;
+	color: #000;
+	border-radius:15px;
+	padding: 15px 25px;
+	letter-spacing:5px;
+	cursor: pointer;
+	transition: .5s;
+} 
+
 .button1:hover {
 	color: rgb(243, 249, 255);
 }
 
 .button2:hover {
+	color: rgb(243, 249, 255);
+}
+
+.button3:hover {
 	color: rgb(243, 249, 255);
 }
 
@@ -76,5 +92,25 @@ white-space: normal;
 }
 
 .button2:hover::after {
+	display: block;
+}
+
+.button3::after {
+	content: attr(title); 
+	display: none;
+	position: absolute;
+	bottom: -135px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 3px solid rgb(35, 71, 103);
+	background-color:  rgba(4, 8, 10, 0.641);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-size: 12px;
+	white-space: normal;
+}
+	
+.button3:hover::after {
 	display: block;
 }
