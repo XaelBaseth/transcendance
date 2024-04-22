@@ -17,6 +17,8 @@ import dotenv
 
 dotenv.load_dotenv()
 
+for env_variable in 
+
 SECRET_KEY = os.environ['SECRET_KEY']
 POSTGRES_DB = os.environ['POSTGRES_DB']
 POSTGRES_USER = os.environ['POSTGRES_USER']
