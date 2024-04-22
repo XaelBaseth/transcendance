@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { IUser } from '../../api/types';
 import { ActiveFriends } from "../../components/social/ActiveFriends"
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify"
 import { postSearchQuery } from "../../api/APIHandler"
 //import { Allfriends } from "../../components/social/AllFriends"
 
@@ -41,9 +41,9 @@ export function SearchBar() {
 					<div className="search_user_infos">
 							<img id="search_user_avatar" src={searchedUser.avatar} alt={searchedUser.username} />
 							<h5 id="title" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(searchedUser.username)}}></h5>
-							<a>< button />Add as friend</a>
-						</div>
-					</div>)
+							< button>Add as friend</button>					
+                    </div>
+				 </div>)
                 }
             </>
             </div>
