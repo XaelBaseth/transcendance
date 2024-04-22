@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 .background {
     width: 430px;
-    position: flex;
+    position: fixed;
     height: 92vh;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -18,13 +19,13 @@
     top: 50%;
     left: 50%;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(40px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 30px 30px;
 }
 .little-form > * , .title-logs , #signup_btn, #_42auth_btn {
-  font-family: 'Bungee';
+  font-family: 'Pixelify Sans';
   color: #000;
   letter-spacing: 0.5px;
   outline: none;
@@ -32,7 +33,7 @@
   text-decoration: none;
 }
 .connection-form > * , .title-logs , #signup_btn,  #_42auth_btn {
-  font-family: 'Bungee';
+  font-family: 'Pixelify Sans';
   color: #000;
   letter-spacing: 0.5px;
   outline: none;
@@ -42,7 +43,7 @@
 .login_label {
 	color: #000;
     display: block;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 500;
 }
 
@@ -50,14 +51,14 @@
   padding-top: 25px;
   margin-left: 30px;
   color: #e3eef1;
-  font-family: 'Bungee';
+  font-family: 'Pixelify Sans';
 }
 
 .social ._42auth{
   padding-top: 25px;
   margin-left: 30px;
   color: #e3eef1;
-  font-family: 'Bungee';
+  font-family: 'Pixelify Sans';
 }
 
 input{
@@ -76,19 +77,23 @@ input{
 }
 
 #login-btn {
-    margin-top: 50px;
-    width: 100%;
-     background-color: #000;
-	color: #fff;
+    margin-top: 35px;
+    margin-left: 35px;
+    width: 80%;
+    background-color: rgb(126,99,137);
+    border: 3px solid rgb(82, 70, 100);
+	  color: #fff;
     padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: 400;
     border-radius: 5px;
     cursor: pointer;
 }
 
 #_42auth_btn {
   background: none;
+  margin-top: 10px;
+  margin-left: -20px;
 	border: none;
   color: #e3eef1;
   font-size: 17px;
@@ -97,6 +102,8 @@ input{
 
 #signup_btn {
   background: none;
+  margin-top: 10px;
+  margin-left: -20px;
 	border: none;
   color: #e3eef1;
   font-size: 17px;
@@ -109,7 +116,7 @@ input{
 
 .login__alert_err {
 	color: rgb(255, 26, 26);
-	font-family: 'Bungee';
+	font-family: 'Pixelify Sans';
 	font-size: 1em;
 	text-align: center;
   margin-top: 5px;
@@ -117,7 +124,7 @@ input{
 
 .login__alert_ok {
 	color: rgb(153, 201, 139);
-	font-family: 'Bungee';
+	font-family: 'Pixelify Sans';
 	font-size: 1em;
 	text-align: center;
   margin-top: 5px;

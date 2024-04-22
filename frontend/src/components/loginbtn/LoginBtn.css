@@ -1,11 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
+@import url('https://fonts.google.com/share?selection.family=Pixelify+Sans:wght@400..700');
+@import "../../colors.css";
 
 .login__button {
-    background-color: rgba(0, 0, 0, 0.3);
+    width: 100px; /* Largeur fixe de 200 pixels */
+    height: 35px;
+    margin-left: auto;
+    background-color: var(--bouton_BG);
+    transition: color 0s;
+}
+
+.login__button:hover {
+    background-color: var(--bouton_BG_hover);
 }
 
 .link__login {
-    font-size: large;
-    font-family: 'Bungee';
-    color: black;
+    font-size: 23px;
+    font-family: 'Pixelify Sans';
+    color: var(--bouton_text);
 }
+

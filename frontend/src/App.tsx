@@ -12,7 +12,7 @@ import './App.css';
 import Settings from './pages/settings/Settings';
 import ErrorPage from './pages/error/Error';
 import { Leaderboard } from './pages/leaderboard/Leaderboard';
-
+import Pong from './pages/Pong/Pong';
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         <Navbar setLoggedIn={setLoggedIn} />
         <div id="videoContainer">
           <video className='videobg' autoPlay loop muted preload='auto' content='width=device-width, initial-scale=1.0'>
-          <source src={process.env.PUBLIC_URL + '/assets/toothlessDancing.mp4'} type='video/mp4' />
+          <source src={process.env.PUBLIC_URL + '/assets/BG(2).mp4'} type='video/mp4' />
           </video>
         </div>
         <Toaster/>
@@ -38,6 +38,7 @@ function App() {
             <Route path='/social' element={<Social />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/leaderboard' element={<Leaderboard />} />
+            <Route path='/pong' element={<Pong />} />
             <Route path='/*' element={<ErrorPage />} />
           </Routes>
         </IsLoggedInContext.Provider>  

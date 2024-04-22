@@ -1,0 +1,9 @@
+:root {
+    --bouton_BG: #f7f2e8;
+    --bouton_border: #a0ced9;
+    --bouton_text: #e27396;
+
+    --bouton_BG_hover: #a0ced9;
+    --bouton_border_hover:#f7f2e8;
+    --bouton_text_hover: #ea9ab2;
+}

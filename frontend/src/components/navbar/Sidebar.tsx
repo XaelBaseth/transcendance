@@ -5,9 +5,18 @@ export default function Sidebar (props :{sidebar:boolean}) {
     return (
 		<nav className={props.sidebar ? 'nav-menu active' : 'nav-menu'}>
 		  <ul className='nav-menu-items' >
-			<SidebarElem title="Social" path="/social" image='assets/social_icons.png'/>
-			<SidebarElem title="Settings" path="/settings" image='assets/settings_icons.png'/>
-		  	<SidebarElem title="Leaderboard" path="/leaderboard" image='assets/leaderboard_icons.webp'/>
+			<SidebarElem title="Profil" path="/social" image='assets/icone_profil.png'/>
+			<SidebarElem title="Social" path="/social" image='assets/social_icone.png'/>
+		  	<SidebarElem title="Leaderboard" path="/leaderboard" image='assets/leaderboard_icone.png'/>
+			<SidebarElem title="Match History" path="/social" image='assets/history_icone.png'/>
+		  </ul>
+		  <ul className="flag_btn">
+			<SidebarElem title="" path="/english" image='assets/UK.png'/>
+			<SidebarElem title="" path="/french" image='assets/france.png'/>
+			<SidebarElem title="" path="/portuguese" image='assets/portugal.png'/>
+		  </ul>
+		  <ul className="settings_btn">
+			<SidebarElem  title="Settings" path="/settings" image='assets/icone_settings.png'/>
 		  </ul>
 		</nav> 
 	);
