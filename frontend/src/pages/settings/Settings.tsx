@@ -29,41 +29,36 @@ export function TextCardSettings({ property } : {property: string}) {
 	};
 
     return (
-            <>
-            <div className="text_settings__card">
-                <div className="text_settings_property">{property}</div>
-                <div className="text_setting_input">
-                    <input  type="text"
-                            name={property}
-                            id={property}
-                            placeholder="placeholder"
-                            onChange={handleChange}
-                            className="text_input"
-                    />
-                    <button className="text_settings_btn"
-                            onClick={handleUpdate}>
-                    </button>
-                </div>
+        <div className="text_settings__card">
+          <div className="text_settings_property">{property}</div>
+          <div className="text_settings_input">
+            <input  
+              type="text"
+              name={property}
+              id={property}
+              placeholder="placeholder"
+              onChange={handleChange}
+              className="text_input"
+            />
+            <button 
+              className="text_settings_btn"
+              onClick={handleUpdate}>
+            </button>
+          </div>
+          <div className="setting__line"></div>
+          {propertyChanged &&
+            <div className="settings__alert_ok">
+              <h6>Your modification was success</h6>
             </div>
-            <>
-                {
-                    propertyChanged &&
-                    <div className="settings__alert_ok">
-                        <h6>Your modification was success</h6>
-                    </div>
-                }
-            </>
-            <>
-                {
-                    errorMsg &&
-                    <div className="settings__alert_err">
-                        <h6>{errorMsg}</h6>
-                    </div>
-                }
-            </>
-        </>
-    );
-}
+          }
+          {errorMsg &&
+            <div className="settings__alert_err">
+              <h6>{errorMsg}</h6>
+            </div>
+          }
+        </div>
+      );
+    }
 
 export function AvatarCardSettings() {
     {/** Automatiser de maniere a ce que chaque 
@@ -82,7 +77,7 @@ export function AvatarCardSettings() {
     return (
         <div id='avatar_settings'>
             <div>
-                <img src={process.env.PUBLIC_URL +'/assets/toothlessAvatar.png'} alt='user_avatar' id='user_avatar'/>
+                <img src={process.env.PUBLIC_URL +'/assets/pokeball.png'} alt='user_avatar' id='user_avatar'/>
             </div>
             <div className='avatar_block'>
                 <h5>Change your avatar :</h5>
@@ -124,7 +119,7 @@ export function PasswordCardSettings() {
 
     const handleConfirmation = (event: React.ChangeEvent<HTMLInputElement>) => {
 		(event.target.value !== userInput) ?
-			setErrorMsg("Passwords don't match")
+			setErrorMsg("")
 			: setErrorMsg("");
 	}
 

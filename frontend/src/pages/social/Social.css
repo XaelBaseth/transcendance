@@ -4,7 +4,6 @@
 #social-dashboard {
 	flex: 2 auto;
 	height : 92vh;
-	margin-top : 130px;
 	background-color: var(--bg-color); /* vient de App.css */
 	color: var(--font-color); /* vient de App.css */
 }
@@ -14,28 +13,26 @@
     font-family: 'Pixelify Sans';
 	font-size: 15px;
     letter-spacing:1px;
-    margin-left: -80px;
-	margin-right: 600px;
-	margin-bottom: 30px;
     color: var(--bouton_text);
     border: 5px solid var(--bouton_border);
-    margin-bottom: 10px;
 	transition: color 0s;
+	transform: translateX(-10%) translateY(50%);
 }
 
 .social-btn {
 	display:flex;
+	width: 25%;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: left;
 	flex-wrap: wrap;
-	margin : 12vh 15vw;
 }
 
 .social-btn > button {
 	padding: 1vw 2vw;
 	border-radius: 20px;
-	font-weight: 800;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 #social-dashboard button:hover {
@@ -47,22 +44,30 @@
 
 .text_serachBar{
 	padding-top: 200px;
-	font-family: var(--font-type);
+	font-family: 'Pixelify Sans';
 }
 
 .search_bar {
-	/* margin-top: 100px; */
-	margin-left: 500px;
+	font-family: 'Pixelify Sans';
 	display: flex;
+	width: 50%;
 	justify-content: center;
 	align-items: center;
-	color: #fff;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-right: 3px solid var(--bouton_border);
+    border-bottom: 3px solid var(--bouton_border);
+    border-left: 3px solid var(--bouton_border);
+	background-color: var(--bouton_BG);
+	transform: translateX(-30%) translateY(200%);
+	text-align: left;
 }
 
 #search_input {
+	font-family: 'Pixelify Sans';
+	font-size: 18px;
 	outline: 0;
-	border: 1px solid var(--search-bar-main-bg-element);
-	background-color: var(--search-bar-main-bg-element);
+	color: var(--setting_textD);
 }
 
 #search_input:hover, #search_input:focus {
@@ -93,7 +98,6 @@
 	text-decoration: none;
 	color: var(--search-bar-add-btn);
 	padding: 0.5em 0.5em;
-	/* background-color: rgb(44, 35, 35); */
 	border-radius: 50%;
 	margin-left :0.5vw;
 }
@@ -109,27 +113,17 @@
 	border-radius: 50%;
 }
 
-#title {
-	text-shadow: none;
-	color:  rgb(24, 46, 65);
-	text-shadow:
-	0 0 7px #efefef,
-	0 0 10px #90d0f0,
-	0 0 42px rgb(60, 116, 166),
-	0 0 77px rgb(60, 116, 166),
-	0 0 80px rgb(24, 46, 65);
-}
-
 .social-btn {
 	display:flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: left;
 	flex-wrap: wrap;
-	margin : 12vh 15vw;
+	transform: translateX(75%) translateY(30%);
 }
 
 .social-btn > button {
+	width: 100%;
 	padding: 1vw 2vw;
 	border-radius: 20px;
 	font-weight: 800;
@@ -142,24 +136,35 @@
 
 /*SeachBar*/
 
-.text_serachBar{
-	padding-top: 200px;
-	font-family: var(--font-type);
+.text_searchBar{
+	width: 49%;
+	font-family: 'Pixelify Sans';
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	border-right: 3px solid var(--bouton_border);
+    border-top: 3px solid var(--bouton_border);
+    border-left: 3px solid var(--bouton_border);
+	background-color: var(--bouton_BG);
+	transform: translateX(32%) translateY(298%);
+	font-size: 25px;
+	font-weight: bold;
+	color: var(--setting_textD);
+	padding-left: 1%;
+	text-align: left;
 }
 
 .search_bar {
-	/* margin-top: 100px; */
-	margin-left: 500px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #fff;
+	transform: translateX(32%) translateY(160%);
 }
 
 #search_input {
 	outline: 0;
 	border: 1px solid var(--search-bar-main-bg-element);
 	background-color: var(--search-bar-main-bg-element);
+	color: var(--setting_textD);
 }
 
 #search_input:hover, #search_input:focus {

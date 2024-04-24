@@ -38,7 +38,7 @@ function App() {
             <Route path='/social' element={<Social />} />
             <Route path='/settings' element={<Settings />} />
             <Route path='/leaderboard' element={<Leaderboard />} />
-            <Route path='/pong' element={<Pong />} />
+            <Route path='/Pong' element={<Pong />} />
             <Route path='/*' element={<ErrorPage />} />
           </Routes>
         </IsLoggedInContext.Provider>  
