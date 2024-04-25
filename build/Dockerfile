@@ -1,6 +1,6 @@
 FROM node:lts-alpine as build
 
-RUN mkdir /app
+RUN mkdir -p /app
 
 COPY ./frontend /app/frontend
 
@@ -27,4 +27,3 @@ EXPOSE 8000
 COPY ./nginx/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 CMD ["/entrypoint.sh"]
-
