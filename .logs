@@ -1,0 +1,219 @@
+db  | The files belonging to this database system will be owned by user "postgres".
+db  | This user must also own the server process.
+db  | 
+db  | The database cluster will be initialized with locale "en_US.utf8".
+db  | The default database encoding has accordingly been set to "UTF8".
+db  | The default text search configuration will be set to "english".
+db  | 
+db  | Data page checksums are disabled.
+db  | 
+db  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+db  | creating subdirectories ... ok
+db  | selecting dynamic shared memory implementation ... posix
+db  | selecting default max_connections ... 100
+db  | selecting default shared_buffers ... 128MB
+db  | selecting default time zone ... Etc/UTC
+db  | creating configuration files ... ok
+db  | running bootstrap script ... ok
+db  | performing post-bootstrap initialization ... ok
+db  | initdb: warning: enabling "trust" authentication for local connections
+db  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+db  | syncing data to disk ... ok
+db  | 
+db  | 
+db  | Success. You can now start the database server using:
+db  | 
+db  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+db  | 
+db  | waiting for server to start....2024-04-25 09:48:10.511 UTC [48] LOG:  starting PostgreSQL 16.2 (Debian 16.2-1.pgdg120+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+db  | 2024-04-25 09:48:10.512 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db  | 2024-04-25 09:48:10.515 UTC [51] LOG:  database system was shut down at 2024-04-25 09:48:10 UTC
+db  | 2024-04-25 09:48:10.518 UTC [48] LOG:  database system is ready to accept connections
+db  |  done
+db  | server started
+db  | 
+db  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+db  | 
+db  | waiting for server to shut down....2024-04-25 09:48:10.632 UTC [48] LOG:  received fast shutdown request
+db  | 2024-04-25 09:48:10.633 UTC [48] LOG:  aborting any active transactions
+db  | 2024-04-25 09:48:10.634 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+db  | 2024-04-25 09:48:10.634 UTC [49] LOG:  shutting down
+db  | 2024-04-25 09:48:10.635 UTC [49] LOG:  checkpoint starting: shutdown immediate
+db  | 2024-04-25 09:48:10.639 UTC [49] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.005 s; sync files=2, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/14EAA68, redo lsn=0/14EAA68
+db  | 2024-04-25 09:48:10.641 UTC [48] LOG:  database system is shut down
+db  |  done
+db  | server stopped
+db  | 
+db  | PostgreSQL init process complete; ready for start up.
+db  | 
+db  | 2024-04-25 09:48:10.781 UTC [1] LOG:  starting PostgreSQL 16.2 (Debian 16.2-1.pgdg120+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+db  | 2024-04-25 09:48:10.781 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db  | 2024-04-25 09:48:10.781 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db  | 2024-04-25 09:48:10.782 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db  | 2024-04-25 09:48:10.785 UTC [62] LOG:  database system was shut down at 2024-04-25 09:48:10 UTC
+db  | 2024-04-25 09:48:10.789 UTC [1] LOG:  database system is ready to accept connections
+db  | 2024-04-25 09:48:15.114 UTC [72] FATAL:  database "admin" does not exist
+db  | 2024-04-25 09:48:20.163 UTC [82] FATAL:  database "admin" does not exist
+db  | 2024-04-25 09:48:25.215 UTC [89] FATAL:  database "admin" does not exist
+db  | 2024-04-25 09:48:30.263 UTC [96] FATAL:  database "admin" does not exist
+db     | 2024-04-25 09:48:35.310 UTC [103] FATAL:  database "admin" does not exist
+db     | 2024-04-25 09:48:40.357 UTC [110] FATAL:  database "admin" does not exist
+db     | 2024-04-25 09:48:45.410 UTC [118] FATAL:  database "admin" does not exist
+db     | 2024-04-25 09:48:50.459 UTC [125] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:48:55.509 UTC [132] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:00.557 UTC [139] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:05.607 UTC [146] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:10.651 UTC [153] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:15.696 UTC [161] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:20.757 UTC [168] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:25.804 UTC [175] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:30.857 UTC [182] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:35.919 UTC [189] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:40.965 UTC [197] FATAL:  database "admin" does not exist
+db      | 2024-04-25 09:49:46.010 UTC [204] FATAL:  database "admin" does not exist
+nginx  | ......+....+..+.+.........+......+........+.+...+........+....+...+.....................+..............+.+.........+.....+...+.........+..........+.....+....+.....+......+......+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.........+..........+......+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*........+..............+.+..+....+.....+...+............+...+...+....+...+...............+........+...+.......+...+..+.......+..................+.........+...+..+.+...+...........+.+.........+...+........+...+.+.........+..+.......+...............+............+........+......+.........+......+...............+.+...........+.......+....................+................+.....+.........+...+..........+..+.+......+.....+......+..............................+.........+.+.........+.........+..+............+...+....+......+........+.+........+......+......+.........+....+...+..............+....+......+...+..+...+.......+.........+.........+............+.....+......+..............................+...+......+....+....................+....+.....+......+.........+............................+........+.+...........+.........+.+..+...............+.......+......+........+...............+......+....+..+....+......+............+.......................+.........................+..+...+....+...+..+.....................+...+......+.+..+......+..........+.......................................+...............+..+.........+.+......+..+......+............+.........+.+...+..............+.+.........+.....+.......+..................+......+......+.....+.....................+..........+............+..+.....................+...+..........+..+....+......+.................+.+.....+......+...+......+......+.........+.......+.....+.........+.........+.......+...+............+...+.....+.......+........................+.....+.+.....+.......+......+..+...................+...+...+..+.+..+..................+.......+..+...+....+........+.......+...........+...+......+....+.........+.....+................+.....+.+.....+....+...........+...+.+.....+....+..+...+.......+......+.....+...............+.......+........+.......+...+.....+...+.......+........+.......+............+...+..+.......+.....+.+........+..........+..+.........+....+........................+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+nginx   | .+..+.........+......+.............+.....+....+.....+.+...........+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+....+..+.+........+......+.+.....+.........+.............+..+....+..+.........+....+..+.......+.....+...+..................+.+...+...+..+.....................+.+...+...........+..........+.........+..+.+..+...............+.+..+....+.........+..+.......+..+....+...........+.............+..+.+.....+....+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+..............+.+...+.....+......+......+...+......+.........+............+....+..+.............+......+........+......+.........+...+....+.....................+..+.......+...........+.........+....+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+nginx   | -----
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:22 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:25 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+django  | System check identified some issues:
+django  | 
+django  | WARNINGS:
+django  | ?: (staticfiles.W004) The directory '/app/frontend/build' in the STATICFILES_DIRS setting does not exist.
+django  | Migrations for 'user':
+django  |   user/migrations/0001_initial.py
+django  |     - Create model AppUser
+django  | System check identified some issues:
+django  | 
+django  | WARNINGS:
+django  | ?: (staticfiles.W004) The directory '/app/frontend/build' in the STATICFILES_DIRS setting does not exist.
+django  | Operations to perform:
+django  |   Apply all migrations: admin, auth, contenttypes, sessions, user
+django  | Running migrations:
+django  |   Applying contenttypes.0001_initial... OK
+django  |   Applying contenttypes.0002_remove_content_type_name... OK
+django  |   Applying auth.0001_initial... OK
+django  |   Applying auth.0002_alter_permission_name_max_length... OK
+django  |   Applying auth.0003_alter_user_email_max_length... OK
+django  |   Applying auth.0004_alter_user_username_opts... OK
+django  |   Applying auth.0005_alter_user_last_login_null... OK
+django  |   Applying auth.0006_require_contenttypes_0002... OK
+django  |   Applying auth.0007_alter_validators_add_error_messages... OK
+django  |   Applying auth.0008_alter_user_username_max_length... OK
+django  |   Applying auth.0009_alter_user_last_name_max_length... OK
+django  |   Applying auth.0010_alter_group_name_max_length... OK
+django  |   Applying auth.0011_update_proxy_permissions... OK
+django  |   Applying auth.0012_alter_user_first_name_max_length... OK
+django  |   Applying user.0001_initial... OK
+django  |   Applying admin.0001_initial... OK
+django  |   Applying admin.0002_logentry_remove_auto_add... OK
+django  |   Applying admin.0003_logentry_add_action_flag_choices... OK
+django  |   Applying sessions.0001_initial... OK
+django  | Watching for file changes with StatReloader
+django  | System check identified some issues:
+django  | 
+django  | WARNINGS:
+django  | ?: (staticfiles.W004) The directory '/app/frontend/build' in the STATICFILES_DIRS setting does not exist.
+django  | 
+django  | System check identified 1 issue (0 silenced).
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:18] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:21] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:24] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:27] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:30] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:33] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:28 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:31 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:34 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:37 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:40 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:43 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:46 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:49 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:52 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:55 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:57 +0000] "GET / HTTP/1.1" 200 374 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:57 +0000] "GET /static/js/main.c257fbcf.js HTTP/1.1" 200 410449 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:57 +0000] "GET /src/index.tsx HTTP/1.1" 200 374 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+django  | [25/Apr/2024 09:48:37] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:40] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:43] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:46] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:49] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:52] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:55] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:48:58] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:01] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:04] "GET / HTTP/1.1" 404 2753
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:57 +0000] "GET /static/css/main.36d06a9c.css HTTP/1.1" 200 17667 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/icone_profil.png HTTP/1.1" 200 64183 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/social_icone.png HTTP/1.1" 200 91326 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/leaderboard_icone.png HTTP/1.1" 200 70657 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/history_icone.png HTTP/1.1" 200 7713 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/UK.png HTTP/1.1" 200 5114 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/france.png HTTP/1.1" 200 3392 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/portugal.png HTTP/1.1" 200 14034 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/icone_settings.png HTTP/1.1" 200 37332 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET /assets/BG(2).mp4 HTTP/1.1" 206 387440 "https://localhost:8000/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:48:58 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:01 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:05 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:08 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:11 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 172.21.0.1 - - [25/Apr/2024:09:49:11 +0000] "GET /assets/toothlessAvatar.png HTTP/1.1" 200 112420 "https://localhost:8000/settings" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:14 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:17 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:07] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:10] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:13] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:20 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:23 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:26 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:29 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:32 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:35 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:38 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:41 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:44 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+nginx   | 127.0.0.1 - - [25/Apr/2024:09:49:47 +0000] "GET / HTTP/1.1" 200 374 "-" "curl/7.88.1"
+django  | [25/Apr/2024 09:49:16] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:19] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:22] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:25] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:28] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:31] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:34] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:37] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:40] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:43] "GET / HTTP/1.1" 404 2753
+django  | Not Found: /
+django  | [25/Apr/2024 09:49:46] "GET / HTTP/1.1" 404 2753
