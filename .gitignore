@@ -3,8 +3,8 @@
 
 #back
 log
+.log
 
 
 #front
-
 frontend/node_modules  

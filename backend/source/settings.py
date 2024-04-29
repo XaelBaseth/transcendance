@@ -17,6 +17,7 @@ import dotenv
 
 dotenv.load_dotenv()
 
+
 SECRET_KEY = os.environ['SECRET_KEY']
 POSTGRES_DB = os.environ['POSTGRES_DB']
 POSTGRES_USER = os.environ['POSTGRES_USER']
@@ -25,7 +26,7 @@ DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
 DATABASE_PORT = os.environ['DATABASE_PORT']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,7 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '*',
+    'localhost',
 ]
 
 
@@ -168,7 +169,7 @@ USE_TZ = True
 
 # Define the path to your frontend build directory
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend/build',
+  BASE_DIR / 'frontend/build',
 ]
 
 STATIC_URL = 'static/'

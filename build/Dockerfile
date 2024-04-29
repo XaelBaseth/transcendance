@@ -1,6 +1,6 @@
 FROM node:lts-alpine as build
 
-RUN mkdir /app
+RUN mkdir -p /app
 
 COPY ./frontend /app/frontend
 
