@@ -164,14 +164,6 @@ export function PasswordCardSettings() {
                 />
                     <span onClick={handleClick}>show password</span>
             </div>
-            <>
-                {
-                    errorMsg &&
-                    <div className="settings__alert_err">
-                        <h6>{errorMsg}</h6>
-                    </div>
-                }
-            </>
             <button id="password__btn" onClick={handleUpdate}>Save password changes</button>
             <>
                 {
@@ -184,6 +176,48 @@ export function PasswordCardSettings() {
         </div>
     );
 }
+
+/*return (
+        <div className="password__card">
+            <h2>Change your password</h2>
+            <h4>New password</h4>
+            <div className="input_container">
+                <input
+                    type={type}
+                    name="password"
+                    id="password"
+                    onChange={handleChange}
+                    className="password__input"
+                />
+                <span onClick={handleClick}>show password</span>
+            </div>
+            <h4>Confirm the new password</h4>
+            <div className="input_container">
+                <input
+                    type={type}
+                    name="password"
+                    id="password2"
+                    onChange={handleConfirmation}
+                    className="password__input"
+                />
+                <span onClick={handleClick}>show password</span>
+            </div>
+            <button id="password__btn" onClick={handleUpdate}>Save password changes</button>
+            <>
+                {passwordChanged && (
+                    <div className="settings__alert_ok">
+                        <h6>Your modification was successful</h6>
+                    </div>
+                )}
+                {errorMsg && (
+                    <div className="settings__alert_error">
+                        <h6>{errorMsg}</h6>
+                    </div>
+                )}
+            </>
+        </div>
+    );
+}*/
 
 export function DeleteAccountCardSettings() {
 

@@ -4,14 +4,14 @@
 #social-dashboard {
 	flex: 2 auto;
 	height : 92vh;
-	background-color: var(--bg-color); /* vient de App.css */
-	color: var(--font-color); /* vient de App.css */
+	background-color: var(--bg-color);
+	color: var(--font-color);
 }
 
 #social-dashboard button {
 	background-color: var(--bouton_BG);
     font-family: 'Pixelify Sans';
-	font-size: 15px;
+	font-size: 17px;
     letter-spacing:1px;
     color: var(--bouton_text);
     border: 5px solid var(--bouton_border);
@@ -162,8 +162,8 @@
 
 #search_input {
 	outline: 0;
-	border: 1px solid var(--search-bar-main-bg-element);
-	background-color: var(--search-bar-main-bg-element);
+	border: 0px solid #fff;
+	background-color: var(--bouton_BG);
 	color: var(--setting_textD);
 }
 
