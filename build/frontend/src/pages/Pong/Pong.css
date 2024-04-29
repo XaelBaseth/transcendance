@@ -1,23 +1,18 @@
+@import "../../colors.css";
 
-.pong {
-    height: 20%;
-    width: 40%;
-    background-color: rgb(255, 255, 255);
+.football-field {
     position: absolute;
+    top: 50vh;
+    margin-left: 125vh;
     transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 30px 30px;
+    width: 150vh; /* Largeur du terrain */
+    height: 75vh; /* Hauteur du terrain */
+    background-color: var(--pong_BG); /* Couleur de fond verte pour représenter l'herbe */
+    border: 6px solid #acd8aa; /* Bordure blanche */
+    border-radius: 10px; /* Bords arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
+
+    /* Lignes de marquage */
+    position: relative;
 }
 
-.pong_text {
-    position: flex;
-    top: 50%;
-    left: 50%;
-    font-weight: bold;
-        color: #000;
-        font-size: 20px;
-}
