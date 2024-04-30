@@ -12,7 +12,8 @@ import './App.css';
 import Settings from './pages/settings/Settings';
 import ErrorPage from './pages/error/Error';
 import { Leaderboard } from './pages/leaderboard/Leaderboard';
-import Pong from './pages/Pong/Pong';
+import Pong from './pages/pong/Pong';
+import SignUp from './pages/signUp/signUp';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path='/leaderboard' element={<Leaderboard />} />
             <Route path='/Pong' element={<Pong />} />
             <Route path='/*' element={<ErrorPage />} />
+            <Route path='/signup' element={<SignUp />} />
           </Routes>
         </IsLoggedInContext.Provider>  
       </section>

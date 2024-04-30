@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signUp } from '../../api/APIHandler';
+import './Login.css';
+
+export default function SignUp() {
+	
+	const [username, setusername] = useState<string>("");
+	const [password, setPassword] = useState<string>("");
+	const [errorMsg, setErrorMsg] = useState<string>("");
+	const [successMsg, setSuccessMsg] = useState<string>("");
+	const navigate = useNavigate();
+
+    const handleSignUp = async (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault();
+		
+		try {
+			await signUp(username, password);
+			setLoggedIn(true);
+			setSuccessMsg("Successfully signed up! ")
+			setErrorMsg('');
+			setTimeout(() => {
+				navigate('/settings');
+			}, 2000);
+		} catch (error) {
+			setSuccessMsg('');
+			setErrorMsg("A user with this username already exists");
+		}
+	}
+
+	const handleLogIn = async (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault();
+		
+		try {
+			//const response = await logIn(username, password);
+			setLoggedIn(true);
+			setErrorMsg('');
+			setTimeout(() => {
+				navigate('/profile');
+			}, 1500);
+		} catch (error) {
+			if ((error as Error).message === 'No such username') {
+				setErrorMsg("User does not exist: please sign up before")
+			}
+			else {
+				setErrorMsg("Password does not match");
+			}
+		}
+	}
+
+
+	return (
+		<div className="Login">
+			<div className="background" />
+			<form  className="connection-form">
+
+			<label className="login_label" htmlFor="username">Username</label>
+			<input onChange={(event) => {setusername(event.target.value)}} type="text" placeholder="username" id="username" />
+
+			<label  className="login_label" htmlFor="password">Password</label>
+			<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder="Password" id="password" />
+			<>
+			{
+				successMsg && 
+				<div className="login__alert_ok">
+					<h6>{successMsg}</h6>
+				</div>
+			}
+			</>
+			<>
+			{
+				errorMsg && 
+				<div className="login__alert_err">
+					<h6>{errorMsg}</h6>
+				</div>
+			}
+			</>
+			<button onClick={handleLogIn} id="login-btn">Log In</button>
+			<div className="social">
+                <div className="_42auth">
+					<button id='_42auth_btn'>Log In with 42</button>
+				</div>
+				<div className="signup">
+					<button  onClick={handleSignUp} id="signup_btn">Sign up</button>
+				</div>
+			</div>
+			</form>
+		</div>
+  );
+}
