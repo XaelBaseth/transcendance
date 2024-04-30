@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
-/*Navbar top screen*/
+/*Navbar top screen
 .navbar {
 	height: 8vh;
 	width: 100%;
@@ -11,7 +11,19 @@
 	align-items: center;
 	z-index : 150;
 	top : 0%;
-  }
+  }*/
+
+  .navbar {
+    height: 0vh;
+    width: 60%;
+    position: fixed;
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Répartir l'espace entre les éléments */
+    align-items: center;
+    z-index: 150;
+	top: -5%;
+	left: 40%;
+}
 
 .navbar__title {
 	font-family: 'Bungee';
@@ -68,33 +80,31 @@
 /*sidebar*/
 .nav-menu {
 	background-color: var(--template_BG);
-	width: 23vh;
+	width: 12%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 	border-radius: 5px;
-	/*backdrop-filter: blur(10px);*/
+	grid-template-columns: 1fr auto auto;
 	position: fixed;
 	top: 0%;
 	z-index: 100;
   }
 
 .nav-text {
-	height: 60px;
-	font-size:50px;
-	color: #000;
+	height: 80px;
   }
 
 .nav-text a {
 	text-decoration: none;
+	position: absolute;
 	font-weight: bold;
 	color: var(--bouton_text);
 	font-size: 30px;
 	height: 100%;
 	display: flex;
-	margin-left : auto;
-	align-items: center;
-	padding: 0 20px;
+	left: -5%;
+	padding: 30px 20px;
 	border-radius: 4px;
 	transition: color 0s;
   }
@@ -114,22 +124,22 @@
   }
 
 .flag_btn {
-	position: fixed;
-	flex-direction: column;
+	position: absolute;
+	flex-direction: row;
     bottom: 25px;
-    left: -100px;
+    left: 50%;
     display: flex;
-	gap: 0px;
+	gap: 10px;
 }
 
 .settings_btn {
+	position: absolute;
 	font-weight: bold;
 	color: var(--bouton_text);
 	font-size: 30px;
 	flex-direction: column;
-	margin-top: 93vh;
-	margin-left : -36vh;
-	align-items: center;
+	bottom: 0%;
+	left: -1%;
 	transition: color 0s;
 	z-index: 3;
 	flex-wrap: nowrap;

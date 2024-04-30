@@ -9,12 +9,12 @@ export default function Sidebar (props :{sidebar:boolean}) {
 			<SidebarElem title="Social" path="/social" image='assets/social_icone.png'/>
 		  	<SidebarElem title="Leaderboard" path="/leaderboard" image='assets/leaderboard_icone.png'/>
 			<SidebarElem title="Match History" path="/" image='assets/history_icone.png'/>
-		  </ul>
+		  </ul>{/*
 		  <ul className="flag_btn">
 			<SidebarElem title="" path="/english" image='assets/UK.png'/>
 			<SidebarElem title="" path="/french" image='assets/france.png'/>
 			<SidebarElem title="" path="/portuguese" image='assets/portugal.png'/>
-		  </ul>
+	</ul>*/}
 		  <ul className="settings_btn">
 			<SidebarElem  title="Settings" path="/settings" image='assets/icone_settings.png'/>
 		  </ul>

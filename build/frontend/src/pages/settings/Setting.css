@@ -17,7 +17,7 @@
     height: 25%;
     width: 2px; /* Epaisseur de la ligne */
     background-color: var(--bouton_border); /* Couleur de la ligne */
-    transform: translateY(-105%);
+    transform: translateY(-10%);
 }
 
 .settings {
@@ -27,7 +27,9 @@
     background-color: var(--setting_BG);
     border: 5px solid var(--setting_border);
     backdrop-filter: blur(20px);
-	transform: translateX(15%) translateY(9%);
+	position: absolute;
+	top: 6%;
+	left: 15%;
 }
 
 .settings > h1 {
@@ -77,7 +79,9 @@
 	font-family: 'Pixelify Sans';
 	color: var(--setting_textD);
 	font-size: 18px;
-	transform: translateX(-270%) translateY(-95%);
+	position: absolute;
+	top: 12%;
+	left: 25%;
 }
 
 #user_avatar {
@@ -85,7 +89,9 @@
 	width : 9em;
 	background-size: cover;
 	clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-	transform: translateX(-200%) translateY(-35%);
+	position: absolute;
+	top: 12%;
+	left: 5%;
 }
 
 #file {
@@ -102,7 +108,9 @@
     display: inline;
 	cursor: pointer;
 	padding: 7px 0;
-	transform: translateX(-305%) translateY(-180%);
+	position: absolute;
+	top: 18%;
+	left: 26%;
 }
 
 #file + label:hover {
@@ -131,7 +139,9 @@
     border-bottom: 3px solid var(--bouton_border);
 	font-family: 'Pixelify Sans';
 	cursor: pointer;
-	transform: translateX(-565%) translateY(-130%);
+	position: absolute;
+	top: 22%;
+	left: 28%;
 }
 
 #avatar_upload_btn:hover {
@@ -150,7 +160,7 @@
 	font-weight: bold;
 	font-family: 'Pixelify Sans';
 	color: var(--setting_textD);
-	transform: translateX(8%) translateY(-260%);
+	transform: translateX(8%) translateY(700%);
 }
 
 .text_settings_input {
@@ -168,7 +178,7 @@
 	resize: vertical;
 	width: 35%;
     color: var(--setting_textL);
-    transform: translateY(-80%) translateX(10%);
+    transform: translateY(220%) translateX(10%);
 }
 
 .text_input::placeholder{
@@ -200,7 +210,7 @@
 
 .password__card {
 	text-align: center;
-    transform: translateY(15%) translateX(0%);
+    transform: translateY(75%) translateX(0%);
 }
 
 .password__card > h2 {
@@ -261,7 +271,7 @@
 	color: var(--setting_textD);
 	background-color: transparent;
     letter-spacing:1px;
-	transform: translateY(-980%) translateX(150%);
+	transform: translateY(-920%) translateX(150%);
 }
 
 /* ********************************/
@@ -270,7 +280,7 @@
 
 .delete_settings {
 	text-align: center;
-	transform: translateY(-360%) translateX(5%);
+	transform: translateY(-150%) translateX(5%);
 }
 
 .delete_settings__title {

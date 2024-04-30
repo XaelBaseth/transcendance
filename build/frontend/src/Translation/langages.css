@@ -1,0 +1,32 @@
+.language-selector {
+    position: relative;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.language-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.language-options button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.language-options button img {
+    width: 10px; /* Ajustez la taille des drapeaux selon vos besoins */
+    height: 10px;
+}
+
+.language-options.show {
+    display: flex;
+    flex-direction: column;
+}

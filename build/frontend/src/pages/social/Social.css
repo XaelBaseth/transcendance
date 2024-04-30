@@ -4,8 +4,6 @@
 #social-dashboard {
 	flex: 2 auto;
 	height : 92vh;
-	background-color: var(--bg-color);
-	color: var(--font-color);
 }
 
 #social-dashboard button {
@@ -16,16 +14,18 @@
     color: var(--bouton_text);
     border: 5px solid var(--bouton_border);
 	transition: color 0s;
-	transform: translateX(-10%) translateY(50%);
 }
 
 .social-btn {
 	display:flex;
-	width: 25%;
+	width: 15%;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: left;
 	flex-wrap: wrap;
+	position: absolute;
+	top: 20%;
+	left: 2%;
 }
 
 .social-btn > button {
@@ -55,12 +55,14 @@
 	align-items: center;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
-	border-right: 3px solid var(--bouton_border);
-    border-bottom: 3px solid var(--bouton_border);
-    border-left: 3px solid var(--bouton_border);
+	border-right: 4px solid var(--bouton_border);
+    border-bottom: 4px solid var(--bouton_border);
+    border-left: 4px solid var(--bouton_border);
 	background-color: var(--bouton_BG);
-	transform: translateX(-30%) translateY(200%);
 	text-align: left;
+	position: absolute;
+	left: -3%;
+	top: 10%;
 }
 
 #search_input {
@@ -141,16 +143,18 @@
 	font-family: 'Pixelify Sans';
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
-	border-right: 3px solid var(--bouton_border);
-    border-top: 3px solid var(--bouton_border);
-    border-left: 3px solid var(--bouton_border);
+	border-right: 4px solid var(--bouton_border);
+    border-top: 4px solid var(--bouton_border);
+    border-left: 4px solid var(--bouton_border);
 	background-color: var(--bouton_BG);
-	transform: translateX(32%) translateY(298%);
 	font-size: 25px;
 	font-weight: bold;
 	color: var(--setting_textD);
 	padding-left: 1%;
 	text-align: left;
+	position: absolute;
+	left: 13.1%;
+	top: 17%;
 }
 
 .search_bar {
@@ -226,5 +230,4 @@
 #title > em {
 	color:rgb(26, 60, 155);
 	font-family: var(--font-type);
-}
 }
