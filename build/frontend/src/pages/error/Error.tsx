@@ -34,6 +34,6 @@ const ErrorPage = () => {
             </form>
         </div>
     );
-}
+};
 
 export default ErrorPage;

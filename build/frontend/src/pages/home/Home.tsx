@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { IsLoggedInContext } from "../../context/context";
 import { useContext, useState } from "react";
 import "./Home.css";
-import axios from "axios"
 
 export default function Home() {
         const [open, setOpen] = useState(false);
@@ -14,9 +13,6 @@ export default function Home() {
                 navigate('/login');
             setOpen(!open);
         }
-		axios.get('/testbackend/')
-			.then(response => console.log(response.data))
-
     return (
 
         <div id="play-screen">

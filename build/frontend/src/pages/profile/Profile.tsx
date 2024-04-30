@@ -8,11 +8,16 @@ import StatDisplay from "../../components/profile/StatDisplay"
 import MainStat from "../../components/profile/MainStat"
 import { Achievement } from "../../components/profile/Achievement"
 import UserInfos from "../../components/profile/UserInfos";
+import { Socket } from "socket.io-client";
+import toast from "react-hot-toast";
+import { useContext } from "react";
+import { SocketContext } from "../../context/context";
 
 
 export function UserProfile() {
 
     const { username } = useParams<{username?: string }>();
+    const socket : Socket | null = useContext(SocketContext)
 
     const userQuery : UseQueryResult<IUser>= useQuery({
         queryKey: ['user', username],
@@ -34,7 +39,15 @@ export function UserProfile() {
       const userWinrate: number = userTotalMatches !== 0 ? user.matchAsP1.length * 100 / userTotalMatches : 0;
       const userFriendsCount: number = (user.friendsList && user.friendsList?.length >= 1) ? user.friendsList.length : 0;
 
-
+      const handleInvitation = () => {
+        if (socket) {
+            socket?.emit('invite match', user.username);
+            toast.success('Invitation sent', {id: 'invite'});
+        }
+        socket?.on('match invitation declined', (username: string) => {
+            toast.error('${username} declined your invitation.', {id: 'invite'});
+        })
+      }
     return (
         <div id="whole-profile-container">
             <div id="whole-profile">
@@ -73,7 +86,7 @@ export function UserProfile() {
                                 <StatDisplay title={"(Rank)"} stat={user.rank} />
                                 <StatDisplay title={"(Aces)"} stat={user.aces} />
                             </div>
-                            <button className="challenge-btn">Challenge</button>
+                            <button onClick={handleInvitation} className="challenge-btn">Challenge</button>
                         </div>
                     </div>
                     <Achievement user={user} />
