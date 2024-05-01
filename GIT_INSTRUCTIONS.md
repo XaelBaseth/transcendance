@@ -44,7 +44,27 @@ git pull`
 
 On peut supprimer la branche qui ne nous sert plus :
 
-`git branch -D branchName`
+The short answers
+
+If you want more detailed explanations of the following commands, then see the long answers in the next section.
+Deleting a remote branch
+
+`git push origin --delete <branch>  # Git version 1.7.0 or newer`
+`git push origin -d <branch>        # Shorter version (Git 1.7.0 or newer)`
+`git push origin :<branch>          # Git versions older than 1.7.0`
+
+Deleting a local branch
+
+`git branch --delete <branch>`
+`git branch -d <branch> # Shorter version`
+`git branch -D <branch> # Force-delete un-merged branches`
+
+Deleting a local remote-tracking branch
+
+`git branch --delete --remotes <remote>/<branch>`
+`git branch -dr <remote>/<branch> # Shorter`
+`git fetch <remote> --prune # Delete multiple obsolete remote-tracking branches`
+`git fetch <remote> -p      # Shorter`
 
 En cas de merge conflict pendant la PR :
 
