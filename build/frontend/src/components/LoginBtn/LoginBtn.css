@@ -1,0 +1,17 @@
+.login__button {
+    width: 100px; /* Largeur fixe de 200 pixels */
+    height: 35px;
+    margin-left: auto;
+    background-color: var(--bouton_BG);
+    transition: color 0s;
+}
+
+.login__button:hover {
+    background-color: var(--bouton_BG_hover);
+}
+
+.link__login {
+    font-size: 23px;
+    font-family: 'Pixelify Sans';
+    color: var(--bouton_text);
+}

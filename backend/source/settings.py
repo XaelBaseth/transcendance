@@ -13,17 +13,20 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 
 import os
+from datetime import timedelta
 import dotenv
 
 dotenv.load_dotenv()
 
+#Backend
+SECRET_KEY='django-insecure-$v(rj^yqh8fv)8-g$+t%_908gkhqearv+8)@c885!dq@)x_obk'
 
-SECRET_KEY = os.environ['SECRET_KEY']
-POSTGRES_DB = os.environ['POSTGRES_DB']
-POSTGRES_USER = os.environ['POSTGRES_USER']
-POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
-DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
-DATABASE_PORT = os.environ['DATABASE_PORT']
+#SECRET_KEY = os.environ['SECRET_KEY']
+#POSTGRES_DB = os.environ['POSTGRES_DB']
+#POSTGRES_USER = os.environ['POSTGRES_USER']
+#POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
+#DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
+#DATABASE_PORT = os.environ['DATABASE_PORT']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -38,8 +41,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
+    '*',
 ]
+
+# JWT DE TES MORTS
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
 
 
 # Application definition
@@ -51,33 +70,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'user.apps.UserConfig',
+    'user',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
 ]
 
-CORS_ALLOWED_ALL_ORIGINS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'https://localhost:8000',
-    'http://localhost:3000',
-]
-
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
-
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'corsheaders.middleware.CorsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'source.urls'
@@ -104,34 +111,26 @@ WSGI_APPLICATION = 'source.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': POSTGRES_DB,
-        'USER': POSTGRES_USER,
-        'PASSWORD': POSTGRES_PASSWORD,
-        'HOST': DATABASE_HOST_NAME,
-        'PORT': DATABASE_PORT,
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-AUTH_USER_MODEL = 'user.AppUser'
+#DATABASES = {
+#    'default' : {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': POSTGRES_DB,
+#        'USER': POSTGRES_USER,
+#        'PASSWORD': POSTGRES_PASSWORD,
+#        'HOST': DATABASE_HOST_NAME,
+#        'PORT': DATABASE_PORT,
+#    }
+#}
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    ),
-}
+
+AUTH_USER_MODEL = 'user.AppUser'
 
 
 # Password validation
@@ -168,9 +167,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 # Define the path to your frontend build directory
-STATICFILES_DIRS = [
-  BASE_DIR / 'frontend/build',
-]
+STATICFILES_DIRS = []
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static/'
@@ -179,3 +176,6 @@ STATIC_ROOT = BASE_DIR / 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWS_CREDENTIALS = True

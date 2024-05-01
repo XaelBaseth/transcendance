@@ -1,9 +1,10 @@
 #virtualenv
-
+backend/.venv
 
 #back
 log
 .log
+db.sqlite3
 
 
 #front

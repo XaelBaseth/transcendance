@@ -1,14 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import { IsLoggedInContext } from '../../context/context'
 import React, { useEffect } from 'react';
-import { checkIfLogged, fetchMe } from '../../api/APIHandler';
-import { useContext } from "react";
 import { useQuery } from '@tanstack/react-query';
 
 import './Avatar.css'
 
 export default function Avatar ( {setLoggedIn}: {setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>}) {
-    const isLoggedIn = useContext(IsLoggedInContext);
 
     useEffect( () => {
         const fetchData = async () => {

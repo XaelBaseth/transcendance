@@ -1,0 +1,138 @@
+
+.background {
+    width: 430px;
+    position: fixed;
+    height: 92vh;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.connection-form {
+    height: 440px;
+    width: 400px;
+    background-color: var(--template_BG);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(40px);
+    border: 4px solid var(--template_border);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 30px 30px;
+}
+.little-form > * , .title-logs , #signup_btn, #_42auth_btn {
+  font-family: 'Pixelify Sans';
+  color: #ff0000;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+.connection-form > * , .title-logs , #signup_btn,  #_42auth_btn {
+  font-family: 'Pixelify Sans';
+  color: var(--template_textLP);
+  letter-spacing: 1px;
+  outline: none;
+  border: none;
+}
+
+.login_label {
+	color: var(--template_textP);
+    display: block;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.social .signup{
+  padding-top: 25px;
+  margin-left: 30px;
+  color: var(--template_textG);
+  font-family: 'Pixelify Sans';
+}
+
+.social ._42auth{
+  padding-top: 25px;
+  margin-left: 30px;
+  color: #e3eef1;
+  font-family: 'Pixelify Sans';
+}
+
+input{
+    display: block;
+    height: 50px;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.048);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+input::placeholder{
+  color: var(--template_textLP);
+  letter-spacing: 1px; 
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#login-btn {
+    margin-top: 35px;
+    margin-left: 35px;
+    width: 80%;
+    background-color: var(--bouton_BG);
+    border: 3px solid var(--bouton_border);
+	  color: var(--bouton_text);
+    padding: 15px 0;
+    font-size: 25px;
+    font-weight: 400;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#login-btn:hover{
+  background-color: var(--bouton_BG_hover);
+  border: 3px solid var(--bouton_border_hover);
+}
+
+#_42auth_btn {
+  background: none;
+  margin-top: 10px;
+  margin-left: -20px;
+	border: none;
+  color: var(--template_textG);
+  font-size: 17px;
+  cursor: pointer;
+}
+
+#signup_btn {
+  background: none;
+  margin-top: 10px;
+  margin-left: -20px;
+	border: none;
+  color: var(--template_textG);
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* ********************************/
+/* ***   ERROR MSG COMPONENT    ***/
+/* ********************************/
+
+.login__alert_err {
+	color: rgb(255, 26, 26);
+	font-family: 'Pixelify Sans';
+	font-size: 1em;
+	text-align: center;
+  margin-top: 5px;
+}
+
+.login__alert_ok {
+	color: rgb(153, 201, 139);
+	font-family: 'Pixelify Sans';
+	font-size: 1em;
+	text-align: center;
+  margin-top: 5px;
+}

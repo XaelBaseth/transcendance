@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+/*Navbar top screen
+.navbar {
+	height: 8vh;
+	width: 100%;
+	position : fixed;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index : 150;
+	top : 0%;
+  }*/
+
+  .navbar {
+    height: 0vh;
+    width: 60%;
+    position: fixed;
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Répartir l'espace entre les éléments */
+    align-items: center;
+    z-index: 150;
+	top: -5%;
+	left: 40%;
+}
+
+.navbar__title {
+	font-family: 'Bungee';
+	display: fixed; 
+	font-size: 40px;
+	margin-left: 0vh;
+	margin-top: 0px;
+	padding : 0px 15px;
+	border-radius:10px;
+	text-decoration: none;
+	color: #f4f0e3;
+	position: relative;
+  }
+
+  /*Avatar */
+.nav--avatar{
+	padding-right: 10px;
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+}
+
+.nav-avatar > button {
+	background: none;
+	border: none;
+}
+
+.nav-logout-icon:hover {
+	color:#90d0f0;
+}
+
+/*Logout_btn*/
+.logout_btn {
+	width: 100px; /* Largeur fixe de 200 pixels */
+    height: 35px;
+	font-size: 23px;
+    font-family: 'Pixelify Sans';
+	padding : 7px;
+	color: var(--bouton_text);
+	background-color: var(--bouton_BG);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+	margin: 0 auto;
+	transition : color 0s;
+}
+
+.logout_btn:hover {
+	background-color: var(--bouton_BG_hover);
+}
+
+/*sidebar*/
+.nav-menu {
+	background-color: var(--template_BG);
+	width: 12%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	border-radius: 5px;
+	grid-template-columns: 1fr auto auto;
+	position: fixed;
+	top: 0%;
+	z-index: 100;
+  }
+
+.nav-text {
+	height: 80px;
+  }
+
+.nav-text a {
+	text-decoration: none;
+	position: absolute;
+	font-weight: bold;
+	color: var(--bouton_text);
+	font-size: 30px;
+	height: 100%;
+	display: flex;
+	left: -5%;
+	padding: 30px 20px;
+	border-radius: 4px;
+	transition: color 0s;
+  }
+
+.nav-text a:hover{
+ 	color: var(--bouton_text_hover);
+  }
+
+.nav-menu-items {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	font-size: 30px;
+	margin-left: -140px;
+	margin-top: 70px;
+
+  }
+
+.flag_btn {
+	position: absolute;
+	flex-direction: row;
+    bottom: 25px;
+    left: 50%;
+    display: flex;
+	gap: 10px;
+}
+
+.settings_btn {
+	position: absolute;
+	font-weight: bold;
+	color: var(--bouton_text);
+	font-size: 30px;
+	flex-direction: column;
+	bottom: 0%;
+	left: -1%;
+	transition: color 0s;
+	z-index: 3;
+	flex-wrap: nowrap;
+}
+
+.item_title{
+	font-family: 'Pixelify Sans';
+	font-size: large;
+	text-align: center;
+ }
+
+.sidebar_image {
+	height: 30px;
+	width: 30px;
+	padding : 10px;
+	top: 50;
+	border-radius: 5px;
+ }
+
+	/* Burger menu  */
+
+.nav-elements{
+	display: flex;
+	flex-direction: column;
+	width: 70px;
+	position: relative;
+  }
+
+.nav-elements span{
+	background: #aedcc9;
+	border-radius: 5px;
+	height: 7px;
+	margin: 20px;
+  }
+
+/* Les barres du burger menu  */
+
+.span1{
+	width: 0%;
+	flex-direction: column;
+  }
+
+.span2{
+	width: 0%;
+	flex-direction: column;
+  }
+
+.span3{
+	width: 0%;
+	flex-direction: column;
+  }
+
+/* Display du burger button */
+
+input[type="checkbox"]{
+	display:none;
+}

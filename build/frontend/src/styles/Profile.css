@@ -1,0 +1,171 @@
+#whole-profile-container {
+	height: 81vh;
+
+}
+#whole-profile {
+	display: flex;
+	justify-content: center;
+    flex-direction: column;
+	margin: 11vh 8vw 0vh 8vw;
+}
+
+#whole-profile hr {
+	margin : 1vh;
+}
+
+#main-dashboard {
+	background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(10px);
+	border: 2px solid rgb(35, 71, 103);
+	padding : 1vw;
+	border-radius: 20px;
+	margin : 0 2vw 2vh 2vw;
+}
+
+#top-dashboard {
+	display : flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	
+}
+
+#top-dashboard > div:first-of-type {
+	margin-right: 1vw;
+}
+
+#bio-container {
+	height: 29vh;
+}
+
+#bio {
+	display: flex;
+	align-items: center;
+	color: white;
+}
+
+#main-stats {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 1em;
+}
+
+.one-stat {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5em;
+}
+
+.one-stat__txt{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.one_stat_title, .one_stat-stat {
+	font-size: 1.2em;
+}
+
+#achievements {
+	margin-top : 4vh;
+	
+}
+
+#achievements > h1 {
+	font-family: 'Bungee';
+	color: #000;
+	margin-bottom: 1vh;
+	margin-left : 1rem;
+	margin-top: 6vh;
+}
+
+.all-achievements {
+	display : flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 2rem;
+}
+
+
+#stats {
+	background-color: 	rgba(255, 255, 255, 0.3);;
+	border-radius : 20px;
+	padding: 1vw;
+	width: 50%;
+	margin-top: 6rem;
+}
+
+
+#stats > h1, #stats > h5 {
+	font-family: 'Bungee';
+	color : black;
+	text-align: center;
+}
+
+
+/* Radial progress bar for win rate */
+.circular__progress {
+	position: relative;
+	height: 6rem;
+	width: 6rem;
+	border-radius: 50%;
+	background: conic-gradient(var(red) 3.6deg, #ededed 0deg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.circular__progress::before {
+	content: "";
+	position : absolute;
+	height : 80%;
+	width : 80%;
+	border-radius: 50%;
+	background-color: rgb(255, 255, 255);
+}
+
+.progress-value {
+	font-size: 2em;
+	font-weight: 500;
+	color: rgb(44, 44, 48);
+}
+
+.winrate__title {
+	text-align: center;
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: black;
+}
+
+.winrate__content {
+	position: relative;
+}
+
+.winratio__stats {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.stat__display {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 1.5vh;
+}
+
+.challenge-btn {
+	font-weight: 0;
+	font-size: 14px;
+	color: #fff;
+	background-color: black;
+	padding: 10px 30px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+	margin: 0 auto;
+}
