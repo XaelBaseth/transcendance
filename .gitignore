@@ -3,9 +3,10 @@ backend/.venv
 
 #back
 log
+logs
 .log
+.logs
 db.sqlite3
-
 
 #front
 frontend/node_modules  

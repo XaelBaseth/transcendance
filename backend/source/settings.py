@@ -18,15 +18,12 @@ import dotenv
 
 dotenv.load_dotenv()
 
-#Backend
-SECRET_KEY='django-insecure-$v(rj^yqh8fv)8-g$+t%_908gkhqearv+8)@c885!dq@)x_obk'
 
-#SECRET_KEY = os.environ['SECRET_KEY']
-#POSTGRES_DB = os.environ['POSTGRES_DB']
-#POSTGRES_USER = os.environ['POSTGRES_USER']
-#POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
-#DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
-#DATABASE_PORT = os.environ['DATABASE_PORT']
+POSTGRES_DB = os.environ['POSTGRES_DB']
+POSTGRES_USER = os.environ['POSTGRES_USER']
+POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
+DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
+DATABASE_PORT = os.environ['DATABASE_PORT']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -39,12 +36,36 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+SECRET_KEY = os.environ['SECRET_KEY']
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
 
 ALLOWED_HOSTS = [
-    '*',
+	'*',
 ]
 
-# JWT DE TES MORTS
+# JWT
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -70,7 +91,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user',
+    
+	'user',
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
@@ -84,7 +106,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
+    
+	"corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'source.urls'
@@ -111,23 +134,23 @@ WSGI_APPLICATION = 'source.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 #DATABASES = {
-#    'default' : {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': POSTGRES_DB,
-#        'USER': POSTGRES_USER,
-#        'PASSWORD': POSTGRES_PASSWORD,
-#        'HOST': DATABASE_HOST_NAME,
-#        'PORT': DATABASE_PORT,
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
+
+DATABASES = {
+    'default' : {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': POSTGRES_DB,
+        'USER': POSTGRES_USER,
+        'PASSWORD': POSTGRES_PASSWORD,
+        'HOST': DATABASE_HOST_NAME,
+        'PORT': DATABASE_PORT,
+    }
+}
 
 
 AUTH_USER_MODEL = 'user.AppUser'
@@ -177,5 +200,10 @@ STATIC_ROOT = BASE_DIR / 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWS_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+	'https://localhost:8000',
+	'https://*'
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True

@@ -17,6 +17,4 @@ fclean:
 	$(MAKE) clean
 	docker system prune --force --volumes --all
 
-re: stop fclean build up
-
-.PHONY: all build up stop clean fclean re
+.PHONY: all build up stop clean fclean

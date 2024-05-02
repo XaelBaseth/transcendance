@@ -1,21 +1,23 @@
+#BUILD FRONT
 FROM node:lts-alpine as build
 
-RUN mkdir -p /app
+RUN mkdir app
+WORKDIR /app/
+
+COPY frontend/package*.json ./
+RUN npm install
 
 COPY ./frontend /app/frontend
 
-WORKDIR /app/frontend
+RUN npm run build --prefix ./frontend
 
-RUN npm update
-RUN npm install
-RUN npm run build
-FROM nginx:1.25.3
+#BUILD NGINX
+FROM nginx:1.25.4
 
 RUN rm -rf /var/www/html
 RUN mkdir -p /etc/nginx/ssl
 
-COPY --from=build /app/frontend/build /var/www/html
-COPY --from=build  /app/frontend/build/static/css /var/www/html
+COPY --from=build /app/frontend/dist /var/www/html
 
 COPY ./nginx/nginx_https.conf /etc/nginx/nginx_https.conf
 
