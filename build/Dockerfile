@@ -19,7 +19,7 @@ RUN mkdir -p /etc/nginx/ssl
 
 COPY --from=build /app/frontend/dist /var/www/html
 
-COPY ./nginx/nginx_https.conf /etc/nginx/nginx_https.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
 RUN chmod +x /etc/nginx/nginx_start.sh

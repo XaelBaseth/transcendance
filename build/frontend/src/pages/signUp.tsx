@@ -4,6 +4,7 @@ import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import '../styles/SignUp.css';
 
+
 export default function SignUp() {
 	
 	const [username, setusername] = useState<string>("");
@@ -27,6 +28,8 @@ export default function SignUp() {
 
         try {
             const res = await api.post("/api/user/register", { email, username, password });
+
+			console.log("This is your object sent: ", )
             if (res.status >= 200 && res.status < 300) {
                 setSuccessMsg("Registration successful.");
                 navigate("/login");
@@ -35,7 +38,7 @@ export default function SignUp() {
             }
         } catch (error) {
             console.error("Error during registration:", error);
-            setErrorMsg("An error occurred during registration.");
+            setErrorMsg("An error occurred during registration: ", error);
         } finally {
             setLoading(false);
         }
@@ -45,7 +48,7 @@ export default function SignUp() {
 		<div className="signUp">
 			<div className="background" />
 			<div className="signUp_label">
-                <h1 className="title">Titre de votre page</h1>
+                <h1 className="title">SignUp</h1>
 				<form  className="signUp-form">
 
 				
@@ -58,7 +61,7 @@ export default function SignUp() {
 				<label  className="signUp_label" htmlFor="password">Password</label>
 				<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder="Password" id="password" />
 				<label  className="signUp_label" htmlFor="password">Confirm new password</label>
-				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder="Password" id="password" />
+				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder="Password" id="password_conf" />
 			
 				<>
 				{
