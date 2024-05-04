@@ -5,7 +5,7 @@ axios.default.debug =  true;
 
 /** Give the user a JWT to identify him and stores it into localStorage (check if cookies better or nah) */
 const api = axios.create({
-  baseURL: 'http://localhost:8000'
+  baseURL: 'https://localhost:8000'
 });
 
 api.interceptors.request.use(
