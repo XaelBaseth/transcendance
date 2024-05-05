@@ -29,7 +29,7 @@ export default function SignUp() {
         try {
             const res = await api.post("/api/user/register", { email, username, password });
 
-			console.log("This is your object sent: ", )
+			console.log("This is your object sent: ", { email, username, password })
             if (res.status >= 200 && res.status < 300) {
                 setSuccessMsg("Registration successful.");
                 navigate("/login");

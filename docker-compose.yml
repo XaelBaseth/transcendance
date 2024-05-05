@@ -33,6 +33,7 @@ services:
   
   nginx:
     container_name: nginx
+    env_file: .env
     depends_on:
       django:
         condition: service_healthy
@@ -53,7 +54,6 @@ services:
       interval: 3s
       timeout: 10s
       retries: 3
-    env_file: .env
 
 
 networks:
