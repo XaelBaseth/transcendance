@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Sidebar from "./Sidebar";
 import Avatar from '../avatar/Avatar';
-import LoginBtn from '../LoginBtn/LoginBtn';
+import { useAuth } from '../../context';
 import "./Navbar.css";
 
-export default function Navbar() {
-  
-		const [sidebar] = useState<boolean>(true);
-		const navigate = useNavigate();
-
+export default function Navbar(){
+	const { user, logout } = useAuth();
+	
+	const handleLogout = () => {
+		logout();
+	}
 
  return (
   <>
@@ -25,23 +26,15 @@ export default function Navbar() {
 		</div>
 		<>
 			{
-				isLoggedIn === false &&
+				user &&
 				<div className='nav--avatar'>
-					<LoginBtn />
-				</div>
-			}
-		</>
-		<>
-			{
-				isLoggedIn === true &&
-				<div className='nav--avatar'>
-					<Avatar setLoggedIn={setLoggedIn}/>
+					<Avatar />
 					<button className="logout_btn" onClick={handleLogout}>Logout</button>
 				</div>
-			}
+ 			}
 		</>
 	</div>
-	<Sidebar sidebar={sidebar} />
+	<Sidebar />
   </>
   );
 };

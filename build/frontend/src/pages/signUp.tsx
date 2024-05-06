@@ -1,48 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from "../api";
+
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import '../styles/SignUp.css';
+import { useAuth } from '../context';
 
 
 export default function SignUp() {
 	
 	const [username, setusername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [email, setEmail] = useState<string>("");
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
-	const [errorMsg, setErrorMsg] = useState<string>("");
-	const [successMsg, setSuccessMsg] = useState<string>("");
-	const [loading, setLoading] = useState(false);
+	const [email, setEmail] = useState<string>("");
+	const { signup } = useAuth();
 	const navigate = useNavigate();
 
-
 	const handleSignUp = async (e) => {
-		setLoading(true);
 		e.preventDefault();
-		if (password !== confirmPassword){
-			setErrorMsg("Passwords do not match.");
-			return;
+		try {
+		  await signup(email, username, password, confirmPassword); // Use the signup method from useAuth
+		  // Optionally, handle success message or navigation here
+		} catch (error) {
+		  console.error("Signup error:", error);
+		  // Handle error appropriately
 		}
-		setLoading(true);
-
-        try {
-            const res = await api.post("/api/user/register", { email, username, password });
-
-			console.log("This is your object sent: ", { email, username, password })
-            if (res.status >= 200 && res.status < 300) {
-                setSuccessMsg("Registration successful.");
-                navigate("/login");
-            } else {
-                setErrorMsg("Registration failed.");
-            }
-        } catch (error) {
-            console.error("Error during registration:", error);
-            setErrorMsg("An error occurred during registration: ", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+	  };
 
 	return (
 		<div className="signUp">
