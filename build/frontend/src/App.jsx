@@ -32,7 +32,6 @@ function App() {
     <div id='app'>
     <section id="main_content">
       <div className="Navbar">
-        {/*<Navbar />*/}
       </div>
       <div id="videoContainer">
         <video className='videobg' autoPlay loop muted preload='auto' content='width=device-width, initial-scale=1.0'>

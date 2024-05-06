@@ -3,9 +3,11 @@ import { ACCESS_TOKEN } from "./constants";
 
 axios.default.debug =  true;
 
+const BASE_URL = import.meta.VITE_API_URL
+
 /** Give the user a JWT to identify him and stores it into localStorage (check if cookies better or nah) */
 const api = axios.create({
-  baseURL: 'http://localhost:8000'
+  baseURL: BASE_URL
 });
 
 api.interceptors.request.use(
