@@ -1,63 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from "../api";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-
 import '../styles/Login.css';
+import { useAuth } from '../context';
 
-export default function Login({ setLoggedIn }: { 
-	setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>}) {
-	
+export default function Login() {	
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
 	const [successMsg, setSuccessMsg] = useState<string>("");
-	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
+	const { login } = useAuth();
 
     const handleSignUp = () => {
 		navigate("/signup");
 	};
 
 	const handleLogIn = async (e) => {
-		setLoading(true);
 		e.preventDefault();
-
-		try {
-			console.log("Request Data:", { username, password });
-
-			const res = await api.post("/api/token/", {username, password})
-			if (res.status >= 200 && res.status < 300) {
-				setSuccessMsg("Successfully signed up!")
-				localStorage.setItem(ACCESS_TOKEN, res.data.access);
-				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-				navigate("/");
-			} else {
-				setErrorMsg("Invalid username or password. Please try again.");
-			}
-		} catch (error) {
-			if (error.response) {
-				// The request was made and the server responded with a status code
-				// that falls out of the range of 2xx
-				console.log("Error Response:", error.response.data);
-				console.log("Error Status:", error.response.status);
-				console.log("Error Headers:", error.response.headers);
-				alert("Error Message: " + error.response.data.error);
-			} else if (error.request) {
-				// The request was made but no response was received
-				// `error.request` is an instance of XMLHttpRequest in the browser 
-				// and an instance of http.ClientRequest in node.js
-				console.log("Error Request:", error.request);
-				alert("No response received");
-			} else {
-				// Something happened in setting up the request that triggered an Error
-				console.log('Error', error.message);
-				alert("Error Message: " + error.message);
-			}
-		} finally {
-			setLoading(false)
-		}
-	}
+		  login(username, password);
+	  };
 
 	return (
 		<div className="Login">
@@ -85,7 +46,6 @@ export default function Login({ setLoggedIn }: {
 				</div>
 			}
 			</>
-			{loading}
 			<button onClick={handleLogIn} id="login-btn">Log In</button>
 			<div className="social">
                 <div className="_42auth">
