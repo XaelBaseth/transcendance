@@ -1,9 +1,9 @@
 .football-field {
     position: absolute;
     top: 50vh;
-    margin-left: 125vh;
+    margin-left: 110vh;
     transform: translate(-50%, -50%);
-    width: 150vh; /* Largeur du terrain */
+    width: 140vh; /* Largeur du terrain */
     height: 75vh; /* Hauteur du terrain */
     background-color: var(--pong_BG); /* Couleur de fond verte pour représenter l'herbe */
     border: 6px solid #acd8aa; /* Bordure blanche */

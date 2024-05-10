@@ -47,8 +47,8 @@ export default function SignUp() {
 	return (
 		<div className="signUp">
 			<div className="background" />
-			<div className="signUp_label">
-                <h1 className="title">SignUp</h1>
+			<div className="SignUp_tittle">
+                <h1 className="signUp__title">SignUp</h1>
 				<form  className="signUp-form">
 
 				

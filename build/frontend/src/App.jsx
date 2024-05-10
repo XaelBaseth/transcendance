@@ -32,6 +32,9 @@ function App() {
     <div id='app'>
     <section id="main_content">
       <div className="Navbar">
+      <div className="title">
+            <h1>PokePong</h1>
+          </div>
       </div>
       <div id="videoContainer">
         <video className='videobg' autoPlay loop muted preload='auto' content='width=device-width, initial-scale=1.0'>
@@ -45,14 +48,14 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/signup" element={<RegisterAndLogout />} />
 
-          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-          <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
-          <Route path="/pong" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
-          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path='/settings' element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-          <Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/gamepage" element={<GamePage />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/pong" element={<Pong />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path='/settings' element={<Settings />} />
+          <Route path="/social" element={<Social />} />
         </Routes>
       </BrowserRouter>
     </section>

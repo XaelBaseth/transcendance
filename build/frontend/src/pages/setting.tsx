@@ -78,7 +78,7 @@ export function AvatarCardSettings() {
     return (
         <div id='avatar_settings'>
             <div>
-                <img src={'/assets/pokeball.png'} alt='user_avatar' id='user_avatar'/>
+                <img src={'/src/assets/pokeball.png'} alt='user_avatar' id='user_avatar'/>
             </div>
             <div className='avatar_block'>
                 <h5>Change your avatar :</h5>

@@ -10,11 +10,11 @@
 
 .signUp-form {
   font-family: 'Pixelify Sans';
-    height: 70%;
-    width: 50%;
+    height: 75%;
+    width: 46%;
     background-color: var(--template_BG);
     position: absolute;
-    top: 18%;
+    top: 9%;
     left: 26%;
     border-radius: 10px;
     backdrop-filter: blur(40px);
@@ -34,12 +34,12 @@
 
 .signUp-form > * , #signUp-btn {
   font-family: 'Pixelify Sans';
-  color: var(--template_textLP);
+  color: var(--template_textP);
   letter-spacing: 1px;
   outline: none;
   border: none;
-  margin-top: 2%;
   transform: translateY(150%);
+  font-size: 18px;
 }
 
 .signUp_label {
@@ -48,6 +48,19 @@
   display: block;
   font-size: 30px;
   font-weight: 500;
+  margin-top: 3%;
+}
+
+.signUp__title {
+  position: absolute;
+  font-family: "Pixelify Sans";
+  color: var(--template_textP);
+  font-weight: bold;
+  font-size: 45px;
+  letter-spacing: 2px;
+  top: 9%;
+  left: 46%;
+  z-index: 10;
 }
 
 .signUp-form > .title {
@@ -56,7 +69,6 @@
   color: var(--setting_textD);
   position: absolute;
   top: 18%;
-  left: 20%;
 }
 /*
 .social .signup{
@@ -73,28 +85,10 @@
   font-family: 'Pixelify Sans';
 }*/
 
-input{
-    display: block;
-    height: 50px;
-    width: 90%;
-    background-color: rgba(0, 0, 0, 0.048);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: 300;
-}
 
-input::placeholder{
-  color: var(--template_textLP);
-  letter-spacing: 1px; 
-  font-size: 15px;
-  font-weight: bold;
-}
 
 #signUp-btn {
-    margin-top: 35px;
-    margin-left: 35px;
+  position: absolute;
     width: 80%;
     background-color: var(--bouton_BG);
     border: 3px solid var(--bouton_border);
@@ -104,6 +98,8 @@ input::placeholder{
     font-weight: 400;
     border-radius: 5px;
     cursor: pointer;
+    top: 72%;
+    left: 9%;
 }
 
 #signUp-btn:hover{
@@ -116,17 +112,19 @@ input::placeholder{
 /* ********************************/
 
 .signUp__alert_err {
-	color: rgb(255, 26, 26);
+	color: var(--error);
 	font-family: 'Pixelify Sans';
-	font-size: 1em;
-	text-align: center;
-  margin-top: 5px;
+	font-size: 20px;
+  position: absolute;
+  top: 59%;
+  left: 36%;
 }
 
 .signUp__alert_ok {
-	color: rgb(153, 201, 139);
+	color: var(--ok);
 	font-family: 'Pixelify Sans';
-	font-size: 1em;
-	text-align: center;
-  margin-top: 5px;
+	font-size: 20px;
+  position: absolute;
+  top: 59%;
+  left: 36%;
 }

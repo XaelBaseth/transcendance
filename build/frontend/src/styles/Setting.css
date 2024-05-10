@@ -28,7 +28,7 @@
     backdrop-filter: blur(20px);
 	position: absolute;
 	top: 6%;
-	left: 15%;
+	left: 13%;
 }
 
 .settings > h1 {
@@ -239,7 +239,7 @@
 	font-weight: bold;
 	position: absolute;
     right: 10px;
-    transform: translateY(-3100%) translateX(-55%);
+    transform: translateY(-3180%) translateX(-55%);
 }
 
 
@@ -271,6 +271,10 @@
 	background-color: transparent;
     letter-spacing:1px;
 	transform: translateY(-920%) translateX(150%);
+}
+
+#password__btn:hover {
+	color: var(--setting_textL);
 }
 
 /* ********************************/
