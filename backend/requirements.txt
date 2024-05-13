@@ -2,6 +2,7 @@ asgiref
 daphne
 Django
 django-cors-headers
+django_otp
 djangorestframework
 djangorestframework-simplejwt
 PyJWT

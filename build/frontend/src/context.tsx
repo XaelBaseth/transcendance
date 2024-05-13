@@ -25,22 +25,45 @@ export const AuthProvider: React.FC = ({ children }) => {
 	user,	
 	setUser,	
 	login: async (username: string, password: string) => {
-		try {	
-			const res = await api.post("/api/token/", {username, password});
-			if (res.status >= 200 && res.status < 300) {
-			setUser({...res.data });
-			setSuccessMsg("Successfully logged in!")
-				localStorage.setItem(ACCESS_TOKEN, res.data.access);
-				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-				navigate("/");	
-			} else {	
+		try {
+			const authRes = await api.post("/api/token/", { username, password });
+			if (authRes.status >= 200 && authRes.status < 300) {
+				// Check if 2FA is enabled for the user
+				if (authRes.data.is_2fa_enabled) {
+					// 2FA is enabled, prompt for OTP
+					const otp = window.prompt("Please enter the OTP sent to your email:");
+					if (otp) {
+						// Verify the OTP
+						const otpVerifyRes = await api.post("/api/verify-otp", { otp, email: authRes.data.email });
+						if (otpVerifyRes.status >= 200 && otpVerifyRes.status < 300) {
+							// OTP verified successfully, proceed with login
+							setUser({...authRes.data });
+							setSuccessMsg("Successfully logged in!");
+							localStorage.setItem(ACCESS_TOKEN, authRes.data.access);
+							localStorage.setItem(REFRESH_TOKEN, authRes.data.refresh);
+							navigate("/");
+						} else {
+							throw new Error("Invalid OTP.");
+						}
+					} else {
+						throw new Error("No OTP entered.");
+					}
+				} else {
+					// 2FA is not enabled, proceed with normal login
+					setUser({...authRes.data });
+					setSuccessMsg("Successfully logged in!");
+					localStorage.setItem(ACCESS_TOKEN, authRes.data.access);
+					localStorage.setItem(REFRESH_TOKEN, authRes.data.refresh);
+					navigate("/");
+				}
+			} else {
 				throw new Error("Invalid username or password.");
-			}	
-		} catch (error) {	
+			}
+		} catch (error) {
 			console.error(error);
 			// Handle error appropriately
 		}
-		},
+	},
 	signup: async (email: string, username: string, password: string, confirmPassword: string) => {
 		if (password !== confirmPassword) {
 			setErrorMsg("Passwords do not match.");
