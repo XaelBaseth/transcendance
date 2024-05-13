@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
 
-function ProtectedRoute({ children }) {
+interface ProtectedRouteProps {
+	children: ReactNode;
+  }
+  
+function ProtectedRoute({ children }: ProtectedRouteProps) {
+  console.log("This is ProtectedRoute working!");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
+	console.log("About to call auth function");
     auth().catch(() => setIsAuthorized(false));
   }, []);
 
@@ -29,8 +35,10 @@ function ProtectedRoute({ children }) {
   };
 
   const auth = async () => {
+	console.log("This is the auth function starting point.");
     const token = localStorage.getItem(ACCESS_TOKEN);
     if (!token) {
+	  console.log("No token was found!");
       setIsAuthorized(false);
       return;
     }

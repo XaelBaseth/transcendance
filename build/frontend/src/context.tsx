@@ -15,6 +15,7 @@ export const useAuth = () => {
 	};
 
 export const AuthProvider: React.FC = ({ children }) => {
+	console.log("This is the AuthProvider!");
 	const [user, setUser] = useState<User | null>(null);
 	const [successMsg, setSuccessMsg] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
@@ -33,7 +34,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
 				navigate("/");	
 			} else {	
-			throw new Error("Invalid username or password.");
+				throw new Error("Invalid username or password.");
 			}	
 		} catch (error) {	
 			console.error(error);
@@ -47,7 +48,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
-			console.log("This is your object sent: ", { email, username, password });
 			if (res.status >= 200 && res.status < 300) {
 				setSuccessMsg("Registration successful.");
 				navigate('/login');

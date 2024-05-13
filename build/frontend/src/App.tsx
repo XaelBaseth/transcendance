@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import BGVideo from './assets/BG.mp4'
 import Home from "./pages/home"
 import Error from "./pages/error"
@@ -23,6 +23,7 @@ function RegisterAndLogout() {
 }
 
 function App() {
+	console.log("This is the app/ correctly working");
 	return (
 	<div id='app'>
 		<section id="main_content">
@@ -41,7 +42,6 @@ function App() {
 				<Route path="/signup" element={<RegisterAndLogout />} />
 
 				<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-				<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 				<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
 				<Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
 				<Route path="/pong" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
