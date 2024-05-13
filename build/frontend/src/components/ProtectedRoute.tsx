@@ -13,8 +13,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 	const [isAuthorized, setIsAuthorized] = useState(null);
 
 	useEffect(() => {
-        auth().catch(() => setIsAuthorized(false))
-    },);
+		auth().catch(() => setIsAuthorized(false))
+	},);
 
 
 	const refreshToken = async () => {
@@ -51,8 +51,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 	}
 
 	if (isAuthorized === null) {
-        return <div>Loading...</div>;
-    }
+		return <div>Loading...</div>;
+	}
 
 	return isAuthorized ? children : <Navigate to="/login" state={{ from: location }} />;
 };

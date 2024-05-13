@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route} from "react-router-dom"
 import BGVideo from './assets/BG.mp4'
 import Home from "./pages/home"
 import Error from "./pages/error"
@@ -15,6 +14,8 @@ import { Social } from "./pages/social"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { AuthProvider } from "./context"
+
+import './App.css'
 
 /**Register the user, gives him a jwt and login 
  * cleanly so that we can avoid error */

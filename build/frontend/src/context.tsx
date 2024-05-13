@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User, AuthContextType } from './types/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 import api from './api';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants";
 
@@ -19,10 +20,30 @@ export const AuthProvider: React.FC = ({ children }) => {
 	const [successMsg, setSuccessMsg] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	//check if the user already has a JWT to stay connected.
+	useEffect(() => {
+		const token = localStorage.getItem(ACCESS_TOKEN);
+		if (token) {
+			const decodedToken = jwtDecode(token);
+			setUser({ ...decodedToken.data });
+		}
+	}, []);
+
+	//clear the message for login and signup.
+	useEffect(() => {
+		if (location.pathname === '/login' || location.pathname === '/signup'){
+			setErrorMsg("");
+			setSuccessMsg("");
+		}
+	}, [location]);
 
 	const value = {	
 	user,	
-	setUser,	
+	setUser,
+	successMsg,
+	errorMsg,	
 	login: async (username: string, password: string) => {
 		if (username === "" || password === "") {
 			setErrorMsg("Enter valid username or password");
@@ -37,7 +58,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
 				navigate("/");	
 			} else {	
-				throw new Error("Invalid username or password.");
+				setErrorMsg("Invalid username or password.");
 			}	
 		} catch (error) {	
 			console.error(error);
@@ -59,7 +80,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 			}
 		} catch (error) {
 			console.error("Error during registration:", error);
-			setErrorMsg(`An error occurred during registration: ${error}`);
+			setErrorMsg('An error occurred during registration');
 		}
 	},
 	logout: () => {
@@ -72,8 +93,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 		navigate('/login');
 		},
 	};
-
-	console.log("context values: ", value);
 
 	return (
 		<AuthContext.Provider value={value}>
