@@ -13,12 +13,13 @@ export default function SignUp() {
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
 	const { signup } = useAuth();
+	const [twoFA, setTwoFA] = useState(false);
 	const navigate = useNavigate();
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
 		try {
-		  await signup(email, username, password, confirmPassword); // Use the signup method from useAuth
+		  await signup(email, username, password, confirmPassword, twoFA); // Use the signup method from useAuth
 		  // Optionally, handle success message or navigation here
 		} catch (error) {
 		  console.error("Signup error:", error);
@@ -43,8 +44,7 @@ export default function SignUp() {
 				<label  className="signUp_label" htmlFor="password">Password</label>
 				<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder="Password" id="password" />
 				<label  className="signUp_label" htmlFor="password">Confirm new password</label>
-				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder="Password" id="password_conf" />
-			
+				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder="Password" id="password_conf" />	
 				<>
 				{
 					successMsg && 
@@ -61,7 +61,10 @@ export default function SignUp() {
 					</div>
 				}
 				</>
-				{loading}
+				<label>
+					<input type="checkbox" checked={twoFA} onChange={(e) => setTwoFA(e.target.checked)} />
+					Enable 2FA
+				</label>
 				<button  onClick={handleSignUp} id="signUp-btn">Sign Up</button>
 				</form>
 		    </div>

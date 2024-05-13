@@ -64,13 +64,13 @@ export const AuthProvider: React.FC = ({ children }) => {
 			// Handle error appropriately
 		}
 	},
-	signup: async (email: string, username: string, password: string, confirmPassword: string) => {
+	signup: async (email: string, username: string, password: string, confirmPassword: string, twoFA:boolean) => {
 		if (password !== confirmPassword) {
 			setErrorMsg("Passwords do not match.");
 			return;
 		}
 		try {
-			const res = await api.post("/api/user/register", { email, username, password });
+			const res = await api.post("/api/user/register", { email, username, password, twoFA });
 			if (res.status >= 200 && res.status < 300) {
 				setSuccessMsg("Registration successful.");
 				navigate('/login');
