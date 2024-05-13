@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/SignUp.css';
 import { useAuth } from '../context';
-
+import '../styles/SignUp.css';
 
 export default function SignUp() {
-	
 	const [username, setusername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
-	const [errorMsg] = useState<string>("");
-	const [successMsg] = useState<string>("");
-	const { signup } = useAuth();
+	const { signup, successMsg, errorMsg } = useAuth();
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
-		await signup(email, username, password, confirmPassword);
+		try {
+			await signup(email, username, password, confirmPassword);
+		} catch (error) {
+			console.error(error);
+		}
 	  };
 
 	return (
@@ -24,9 +23,7 @@ export default function SignUp() {
 			<div className="background" />
 			<div className="signUp_label">
                 <h1 className="title">SignUp</h1>
-				<form  className="signUp-form">
-
-				
+				<form  className="signUp-form">		
 				<label className="signUp_label" htmlFor="email">Email</label>
 				<input onChange={(event) => {setEmail(event.target.value)}} type="text" placeholder="email" id="email" />
 

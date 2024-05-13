@@ -126,7 +126,6 @@ input::placeholder{
 	font-family: 'Pixelify Sans';
 	font-size: 1em;
 	text-align: center;
-  margin-top: 5px;
 }
 
 .login__alert_ok {
@@ -134,5 +133,4 @@ input::placeholder{
 	font-family: 'Pixelify Sans';
 	font-size: 1em;
 	text-align: center;
-  margin-top: 5px;
 }
