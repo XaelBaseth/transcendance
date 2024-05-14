@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context';
+import OTPVerificationForm from './twofa';
 import '../styles/Login.css';
-import { useAuth } from '../context';
 
 export default function Login() {	
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const { login, successMsg, errorMsg } = useAuth();
+	const { login, successMsg, errorMsg, showOtpForm } = useAuth();
 	const navigate = useNavigate();
-	const { login } = useAuth();
 
     const handleSignUp = () => {
 		navigate("/signup");
@@ -58,6 +57,9 @@ export default function Login() {
 				<div className="signup">
 					<button onClick={handleSignUp} id="signup_btn">Sign up</button>
 				</div>
+			</div>
+			<div>
+				{showOtpForm && <OTPVerificationForm email={email} />}
 			</div>
 			</form>
 		</div>

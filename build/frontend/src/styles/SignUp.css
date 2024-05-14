@@ -112,6 +112,32 @@ input::placeholder{
 }
 
 /* ********************************/
+/* ***   	2FA COMPONENT	    ***/
+/* ********************************/
+
+#two_fa + label {
+    font-family: 'Pixelify Sans';
+    font-size: 20px;
+    color: var(--template_textP);
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle; /* Align label and checkbox */
+}
+
+#two_fa {
+    display: inline-block; /* Ensure checkbox is visible */
+    width: auto; /* Ensure checkbox width is adjusted automatically */
+}
+
+#two_fa:checked + label:before {
+    content: "\2713"; /* Checkmark symbol */
+    font-size: 20px;
+    line-height: 1;
+    color: var(--template_textP);
+    margin-right: 10px; /* Space between checkbox and label */
+}
+
+/* ********************************/
 /* ***   ERROR MSG COMPONENT    ***/
 /* ********************************/
 

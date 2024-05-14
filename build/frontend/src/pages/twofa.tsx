@@ -1,55 +1,42 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import api from '../api';
 
-interface OtpInputProps {
-  onOtpSubmit: (otp: string) => void;
+interface OTPVerificationFormProps {
+	email: string;
 }
 
-const TwoFA: React.FC = () => {
-	const handleOtpSubmit = async (otp: string) => {
-	  try {
-		const response = await api.post('/api/verify-otp', {
-		  otp,
-		});
-		console.log(response.data); // Handle the response
-	  } catch (error) {
-		console.error(error); // Handle errors
-	  }
-	};
-  
-	return (
-	  <div>
-		<h1>OTP Verification</h1>
-		<OtpInput onOtpSubmit={handleOtpSubmit} />
-	  </div>
-	);
-  };
-  
-  export default TwoFA;
-  
+const OTPVerificationForm: React.FC<OTPVerificationFormProps> = ({ email }) => {
+const [otp, setOtp] = useState('');
+const [message, setMessage] = useState('');
+const navigate = useNavigate();
 
-const OtpInput: React.FC<OtpInputProps> = ({ onOtpSubmit }) => {
-  const [otp, setOtp] = useState('');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setOtp(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onOtpSubmit(otp);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={otp}
-        onChange={handleChange}
-        maxLength={6}
-        placeholder="Enter OTP"
-      />
-      <button type="submit">Verify</button>
-    </form>
-  );
+const verifyOtp = async () => {
+	try {
+	const response = await api.post('/verify-otp/', { otp, email });
+	if (response.data.status === 'success') {
+		setMessage('OTP verified successfully!');
+		navigate("/");
+	} else {
+		setMessage('Failed to verify OTP.');
+	}
+	} catch (error) {
+	setMessage('An error occurred.');
+	}
 };
+
+return (
+	<div>
+	<input
+		type="text"
+		value={otp}
+		onChange={(e) => setOtp(e.target.value)}
+		placeholder="Enter OTP"
+	/>
+	<button onClick={verifyOtp}>Verify OTP</button>
+	{message && <p>{message}</p>}
+	</div>
+);
+};
+
+export default OTPVerificationForm;

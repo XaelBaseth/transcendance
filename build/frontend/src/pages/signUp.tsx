@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context';
+import OTPVerificationForm from './twofa';
 import '../styles/SignUp.css';
 
 export default function SignUp() {
@@ -7,12 +8,17 @@ export default function SignUp() {
 	const [password, setPassword] = useState<string>("");
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
 	const [email, setEmail] = useState<string>("");
-	const { signup, successMsg, errorMsg } = useAuth();
+	const [twoFA, setTwoFA] = useState(false);
+	const { signup, successMsg, errorMsg, showOtpForm } = useAuth();
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
+		if (password !== confirmPassword) {
+			errorMsg("Passwords do not match.");
+			return;
+		}
 		try {
-			await signup(email, username, password, confirmPassword);
+			await signup(email, username, password, confirmPassword, twoFA);
 		} catch (error) {
 			console.error(error);
 		}
@@ -22,7 +28,7 @@ export default function SignUp() {
 		<div className="signUp">
 			<div className="background" />
 			<div className="signUp_label">
-                <h1 className="title">SignUp</h1>
+				<h1 className="title">SignUp</h1>
 				<form  className="signUp-form">		
 				<label className="signUp_label" htmlFor="email">Email</label>
 				<input onChange={(event) => {setEmail(event.target.value)}} type="text" placeholder="email" id="email" />
@@ -35,6 +41,8 @@ export default function SignUp() {
 				<label  className="signUp_label" htmlFor="password">Confirm new password</label>
 				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder="Password" id="password_conf" />
 			
+				<label className="signUp_label" htmlFor="two_fa">Enable 2FA</label>
+				<input type="checkbox" checked={twoFA} onChange={(e) => setTwoFA(e.target.checked)} id="two_fa" />
 				<>
 				{
 					successMsg && 
@@ -51,7 +59,9 @@ export default function SignUp() {
 					</div>
 				}
 				</>
+
 				<button  onClick={handleSignUp} id="signUp-btn">Sign Up</button>
+				{showOtpForm && <OTPVerificationForm email={email} />}
 				</form>
 		    </div>
 		</div>
