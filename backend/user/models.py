@@ -15,13 +15,13 @@ import random, string
 					#####################
 
 class AppUserManager(BaseUserManager):
-    def create_user(self, email, username, password):
+    def create_user(self, email, username, password, two_fa=False):
         if not username:
             raise ValueError("A username is required.")
         if not password:
             raise ValueError('A password is required.')
         email = self.normalize_email(email)
-        user = self.model(email=email, username=username, password=password)
+        user = self.model(email=email, username=username, password=password, two_fa=two_fa)
         user.set_password(password)
         user.save()
         return user

@@ -10,6 +10,9 @@ export default function SignUp() {
 	const [email, setEmail] = useState<string>("");
 	const [twoFA, setTwoFA] = useState(false);
 	const { signup, successMsg, errorMsg, showOtpForm } = useAuth();
+	const { signup } = useAuth();
+	const [twoFA, setTwoFA] = useState(false);
+	const navigate = useNavigate();
 
 	const handleSignUp = async (e) => {
 		e.preventDefault();
