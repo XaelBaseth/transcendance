@@ -39,6 +39,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [location]);
 
+	//login
 	const login = async (username: string, password: string) => {
 		if (username === "" || password === "") {
 			setErrorMsg("Enter valid username or password");
@@ -61,6 +62,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	};
 
+	//signUp
 	const signup = async (email: string, username: string, password: string, confirmPassword: string)  => {
 		if (password !== confirmPassword) {
 			setErrorMsg("Passwords do not match.");
@@ -80,6 +82,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	};
 
+	//logout
 	const logout = () => {
 		localStorage.removeItem(ACCESS_TOKEN);
 		localStorage.removeItem(REFRESH_TOKEN);

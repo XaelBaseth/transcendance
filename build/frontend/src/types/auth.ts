@@ -1,7 +1,9 @@
 export interface User {
 	id: string;
 	name: string;
-	// Add other user properties as needed
+	email: string;
+	bio: string;
+	//update along
   }
 
 export interface AuthContextType {

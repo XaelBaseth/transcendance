@@ -78,15 +78,6 @@
 	text-align: center;
 }
 
-/* ********************************/
-/* ***     USER COMPONENT    	 ***/
-/* ********************************/
-
-#avatar_settings,
-#text_settings_card {
-    display: inline-block; /* Display inline-block to have them side by side */
-    vertical-align: top; /* Align to the top */
-}
 
 /* ********************************/
 /* ***     AVATAR COMPONENT     ***/
@@ -181,6 +172,7 @@
 /* ***   INPUT TEXT COMPONENT   ***/
 /* ********************************/
 
+
 #text_settings_card {
     width: 60%; /* Adjust width as needed */
     margin-left: 20px; /* Add margin between Avatar and Input Text components */
@@ -188,54 +180,65 @@
 
 /* Can be 'username', 'bio' or 'email' title */
 .text_settings_property {
-	width: 30%;
-	text-align: left;
-	font-size: 18px;
-	font-weight: bold;
-	font-family: 'Pixelify Sans';
-	color: var(--setting_textD);
-	transform: translateX(8%) translateY(700%);
+    width: 30%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Pixelify Sans'; /* Ensure this font is imported */
+    color: var(--setting_textD);
+    /* Adjusted transform values for better alignment */
+    transform: translateX(8%) translateY(600%);
 }
 
 .text_settings_input {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 /* inside box 1e et 3e btn*/
 .text_input[type=text] {
-	padding:10px;
-	border:0;
+    padding: 10px;
+    border: 0;
     font-size: 15px;
-	border-radius:5px;
-	font-family: 'Pixelify Sans';
-	resize: vertical;
-	width: 35%;
+    border-radius: 5px;
+    font-family: 'Pixelify Sans';
+    /* Removed resize: vertical; for single-line inputs */
+    width: 35%;
     color: var(--setting_textL);
+    /* Adjusted transform values for better alignment */
     transform: translateY(220%) translateX(10%);
 }
 
-.text_input::placeholder{
-    color: var(--setting_textL);   
+.text_input::placeholder {
+    color: var(--setting_textL);
 }
 
 /* ligne sous box d'ecriture 3er btn settings */
 .text_input[type=text]:hover {
-	border:0;
-	border-bottom: 2px solid #a0ced9;
+    border: 0;
+    border-bottom: 2px solid #a0ced9;
 }
 
 .text_settings_btn {
-	all: unset;
-	cursor: pointer;
+    background-color: #007bff; /* Example background color */
+    border: none;
+    padding: 10px 20px; /* Example padding */
+    cursor: pointer;
+    color: white; /* Example text color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.text_settings_btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
 .text_checkbox {
-	color: black;
+    color: black;
 }
 
 .text_checkbox:hover {
-	color:#90d0f0;
+    color: #90d0f0;
 }
 
 /* ********************************/
