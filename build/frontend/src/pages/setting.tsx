@@ -45,7 +45,8 @@ function UserSettings() {
 
 	useEffect(() => {
 		if (user) {
-			setUsername(user.name);
+			console.log("user infos: ", user);
+			setUsername(user.username);
 			setEmail(user.email);
 			setBio(user.bio);
 		}
@@ -73,18 +74,20 @@ function UserSettings() {
 				property="Username"
 				value={username}
 				onChange={(e) => setUsername(e.target.value)}
+				onSubmit={(newUsername) => setUsername(newUsername)} // Example onSubmit for username
 			/>
 			<TextCardSettings
 				property="Email"
 				value={email}
 				onChange={(e) => setEmail(e.target.value)}
+				onSubmit={(newEmail) => setEmail(newEmail)} // Example onSubmit for username
 			/>
 			<TextCardSettings
 				property="Bio"
 				value={bio}
 				onChange={(e) => setBio(e.target.value)}
+				onSubmit={(newBio) => setBio(newBio)} // Example onSubmit for username
 			/>
-			{error && <div>{error}</div>}
 			<button onClick={handleUpdate}>Save Changes</button>
 		</div>
 	);
@@ -107,67 +110,49 @@ function AccessibilitySettings() {
 	);
 }
 
-export function TextCardSettings({ property, value, onChange, onSubmit }) {
-	const [userInput, setUserInput] = useState(value || "");
-	const [isEditing, setIsEditing] = useState(false); // Track whether the input is being edited
+export function TextCardSettings({
+    property,
+    value,
+    onChange,
+    onSubmit, // Accept onSubmit as a prop
+}: {
+    property: string;
+    value: any;
+    onChange: (e: any) => any;
+    onSubmit: (newValue: any) => any; // Define the type for onSubmit
+}) {
+    const [userInput, setUserInput] = useState(value || "");
+    const [isEditing, setIsEditing] = useState(false);
 
-	const handleChange = (event) => {
-		setUserInput(event.target.value);
-		if (onChange) {
-			onChange(event);
-		}
-	};
+    const handleChange = (event) => {
+        setUserInput(event.target.value);
+        if (onChange) {
+            onChange(event);
+        }
+    };
 
-	const handleEdit = () => {
-		setIsEditing(true);
-	};
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
 
-	const handleBlur = () => {
-		setIsEditing(false);
-		// If there is an onSubmit function and the input value has changed, submit the changes
-		if (onSubmit && userInput !== value) {
-			onSubmit(userInput);
-		}
-	};
-
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		// If there is an onSubmit function, submit the changes
-		if (onSubmit) {
-			onSubmit(userInput);
-		}
-		setIsEditing(false);
-	};
-
-	return (
-		<div className="text_settings__card">
-			<div className="text_settings_property">{property}</div>
-			<div className="text_settings_input">
-				{!isEditing ? (
-					// Show the value and a button to edit it
-					<>
-						<div className="text_input_value">{value}</div>
-						<button onClick={handleEdit}>Edit</button>
-					</>
-				) : (
-					// Show the input field for editing
-					<form onSubmit={handleSubmit}>
-						<input
-							type="text"
-							name={property}
-							id={property}
-							value={userInput}
-							className="text_input"
-							onChange={handleChange}
-							onBlur={handleBlur} // Handle onBlur to submit changes when focus is lost
-						/>
-						<button type="submit">Save</button>
-					</form>
-				)}
-			</div>
-		</div>
-	);
+    return (
+        <div className="text_settings__card">
+            <div className="text_settings_property">{property}</div>
+            <div className="text_settings_input">
+                {!isEditing? (
+                    <>
+                        <div className="text_input_value">{value}</div>
+                        <button onClick={handleEdit}>Edit</button>
+                    </>
+                ) : (
+                          <button type="submit">Save</button>
+                    </form>
+                )}
+            </div>
+        </div>
+    );
 }
+
 
 export function AvatarCardSettings() {
 	{/** Automatiser de maniere a ce que chaque 
