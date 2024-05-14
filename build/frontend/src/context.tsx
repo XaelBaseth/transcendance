@@ -39,12 +39,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [location]);
 
-	const value = {	
-	user,	
-	setUser,
-	successMsg,
-	errorMsg,	
-	login: async (username: string, password: string) => {
+	const login = async (username: string, password: string) => {
 		if (username === "" || password === "") {
 			setErrorMsg("Enter valid username or password");
 			return;
@@ -64,8 +59,9 @@ export const AuthProvider: React.FC = ({ children }) => {
 			console.error(error);
 			setErrorMsg("An error occured during login.")
 		}
-	},
-	signup: async (email: string, username: string, password: string, confirmPassword: string) => {
+	};
+
+	const signup = async (email: string, username: string, password: string, confirmPassword: string)  => {
 		if (password !== confirmPassword) {
 			setErrorMsg("Passwords do not match.");
 			return;
@@ -82,16 +78,24 @@ export const AuthProvider: React.FC = ({ children }) => {
 			console.error("Error during registration:", error);
 			setErrorMsg('An error occurred during registration');
 		}
-	},
-	logout: () => {
+	};
+
+	const logout = () => {
 		localStorage.removeItem(ACCESS_TOKEN);
 		localStorage.removeItem(REFRESH_TOKEN);
 
 		setUser(null);
-		setErrorMsg("");
-		setSuccessMsg("");
 		navigate('/login');
-		},
+	};
+
+	const value = {	
+	user,	
+	setUser,
+	successMsg,
+	errorMsg,	
+	login,
+	signup,
+	logout,
 	};
 
 	return (

@@ -101,14 +101,6 @@ function MainStat({title, stat} : {title: string, stat: number}) {
 		);
 }
 
-function MessageUserBtn() {
-	return (
-	<>
-		<button className='msgUserBtn'> Contact the User</button>
-	</>
-	) 
-}
-
 function StatDisplay(props : {title: string, stat: number}) {
 	let stat_theme: string | undefined = undefined;
 
