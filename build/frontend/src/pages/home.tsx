@@ -1,8 +1,8 @@
+import React from 'react'
 import "../styles/Home.css"
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
-    const navigate = useNavigate();
 
     return (
     <div id="play-screen">

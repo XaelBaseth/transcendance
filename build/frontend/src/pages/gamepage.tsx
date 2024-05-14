@@ -1,9 +1,9 @@
+import React from "react";
 import { useNavigate } from "react-router-dom"; 
 import '../styles/Gamepage.css'
-import { useContext } from "react";
+
 
 export default function GamePage() {
-const navigate = useNavigate();
 
 return (
 <div id="play-screen2">

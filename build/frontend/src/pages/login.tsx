@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context';
 import '../styles/Login.css';
 import { useAuth } from '../context';
 
-export default function Login() {
-
+export default function Login() {	
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [errorMsg, setErrorMsg] = useState<string>("");
-	const [successMsg, setSuccessMsg] = useState<string>("");
+	const { login, successMsg, errorMsg } = useAuth();
 	const navigate = useNavigate();
 	const { login } = useAuth();
 
@@ -19,12 +18,11 @@ export default function Login() {
 	const handleLogIn = async (e) => {
 		e.preventDefault();
 		try {
-		  login(username, password);
-		  navigate("/");
+		 await login(username, password);
 		} catch (error) {
-		  setErrorMsg("Invalid username or password. Please try again.");
+			console.error(error);
 		}
-	  };
+	};
 
 	return (
 		<div className="Login">

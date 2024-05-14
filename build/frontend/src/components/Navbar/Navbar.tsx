@@ -13,6 +13,7 @@ export default function Navbar(){
 	}
 
  return (
+	user &&
   <>
     <div className='navbar'>
 		<label className="nav-elements" id="burger-menu" htmlFor="check">
@@ -26,7 +27,6 @@ export default function Navbar(){
 		</div>
 		<>
 			{
-				user &&
 				<div className='nav--avatar'>
 					<Avatar />
 					<button className="logout_btn" onClick={handleLogout}>Logout</button>

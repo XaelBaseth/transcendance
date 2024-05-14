@@ -3,39 +3,61 @@
 /* ********************************/
 
 .settings__flex {
-	display: flex;
-	align-items: left;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+    display: flex;
+    align-items: flex-start; /* Updated to align items to the top */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.setting__line {
-    position: absolute;
-    left: 50%;
-    height: 25%;
-    width: 2px; /* Epaisseur de la ligne */
-    background-color: var(--bouton_border); /* Couleur de la ligne */
-    transform: translateY(-10%);
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; /* Adjust spacing between navigation and settings */
+}
+
+.navigation button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+    padding: 10px 20px;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.navigation button.active {
+    border-bottom-color: var(--primary-color); /* Change color for active button */
 }
 
 .settings {
     width: 75%;
-	height: 89%;
-    border-radius: 10%;
+    height: 80%; /* Adjusted height */
+    border-radius: 10px; /* Updated to px unit */
     background-color: var(--setting_BG);
     border: 5px solid var(--setting_border);
     backdrop-filter: blur(20px);
-	position: absolute;
-	top: 6%;
-	left: 15%;
+    position: relative; /* Updated to relative */
+    top: 10%; /* Updated to center vertically */
+    left: 15%;
+    padding: 20px; /* Add padding for content */
+    overflow-y: auto; /* Add scrollbar when content overflows */
 }
 
 .settings > h1 {
-	text-align: center;
-	font-size: 35px;
-	font-family: 'Pixelify Sans';
-	color: var(--setting_textD)
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Pixelify Sans';
+    color: var(--setting_textD);
+    margin-bottom: 20px; /* Add spacing below the title */
+}
+
+.settings__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax values as needed */
+    grid-gap: 20px; /* Adjust gap between grid items */
 }
 
 /* ********************************/
@@ -57,99 +79,112 @@
 }
 
 /* ********************************/
+/* ***     USER COMPONENT    	 ***/
+/* ********************************/
+
+#avatar_settings,
+#text_settings_card {
+    display: inline-block; /* Display inline-block to have them side by side */
+    vertical-align: top; /* Align to the top */
+}
+
+/* ********************************/
 /* ***     AVATAR COMPONENT     ***/
 /* ********************************/
 
 #avatar_settings {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: left;
-	flex-direction: row;
+    grid-column: auto; /* Reset grid column for Avatar settings */
 }
 
-.avatar_block:nth-child(2) {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+.avatar_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* Add position relative */
 }
 
-.avatar_block:nth-child(2) > h5 {
-	font-family: 'Pixelify Sans';
-	color: var(--setting_textD);
-	font-size: 18px;
-	position: absolute;
-	top: 12%;
-	left: 25%;
+.avatar_block > h5 {
+    font-family: 'Pixelify Sans';
+    color: var(--setting_textD);
+    font-size: 18px;
+    position: absolute;
+    top: 12%;
+    left: 25%;
 }
 
 #user_avatar {
-	height: 9em;
-	width : 9em;
-	background-size: cover;
-	clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-	position: absolute;
-	top: 12%;
-	left: 5%;
+    height: 9em;
+    width: 9em;
+    background-size: cover;
+    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+    position: absolute;
+    top: 12%;
+    left: 5%;
 }
 
 #file {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	z-index: -1;
-	color : #000;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    z-index: -1;
+    color: #000;
 }
 
 #file + label {
     font-weight: 600;
     color: var(--setting_textD);
     display: inline;
-	cursor: pointer;
-	padding: 7px 0;
-	position: absolute;
-	top: 18%;
-	left: 26%;
+    cursor: pointer;
+    padding: 7px 0;
+    position: absolute;
+    top: 18%;
+    left: 26%;
 }
 
 #file + label:hover {
     font-weight: 600;
     color: var(--setting_textL);
     display: inline;
-	cursor: pointer;
-	padding: 7px 0;
+    cursor: pointer;
+    padding: 7px 0;
 }
 
 #file + label > span {
-	font-family: 'Pixelify Sans';
-    letter-spacing:2px;
-	font-size: 16px;
+    font-family: 'Pixelify Sans';
+    letter-spacing: 2px;
+    font-size: 16px;
 }
 
 #avatar_upload_btn {
     font-weight: bold;
-	display : block;
-	font-size: 14px;
-	color: var(--bouton_border);
-	background-color: var(--setting_textD);
-	padding: 10px 20px;
-	border-radius: 50px;
-	border-right: 3px solid var(--bouton_border);
+    display: block;
+    font-size: 14px;
+    color: var(--bouton_border);
+    background-color: var(--setting_textD);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border-right: 3px solid var(--bouton_border);
     border-bottom: 3px solid var(--bouton_border);
-	font-family: 'Pixelify Sans';
-	cursor: pointer;
-	position: absolute;
-	top: 22%;
-	left: 28%;
+    font-family: 'Pixelify Sans';
+    cursor: pointer;
+    position: absolute;
+    top: 22%;
+    left: 28%;
 }
 
 #avatar_upload_btn:hover {
-	color: var(--setting_BG);
+    color: var(--setting_BG);
 }
 
 /* ********************************/
 /* ***   INPUT TEXT COMPONENT   ***/
 /* ********************************/
+
+#text_settings_card {
+    width: 60%; /* Adjust width as needed */
+    margin-left: 20px; /* Add margin between Avatar and Input Text components */
+}
 
 /* Can be 'username', 'bio' or 'email' title */
 .text_settings_property {
