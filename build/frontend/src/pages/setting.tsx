@@ -70,25 +70,10 @@ function UserSettings() {
 
 	return (
 		<div>
-			<TextCardSettings
-				property="Username"
-				value={username}
-				onChange={(e) => setUsername(e.target.value)}
-				onSubmit={(newUsername) => setUsername(newUsername)} // Example onSubmit for username
-			/>
-			<TextCardSettings
-				property="Email"
-				value={email}
-				onChange={(e) => setEmail(e.target.value)}
-				onSubmit={(newEmail) => setEmail(newEmail)} // Example onSubmit for username
-			/>
-			<TextCardSettings
-				property="Bio"
-				value={bio}
-				onChange={(e) => setBio(e.target.value)}
-				onSubmit={(newBio) => setBio(newBio)} // Example onSubmit for username
-			/>
-			<button onClick={handleUpdate}>Save Changes</button>
+			<TextCardSettings property="Enter your pseudo"/>
+            <TextCardSettings property="Enter a bio"/>
+            <TextCardSettings property="Enter your email"/>
+			{/** <button onClick={handleUpdate}>Save Changes</button> */}
 		</div>
 	);
 }
@@ -110,48 +95,60 @@ function AccessibilitySettings() {
 	);
 }
 
-export function TextCardSettings({
-    property,
-    value,
-    onChange,
-    onSubmit, // Accept onSubmit as a prop
-}: {
-    property: string;
-    value: any;
-    onChange: (e: any) => any;
-    onSubmit: (newValue: any) => any; // Define the type for onSubmit
-}) {
-    const [userInput, setUserInput] = useState(value || "");
-    const [isEditing, setIsEditing] = useState(false);
+export function TextCardSettings({ property } : {property: string}) {
+    {/** Automatiser de maniere a ce que chaque 
+        personne puisse avoir son propre avatar */}
 
-    const handleChange = (event) => {
-        setUserInput(event.target.value);
-        if (onChange) {
-            onChange(event);
-        }
-    };
+    const [userInput, setUserInput] = useState<string>("");
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [propertyChanged, setPropertyChange] = useState<boolean>(false);
 
-    const handleEdit = () => {
-        setIsEditing(true);
-    };
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserInput(event.target.value); }
+    
+    const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
+		event.preventDefault();
+		if (property !== 'email' ||
+			(property === 'email' && validator.isEmail(userInput) === true)) {
+			setErrorMsg("");
+
+		}
+		else {
+			setErrorMsg("Email must be formatted mail@mail.mail");
+		}
+	};
 
     return (
         <div className="text_settings__card">
-            <div className="text_settings_property">{property}</div>
-            <div className="text_settings_input">
-                {!isEditing? (
-                    <>
-                        <div className="text_input_value">{value}</div>
-                        <button onClick={handleEdit}>Edit</button>
-                    </>
-                ) : (
-                          <button type="submit">Save</button>
-                    </form>
-                )}
+          <div className="text_settings_property">{property}</div>
+          <div className="text_settings_input">
+            <input  
+              type="text"
+              name={property}
+              id={property}
+              placeholder="placeholder"
+              onChange={handleChange}
+              className="text_input"
+            />
+            <button 
+              className="text_settings_btn"
+              onClick={handleUpdate}>
+            </button>
+          </div>
+          <div className="setting__line"></div>
+          {propertyChanged &&
+            <div className="settings__alert_ok">
+              <h6>Your modification was success</h6>
             </div>
+          }
+          {errorMsg &&
+            <div className="settings__alert_err">
+              <h6>{errorMsg}</h6>
+            </div>
+          }
         </div>
-    );
-}
+      );
+    }
+
 
 
 export function AvatarCardSettings() {
