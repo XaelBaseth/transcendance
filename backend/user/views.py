@@ -14,8 +14,3 @@ class CreateUserView(generics.CreateAPIView):
     queryset = AppUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
-
-class UserUpdateView(generics.UpdateAPIView):
-    queryset = AppUser.objects.all()
-    serializer_class = UserSerializer
-    lookup_field = 'username'
