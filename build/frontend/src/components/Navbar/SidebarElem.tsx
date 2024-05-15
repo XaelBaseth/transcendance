@@ -10,7 +10,7 @@ export default function SidebarElem(props : {
 		<>
 			<ul className='nav-text'>
 				<Link to={props.path} >
-					<img src={props.image} alt='{props.title}' className='sidebar_image'/>
+					<img src={props.image} alt='{props.icones}' className='sidebar_image'/>
 					<span className='item_title'> {props.title}</span>	
 				</Link>
 			</ul>
