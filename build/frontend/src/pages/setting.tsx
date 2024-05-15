@@ -37,7 +37,7 @@ export function TextCardSettings({ property } : {property: string}) {
               type="text"
               name={property}
               id={property}
-              placeholder="placeholder"
+              placeholder="Placeholder"
               onChange={handleChange}
               className="text_input"
             />
@@ -61,10 +61,11 @@ export function TextCardSettings({ property } : {property: string}) {
       );
     }
 
-export function AvatarCardSettings() {
+export function AvatarCardSettings() 
+{
     {/** Automatiser de maniere a ce que chaque 
         personne puisse avoir son propre avatar */}
-    
+ 
     const [errorMsg, setErrorMsg] = useState<string>("");
     const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
     
@@ -99,7 +100,6 @@ export function AvatarCardSettings() {
         </div>
     );
 }
-
 export function PasswordCardSettings() {
     
     const [userInput, setUserInput] = useState<string>("");

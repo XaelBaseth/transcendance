@@ -11,22 +11,31 @@
 
 #whole-profile hr {
 	margin : 1vh;
+	color: var(--setting_textL);
 }
 
 #main-dashboard {
-	background-color: rgba(255,255,255,0.13);
+	width: 40%;
+	height: 67%;
+	background-color: #f7f2e8af;
     backdrop-filter: blur(10px);
-	border: 2px solid rgb(35, 71, 103);
-	padding : 1vw;
+	border: 5px solid var(--bouton_border);
 	border-radius: 20px;
-	margin : 0 2vw 2vh 2vw;
+	position: absolute;
+	left : 18%;
+	top: 15%;
 }
 
 #top-dashboard {
 	display : flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	
+	color: var(--setting_textD);
+	position: absolute;
+	left: 7%;
+	font-family: 'VT323';
+	letter-spacing: 1px;
+	font-size: 18px;
 }
 
 #top-dashboard > div:first-of-type {
@@ -89,17 +98,14 @@
 
 
 #stats {
-	background-color: 	rgba(255, 255, 255, 0.3);;
-	border-radius : 20px;
-	padding: 1vw;
-	width: 50%;
-	margin-top: 6rem;
+	width: 90%;
+	position: absolute;
+	left : 0%;
+	top: 120%;
 }
 
 
 #stats > h1, #stats > h5 {
-	font-family: 'Bungee';
-	color : black;
 	text-align: center;
 }
 
@@ -119,27 +125,32 @@
 .circular__progress::before {
 	content: "";
 	position : absolute;
-	height : 80%;
-	width : 80%;
+	height : 100%;
+	width : 100%;
 	border-radius: 50%;
-	background-color: rgb(255, 255, 255);
+	background-color: var(--bouton_border);
+	left: -3%;
+	top: 5%;
 }
 
 .progress-value {
-	font-size: 2em;
-	font-weight: 500;
-	color: rgb(44, 44, 48);
+    font-size: 35px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -0%);
 }
 
 .winrate__title {
 	text-align: center;
-	font-size: 0.8rem;
-	font-weight: 500;
-	color: black;
+	font-size: 18px;
+	color: var(--setting_textD);
 }
 
 .winrate__content {
-	position: relative;
+	position: absolute;
+	top: 1%;
+	left: 13%;
 }
 
 .winratio__stats {
@@ -153,19 +164,28 @@
 .stat__display {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	margin-bottom: 1.5vh;
+	justify-content: right;
+	letter-spacing: 1px;
 }
 
 .challenge-btn {
-	font-weight: 0;
-	font-size: 14px;
-	color: #fff;
-	background-color: black;
+	font-family: "VT323";
+	font-weight: bold;
+	font-size: 20px;
+	color: var(--bouton_text);
+	background-color: var(--bouton_BG);
+	border: 3px solid var(--bouton_border);
+	border-radius: 10px;
 	padding: 10px 30px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+	letter-spacing: 1px;
 	cursor: pointer;
-	margin: 0 auto;
+	position: absolute;
+	left: 28%;
+
+}
+
+.challenge-btn:hover {
+	color: var(--bouton_text);
+	border: 3px solid var(--bouton_BG);
+	background-color: var(--bouton_border);
 }

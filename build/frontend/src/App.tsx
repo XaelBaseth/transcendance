@@ -43,13 +43,16 @@ function App() {
 						<Route path="*" element={<Error />} />
 						<Route path="/signup" element={<RegisterAndLogout />} />
 
-						<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-						<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-						<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-						<Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
-						<Route path="/pong" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
-						<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-						<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+						<Route path="/" element={<Home />} />
+						<Route path="/profile" element={<Profile />} />
+						<Route path="/gamepage" element={<GamePage />} />
+						<Route path="/leaderboard" element={<Leaderboard />} />
+						<Route path="/pong" element={<Pong />} />
+						<Route path="/settings" element={<Settings />} />
+						{/*<Route path="/profile" element={<ProfileSettings />} />
+        				<Route path="/password" element={<PasswordSettings />} />
+						<Route path="/delete-account" element={<DeleteSettings />} />*/}
+						<Route path="/social" element={<Social />} />
 					</Routes>
 				</AuthProvider>
 			</BrowserRouter>

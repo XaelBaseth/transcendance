@@ -28,15 +28,19 @@ export function Profile() {
 					<div id="stats">
 						<h1>COMPETITIVE OVERVIEW</h1>
 						<div className="winratio__stats">
-							<WinrateCircularBar winRate={10} />
+							<WinrateCircularBar winRate={0} />
 							<div className="stat__display">
-								<StatDisplay title={"Wins"} stat={50} />
-								<StatDisplay title={"Lose"} stat={50} />
+								<StatDisplay title={"Successes"} stat={50} />
+							</div>
+							<div className="stat__display">
+								<StatDisplay title={"Defeats"} stat={50} />
 							</div>
 						</div>
 						<div className="stat__display">
 							<StatDisplay title={"(Rank)"} stat={1} />
-							<StatDisplay title={"(Aces)"} stat={0} />
+						</div>
+						<div className="stat__display">
+							<StatDisplay title={"(Acess)"} stat={0} />
 						</div>
 						<button className="challenge-btn">Challenge</button>
 					</div>

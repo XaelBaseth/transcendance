@@ -35,7 +35,7 @@
 .settings {
     width: 75%;
     height: 80%; /* Adjusted height */
-    border-radius: 10px; /* Updated to px unit */
+    border-radius: 20px; /* Updated to px unit */
     background-color: var(--setting_BG);
     border: 5px solid var(--setting_border);
     backdrop-filter: blur(20px);
@@ -203,7 +203,7 @@
     font-family: 'Pixelify Sans';
     /* Removed resize: vertical; for single-line inputs */
     width: 35%;
-    color: var(--setting_textL);
+    color: var(--setting_textD);
     /* Adjusted transform values for better alignment */
     transform: translateY(220%) translateX(10%);
 }
