@@ -12,7 +12,7 @@ COPY ./frontend /app/frontend
 RUN npm run build --prefix ./frontend
 
 #BUILD NGINX
-FROM nginx:latest
+FROM nginx:1.22.1
 
 # Install necessary packages for building ModSecurity module
 RUN apt update && apt upgrade  -y
@@ -93,16 +93,15 @@ RUN mkdir -p /etc/nginx/modules && cp objs/ngx_http_modsecurity_module.so /etc/n
 #Custom Rules
 WORKDIR /app
 RUN rm -rf /etc/nginx/nginx.conf
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 RUN git clone https://github.com/coreruleset/coreruleset /usr/local/modsecurity-crs
 RUN mv /usr/local/modsecurity-crs/crs-setup.conf.example \
 	/usr/local/modsecurity-crs/crs-setup.conf
 RUN mv /usr/local/modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf.example \
 	/usr/local/modsecurity-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
-COPY ./nginx/modsecurity/modsec/ etc/nginx/modsec/
+COPY ./nginx/modsecurity/modsec /etc/nginx/modsec
 RUN rm -rf /etc/nginx/sites-available/default
 RUN cp /opt/nginx-1.22.1/objs/*.so /etc/nginx/modules/
-COPY ./nginx/modSecurity/modules/test.conf /etc/nginx/modules-enabled/test.conf
+COPY ./nginx/modsecurity/modules/test.conf /etc/nginx/modules-enabled/test.conf
 
 #Nginx classic
 WORKDIR /app
@@ -111,7 +110,7 @@ RUN mkdir -p /etc/nginx/ssl
 
 COPY --from=build /app/frontend/dist /var/www/html
 
-COPY ./nginx/default.conf /etc/nginx/default.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
 RUN chmod +x /etc/nginx/nginx_start.sh
