@@ -16,37 +16,14 @@ FROM nginx:1.22.1
 
 # Install necessary packages for building ModSecurity module
 RUN apt update && apt upgrade  -y
-RUN apt-get install -y libmaxminddb-dev \
-					bison \
-					libperl-dev  \        
-					build-essential \
-					ca-certificates \
-					curl \
-					dh-autoreconf \
-					doxygen \
-					flex \
-					gawk \
-					git \
-					make \
-					iputils-ping \
-					libcurl4-gnutls-dev \
-					libexpat1-dev \
-					libgeoip-dev \
-					liblmdb-dev \
-					libpcre3-dev \
-					libssl-dev \
-					libtool \
-					libxml2 \
-					libxml2-dev \
-					libyajl-dev \
-					locales \
-					lua5.3-dev \
-					pkg-config \
-					wget \
-					yajl-tools \
-					zlib1g-dev \
-					libxslt-dev \
-					libgd-dev \
+RUN apt-get install -y libmaxminddb-dev bison libperl-dev \  
+					build-essential ca-certificates curl dh-autoreconf \
+					doxygen	flex gawk git make iputils-ping \
+					libcurl4-gnutls-dev libexpat1-dev libgeoip-dev \
+					liblmdb-dev libpcre3-dev libssl-dev libtool \
+					libxml2 libxml2-dev libyajl-dev locales \
+					lua5.3-dev pkg-config wget yajl-tools \
+					zlib1g-dev libxslt-dev libgd-dev \
 					systemctl
 
 # Clone ModSecurity repository && install it
@@ -107,11 +84,8 @@ COPY ./nginx/modsecurity/modules/test.conf /etc/nginx/modules-enabled/test.conf
 WORKDIR /app
 RUN rm -rf /var/www/html
 RUN mkdir -p /etc/nginx/ssl
-
 COPY --from=build /app/frontend/dist /var/www/html
-
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-
 COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
 RUN chmod +x /etc/nginx/nginx_start.sh
 

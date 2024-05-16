@@ -14,3 +14,7 @@ https://www.linuxbabe.com/security/modsecurity-nginx-debian-ubuntu
 
 2FA
 https://www.phind.com/search?cache=gr0vyru1exwk3rzcnim70n5m
+
+
+command to test if WAF is enabled:
+https://localhost:8000/aphpfilethatdonotexist.php?something=../../etc

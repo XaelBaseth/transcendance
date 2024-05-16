@@ -21,6 +21,6 @@ fclean:
 	@echo "All clean, to make sure run <docker system df>!"
 
 logs:
-	docker compose logs >> .logs
+	docker compose logs > .logs
 
 .PHONY: all build up stop clean fclean logs
