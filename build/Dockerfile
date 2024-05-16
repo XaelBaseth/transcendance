@@ -69,6 +69,7 @@ RUN mkdir -p /etc/nginx/modules && cp objs/ngx_http_modsecurity_module.so /etc/n
 
 #Custom Rules
 WORKDIR /app
+RUN mkdir -p /opt/modsecurity/var/log/
 RUN rm -rf /etc/nginx/nginx.conf
 RUN git clone https://github.com/coreruleset/coreruleset /usr/local/modsecurity-crs
 RUN mv /usr/local/modsecurity-crs/crs-setup.conf.example \
