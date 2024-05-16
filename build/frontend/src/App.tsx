@@ -25,6 +25,7 @@ function RegisterAndLogout() {
 }
 
 function App() {
+
 	return (
 	<div id='app'>
 		<section id="main_content">

@@ -3,5 +3,7 @@ fix front :
 - si utilisteur existe deja, mettre message, au lieu de erreur
 	- settings CSS
 	- creation Room pour tournois
-	- communication back to front! (dire a Raph de se grouiller), profile, social
+	- handle settings
+	- set up cookies auth
+	- communication back to front! (), profile, social
 2FA via email
