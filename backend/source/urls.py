@@ -11,6 +11,6 @@ urlpatterns = [
     path("api/token/refresh/", jwt_views.TokenRefreshView.as_view(), name="refresh"),
     path("api-auth/", include("rest_framework.urls")),
     path("api/", include("user.urls")),
-	path('pong-api/', include('pong.urls')),
+	path("pong-api/", include("pong.urls")),
 ]
 

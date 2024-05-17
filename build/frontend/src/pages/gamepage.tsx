@@ -9,19 +9,23 @@ export default function GamePage() {
 	const navigate = useNavigate();
 
 	const roomButtonPressed = () => {
-		const requestOptions = {
-			headers: { 'Content-Type': 'application/json' },
-			data: {
-				player_limit: 1,
-			},
+		const requestData = {
+		  player_limit: 1,
 		};
-
-		api.post('pong-api/create-room/', requestOptions)
-			.then((response) => {
-				console.log(response.data);
-				navigate('/pong/' + response.data.code);
-			});
-	}
+	  
+		const requestOptions = {
+		  headers: { 'Content-Type': 'application/json' },
+		};
+	  
+		api.post('pong-api/create-room/', requestData, requestOptions)
+		  .then((response) => {
+			console.log(response.data);
+			navigate('/pong/' + response.data.code);
+		  })
+		  .catch((error) => {
+			console.error('There was an error creating the room!', error);
+		  });
+	  };
 
 	return (
 		<div id="play-screen2">
