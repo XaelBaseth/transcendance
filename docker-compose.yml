@@ -8,11 +8,15 @@ services:
     networks:
       - main
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"
+        ]
       interval: 5s
       retries: 3
       timeout: 5s
-  
+
   django:
     container_name: django
     depends_on:
@@ -25,12 +29,12 @@ services:
     networks:
       - main
     healthcheck:
-      test: ["CMD-SHELL", "curl localhost:8000/api/ || exit 1"]
+      test: [ "CMD-SHELL", "curl localhost:8000/api/ || exit 1" ]
       interval: 3s
       timeout: 10s
       retries: 3
     env_file: .env
-  
+
   nginx:
     container_name: nginx
     env_file: .env
@@ -50,11 +54,21 @@ services:
     volumes:
       - /var/www/html
     healthcheck:
-      test: ["CMD-SHELL", "curl -f https://localhost:8000/ || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f https://localhost:8000/ || exit 1"
+        ]
       interval: 3s
       timeout: 10s
       retries: 3
 
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    networks:
+      - main
 
 networks:
   main:

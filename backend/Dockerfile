@@ -6,11 +6,11 @@ COPY ./backend /app/backend
 WORKDIR /app/backend
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends postgresql-client\
-    && rm -rf /var/lib/apt/lists/*
+	&& apt-get install -y --no-install-recommends postgresql-client\
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip\
-    && pip install --no-cache-dir -r requirements.txt
+	&& pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
 

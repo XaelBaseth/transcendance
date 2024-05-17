@@ -60,7 +60,9 @@ SIMPLE_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
+	'pong',
 	'daphne',
+	'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -104,7 +106,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'source.wsgi.application'
-ASGI_APPLICATION = 'source.wsgi.application'
+ASGI_APPLICATION = 'source.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -179,3 +181,12 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
   'https://localhost:8000',
 )
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
