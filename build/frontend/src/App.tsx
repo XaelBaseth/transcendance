@@ -4,7 +4,7 @@ import BGVideo from './assets/BG.mp4'
 import Home from "./pages/home"
 import Error from "./pages/error"
 import GamePage from "./pages/gamepage"
-import { Leaderboard } from "./pages/leaderboard"
+import About from "./pages/about"
 import Login from "./pages/login"
 import Pong from "./pages/pong"
 import { Profile } from "./pages/profile"
@@ -47,7 +47,7 @@ function App() {
 						<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 						<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 						<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-						<Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+						<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 						<Route path="/pong" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
 						<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 						<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />

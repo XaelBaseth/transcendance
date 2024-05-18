@@ -7,3 +7,4 @@ fix front :
 	- set up cookies auth
 	- communication back to front! (), profile, social
 2FA via email
+page About pour remplacer leaderboard

@@ -1,0 +1,46 @@
+.aboutus{
+	height: 92vh;
+	padding-top: 9vh;
+}
+
+
+.staff{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+	padding-top: 30vh;
+	
+	height: 70%;
+	width: 60%;
+	background-color: #fcf5c7a6;
+	backdrop-filter: blur(20px);
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	border-radius: 10px;
+	border: 5px solid var(--pong_borber);
+	padding: 30px 30px;
+}
+
+.container_staff {
+	text-align: center;
+	width: 40%;
+	padding: 1em;
+	box-sizing: content-box;
+} 
+
+.image{
+	border-radius: 10px;
+	width: 90px;
+	height: 90px;  
+}
+
+.text {
+	font-family: "Pixelify Sans";
+	font-weight: bold;
+	color: var(--pong_borber);
+	font-size: 15px;
+	}
