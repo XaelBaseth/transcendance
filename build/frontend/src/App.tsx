@@ -14,6 +14,7 @@ import { Social } from "./pages/social"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { AuthProvider } from "./context"
+//import CookieConsent from "react-cookie-consent"
 
 import './App.css'
 
@@ -34,6 +35,11 @@ function App() {
 					<source src={BGVideo} type='video/mp4' />
 				</video>
 			</div>
+			{/*<div cookie_setting>
+				<CookieConsent>
+					This website uses cookies to enhance user experience, such as user information.
+				</CookieConsent>
+			</div>*/}
 			<BrowserRouter>
 				<AuthProvider>
 					<div className="Navbar">
