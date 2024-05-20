@@ -1,10 +1,12 @@
+User management:
+	creation de profil, sauvegarde dans les cookies lien avec le login/signin
+	Modification de profil, lien avec les settings
+	suppression de cookies
+	liens social (friendlist, block user, etc)
+
 WAF integration to nginx 
 fix front :
-- si utilisteur existe deja, mettre message, au lieu de erreur
 	- settings CSS
 	- creation Room pour tournois
-	- handle settings
-	- set up cookies auth
-	- communication back to front! (), profile, social
 2FA via email
 page About pour remplacer leaderboard

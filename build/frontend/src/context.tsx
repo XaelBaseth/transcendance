@@ -39,6 +39,14 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [location]);
 
+	//Print statement
+	useEffect(() => {
+		if (user) {
+		  console.log("Updated User data: ", user.username);
+		}
+	  }, [user]);
+	//end of print statement
+
 	//login
 	const login = async (username: string, password: string) => {
 		if (username === "" || password === "") {
@@ -47,6 +55,11 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 		try {
 			const res = await api.post("/api/token/", {username, password});
+
+			//Print statement
+			console.log("Login Response: ", res);
+			//End of print statement
+
 			if (res.status >= 200 && res.status < 300) {
 				setUser({...res.data });
 				setSuccessMsg("Successfully logged in!")
