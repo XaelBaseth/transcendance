@@ -34,7 +34,6 @@ function App() {
 				</video>
 			</div>
 			<BrowserRouter>
-				<AuthProvider>
 					<div className="Navbar">
 						<Navbar />
 					</div>
@@ -54,7 +53,6 @@ function App() {
 						<Route path="/delete-account" element={<DeleteSettings />} />*/}
 						<Route path="/social" element={<Social />} />
 					</Routes>
-				</AuthProvider>
 			</BrowserRouter>
 		</section>
 	</div>

@@ -28,7 +28,7 @@ export function Profile() {
 					<div id="stats">
 						<h1>COMPETITIVE OVERVIEW</h1>
 						<div className="winratio__stats">
-							<WinrateCircularBar winRate={100} />
+							<WinrateCircularBar winRate={0} />
 							<div className="stat__display">
 								<StatDisplay title={"Victories"} stat={50} />
 							</div>
