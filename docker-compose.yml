@@ -89,8 +89,8 @@ services:
       - IPC_LOCK
     entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
     healthcheck:
-      test: ["CMD", "vault", "status"]
-      interval: 30s
+      test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
+      interval: 3s
       timeout: 10s
       retries: 3
 
