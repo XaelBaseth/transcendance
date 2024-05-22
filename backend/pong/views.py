@@ -6,11 +6,15 @@ from rest_framework import status
 from .models import PongRoom
 from .serializer import CreatePongRoomSerializer, JoinPongRoomSerializer, PongRoomSerializer
 
+import logging
+
 # Create your views here.
 class CreatePongRoomView(APIView):
 	serializer_class = CreatePongRoomSerializer
 
 	def post(self, request, format=None):
+		logger = logging.getLogger(__name__)
+		logger.info('Je create une room')
 		serializer = self.serializer_class(data=request.data)
 		if serializer.is_valid():
 			player_limit = serializer.data.get('player_limit')

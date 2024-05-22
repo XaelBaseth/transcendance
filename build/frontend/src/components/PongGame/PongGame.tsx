@@ -18,8 +18,12 @@ const PongGame = () => {
 	const socketRef = useRef<WebSocket | null>(null);
 
 	useEffect(() => {
-		socketRef.current = new WebSocket('ws://localhost:8000/ws/pong/' + params.roomCode + '/');
-		console.log("params : " + params.roomCode)
+		try {
+			socketRef.current = new WebSocket('wss://localhost:8000/ws/pong/' + params.roomCode + '/');
+		}
+		catch (error) {
+			console.error("Error during websocket creation:", error);
+		}
 
 		socketRef.current.onopen = () => {
 			if (socketRef.current) {
@@ -29,6 +33,7 @@ const PongGame = () => {
 
 		socketRef.current.onerror = (error) => {
 			console.error('WebSocket error', error);
+			console.error('WebSocket error2', error.message, "code :", error.code, "type :", error.type, "target :", error.target, "current t:", error.currentTarget);
 		}
 
 		return () => {

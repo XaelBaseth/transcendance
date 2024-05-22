@@ -9,14 +9,14 @@ import { useAuth } from "../context";
 export default function GamePage() {
 	const navigate = useNavigate();
 
-	const roomButtonPressed = async () => {
-		const requestData = {
-			player_limit: 1,
-		};
+	const pongGameModeButtonPressed = async () => {
+		// const requestData = {
+		// 	player_limit: 1,
+		// };
 
-		const requestOptions = {
-			headers: { 'Content-Type': 'application/json' },
-		};
+		// const requestOptions = {
+		// 	headers: { 'Content-Type': 'application/json' },
+		// };
 
 		// api.post('pong-api/create-room', requestData, requestOptions)
 		// 	.then((response) => {
@@ -55,18 +55,19 @@ export default function GamePage() {
 		// 	console.error("Error during registration:", error);
 		// 	console.log('An error occurred during registration');
 
-		try {
-			const res = await api.post("/api/pong-api/create-room", requestData);
-			if (res.status >= 200 && res.status < 300) {
-				console.log("create r successful.");
-				navigate('/pong/' + res.data.code);
-			} else {
-				console.log("create r failed.");
-			}
-		} catch (error) {
-			console.error("Error during create r:", error);
-			console.log('An error occurred during create r');
-		}
+		// try {
+		// 	const res = await api.post("/pong-api/create-room", requestData);
+		// 	if (res.status >= 200 && res.status < 300) {
+		// 		console.log("create r successful.");
+		// 		navigate('/pong/' + res.data.code);
+		// 	} else {
+		// 		console.log("create r failed.");
+		// 	}
+		// } catch (error) {
+		// 	console.error("Error during create r:", error);
+		// 	console.log('An error occurred during create r');
+		// }
+		navigate('/pong');
 	}
 
 
@@ -74,7 +75,7 @@ export default function GamePage() {
 		<div id="play-screen2">
 			<div className="button1" data-text="MODE PONG"
 				title="Use the up and down arrows of your keyboard to play !"
-				onClick={roomButtonPressed}>
+				onClick={pongGameModeButtonPressed}>
 				PONG MODE
 			</div>
 			<div className="button2" data-text="MODE OTHER"
