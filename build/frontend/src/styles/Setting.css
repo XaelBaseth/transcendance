@@ -39,11 +39,9 @@
     background-color: var(--setting_BG);
     border: 5px solid var(--setting_border);
     backdrop-filter: blur(20px);
-    position: relative; /* Updated to relative */
-    top: 10%; /* Updated to center vertically */
-    left: 15%;
-    padding: 20px; /* Add padding for content */
-    overflow-y: auto; /* Add scrollbar when content overflows */
+	position: absolute;
+	top: 6%;
+	left: 13%;
 }
 
 .settings > h1 {
@@ -277,7 +275,7 @@
 	font-weight: bold;
 	position: absolute;
     right: 10px;
-    transform: translateY(-3100%) translateX(-55%);
+    transform: translateY(-3180%) translateX(-55%);
 }
 
 
@@ -309,6 +307,10 @@
 	background-color: transparent;
     letter-spacing:1px;
 	transform: translateY(-920%) translateX(150%);
+}
+
+#password__btn:hover {
+	color: var(--setting_textL);
 }
 
 /* ********************************/

@@ -5,7 +5,9 @@ fix front :
 	- cookie auth
 	- settings CSS
 	- creation Room pour tournois
-	- communication back to front! (dire a Raph de se grouiller), profile, social
+	- handle settings
+	- set up cookies auth
+	- communication back to front! (), profile, social
 2FA via email
 
 WAF

@@ -8,7 +8,7 @@ const ErrorPage = () => {
     let errorMsg = '';
     switch (status) {
         case '400':
-            errorMsg = 'Bad Request';
+            errorMsg = 'Bad  Request';
             break ;
         case '401':
             errorMsg = 'Unauthorized';
@@ -17,13 +17,13 @@ const ErrorPage = () => {
             errorMsg = 'Forbidden';
             break ;
         case '404':
-            errorMsg = 'Page Not Found';
+            errorMsg = 'Page  Not  Found';
             break ;
         case '500':
-            errorMsg = 'Internal Server Error';
+            errorMsg = 'Internal  Server  Error';
             break ;
     default:
-        errorMsg = 'Ressource Not Found';
+        errorMsg = 'Ressource Not  Found';
     }
 
     return (
