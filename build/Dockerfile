@@ -16,7 +16,7 @@ FROM nginx:1.22.1
 
 # Install necessary packages for building ModSecurity module
 RUN apt update && apt upgrade  -y
-RUN apt-get install -y libmaxminddb-dev bison libperl-dev \  
+RUN apt-get install -y libmaxminddb-dev bison libperl-dev \
 					build-essential ca-certificates curl dh-autoreconf \
 					doxygen	flex gawk git make iputils-ping \
 					libcurl4-gnutls-dev libexpat1-dev libgeoip-dev \

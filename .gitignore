@@ -1,6 +1,9 @@
 #virtualenv
 backend/.venv
 
+#42 setup
+$HOME
+
 #back
 log
 logs
