@@ -47,6 +47,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 		try {
 			const res = await api.post("/api/token/", {username, password});
+			console.log(res);
 			if (res.status >= 200 && res.status < 300) {
 				setUser({...res.data });
 				setSuccessMsg("Successfully logged in!")
