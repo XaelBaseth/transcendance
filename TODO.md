@@ -33,9 +33,8 @@ https://localhost:8000/aphpfilethatdonotexist.php?something=../../etc
 	- communication back to front! (dire a Raph de se grouiller), profile, social
 2FA via email
 
-WAF
-https://www.phind.com/search?cache=zm4v6c9b0rbvdn90vkq6zjmm
-https://www.linuxbabe.com/security/modsecurity-nginx-debian-ubuntu
+Vault
+https://france.devoteam.com/paroles-dexperts/hashicorp-vault/
 
 2FA
 https://www.phind.com/search?cache=gr0vyru1exwk3rzcnim70n5m
