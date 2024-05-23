@@ -66,7 +66,7 @@ WORKDIR /app
 RUN rm -rf /var/www/html
 RUN mkdir -p /etc/nginx/ssl
 COPY --from=build /app/frontend/dist /var/www/html
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/default.conf /etc/nginx/default.conf
 COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
 RUN chmod +x /etc/nginx/nginx_start.sh
 
