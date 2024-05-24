@@ -4,7 +4,7 @@ import BGVideo from './assets/BG.mp4'
 import Home from "./pages/home"
 import Error from "./pages/error"
 import GamePage from "./pages/gamepage"
-import { Leaderboard } from "./pages/leaderboard"
+import About from "./pages/about"
 import Login from "./pages/login"
 import Pong from "./pages/pong"
 import { Profile } from "./pages/profile"
@@ -14,6 +14,7 @@ import { Social } from "./pages/social"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { AuthProvider } from "./context"
+//import CookieConsent from "react-cookie-consent"
 
 import './App.css'
 
@@ -34,6 +35,11 @@ function App() {
 					<source src={BGVideo} type='video/mp4' />
 				</video>
 			</div>
+			{/*<div cookie_setting>
+				<CookieConsent>
+					This website uses cookies to enhance user experience, such as user information.
+				</CookieConsent>
+			</div>*/}
 			<BrowserRouter>
 				<AuthProvider>
 					<div className="Navbar">
@@ -47,7 +53,7 @@ function App() {
 						<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 						<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 						<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-						<Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+						<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 						<Route path="/pong" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
 						<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 						<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />

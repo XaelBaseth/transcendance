@@ -1,0 +1,86 @@
+{
+	"home":{
+		" PRESS TO PLAY ":" APPUYEZ POUR JOUER" 
+	},
+	"navbar":{
+		"Profil":"Profil",
+		"Social":"Social",
+		"Match History":"Historique des parties",
+		"Settings":"Reglages",
+		"Log in":"Se Connecter"
+	},
+	"error":{
+		"Error":"Erreur"
+	},
+	"gamepage":{
+		"Use the up and down arrows of your keyboard to play !":"Utilisez les fleches haut et bas du clavier pour jouer !",
+		"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !":"Venez essayer notre {INSEREZ JEU ICI} !",
+		"Compete in a tournament to see who is the best (it's you!)!":"Participez a un tournois pour savoir qui est le meilleur (c'est vous!) !",
+		"PONG MODE":"MODE PONG",
+		"OTHER GAME MODE":"MODE AUTRE JEU",
+		"TOURNAMENT MODE":"MODE TOURNOIS",
+		"Looking for a match...":"En recherche de match",
+		"Match found! Redirecting to game...":"Match trouve! Redirection vers le jeu",
+		"Leave Queue":"En train de quittez la file d'attente",
+		"Left Queue":"File d'attente quittee",
+		"Preparing the room...":"Preparation du lobby"
+	},
+	"login":{
+		"Username":"Nom d'utilisateur",
+		"Password":"Mot de passe",
+		"Log In":"Se Connecter",
+		"Log In with 42":"Se connecter avec 42",
+		"Sign up":"S'enregistrer",
+		"Successfully signed up!":"Connecte avec succes",
+		"A user with this username already exists":"Un utilisateur avec ce pseudo existe deja",
+		"User does not exist: please sign up before":"L'utilisateur n'existe pas: merci de vous enregistrer avant de vous connecter.",
+		"Password does not match":"Le mot de passe est erronne"
+	},
+	"signup":{
+		"Email":"Email",
+		"Username":"Nom d'utilisateur",
+		"Password":"Mot de passe",
+		"Confirm new password":"Confirmer le mot de passe"
+	},
+	"pong":{
+		"Hello":"Bonjour"
+	},
+	"profile":{
+		"BIO":"BIO",
+		"Total Matches":"Nombre total de Match",
+		"Victories":"Victoires",
+		"Friends":"Amis",
+		"COMPETITIVE OVERVIEW":"STATS COMPETITIVES",
+		"Wins":"Victoires",
+		"Loss":"Defaites",
+		"Rank":"Classement",
+		"Aces":"Ace",
+		"Challenge":"Defiez"
+	},
+	"social":{
+		"Looking for some friend ?":"A la recherche d'amis ?",
+		"Type the username of the person you want to find...":"Entrez le nom d'utilisateur de la personne que vous cherchez...",
+		"Add as friend":"Ajoutez en tant qu'ami",
+		"All friends":"Tout les amis",
+		"Active friends":"Amis en ligne",
+		"Blocked users":"Utilisateurs bloques",
+		"Pending request":"Demandes en attente"
+	},
+	"about":{
+	},
+	"settings":{
+		"Settings":"Parametre",
+		"User":"Utilisateur",
+		"Privacy and Security":"Vie privee et securite",
+		"Accessibility":"Accessibilite",
+		"Enter a bio":"Entrez une bio",
+		"Enter your pseudo":"Entrez votre nom d'utilisateur",
+		"Enter your email":"Entrez votre addresse email",
+		"Change your password":"Changez votre mot de passe",
+		"Show password":"Montrez votre mot de passe",
+		"Save password changes":"Sauvegarder les modifications de mots de passe",
+		"Beware this action is irreversible":"Attention, cette action est irreversible",
+		"Do you want to delete your account":"Voulez-vous supprimer votre compte"
+	}
+}
+	
