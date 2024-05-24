@@ -10,6 +10,3 @@ SecureVault for password
 fix front :
 	- settings CSS
 	- creation Room pour tournois
-2FA via email
-language button
-colorblind button
