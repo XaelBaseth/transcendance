@@ -1,8 +1,14 @@
-FROM hashicorp/vault:1.11.3
+FROM hashicorp/vault:1.16
 
-COPY ./vault-config.json /vault/config/vault-config.json
-COPY ./unseal_vault.sh /unseal_vault.sh
-RUN chmod +x /unseal_vault.sh
+WORKDIR /
+RUN mkdir -p script/
+COPY ./vault-config.hcl /vault/config/vault-config.hcl
+COPY ./unseal_vault.sh script/unseal_vault.sh
+
 EXPOSE 8200
 
-ENTRYPOINT [ "/unseal_vault.sh" ]
+
+COPY ./entrypoint.sh script/entrypoint.sh
+RUN chmod +x script/entrypoint.sh
+
+ENTRYPOINT [ "sh", "/script/entrypoint.sh" ]
