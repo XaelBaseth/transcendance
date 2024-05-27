@@ -10,3 +10,9 @@ sqlparse
 psycopg2-binary
 python-dotenv
 django-environ
+channels[daphne]
+channels-redis==4.2.0
+redis==5.0.4
+websocket==0.2.1
+websocket-client==1.8.0
+websockets==12.0
