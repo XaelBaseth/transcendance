@@ -1,9 +1,98 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import validator from 'validator';
+import { useAuth } from '../context';
+import api from '../api';
 import '../styles/Setting.css'
+
+export default function Settings() {
+	const [currentSection, setCurrentSection] = useState('USER'); // Default section is 'USER'
+
+	const handleSectionChange = (section) => {
+		setCurrentSection(section);
+	};
+
+	return (
+		<div className='settings__flex'>
+			<div className='settings'>
+				<h1>Settings</h1>
+				<img src="" alt="" />
+				<div className='settings__container'>
+					<div className="navigation">
+						<button className={currentSection === 'USER' ? 'active' : ''} onClick={() => handleSectionChange('USER')}>User</button>
+						<button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>Privacy and Security</button>
+						<button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>Accessibility</button>
+					</div>
+					<div className="settings_grid">
+						{currentSection === 'USER' && <UserSettings />} 
+						{currentSection === 'PRIVACY' && <PrivacySettings />} 
+						{currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function UserSettings() {
+	const { user, setUser } = useAuth();
+	const [username, setUsername] = useState<string>('');
+	const [email, setEmail] = useState<string>('');
+	const [bio, setBio] = useState<string>('');
+	const [error, setError] = useState<string>('');
+
+	useEffect(() => {
+		if (user) {
+			console.log("user infos: ", user);
+			setUsername(user.username);
+			setEmail(user.email);
+			setBio(user.bio);
+		}
+	}, [user]);
+
+	const handleUpdate = async () => {
+		try {
+			//change link according to backend settings
+			const response = await api.put(`/api/user/update/${user.username}/`, { username, email, bio });
+			if (response.status >= 200 && response.status < 300) {
+				const updatedUser = { ...user, name: username, email, bio };
+				setUser(updatedUser);
+				console.log("User updated successfully");
+			} else {
+				setError("Failed to update user");
+			}
+		} catch (error) {
+			console.error("Error updating user:", error);
+			setError("Error updating user");
+		}
+	};
+
+	return (
+		<div>
+			<TextCardSettings property="Enter your pseudo"/>
+            <TextCardSettings property="Enter a bio"/>
+            <TextCardSettings property="Enter your email"/>
+			{/** <button onClick={handleUpdate}>Save Changes</button> */}
+		</div>
+	);
+}
+
+
+function PrivacySettings() {
+	return (
+		<PasswordCardSettings />
+		//<Activate2FA />
+	);
+}
+
+function AccessibilitySettings() {
+	return (
+		/**Languages changes */
+		/**Colorbling mode */
+		<DeleteAccountCardSettings />
+	);
+}
 
 export function TextCardSettings({ property } : {property: string}) {
     {/** Automatiser de maniere a ce que chaque 
@@ -19,10 +108,7 @@ export function TextCardSettings({ property } : {property: string}) {
 		event.preventDefault();
 		if (property !== 'email' ||
 			(property === 'email' && validator.isEmail(userInput) === true)) {
-			//updateProperty.mutate();
 			setErrorMsg("");
-			if (property === 'email')
-				toast.success("Please check your mails");
 		}
 		else {
 			setErrorMsg("Email must be formatted mail@mail.mail");
@@ -37,14 +123,10 @@ export function TextCardSettings({ property } : {property: string}) {
               type="text"
               name={property}
               id={property}
-              placeholder="placeholder"
+              placeholder="Placeholder"
               onChange={handleChange}
               className="text_input"
             />
-            <button 
-              className="text_settings_btn"
-              onClick={handleUpdate}>
-            </button>
           </div>
           <div className="setting__line"></div>
           {propertyChanged &&
@@ -61,10 +143,11 @@ export function TextCardSettings({ property } : {property: string}) {
       );
     }
 
-export function AvatarCardSettings() {
+export function AvatarCardSettings() 
+{
     {/** Automatiser de maniere a ce que chaque 
         personne puisse avoir son propre avatar */}
-    
+ 
     const [errorMsg, setErrorMsg] = useState<string>("");
     const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
     
@@ -75,40 +158,38 @@ export function AvatarCardSettings() {
         }
     }
 
-    return (
-        <div id='avatar_settings'>
-            <div>
-                <img src={'/src/assets/pokeball.png'} alt='user_avatar' id='user_avatar'/>
-            </div>
-            <div className='avatar_block'>
-                <h5>Change your avatar :</h5>
-                <input onChange={handleChange} type='file' accept='image/png, image/jpeg, image/gif' name="file" id='file' />
-                <label htmlFor='file' id='chose_file'>
-                    <span>Choose a new file</span>
-                </label>
-                <>
-                    {
-                        errorMsg &&
-                        <div className="setting__alert_err">
-                            <h6>{errorMsg}</h6>
-                        </div>
-                    }
-                </>
-                <button id="avatar_upload_btn" /**onClick={handleSubmit} */>Upload</button>
-            </div>
-        </div>
-    );
+	return (
+		<div id='avatar_settings'>
+			<div>
+				<img src={''} alt='user_avatar' id='user_avatar'/>
+			</div>
+			<div className='avatar_block'>
+				<h5>Change your avatar :</h5>
+				<input onChange={handleChange} type='file' accept='image/png, image/jpeg, image/gif' name="file" id='file' />
+				<label htmlFor='file' id='chose_file'>
+					<span>Choose a new file</span>
+				</label>
+				<>
+					{
+						errorMsg &&
+						<div className="setting__alert_err">
+							<h6>{errorMsg}</h6>
+						</div>
+					}
+				</>
+				<button id="avatar_upload_btn" /**onClick={handleSubmit} */>Upload</button>
+			</div>
+		</div>
+	);
 }
-
 export function PasswordCardSettings() {
-    
-    const [userInput, setUserInput] = useState<string>("");
-    const [errorMsg, setErrorMsg] = useState<string>("");
-    const [passwordChanged, setPasswordChange] = useState<boolean>(false);
+	const [userInput, setUserInput] = useState<string>("");
+	const [errorMsg, setErrorMsg] = useState<string>("");
+	const [passwordChanged, setPasswordChange] = useState<boolean>(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setUserInput(event.target.value);
-        if (validator.isStrongPassword(userInput, {
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setUserInput(event.target.value);
+		if (validator.isStrongPassword(userInput, {
 			minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1
 		})
 			=== false) {
@@ -116,15 +197,15 @@ export function PasswordCardSettings() {
 		} else {
 			setErrorMsg("");
 		}
-    }
+	}
 
-    const handleConfirmation = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleConfirmation = (event: React.ChangeEvent<HTMLInputElement>) => {
 		(event.target.value !== userInput) ?
 			setErrorMsg("")
 			: setErrorMsg("");
 	}
 
-    const handleUpdate = (event: React.MouseEvent<HTMLElement>) => {
+	const handleUpdate = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
 		if (errorMsg === "") {
 			//updatePassword.mutate();
@@ -132,8 +213,8 @@ export function PasswordCardSettings() {
 		}
 	};
 
-    const [type, setType] = useState<string>("password");
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+	const [type, setType] = useState<string>("password");
+	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
 		if (type === "password") {
 			setType("text");
@@ -142,83 +223,57 @@ export function PasswordCardSettings() {
 		}
 	}
 
-    return (
-        <div className="password__card">
-            <h2>Change your password</h2>
-            <h4>New password</h4>
-            <div className="input_container">
-                <input  type={type}
-                        name="password"
-                        id="password"
-                        onChange={handleChange}
-                        className="password__input"
-            />
-                <span onClick={handleClick}>show password</span>
-            </div>
-            <h4>Confirm the new password</h4>
-            <div className="input_container">
-                <input  type={type} 
-                        name="password"
-                        id="password2"
-                        onChange={handleConfirmation}
-                        className="password__input"
-                />
-                    <span onClick={handleClick}>show password</span>
-            </div>
-            <button id="password__btn" onClick={handleUpdate}>Save password changes</button>
-            <>
-                {
-                    passwordChanged &&
-                    <div className="settings__alert_ok">
-                        <h6>Your modification was successful</h6>
-                    </div>
-                }
-            </>
-        </div>
-    );
+	return (
+		<div className="password__card">
+			<h2>Change your password</h2>
+			<h4>New password</h4>
+			<div className="input_container">
+				<input  type={type}
+						name="password"
+						id="password"
+						onChange={handleChange}
+						className="password__input"
+			/>
+				<span onClick={handleClick}>show password</span>
+			</div>
+			<h4>Confirm the new password</h4>
+			<div className="input_container">
+				<input  type={type} 
+						name="password"
+						id="password2"
+						onChange={handleConfirmation}
+						className="password__input"
+				/>
+					<span onClick={handleClick}>show password</span>
+			</div>
+			<button id="password__btn" onClick={handleUpdate}>Save password changes</button>
+			<>
+				{
+					passwordChanged &&
+					<div className="settings__alert_ok">
+						<h6>Your modification was successful</h6>
+					</div>
+				}
+			</>
+		</div>
+	);
 }
 
-/*return (
-        <div className="password__card">
-            <h2>Change your password</h2>
-            <h4>New password</h4>
-            <div className="input_container">
-                <input
-                    type={type}
-                    name="password"
-                    id="password"
-                    onChange={handleChange}
-                    className="password__input"
-                />
-                <span onClick={handleClick}>show password</span>
+export function Activate2FA() {
+    const [is2FAActivated, setIs2FAActivated] = useState(false);
+
+    return (
+        // Use a React Fragment or a div to wrap all elements
+        <>
+            <div className="checkbox_2FA">
+                <label>
+                    Activate 2FA:
+                    <input type="checkbox" checked={is2FAActivated} onChange={(e) => setIs2FAActivated(e.target.checked)} />
+                </label>
             </div>
-            <h4>Confirm the new password</h4>
-            <div className="input_container">
-                <input
-                    type={type}
-                    name="password"
-                    id="password2"
-                    onChange={handleConfirmation}
-                    className="password__input"
-                />
-                <span onClick={handleClick}>show password</span>
-            </div>
-            <button id="password__btn" onClick={handleUpdate}>Save password changes</button>
-            <>
-                {passwordChanged && (
-                    <div className="settings__alert_ok">
-                        <h6>Your modification was successful</h6>
-                    </div>
-                )}
-                {errorMsg && (
-                    <div className="settings__alert_error">
-                        <h6>{errorMsg}</h6>
-                    </div>
-                )}
-            </>
-        </div>
+        </>
     );
-}*/
+}
 
 export function DeleteAccountCardSettings() {
 
@@ -237,7 +292,7 @@ export function DeleteAccountCardSettings() {
 	useEffect(() => {
 		if (isDeleted === true) {
 			setTimeout(() => {
-				navigate('/');
+				navigate('/login');
 			}, 3000);
 		}
 	}, [isDeleted, navigate]);
@@ -256,7 +311,7 @@ export function DeleteAccountCardSettings() {
 					isDeleted &&
 					<div className="delete_settings__alert">
 						<h5>Your account was successfully deleted!</h5>
-						<h6>You will now be redirected to the home page in a few seconds...</h6>
+						<h6>You will now be redirected to the login page in a few seconds...</h6>
 					</div>
 				}
 			</>
@@ -264,21 +319,3 @@ export function DeleteAccountCardSettings() {
 	);
 }
 
-export default function Settings() {
-    return (
-        <div className='settings__flex'>
-            <div className='settings'>
-                <h1>Settings</h1>
-                <img src="" alt="" />
-                <div className='settings__container'>
-                    <AvatarCardSettings />
-                    <TextCardSettings property="Enter your pseudo"/>
-                    <TextCardSettings property="Enter a bio"/>
-                    <TextCardSettings property="Enter your email"/>
-                    <PasswordCardSettings />
-                    <DeleteAccountCardSettings />
-                </div>
-            </div>
-        </div>
-    );
-}

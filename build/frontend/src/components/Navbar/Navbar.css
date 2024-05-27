@@ -25,16 +25,14 @@
 }
 
 .navbar__title {
-	font-family: 'Bungee';
-	display: fixed; 
-	font-size: 40px;
-	margin-left: 0vh;
-	margin-top: 0px;
-	padding : 0px 15px;
-	border-radius:10px;
+	position: fixed;
+	font-family: 'Pacifico';
+	font-size: 50px;
+	padding : 0px 35px;
 	text-decoration: none;
 	color: #f4f0e3;
-	position: relative;
+	top: -1%;
+	letter-spacing: 3px;
   }
 
   /*Avatar */

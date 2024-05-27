@@ -13,7 +13,7 @@ export default function Sidebar () {
 		  <ul className='nav-menu-items' >
 			<SidebarElem title="Profil" path="/profile" image={profilIcon} />
 			<SidebarElem title="Social" path="/social" image={socialIcon} />
-		  	<SidebarElem title="Leaderboard" path="/leaderboard" image={leaderboardIcon} />
+		  	<SidebarElem title="About" path="/about" image={leaderboardIcon} />
 			<SidebarElem title="Match History" path="/" image={historyIcon} />
 		  </ul>
 		  <ul className="settings_btn">

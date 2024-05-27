@@ -6,14 +6,10 @@ import { useAuth } from '../../context';
 import "./Navbar.css";
 
 export default function Navbar(){
-	const { user, logout } = useAuth();
 	
-	const handleLogout = () => {
-		logout();
-	}
+	
 
  return (
-	user &&
   <>
     <div className='navbar'>
 		<label className="nav-elements" id="burger-menu" htmlFor="check">
@@ -23,15 +19,15 @@ export default function Navbar(){
 			<span className='span3'></span> 
 		</label>
 		<div className="navbar__center">
-			<NavLink to="/" className="navbar__title">POKEPONG</NavLink>
+			<NavLink to="/" className="navbar__title">PokePong</NavLink>
 		</div>
 		<>
-			{
+			{/**{
 				<div className='nav--avatar'>
 					<Avatar />
-					<button className="logout_btn" onClick={handleLogout}>Logout</button>
+					<button className="logout_btn">Logout</button>
 				</div>
- 			}
+ 			}*/}
 		</>
 	</div>
 	<Sidebar />

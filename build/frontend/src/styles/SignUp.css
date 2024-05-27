@@ -33,7 +33,7 @@
 }
 
 .signUp-form > * , #signUp-btn {
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
   color: var(--template_textP);
   letter-spacing: 1px;
   outline: none;
