@@ -40,8 +40,6 @@ services:
     build:
       context: ./build
       dockerfile: Dockerfile
-      args:
-        - NGINX_PROTOCOL=https
     ports:
       - '8000:8000'
     restart: always
@@ -66,9 +64,8 @@ services:
     networks:
       - main
 
-
-
 networks:
   main:
     name: main
     driver: bridge
+
