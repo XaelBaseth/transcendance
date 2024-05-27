@@ -1,0 +1,84 @@
+{
+	"home":{
+		" PRESS TO PLAY ":" PRESS TO PLAY " 
+	},
+	"navbar":{
+		"Profil":"Profil",
+		"Social":"Social",
+		"About":"About",
+		"Match History":"Match History",
+		"Settings":"Settings",
+		"Logout":"Logout"
+	},
+	"error":{
+		"Error":"Error"
+	},
+	"gamepage":{
+		"Use the up and down arrows of your keyboard to play !":"Use the up and down arrows of your keyboard to play !",
+		"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !":"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !",
+		"Compete in a tournament to see who is the best (it's you!)!":"Compete in a tournament to see who is the best (it's you!)!",
+		"PONG MODE":"PONG MODE",
+		"OTHER GAME MODE":"OTHER GAME MODE",
+		"TOURNAMENT MODE":"TOURNAMENT MODE",
+		"Looking for a match...":"Looking for a match...",
+		"Match found! Redirecting to game...":"Match found! Redirecting to game...",
+		"Leave Queue":"Leave Queue",
+		"Left Queue":"Left Queue",
+		"Preparing the room...":"Preparing the room..."
+	},
+	"login":{
+		"Username":"Username",
+		"Password":"Password",
+		"Log In":"Log In",
+		"Log In with 42":"Log In with 42",
+		"Sign up":"Sign up",
+		"Successfully signed up!":"Successfully signed up!",
+		"A user with this username already exists":"A user with this username already exists",
+		"User does not exist: please sign up before":"User does not exist: please sign up before",
+		"Password does not match":"Password does not match"
+	},
+	"signup":{
+		"Email":"Email",
+		"Username":"Username",
+		"Password":"Password",
+		"Confirm new password":"Confirm new password"
+	},
+	"profile":{
+		"BIO":"BIO",
+		"Total Matches":"Total Matches",
+		"Victories":"Victories",
+		"Friends":"Friends",
+		"COMPETITIVE OVERVIEW":"COMPETITIVE OVERVIEW",
+		"Wins":"Wins",
+		"Loss":"Loss",
+		"Rank":"Rank",
+		"Aces":"Aces",
+		"Challenge":"Challenge"
+	},
+	"social":{
+		"Looking for some friend ?":"Looking for some friend ?",
+		"Type the nickname of the person you want to find...":"Type the nickname of the person you want to find...",
+		"Add as friend":"Add as friend",
+		"All friends":"All friends",
+		"Active friends":"Active friends",
+		"Blocked users":"Blocked users",
+		"Pending request":"Pending request"
+	},
+	"about":{
+	},
+	"settings":{
+		"Settings":"Settings",
+		"User":"User",
+		"Privacy and Security":"Privacy",
+		"Accessibility":"Accessibility",
+		"Enter a bio":"Enter a bio",
+		"Enter your pseudo":"Enter your pseudo",
+		"Enter your email":"Enter your email",
+		"Change your password":"Change your password",
+		"Show password":"Show password",
+		"Save password changes":"Save password changes",
+		"Beware this action is irreversible":"Beware this action is irreversible",
+		"Do you want to delete your account":"Do you want to delete your account"
+	}
+}
+	
