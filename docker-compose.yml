@@ -55,6 +55,18 @@ services:
       timeout: 10s
       retries: 3
 
+  vault:
+    container_name: vault
+    build:
+      context: ./vault
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8200:8200"
+    networks:
+      - main
+
+
 
 networks:
   main:
