@@ -3,11 +3,8 @@
 /* ********************************/
 
 .settings__flex {
-    display: flex;
-    align-items: flex-start; /* Updated to align items to the top */
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+	height: 92vh;
+	padding-top: 9vh;
 }
 
 .navigation {
@@ -17,7 +14,7 @@
 }
 
 .navigation button {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.189);
     border: none;
     outline: none;
     cursor: pointer;
@@ -40,8 +37,12 @@
     border: 5px solid var(--setting_border);
     backdrop-filter: blur(20px);
 	position: absolute;
-	top: 6%;
-	left: 13%;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	border-radius: 10px;
+	border: 5px solid var(--pong_borber);
+	padding: 30px 30px;
 }
 
 .settings > h1 {
@@ -52,11 +53,6 @@
     margin-bottom: 20px; /* Add spacing below the title */
 }
 
-.settings__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax values as needed */
-    grid-gap: 20px; /* Adjust gap between grid items */
-}
 
 /* ********************************/
 /* ***   ERROR MSG COMPONENT    ***/

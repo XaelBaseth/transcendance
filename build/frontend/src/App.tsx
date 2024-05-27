@@ -4,7 +4,7 @@ import BGVideo from './assets/BG.mp4'
 import Home from "./pages/home"
 import Error from "./pages/error"
 import GamePage from "./pages/gamepage"
-import { Leaderboard } from "./pages/leaderboard"
+import About from "./pages/about"
 import Login from "./pages/login"
 import Pong from "./pages/pong"
 import { Profile } from "./pages/profile"
@@ -14,6 +14,7 @@ import { Social } from "./pages/social"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { AuthProvider } from "./context"
+//import CookieConsent from "react-cookie-consent"
 
 import './App.css'
 
@@ -25,6 +26,7 @@ function RegisterAndLogout() {
 }
 
 function App() {
+
 	return (
 	<div id='app'>
 		<section id="main_content">
@@ -33,6 +35,11 @@ function App() {
 					<source src={BGVideo} type='video/mp4' />
 				</video>
 			</div>
+			{/*<div cookie_setting>
+				<CookieConsent>
+					This website uses cookies to enhance user experience, such as user information.
+				</CookieConsent>
+			</div>*/}
 			<BrowserRouter>
 					<div className="Navbar">
 						<Navbar />
@@ -45,7 +52,7 @@ function App() {
 						<Route path="/" element={<Home />} />
 						<Route path="/profile" element={<Profile />} />
 						<Route path="/gamepage" element={<GamePage />} />
-						<Route path="/leaderboard" element={<Leaderboard />} />
+						<Route path="/about" element={<About />} />
 						<Route path="/pong" element={<Pong />} />
 						<Route path="/settings" element={<Settings />} />
 						{/*<Route path="/profile" element={<ProfileSettings />} />
