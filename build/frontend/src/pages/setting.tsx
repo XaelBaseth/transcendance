@@ -123,7 +123,7 @@ export function TextCardSettings({ property } : {property: string}) {
               type="text"
               name={property}
               id={property}
-              placeholder="placeholder"
+              placeholder="Placeholder"
               onChange={handleChange}
               className="text_input"
             />
@@ -143,21 +143,20 @@ export function TextCardSettings({ property } : {property: string}) {
       );
     }
 
-
-
-export function AvatarCardSettings() {
-	{/** Automatiser de maniere a ce que chaque 
-		personne puisse avoir son propre avatar */}
-	
-	const [errorMsg, setErrorMsg] = useState<string>("");
-	const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
-	
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files) {
-			{/** Change Avatar */}
-			setBrowseMsg("File chosen!");
-		}
-	}
+export function AvatarCardSettings() 
+{
+    {/** Automatiser de maniere a ce que chaque 
+        personne puisse avoir son propre avatar */}
+ 
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
+    
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {
+            {/** Change Avatar */}
+            setBrowseMsg("File chosen!");
+        }
+    }
 
 	return (
 		<div id='avatar_settings'>
@@ -183,7 +182,6 @@ export function AvatarCardSettings() {
 		</div>
 	);
 }
-
 export function PasswordCardSettings() {
 	const [userInput, setUserInput] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
