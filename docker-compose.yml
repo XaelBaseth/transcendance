@@ -131,12 +131,11 @@ services:
     networks:
       - main
 
-
-
 networks:
   main:
     name: main
     driver: bridge
+
 
 volumes:
   vault-data:
