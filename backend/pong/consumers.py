@@ -93,8 +93,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 
 		room.restart = True
 		room.pause = False
+		await sync_to_async(room.save)()
 		await asyncio.sleep(1.5)
-		self.start_game(event=event)
+		await self.start_game(event=event)
 
 	async def pause_game(self, event):
 		PongRoom = apps.get_model('pong', 'PongRoom')
@@ -104,6 +105,7 @@ class PongConsumer(AsyncWebsocketConsumer):
 			return
 		room = await sync_to_async(room_result.__getitem__)(0)
 		room.pause = not room.pause
+		await sync_to_async(room.save)()
 
 	async def update_paddle(self, event):
 		PongRoom = apps.get_model('pong', 'PongRoom')

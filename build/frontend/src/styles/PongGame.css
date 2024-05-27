@@ -60,7 +60,7 @@ body {
 	height: 20px;
 	background-color: red;
 	border-radius: 50%;
-	transition: top 0.5s, left 0.5s;
+	transition: top 0.1s, left 0.1s;
 	transition-timing-function: linear;
 }
 
