@@ -57,7 +57,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl -f https://localhost:8000/ || exit 1"
+          "curl -fk https://localhost:8000/ || exit 1"
         ]
       interval: 3s
       timeout: 10s

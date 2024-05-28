@@ -83,6 +83,11 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
+
+			//Print
+			console.log("SignUp response: ", res);
+			//End of print statement
+
 			if (res.status >= 200 && res.status < 300) {
 				setSuccessMsg("Registration successful.");
 				navigate('/login');
@@ -113,7 +118,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 	signup,
 	logout,
 	};
-
 	return (
 		<AuthContext.Provider value={value}>
 			{children}

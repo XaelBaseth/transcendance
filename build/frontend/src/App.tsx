@@ -42,7 +42,7 @@ function App() {
 				<CookieConsent>
 					This website uses cookies to enhance user experience, such as user information.
 				</CookieConsent>
-			</div>*/}
+				</div>*/}
 				<BrowserRouter>
 					<AuthProvider>
 						<div className="Navbar">
@@ -52,15 +52,15 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="*" element={<Error />} />
 							<Route path="/signup" element={<RegisterAndLogout />} />
-							<Route path="/about" element={<About />} />
+							
 							{/*
         					<Route path="/password" element={<PasswordSettings />} />
 							<Route path="/delete-account" element={<DeleteSettings />} />*/}
-							<Route path="/social" element={<Social />} />
+							<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+							<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
 							<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 							<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 							<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-							{/* <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} /> */}
 							<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 							<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
 							{/* PONG */}
