@@ -1,8 +1,12 @@
-FROM hashicorp/vault:1.11.3
+FROM hashicorp/vault:1.16
 
-COPY ./vault-config.json /vault/config/vault-config.json
-COPY ./unseal_vault.sh /unseal_vault.sh
-RUN chmod +x /unseal_vault.sh
+WORKDIR /
+RUN mkdir -p script/
+COPY ./vault-config.hcl /vault/config/vault-config.hcl
+
+# Install curl using apk (Alpine package manager)
+RUN apk update && apk add curl
+
 EXPOSE 8200
 
-ENTRYPOINT [ "/unseal_vault.sh" ]
+ENTRYPOINT [ "sh", "/script/entrypoint.sh" ]

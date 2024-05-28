@@ -130,13 +130,18 @@ services:
       - "8200:8200"
     networks:
       - main
+    volumes:
+      - vault_data:/vault
+    healthcheck:
+      test: ["CMD-SHELL", "curl -k http://127.0.0.1:8200/v1/sys/seal-status || exit 1"]
+      interval: 3s
+      timeout: 10s
+      retries: 3
 
 networks:
   main:
     name: main
     driver: bridge
 
-
 volumes:
-  vault-data:
-  postgres-data:
+  vault_data:
