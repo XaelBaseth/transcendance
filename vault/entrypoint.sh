@@ -1,24 +1,35 @@
 #!/bin/bash
 
-# Initialize Vault
-exec vault operator init > /vault/init_output.txt
+set -e
 
-# Extract unseal keys from the initialization output
-UNSEAL_KEYS=$(grep "Unseal Key" /vault/init_output.txt | tail -n +2 | head -n -1)
-echo $UNSEAL_KEYS > /vault/unseal_keys.txt
+# Start Vault server in the background
+vault server -config=/vault/config/vault-config.hcl &
 
-# Perform unsealing
-for KEY in $(cat /vault/unseal_keys.txt); do
-  exec vault operator unseal $KEY
+# Wait until Vault is ready
+echo "Waiting for Vault to be ready..."
+until curl -s --insecure https://127.0.0.1:8200/v1/sys/health > /dev/null; do
+  echo "Vault is not ready yet..."
+  sleep 5
 done
 
-# Check if Vault is unsealed
-if exec vault status | grep -q "Sealed"; then
-  echo "Error: Vault did not unseal successfully."
-  exit 1
-else
-  echo "Vault has been successfully unsealed."
+# Initialize Vault if not already initialized
+if [ ! -f /vault/init_output.txt ]; then
+  echo "Initializing Vault..."
+  vault operator init -key-shares=1 -key-threshold=1 > /vault/init_output.txt
+  grep 'Unseal Key 1:' /vault/init_output.txt | awk '{print $NF}' > /vault/unseal_key.txt
 fi
 
-# Start Vault server
-exec vault server
+# Unseal Vault
+echo "Unsealing Vault..."
+vault operator unseal $(cat /vault/unseal_key.txt)
+
+# Verify if Vault is unsealed
+if vault status | grep -q "Sealed: false"; then
+  echo "Vault has been successfully unsealed."
+else
+  echo "Error: Vault did not unseal successfully."
+  exit 1
+fi
+
+# Keep the container running
+tail -f /dev/null
