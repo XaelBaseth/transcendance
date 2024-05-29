@@ -12,16 +12,23 @@ fix front :
 		- cookie auth
 	- settings CSS
 	- creation Room pour tournois
-	- handle settings
-2FA
-RGPD
-API 42
-RGPD:
-https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:02016R0679-20160504
-Setup the RGPD dans les settings.
-Link vers les settings.
-Installer les dependances necessaires.
+	- communication back to front! (dire a Raph de se grouiller), profile, social
+2FA via email
 
+Vault
+https://france.devoteam.com/paroles-dexperts/hashicorp-vault/
+https://github.com/minthe/ft_transcendence/blob/main/docker-compose.yml
+https://developer.hashicorp.com/vault/tutorials/operations/configure-vault
+https://github.com/ahmetkaftan/docker-vault
+
+Vault est un gestionnaire de secret => set de differents accreditation soit Authentification a un systeme ou Authorisation a un systeme (username/password; db credentials; api token; TLS certs)
+|-> On veut comprendre qui a acces a ces secrets, et qui les manages
+|-> Gerer le secret sprawl (leak de creds et tracage)
+||
+==> Vault centralise les infos sensibles et les encrypte puis les redistribuent correctement et a un systeme d'audit
+==> Dynamique secrets (creds a date limite; mdp unique par serveur; revocation simplifie)
+==> Cle d'encryption pour les DB (encrypt as a service -> named key & high level API to encrypt, sign, verify & key life cycle)
+==> High level architecture (heavily pluginable)
 
 
 2FA
