@@ -54,22 +54,34 @@ services:
       retries: 3
 
   vault:
+    image: hashicorp/vault:1.16
     container_name: vault
-    build:
-      context: ./vault
-      dockerfile: Dockerfile
-    restart: always
+    environment:
+      - VAULT_ADDR=${VAULT_ADDR}
     ports:
-      - "8200:8200"
-    networks:
-      - main
+      - 8200:8200
+    restart: always
     volumes:
-      - vault_data:/vault
-    healthcheck:
-      test: ["CMD-SHELL", "curl -k http://127.0.0.1:8200/v1/sys/seal-status || exit 1"]
-      interval: 3s
-      timeout: 10s
-      retries: 3
+      - ./vault/vault-config.hcl:/vault/config/config.hcl
+      - vault-data:/vault/file
+    cap_add:
+      - IPC_LOCK
+    command: server
+    
+  vault-init:
+    image: hashicorp/vault:1.16
+    container_name: vault-init
+    environment:
+      - VAULT_ADDR=${VAULT_INIT_ADDR}
+      - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
+    volumes:
+      - ./vault/vault-root-token:/vault/file/vault-root-token
+      - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
+      - vault-data:/vault/file/
+    command: /usr/local/bin/vault-init.sh
+    restart: on-failure
+    depends_on:
+      - vault
 
 networks:
   main:
@@ -77,4 +89,4 @@ networks:
     driver: bridge
 
 volumes:
-  vault_data:
+  vault-data:

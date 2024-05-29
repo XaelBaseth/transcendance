@@ -8,6 +8,9 @@ fix front :
 Vault
 https://france.devoteam.com/paroles-dexperts/hashicorp-vault/
 https://github.com/minthe/ft_transcendence/blob/main/docker-compose.yml
+https://developer.hashicorp.com/vault/tutorials/operations/configure-vault
+https://github.com/ahmetkaftan/docker-vault
+
 Vault est un gestionnaire de secret => set de differents accreditation soit Authentification a un systeme ou Authorisation a un systeme (username/password; db credentials; api token; TLS certs)
 |-> On veut comprendre qui a acces a ces secrets, et qui les manages
 |-> Gerer le secret sprawl (leak de creds et tracage)
