@@ -17,7 +17,7 @@ const teamMembers: Member[] = [
 		name: 'Amelie',
 		github: 'https://github.com/Sireas03',
 		image: AmelieImage,
-		quote: 'inserez phrase cool ici'
+		quote: 'Pokemon > FF14 :)'
 	},
 	{
 		name: 'Axel',
@@ -29,7 +29,7 @@ const teamMembers: Member[] = [
 		name: 'Raphael',
 		github: 'https://github.com/xXCARRELAGEXx',
 		image: RaphaelImage,
-		quote: 'inserez phrase cool ici'
+		quote: 'Champion de GeoGuessr'
 	},
 	{
 		name: 'Valentin',
