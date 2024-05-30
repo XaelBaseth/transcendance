@@ -31,6 +31,8 @@ Vault est un gestionnaire de secret => set de differents accreditation soit Auth
 ==> High level architecture (heavily pluginable)
 
 
+Tentative de setup https, a check
+
 2FA
 https://www.phind.com/search?cache=gr0vyru1exwk3rzcnim70n5m
 

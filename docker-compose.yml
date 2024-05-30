@@ -37,8 +37,11 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "curl -f localhost:8000/api/ || exit 1"]
       interval: 10s
+      test: ["CMD-SHELL", "curl -f localhost:8000/api/ || exit 1"]
+      interval: 10s
       timeout: 10s
       retries: 5
+    env_file: .env
 
   nginx:
     container_name: nginx
@@ -90,8 +93,10 @@ services:
     entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
     healthcheck:
       test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
-      interval: 3s
+      interval: 10s
       timeout: 10s
+      retries: 5
+
       retries: 3
 
   vault-init:
@@ -131,9 +136,17 @@ services:
     volumes:
       - ./vault/vault-config.hcl:/vault/config/config.hcl
       - vault-data:/vault/file
+      - ./ssl/certs:/etc/vault/certs
+      - ./ssl/private:/etc/vault/private
     cap_add:
       - IPC_LOCK
     command: server
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fk https://localhost:8200/v1/sys/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
     
   vault-init:
     image: hashicorp/vault:1.16
