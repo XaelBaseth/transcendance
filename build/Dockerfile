@@ -67,8 +67,8 @@ RUN rm -rf /var/www/html
 RUN mkdir -p /etc/nginx/ssl
 COPY --from=build /app/frontend/dist /var/www/html
 COPY ./nginx/default.conf /etc/nginx/default.conf
-COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
-RUN chmod +x /etc/nginx/nginx_start.sh
+#COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
+#RUN chmod +x /etc/nginx/nginx_start.sh
 
 EXPOSE 8000
 

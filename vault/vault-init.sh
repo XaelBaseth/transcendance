@@ -10,6 +10,7 @@ vault operator unseal $(grep 'Key 3:' /vault/file/keys | awk '{print $NF}')
 
 init () {
 vault operator init > /vault/file/keys
+sleep 2
 }
 
 log_in () {

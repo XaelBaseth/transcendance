@@ -1,4 +1,4 @@
-HasicorpVault !
+HasicorpVault ! => Handle HTTPS and .env
 fix front :
 	- settings CSS
 	- creation Room pour tournois
@@ -37,6 +37,8 @@ vault need .env to works	stored in .env
 									\/
 								Hard coded to the init-vault.sh ==> NONO
 	
+
+Tentative de setup https, a check
 
 2FA
 https://www.phind.com/search?cache=gr0vyru1exwk3rzcnim70n5m
