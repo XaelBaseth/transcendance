@@ -22,6 +22,13 @@ create_token () {
    vault token create -id $MY_VAULT_TOKEN
 }
 
+store_env () {
+	vault kv put secret/transcendence/postgresql_credentials DB_NAME=$POSTGRES_DB DB_USERNAME=$POSTGRES_USER \
+		DB_PASSWORD=$POSTGRES_PASSWORD DB_HOST_NAME=$DATABASE_HOST_NAME DB_PORT=$DATABASE_PORT
+	vault kv put secret/transcendence/backend_credentials SECRET_KEY=$SECRET_KEY
+	vault kv put secret/transcendence/front_credentials API_KEY=$VITE_API_URL
+}
+
 if [ -s /vault/file/keys ]; then
    unseal
 else
@@ -30,5 +37,7 @@ else
    log_in
    create_token
 fi
+
+store_env
 
 vault status > /vault/file/status
