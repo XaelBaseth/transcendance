@@ -3,7 +3,7 @@ all: build
 	 @echo "website's up! go to https://localhost:8000"
 
 build:
-	generate_cert.sh
+	./generate_cert.sh
 	docker compose build
 
 up:

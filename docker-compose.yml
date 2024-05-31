@@ -48,8 +48,8 @@ services:
       - main
     volumes:
       - /var/www/html
-      - ./ssl/certs:/etc/ssl/nginx/certs
-      - ./ssl/private:/etc/ssl/nginx/private
+      - ./ssl/certs:/etc/ssl/certs
+      - ./ssl/private:/etc/ssl/private
     healthcheck:
       test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
       interval: 10s

@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+#Debug option
 set -ex
 
 unseal () {
