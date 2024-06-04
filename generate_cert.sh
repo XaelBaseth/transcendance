@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Debug option
-set -ex
+#set -ex
 
 CERTS_DIR="./ssl/certs"
 PRIVATE_KEY_DIR="./ssl/private"
@@ -23,7 +23,11 @@ if [ ! -f "${CERTS_DIR}/vault.crt" ]; then
         -addext "subjectAltName=DNS:vault,DNS:localhost,DNS:www.transcendance.ff"
 
     openssl x509 -req -days 365 -in "${CERTS_DIR}/vault.csr" -CA "${CERTS_DIR}/ca.crt" -CAkey "${PRIVATE_KEY_DIR}/ca.key" \
-		 -CAcreateserial -out "${CERTS_DIR}/vault.crt" -extfile <(printf "subjectAltName=DNS:vault,DNS:localhost,DNS:www.transcendance.ff")
+        -CAcreateserial -out "${CERTS_DIR}/vault.crt" -extfile <(printf "subjectAltName=DNS:vault,DNS:localhost,DNS:www.transcendance.ff")
+
+#Give the correct rights to the file.
+    chmod 644 ${PRIVATE_KEY_DIR}/ca.key
+    chmod 644 ${PRIVATE_KEY_DIR}/vault.key
 else
     echo "Server certificate is already present."
 fi

@@ -1,10 +1,10 @@
 services:
   db:
     container_name: db
-    image: postgres
-    restart: always
     env_file:
       - .env
+    image: postgres
+    restart: always
     networks:
       - main
     healthcheck:
@@ -16,6 +16,7 @@ services:
 
   django:
     container_name: django
+    env_file: .env
     depends_on:
       db:
         condition: service_healthy
@@ -30,7 +31,6 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-    env_file: .env
 
   nginx:
     container_name: nginx
@@ -61,6 +61,7 @@ services:
     container_name: vault
     environment:
       - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_CACERT=${VAULT_CACERT}
     ports:
       - 8200:8200
     restart: always
@@ -72,22 +73,21 @@ services:
     cap_add:
       - IPC_LOCK
     command: server
-    healthcheck:
-      test: ["CMD-SHELL", "curl -fk https://localhost:8200/v1/sys/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
     
   vault-init:
     image: hashicorp/vault:1.16
     container_name: vault-init
+    env_file: .env
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
       - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
+      - VAULT_CACERT=${VAULT_CACERT}
     volumes:
-      - ./vault/vault-root-token:/vault/file/vault-root-token
+      #- ./vault/vault-root-token:/vault/file/vault-root-token
       - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
       - vault-data:/vault/file/
+      - ./ssl/certs:/etc/vault/certs
+      - ./ssl/private:/etc/vault/private
     command: /usr/local/bin/vault-init.sh
     restart: on-failure
     depends_on:
