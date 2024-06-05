@@ -5,20 +5,44 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 from django.apps import apps
 from .manage_game import game_loop
+from channels.db import database_sync_to_async
 
 import logging
 
 class PongConsumer(AsyncWebsocketConsumer):	 
+	@database_sync_to_async
+	def get_user(self, user_id):
+		from django.contrib.auth.models import AnonymousUser
+		from django.contrib.auth import get_user_model
+		User = get_user_model()
+		try:
+			return User.objects.get(user_id=user_id)
+		except User.DoesNotExist:
+			return AnonymousUser()
+
 	async def connect(self):
+		from rest_framework_simplejwt.tokens import UntypedToken
+		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+		from django.contrib.auth.models import AnonymousUser
+		from jwt import decode as jwt_decode
+		from django.conf import settings
+	
 		logger = logging.getLogger(__name__)
 		logger.info('attempt to coooooonect')
 		self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
 		self.room_group_name = f"pong_{self.room_name}"
 
-		# Create a session key if it doesn't exist
-		if not self.scope["session"].session_key:
-			await sync_to_async(self.scope["session"].create)()
-			await sync_to_async(self.scope["session"].save)()
+		# Get the token from the query string
+		token = self.scope['query_string'].decode().split('token=')[-1]
+
+		# Try to decode the token and get the user_id
+		try:
+			UntypedToken(token)
+			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+			self.user_id = decoded_data['user_id']
+		except (InvalidToken, TokenError) as e:
+			# Token is invalid
+			self.user_id = -1
 
 		# Join room group
 		await self.channel_layer.group_add(self.room_group_name, self.channel_name)
@@ -33,11 +57,12 @@ class PongConsumer(AsyncWebsocketConsumer):
 	# Receive message from WebSocket
 	async def receive(self, text_data):
 		# print(self.scope["session"].session_key + " : " + text_data)
+		logger = logging.getLogger(__name__)
+		logger.info(str(self.user_id) + ' : ' + text_data)
+		
 		text_data_json = json.loads(text_data)
 
 		match text_data_json["type"]:
-			# case "create_game":
-			#	 await self.create_game(event=text_data_json)
 			case "join_game":
 				await self.join_game(event=text_data_json)
 			case "start_game":
@@ -49,19 +74,6 @@ class PongConsumer(AsyncWebsocketConsumer):
 			case "restart":
 				await self.restart_game(event=text_data_json)
 
-	async def create_game(self, event):
-		PongRoom = apps.get_model('pong', 'PongRoom')
-		text_data_json = event
-		
-		room_result = await sync_to_async(PongRoom.objects.filter)(code=self.room_name)
-		if await sync_to_async(room_result.exists)():
-			await self.send_message({"message": "Room already exists"})
-			return
-		code = self.room_name
-		room = PongRoom(code=code, players_id=[self.scope["session"].session_key], player_limit=text_data_json["nb_players"])
-		await sync_to_async(room.save)()
-		await self.send_message({"message": "Room Created!"})
-
 	async def join_game(self, event):
 		PongRoom = apps.get_model('pong', 'PongRoom')
 		code = self.room_name
@@ -72,9 +84,16 @@ class PongConsumer(AsyncWebsocketConsumer):
 		else:
 			room = await sync_to_async(room_result.__getitem__)(0)
 			players = room.players_id
+			#check if player is already in the room
+			if self.user_id in players:
+				if self.user_id == room.players_id[0]:
+					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
+				elif self.user_id == room.players_id[1]:
+					await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
+				return
 			players_count = len(players)
 			if players_count < room.player_limit:
-				await sync_to_async(room.players_id.append)(self.scope["session"].session_key)
+				await sync_to_async(room.players_id.append)(self.user_id)
 				await sync_to_async(room.save)()
 				if players_count == 0:
 					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
@@ -117,19 +136,18 @@ class PongConsumer(AsyncWebsocketConsumer):
 		text_data_json = event
 		
 		#todo check user permissions
-		request_session = self.scope["session"].session_key
-		if request_session not in room.players_id:
+		if self.user_id not in room.players_id:
 			await self.send_message({"message": "You are not a player"})
 			return
 		elif room.pause:
 			return
 
-		if text_data_json["side"] == "left" and request_session == room.players_id[0]:
+		if text_data_json["side"] == "left" and self.user_id == room.players_id[0]:
 			if text_data_json["direction"] == "up" and room.left_paddle_position > 0:
 				room.left_paddle_position = room.left_paddle_position - 10
 			elif text_data_json["direction"] == "down" and room.left_paddle_position < 300:
 				room.left_paddle_position = room.left_paddle_position + 10
-		elif text_data_json["side"] == "right" and request_session == room.players_id[1]:
+		elif text_data_json["side"] == "right" and self.user_id == room.players_id[1]:
 			if text_data_json["direction"] == "up" and room.right_paddle_position > 0:
 				room.right_paddle_position = room.right_paddle_position - 10
 			elif text_data_json["direction"] == "down" and room.right_paddle_position < 300:
@@ -145,9 +163,8 @@ class PongConsumer(AsyncWebsocketConsumer):
 		if not await sync_to_async(room_result.exists)():
 			await self.send_message({"message": "Room not found"})
 			return
-		request_session = self.scope["session"].session_key
 		room = await sync_to_async(room_result.__getitem__)(0)
-		if request_session not in room.players_id:
+		if self.user_id not in room.players_id:
 			await self.send_message({"message": "You are not a player"})
 			return
 		await self.channel_layer.group_send(

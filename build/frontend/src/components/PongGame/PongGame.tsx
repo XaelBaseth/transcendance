@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import '../../styles/PongGame.css';
+import { ACCESS_TOKEN } from '../../constants';
 
 const PongGame = () => {
 	const BALL_SPEED = 5
@@ -22,7 +23,9 @@ const PongGame = () => {
 
 	useEffect(() => {
 		try {
-			socketRef.current = new WebSocket('wss://localhost:8000/ws/pong/' + params.roomCode + '/');
+			const token = localStorage.getItem(ACCESS_TOKEN);
+			socketRef.current = new WebSocket('wss://localhost:8000/ws/pong/' + params.roomCode + '/?token=' + token);
+
 		}
 		catch (error) {
 			console.error("Error during websocket creation:", error);
