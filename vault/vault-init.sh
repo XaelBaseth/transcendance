@@ -20,13 +20,15 @@ log_in () {
 	export VAULT_TOKEN=$ROOT_TOKEN # Add this line to ensure the VAULT_TOKEN env var is set
 }
 
-
 create_token () {
 	vault token create -id $MY_VAULT_TOKEN
 }
 
 store_env () {
-	paths=("secret/transcendence/postgresql_credentials" "secret/transcendence/backend_credentials" "secret/transcendence/frontend_credentials")
+	paths=("secret/transcendence/postgresql_credentials"
+		"secret/transcendence/backend_credentials"
+		"secret/transcendence/frontend_credentials"
+	)
 
 	for path in "${paths[@]}"; do
 		if vault kv get "$path" > /dev/null 2>&1; then
