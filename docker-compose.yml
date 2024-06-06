@@ -135,7 +135,8 @@ services:
     restart: always
     volumes:
       - ./vault/vault-config.hcl:/vault/config/config.hcl
-      - vault-data:/vault/file
+      - ./vault/vault-data:/vault/file/
+      - ./vault/start-vault.sh:/./start-vault.sh
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
     cap_add:
