@@ -25,6 +25,27 @@ create_token () {
 	echo "export MY_VAULT_TOKEN='${MY_VAULT_TOKEN}'" >> /vault/file/env_vars.sh
 }
 
+#
+#store_env () {
+#	paths=("secret/transcendence/postgresql_credentials"
+#		"secret/transcendence/backend_credentials"
+#		"secret/transcendence/frontend_credentials"
+#	)
+#
+#	for path in "${paths[@]}"; do
+#		if vault kv get "$path" > /dev/null 2>&1; then
+#			echo "Path $path is already in use. Disabling..."
+#			vault secrets disable "$path"
+#		fi
+#		vault secrets enable -path="$path" kv
+#	done
+#
+#	vault kv put secret/transcendence/postgresql_credentials DB_NAME="$POSTGRES_DB" DB_USERNAME="$POSTGRES_USER" \
+#		DB_PASSWORD="$POSTGRES_PASSWORD" DB_HOST_NAME="$DATABASE_HOST_NAME" DB_PORT="$DATABASE_PORT"
+#	vault kv put secret/transcendence/backend_credentials SECRET_KEY="$SECRET_KEY"
+#	vault kv put secret/transcendence/front_credentials API_KEY="$VITE_API_URL"
+#
+
 if [ -s /vault/file/keys ]; then
 	unseal
 else

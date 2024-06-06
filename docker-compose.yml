@@ -13,7 +13,6 @@ services:
       timeout: 10s
       retries: 5
 
-
   django:
     container_name: django
     env_file: .env
@@ -59,6 +58,7 @@ services:
   vault:
     image: hashicorp/vault:1.16
     container_name: vault
+    env_file: .env
     environment:
       - VAULT_ADDR=${VAULT_ADDR}
       - VAULT_CACERT=${VAULT_CACERT}
@@ -74,17 +74,15 @@ services:
     cap_add:
       - IPC_LOCK
     entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
-    
+
   vault-init:
     image: hashicorp/vault:1.16
     container_name: vault-init
-    env_file: .env
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
       - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
       - VAULT_CACERT=${VAULT_CACERT}
     volumes:
-      #- ./vault/vault-root-token:/vault/file/vault-root-token
       - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
       - ./vault/vault-data:/vault/file/
       - ./ssl/certs:/etc/vault/certs
