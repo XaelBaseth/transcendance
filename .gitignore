@@ -10,3 +10,9 @@ db.sqlite3
 
 #front
 frontend/node_modules  
+
+#ssl
+ssl/*
+
+#vault
+vault/vault-data

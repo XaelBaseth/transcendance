@@ -20,27 +20,7 @@ Vault est un gestionnaire de secret => set de differents accreditation soit Auth
 ==> Cle d'encryption pour les DB (encrypt as a service -> named key & high level API to encrypt, sign, verify & key life cycle)
 ==> High level architecture (heavily pluginable)
 
-Vault est maintenant initialize, et les cles de scellement sont mise en place. Reste a store les credential du .env dans le vault et a le link au back et front
 
-Utilise consul pour la persistance des datas ?
-
-vault store secret =========> db credentials & api key
-	||								||
-	\/								\/
-vault need .env to works	stored in .env
-	||								||
-	\/								\/
-.env with only vault key =====> stored in vault ?
-									||
-									\/
-								where to store at the beginning
-								for a 1st run ?
-									||
-									\/
-								Hard coded to the init-vault.sh ==> NONO
-	
-
-Tentative de setup https, a check !
 
 2FA
 https://www.phind.com/search?cache=gr0vyru1exwk3rzcnim70n5m

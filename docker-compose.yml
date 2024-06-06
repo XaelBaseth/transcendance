@@ -67,12 +67,13 @@ services:
     restart: always
     volumes:
       - ./vault/vault-config.hcl:/vault/config/config.hcl
-      - vault-data:/vault/file
+      - ./vault/vault-data:/vault/file/
+      - ./vault/start-vault.sh:/./start-vault.sh
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
     cap_add:
       - IPC_LOCK
-    command: server
+    entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
     
   vault-init:
     image: hashicorp/vault:1.16
@@ -85,7 +86,7 @@ services:
     volumes:
       #- ./vault/vault-root-token:/vault/file/vault-root-token
       - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
-      - vault-data:/vault/file/
+      - ./vault/vault-data:/vault/file/
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
     command: /usr/local/bin/vault-init.sh
