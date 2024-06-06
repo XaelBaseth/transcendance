@@ -26,19 +26,19 @@ const PongGame = () => {
 			const token = localStorage.getItem(ACCESS_TOKEN);
 			socketRef.current = new WebSocket('wss://localhost:8000/ws/pong/' + params.roomCode + '/?token=' + token);
 
+			socketRef.current.onopen = () => {
+				if (socketRef.current) {
+					socketRef.current.send(JSON.stringify({ type: 'join_game' }));
+				}
+			};
+
+			socketRef.current.onerror = (error) => {
+				console.error('WebSocket error', error);
+			}
+
 		}
 		catch (error) {
 			console.error("Error during websocket creation:", error);
-		}
-
-		socketRef.current.onopen = () => {
-			if (socketRef.current) {
-				socketRef.current.send(JSON.stringify({ type: 'join_game' }));
-			}
-		};
-
-		socketRef.current.onerror = (error) => {
-			console.error('WebSocket error', error);
 		}
 
 		return () => {

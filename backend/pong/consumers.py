@@ -9,6 +9,9 @@ from channels.db import database_sync_to_async
 
 import logging
 
+
+from jwt import decode as jwt_decode
+
 class PongConsumer(AsyncWebsocketConsumer):	 
 	@database_sync_to_async
 	def get_user(self, user_id):
@@ -21,12 +24,10 @@ class PongConsumer(AsyncWebsocketConsumer):
 			return AnonymousUser()
 
 	async def connect(self):
+		from django.conf import settings
 		from rest_framework_simplejwt.tokens import UntypedToken
 		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
-		from django.contrib.auth.models import AnonymousUser
-		from jwt import decode as jwt_decode
-		from django.conf import settings
-	
+
 		logger = logging.getLogger(__name__)
 		logger.info('attempt to coooooonect')
 		self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
