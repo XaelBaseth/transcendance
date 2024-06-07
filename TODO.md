@@ -10,6 +10,7 @@ https://france.devoteam.com/paroles-dexperts/hashicorp-vault/
 https://github.com/minthe/ft_transcendence/blob/main/docker-compose.yml
 https://developer.hashicorp.com/vault/tutorials/operations/configure-vault
 https://github.com/ahmetkaftan/docker-vault
+https://www.hashicorp.com/blog/how-and-why-to-use-approle-correctly-in-hashicorp-vault
 
 Vault est un gestionnaire de secret => set de differents accreditation soit Authentification a un systeme ou Authorisation a un systeme (username/password; db credentials; api token; TLS certs)
 |-> On veut comprendre qui a acces a ces secrets, et qui les manages
@@ -20,6 +21,8 @@ Vault est un gestionnaire de secret => set de differents accreditation soit Auth
 ==> Cle d'encryption pour les DB (encrypt as a service -> named key & high level API to encrypt, sign, verify & key life cycle)
 ==> High level architecture (heavily pluginable)
 
+
+LINK VAULT ET LES APPLIS VIA DOCKER!
 
 
 2FA

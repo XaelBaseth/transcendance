@@ -58,13 +58,14 @@ services:
   vault:
     image: hashicorp/vault:1.16
     container_name: vault
-    env_file: .env
     environment:
       - VAULT_ADDR=${VAULT_ADDR}
       - VAULT_CACERT=${VAULT_CACERT}
     ports:
       - 8200:8200
     restart: always
+    networks:
+      - main
     volumes:
       - ./vault/vault-config.hcl:/vault/config/config.hcl
       - ./vault/vault-data:/vault/file/
@@ -78,6 +79,10 @@ services:
   vault-init:
     image: hashicorp/vault:1.16
     container_name: vault-init
+    restart: on-failure
+    networks:
+      - main
+    env_file: .env
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
       - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
@@ -88,7 +93,6 @@ services:
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
     command: /usr/local/bin/vault-init.sh
-    restart: on-failure
     depends_on:
       - vault
 
