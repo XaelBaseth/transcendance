@@ -15,15 +15,12 @@ from pathlib import Path
 import os
 from datetime import timedelta
 import dotenv
+from .vault import fetch_secrets_from_vault
 
 dotenv.load_dotenv()
 
-
-POSTGRES_DB = os.environ['POSTGRES_DB']
-POSTGRES_USER = os.environ['POSTGRES_USER']
-POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
-DATABASE_HOST_NAME = os.environ['DATABASE_HOST_NAME']
-DATABASE_PORT = os.environ['DATABASE_PORT']
+database_secret_path = 'secret/data/django/'
+database_secrets = fetch_secrets_from_vault(database_secret_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = database_secrets.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -119,11 +116,11 @@ ASGI_APPLICATION = 'source.wsgi.application'
 DATABASES = {
     'default' : {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': POSTGRES_DB,
-        'USER': POSTGRES_USER,
-        'PASSWORD': POSTGRES_PASSWORD,
-        'HOST': DATABASE_HOST_NAME,
-        'PORT': DATABASE_PORT,
+        'NAME': database_secrets.get('POSTGRES_DB'),
+        'USER': database_secrets.get('POSTGRES_USER'),
+        'PASSWORD': database_secrets.get('POSTGRES_PASSWORD'),
+        'HOST': database_secrets.get('DATABASE_HOST_NAME'),
+        'PORT': database_secrets.get('DATABASE_PORT'),
     }
 }
 

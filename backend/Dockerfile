@@ -14,6 +14,4 @@ RUN pip install --upgrade pip\
 
 EXPOSE 8000
 
-CMD python3 manage.py makemigrations \
-	&& python3 manage.py migrate \
-	&& daphne -b 0.0.0.0 -p 8000 source.asgi:application
+CMD ["sh", "/app/backend/init.sh"]

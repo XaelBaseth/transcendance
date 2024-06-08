@@ -36,10 +36,10 @@ create_approles() {
     DJANGO_SECRET_ID=$(vault write -f -field=secret_id auth/approle/role/django-backend/secret-id)
     REACT_SECRET_ID=$(vault write -f -field=secret_id auth/approle/role/react-frontend/secret-id)
 
-    echo "DJANGO_ROLE_ID=$DJANGO_ROLE_ID" >> /vault/file/env_vars.sh
-    echo "REACT_ROLE_ID=$REACT_ROLE_ID" >> /vault/file/env_vars.sh
-    echo "DJANGO_SECRET_ID=$DJANGO_SECRET_ID" >> /vault/file/env_vars.sh
-    echo "REACT_SECRET_ID=$REACT_SECRET_ID" >> /vault/file/env_vars.sh
+    echo "export DJANGO_ROLE_ID=$DJANGO_ROLE_ID" >> /vault/file/env_vars.sh
+    echo "export REACT_ROLE_ID=$REACT_ROLE_ID" >> /vault/file/env_vars.sh
+    echo "export DJANGO_SECRET_ID=$DJANGO_SECRET_ID" >> /vault/file/env_vars.sh
+    echo "export REACT_SECRET_ID=$REACT_SECRET_ID" >> /vault/file/env_vars.sh
 }
 
 store_env() {

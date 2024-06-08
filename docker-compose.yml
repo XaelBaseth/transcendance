@@ -15,16 +15,21 @@ services:
 
   django:
     container_name: django
-    env_file: .env
     depends_on:
+      vault:
+        condition: service_healthy
       db:
         condition: service_healthy
     build:
       context: ./
       dockerfile: ./backend/Dockerfile
+    environment:
+      - VAULT_ADDR=${VAULT_ADDR}
     restart: always
+    volumes:
+      - ./vault/vault-data/env_vars.sh:/env_vars.sh
     networks:
-      - main
+      - main 
     healthcheck:
       test: ["CMD-SHELL", "curl -f localhost:8000/api/ || exit 1"]
       interval: 10s
@@ -75,6 +80,11 @@ services:
     cap_add:
       - IPC_LOCK
     entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   vault-init:
     image: hashicorp/vault:1.16
