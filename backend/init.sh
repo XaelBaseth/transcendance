@@ -1,14 +1,9 @@
 #!/bin/bash
 
 # Source the environment variables
-./env_vars.sh
+. /env_vars.sh
 
-export DJANGO_ROLE_ID
-export DJANGO_SECRET_ID
+ # Export the variables to make them available in the environment
+ export $(grep -v '^#' /env_vars.sh)
 
-# Run migrations
-python manage.py makemigrations
-python manage.py migrate
-
-# Start the Django application
-exec daphne -b 0.0.0.0 -p 8000 source.asgi:application
+exec "$@"
