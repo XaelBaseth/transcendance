@@ -5,7 +5,7 @@ def get_vault_client():
 	role_id = os.environ.get('DJANGO_ROLE_ID')
 	secret_id = os.environ.get('DJANGO_SECRET_ID')
 	
-	#print("role id =", role_id, "\n secret_id=", secret_id, "\n\n\n")
+	print("role id =", role_id, "\n secret_id=", secret_id, "\n\n\n")
 
 	client = hvac.Client(url=os.environ.get('VAULT_ADDR'), verify='/etc/ssl/certs/ca.crt')
 	client.is_authenticated()

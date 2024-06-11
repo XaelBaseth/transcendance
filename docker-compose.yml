@@ -27,7 +27,7 @@ services:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
     restart: always
     volumes:
-      - ./vault/vault-data/env_vars.sh:/env_vars.sh
+      - ./vault/vault-data:/vault/file
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
     networks:
