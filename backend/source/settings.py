@@ -19,7 +19,7 @@ from .vault import fetch_secrets_from_vault
 
 dotenv.load_dotenv()
 
-database_secret_path = 'secret/data/django/'
+database_secret_path = 'django/'
 database_secrets = fetch_secrets_from_vault(database_secret_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -175,4 +175,5 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
   'https://localhost:8000',
+  'https://localhost:8200',
 )

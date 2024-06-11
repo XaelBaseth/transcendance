@@ -1,15 +1,17 @@
 import hvac
 import os
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 def get_vault_client():
 	role_id = os.environ.get('DJANGO_ROLE_ID')
 	secret_id = os.environ.get('DJANGO_SECRET_ID')
 	
-	print("role id =", role_id, "\n secret_id=", secret_id, "\n\n\n")
+	#logging.debug(f"Role ID: {role_id}")
+	#logging.debug(f'Secret ID: {secret_id}')
 
 	client = hvac.Client(url=os.environ.get('VAULT_ADDR'), verify='/etc/ssl/certs/ca.crt')
-	client.is_authenticated()
-	
 
 	try:
 		client.auth.approle.login(role_id=role_id, secret_id=secret_id)
@@ -20,12 +22,16 @@ def get_vault_client():
 
 def fetch_secrets_from_vault(path):
 	client = get_vault_client()
+	secrets = None
 
 	try:
 		secrets = client.secrets.kv.v2.read_secret_version(
 			mount_point='secret', 
 			path=path,
 		)
+		logging.debug(f"secrets: {secrets}")
 		return secrets['data']['data']
 	except Exception as e:
+		logging.error(f"Exception caught: {e}")
+		logging.debug(f"secrets: {secrets}")
 		raise ValueError(f"Failed to fetch secrets from Vault: {e}")
