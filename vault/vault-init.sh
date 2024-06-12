@@ -29,12 +29,20 @@ create_approles() {
 	{ 
 		capabilities = [ "create", "read", "update", "delete", "list" ] 
 	}' >> /vault/file/django-backend.hcl
+	echo 'path "secret/*" 
+	{ 
+		capabilities = [ "create", "read", "update", "delete", "list" ] 
+	}' >> /vault/file/django-backend.hcl
 	vault policy write django-backend /vault/file/django-backend.hcl
 	vault write auth/approle/role/django-backend token_policies="django-backend" token_ttl=1h token_max_ttl=4h token_type=batch
 	
 	echo 'path "secret/data/react/*" 
 	{
 		 capabilities =  [ "create", "read", "update", "delete", "list" ] 
+	}' >> /vault/file/react-frontend.hcl
+	echo 'path "secret/*" 
+	{ 
+		capabilities = [ "create", "read", "update", "delete", "list" ] 
 	}' >> /vault/file/react-frontend.hcl
 	vault policy write react-frontend /vault/file/react-frontend.hcl
 	vault write auth/approle/role/react-frontend token_policies="react-frontend" token_ttl=1h token_max_ttl=4h token_type=batch
