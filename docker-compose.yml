@@ -40,10 +40,13 @@ services:
 
   nginx:
     container_name: nginx
-    env_file: .env
     depends_on:
       django:
         condition: service_healthy
+      vault:
+        condition: service_healthy
+    environment:
+      - VAULT_ADDR=${VAULT_INIT_ADDR}
     build:
       context: ./build
       dockerfile: Dockerfile
@@ -56,6 +59,7 @@ services:
       - /var/www/html
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
+      - ./vault/vault-data:/vault/file
     healthcheck:
       test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
       interval: 10s

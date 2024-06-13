@@ -24,7 +24,7 @@ RUN apt-get install -y libmaxminddb-dev bison libperl-dev \
 					libxml2 libxml2-dev libyajl-dev locales \
 					lua5.3-dev pkg-config wget yajl-tools \
 					zlib1g-dev libxslt-dev libgd-dev \
-					systemctl
+					systemctl jq
 
 # Clone ModSecurity repository && install it
 WORKDIR /tmp
@@ -67,8 +67,10 @@ RUN rm -rf /var/www/html
 RUN mkdir -p /etc/nginx/ssl
 COPY --from=build /app/frontend/dist /var/www/html
 COPY ./nginx/default.conf /etc/nginx/default.conf
-#COPY ./nginx/nginx_start.sh /etc/nginx/nginx_start.sh
-#RUN chmod +x /etc/nginx/nginx_start.sh
+
+COPY ./init.sh .
+RUN chmod +x ./init.sh
+ENTRYPOINT ["./init.sh"]
 
 EXPOSE 8000
 

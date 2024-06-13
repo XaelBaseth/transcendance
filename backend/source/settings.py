@@ -22,8 +22,6 @@ dotenv.load_dotenv()
 database_secret_path = 'django/'
 database_secrets = fetch_secrets_from_vault(database_secret_path)
 
-print(f"POSTGRES_DB: {database_secrets.get("POSTGRES_BD")}")
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
