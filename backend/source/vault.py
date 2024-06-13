@@ -1,4 +1,5 @@
 import hvac
+from django.http import JsonResponse
 import os
 import logging
 
@@ -35,5 +36,6 @@ def fetch_secrets_from_vault(path):
 		return secrets['data']['data']
 	except Exception as e:
 		logging.error(f"Exception caught: {e}")
+		raise ValueError(f"[DJANGO]Failed to fetch secrets from Vault: {e}")
 		logging.debug(f"secrets: {secrets}")
 		raise ValueError(f"Failed to fetch secrets from Vault: {e}")
