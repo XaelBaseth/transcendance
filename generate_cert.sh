@@ -13,7 +13,7 @@ if [ ! -f "${CERTS_DIR}/ca.crt" ]; then
     openssl req -new -x509 -days 3650 -keyout "${PRIVATE_KEY_DIR}/ca.key" -out "${CERTS_DIR}/ca.crt" -nodes \
         -subj "/C=FR/O=42LeHavre/CN=transcendance-ca"
 else
-    echo "CA certificate is already present."
+    printf "\033[1;92mCA certificate is already present.\033[0;39m\n"
 fi
 
 # Generate the server certificate
@@ -29,5 +29,5 @@ if [ ! -f "${CERTS_DIR}/vault.crt" ]; then
     chmod 644 ${PRIVATE_KEY_DIR}/ca.key
     chmod 644 ${PRIVATE_KEY_DIR}/vault.key
 else
-    echo "Server certificate is already present."
+    printf "\033[1;92mServer certificate is already present.\n"
 fi

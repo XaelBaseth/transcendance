@@ -12,8 +12,8 @@ db.sqlite3
 frontend/node_modules  
 
 #ssl
-#ssl/certs
-#ssl/private
+ssl/certs
+ssl/private
 
 #vault
 vault/vault-data
