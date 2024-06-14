@@ -8,9 +8,14 @@ import api from '../api';
 import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
 import { useTranslation } from 'react-i18next';
 
+import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
+import { useTranslation } from 'react-i18next';
+
 import '../styles/Setting.css'
 
 export default function Settings() {
+	const { t } = useTranslation();
+
 	const { t } = useTranslation();
 
 	const [currentSection, setCurrentSection] = useState('USER'); // Default section is 'USER'
@@ -23,9 +28,13 @@ export default function Settings() {
 		<div className='settings__flex'>
 			<div className='settings'>
 				<h1>{t('settings.settings')}</h1>
+				<h1>{t('settings.settings')}</h1>
 				<img src="" alt="" />
 				<div className='settings__container'>
 					<div className="navigation">
+						<button className={currentSection === 'USER' ? 'active' : ''} onClick={() => handleSectionChange('USER')}>{t('settings.user')}</button>
+						<button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
+						<button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
 						<button className={currentSection === 'USER' ? 'active' : ''} onClick={() => handleSectionChange('USER')}>{t('settings.user')}</button>
 						<button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
 						<button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
@@ -42,6 +51,8 @@ export default function Settings() {
 }
 
 function UserSettings() {
+	const { t } = useTranslation();
+
 	const { t } = useTranslation();
 
 	const { user, setUser } = useAuth();
@@ -77,14 +88,13 @@ function UserSettings() {
 	};
 
 	return (
-			<div className="cardSettings">
-				<TextCardSettings property={t('settings.pseudo')}/> 
-				<TextCardSettings property={t('settings.bio')}/>
-				<TextCardSettings property={t('settings.email')}/>
-				{/** <button onClick={handleUpdate}>Save Changes</button> */}
-				<LanguageSwitcher />
-			</div>
-		
+		<div className="cardSettings">
+			<TextCardSettings property={t('settings.pseudo')}/>
+            <TextCardSettings property={t('settings.bio')}/>
+            <TextCardSettings property={t('settings.email')}/>
+			{/** <button onClick={handleUpdate}>Save Changes</button> */}
+			{/**<LanguageSwitcher /> to add in here somewhere*/}
+		</div>
 	);
 }
 
@@ -198,6 +208,8 @@ export function AvatarCardSettings()
 export function PasswordCardSettings() {
 	const { t } = useTranslation();
 
+	const { t } = useTranslation();
+
 	const [userInput, setUserInput] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
 	const [passwordChanged, setPasswordChange] = useState<boolean>(false);
@@ -208,6 +220,7 @@ export function PasswordCardSettings() {
 			minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1
 		})
 			=== false) {
+			setErrorMsg(t("settings.errorPassword"))
 			setErrorMsg(t("settings.errorPassword"))
 		} else {
 			setErrorMsg("");
@@ -242,6 +255,8 @@ export function PasswordCardSettings() {
 		<div className="password__card">
 			<h2>{t("settings.changePassword")}</h2>
 			<h4>{t('settings.newPassword')}</h4>
+			<h2>{t("settings.changePassword")}</h2>
+			<h4>{t('settings.newPassword')}</h4>
 			<div className="input_container">
 				<input  type={type}
 						name="password"
@@ -250,7 +265,9 @@ export function PasswordCardSettings() {
 						className="password__input"
 			/>
 				<span onClick={handleClick}>{t('settings.showPassword')}</span>
+				<span onClick={handleClick}>{t('settings.showPassword')}</span>
 			</div>
+			<h4>{t('settings.confirmPassword')}</h4>
 			<h4>{t('settings.confirmPassword')}</h4>
 			<div className="input_container">
 				<input  type={type} 
@@ -260,12 +277,15 @@ export function PasswordCardSettings() {
 						className="password__input"
 				/>
 					<span onClick={handleClick}>{t('settings.showPassword')}</span>
+					<span onClick={handleClick}>{t('settings.showPassword')}</span>
 			</div>
+			<button id="password__btn" onClick={handleUpdate}>{t('settings.savePassword')}</button>
 			<button id="password__btn" onClick={handleUpdate}>{t('settings.savePassword')}</button>
 			<>
 				{
 					passwordChanged &&
 					<div className="settings__alert_ok">
+						<h6>{t('setting.successMsg')}</h6>
 						<h6>{t('setting.successMsg')}</h6>
 					</div>
 				}
@@ -277,7 +297,7 @@ export function PasswordCardSettings() {
 export function Activate2FA() {
 	const { t } = useTranslation();
 
-	const [is2FAActivated, setIs2FAActivated] = useState(false);
+    const [is2FAActivated, setIs2FAActivated] = useState(false);
 
 	return (
 		// Use a React Fragment or a div to wrap all elements
@@ -293,6 +313,7 @@ export function Activate2FA() {
 }
 
 export function DeleteAccountCardSettings() {
+	const { t } = useTranslation();
 	const { t } = useTranslation();
 	const [isDeleted, setDeleted] = useState<boolean>(false);
 
@@ -318,6 +339,8 @@ export function DeleteAccountCardSettings() {
 		<div className="delete_settings">
 			<h2 className="delete_settings__title">{t('settings.delete')}</h2>
 			<h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
+			<h2 className="delete_settings__title">{t('settings.delete')}</h2>
+			<h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
 			<button className="delete_settings__btn"
 				onClick={handleDelete}>
 				Delete
@@ -327,6 +350,8 @@ export function DeleteAccountCardSettings() {
 				{
 					isDeleted &&
 					<div className="delete_settings__alert">
+						<h5>{t('settings.deleteSuccess')}</h5>
+						<h6>{t('settings.redirection')}</h6>
 						<h5>{t('settings.deleteSuccess')}</h5>
 						<h6>{t('settings.redirection')}</h6>
 					</div>

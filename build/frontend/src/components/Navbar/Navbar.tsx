@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Sidebar from "./Sidebar";
-import Avatar from '../avatar/Avatar';
+import Avatar from '../Avatar/Avatar';
 import { useAuth } from '../../context';
 import LanguageSwitcher from '../LanguageSwitcher/languageSwitcher';
 import "./Navbar.css";
@@ -16,6 +16,7 @@ export default function Navbar(){
 
 
  return (
+	user &&
 	<>
 		<div className='navbar'>
 			<label className="nav-elements" id="burger-menu" htmlFor="check">
@@ -32,9 +33,9 @@ export default function Navbar(){
 					<div className='nav--avatar'>
 						<Avatar />
 						<button className="logout_btn" onClick={handleLogout}>Logout</button>
-						<LanguageSwitcher />
 					</div>
 				}
+				<LanguageSwitcher /> {/**Stays here until the setting page is fixed, then put in the user page ig */}
 			</>
 		</div>
 		<Sidebar />
