@@ -1,8 +1,7 @@
-import i18n from 'i18next';
+import i18next from 'i18next';
 import { initReactI18next } from "react-i18next"
 import translationEN from '../../translation/en.json'
 import translationFR from '../../translation/fr.json'
-import translationES from '../../translation/es.json'
 
 const resources = {
     en: {
@@ -11,18 +10,13 @@ const resources = {
     fr: {
         translation: translationFR,
     },
-	es: {
-        translation: translationES,
-    },
 }
 
-i18n.use(initReactI18next).init({
+i18next
+	.use(initReactI18next)
+	.init({
 		resources,
-		lng: "en",
-		fallbackLng: "en",
-		interpolation: {
-			escapeValue: false
-		},
+		lng:"en",
 	});
 
-export default i18n;
+export default i18next;

@@ -125,44 +125,11 @@ services:
     restart: always
     networks:
       - main
-  vault:
-    image: hashicorp/vault:1.16
-    container_name: vault
-    environment:
-      - VAULT_ADDR=${VAULT_ADDR}
-    ports:
-      - 8200:8200
-    restart: always
-    volumes:
-      - ./vault/vault-config.hcl:/vault/config/config.hcl
-      - ./vault/vault-data:/vault/file/
-      - ./vault/start-vault.sh:/./start-vault.sh
-      - ./ssl/certs:/etc/vault/certs
-      - ./ssl/private:/etc/vault/private
-    cap_add:
-      - IPC_LOCK
-    command: server
     healthcheck:
-      test: ["CMD-SHELL", "curl -fk https://localhost:8200/v1/sys/health"]
+      test: ["CMD", "redis-cli", "ping"]
       interval: 30s
       timeout: 10s
-      retries: 3
-
-    
-  vault-init:
-    image: hashicorp/vault:1.16
-    container_name: vault-init
-    environment:
-      - VAULT_ADDR=${VAULT_INIT_ADDR}
-      - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
-    volumes:
-      - ./vault/vault-root-token:/vault/file/vault-root-token
-      - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
-      - vault-data:/vault/file/
-    command: /usr/local/bin/vault-init.sh
-    restart: on-failure
-    depends_on:
-      - vault
+      retries: 5
 
 networks:
   main:
