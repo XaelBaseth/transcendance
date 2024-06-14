@@ -1,9 +1,6 @@
 import hvac
-from django.http import JsonResponse
 import os
-import logging
 
-logging.basicConfig(level=logging.DEBUG)
 
 def get_vault_client():
 	role_id = os.environ.get('DJANGO_ROLE_ID')
@@ -29,5 +26,4 @@ def fetch_secrets_from_vault(path):
 		)
 		return secrets['data']['data']
 	except Exception as e:
-		logging.error(f"Exception caught: {e}")
 		raise ValueError(f"[DJANGO]Failed to fetch secrets from Vault: {e}")

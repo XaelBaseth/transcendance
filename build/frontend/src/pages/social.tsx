@@ -45,7 +45,7 @@ function SearchBar() {
     useEffect( () => {
         	if (userInput.length > 2){
                 console.log('check this out!')
-            	postSearchQuery(userInput)
+            	//postSearchQuery(userInput)
         		.then( (response) => {
         			const copy = {...response};
         			setSearchResults(copy.data.hits[0]._formatted);

@@ -111,6 +111,18 @@ services:
     command: /usr/local/bin/vault-init.sh
     depends_on:
       - vault
+  
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    networks:
+      - main
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   main:
