@@ -1,84 +1,102 @@
 {
 	"home":{
-		" PRESS TO PLAY ":" PRESS TO PLAY " 
+		"play":" PRESS TO PLAY " 
 	},
 	"navbar":{
-		"Profil":"Profil",
-		"Social":"Social",
-		"About":"About",
-		"Match History":"Match History",
-		"Settings":"Settings",
-		"Logout":"Logout"
+		"profile":"Profil",
+		"social":"Social",
+		"about":"About",
+		"mHistory":"Match History",
+		"settings":"Settings"
 	},
 	"error":{
-		"Error":"Error"
+		"error":"Error"
 	},
 	"gamepage":{
-		"Use the up and down arrows of your keyboard to play !":"Use the up and down arrows of your keyboard to play !",
-		"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !":"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !",
-		"Compete in a tournament to see who is the best (it's you!)!":"Compete in a tournament to see who is the best (it's you!)!",
-		"PONG MODE":"PONG MODE",
-		"OTHER GAME MODE":"OTHER GAME MODE",
-		"TOURNAMENT MODE":"TOURNAMENT MODE",
-		"Looking for a match...":"Looking for a match...",
-		"Match found! Redirecting to game...":"Match found! Redirecting to game...",
-		"Leave Queue":"Leave Queue",
-		"Left Queue":"Left Queue",
-		"Preparing the room...":"Preparing the room..."
+		"pongLower":"Use the up and down arrows of your keyboard to play !",
+		"otherGameLower":"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !",
+		"tournamentLower":"Compete in a tournament to see who is the best (it's you!)!",
+		"pong":"PONG MODE",
+		"otherGame":"OTHER GAME MODE",
+		"tournament":"TOURNAMENT MODE"
 	},
 	"login":{
-		"Username":"Username",
-		"Password":"Password",
-		"Log In":"Log In",
-		"Log In with 42":"Log In with 42",
-		"Sign up":"Sign up",
-		"Successfully signed up!":"Successfully signed up!",
-		"A user with this username already exists":"A user with this username already exists",
-		"User does not exist: please sign up before":"User does not exist: please sign up before",
-		"Password does not match":"Password does not match"
+		"username":"Username",
+		"password":"Password",
+		"login":"Log In",
+		"login42":"Log In with 42",
+		"signup":"Sign up",
+		"notEmpty":"Please enter an username and a password",
+		"successMsg":"Successfully logged in!",
+		"errorMsg":"Invalid username or password",
+		"unknownMsg":"An error occured.",
+		"notExistingMsg":"User does not exist: please sign up before"
 	},
 	"signup":{
-		"Email":"Email",
-		"Username":"Username",
-		"Password":"Password",
-		"Confirm new password":"Confirm new password"
+		"email":"Email",
+		"username":"Username",
+		"password":"Password",
+		"successMsg":"Successfully signed up!",
+		"confirmPassword":"Confirm new password",
+		"errorMsg":"Registration failed.",
+		"alreadyMsg":"A user with this username already exists",
+		"passwordMatch":"Password does not match",
+		"unknownMsg":"An error occured."
 	},
 	"profile":{
-		"BIO":"BIO",
-		"Total Matches":"Total Matches",
-		"Victories":"Victories",
-		"Friends":"Friends",
-		"COMPETITIVE OVERVIEW":"COMPETITIVE OVERVIEW",
-		"Wins":"Wins",
-		"Loss":"Loss",
-		"Rank":"Rank",
-		"Aces":"Aces",
-		"Challenge":"Challenge"
+		"bio":"BIO",
+		"total":"Total Matches",
+		"victories":"Victories",
+		"friends":"Friends",
+		"overview":"COMPETITIVE OVERVIEW",
+		"wins":"Wins",
+		"loss":"Loss",
+		"rank":"Rank",
+		"aces":"Aces",
+		"challenge":"Challenge",
+		"winrate":"Winrate"
 	},
 	"social":{
-		"Looking for some friend ?":"Looking for some friend ?",
-		"Type the nickname of the person you want to find...":"Type the nickname of the person you want to find...",
-		"Add as friend":"Add as friend",
-		"All friends":"All friends",
-		"Active friends":"Active friends",
-		"Blocked users":"Blocked users",
-		"Pending request":"Pending request"
-	},
-	"about":{
+		"search":"Looking for some friend ?",
+		"type":"Type the nickname of the person you want to find...",
+		"add":"Add as friend",
+		"all":"All friends",
+		"active":"Active friends",
+		"blocked":"Blocked users",
+		"pending":"Pending request"
 	},
 	"settings":{
-		"Settings":"Settings",
-		"User":"User",
-		"Privacy and Security":"Privacy",
-		"Accessibility":"Accessibility",
-		"Enter a bio":"Enter a bio",
-		"Enter your pseudo":"Enter your pseudo",
-		"Enter your email":"Enter your email",
-		"Change your password":"Change your password",
-		"Show password":"Show password",
-		"Save password changes":"Save password changes",
-		"Beware this action is irreversible":"Beware this action is irreversible",
-		"Do you want to delete your account":"Do you want to delete your account"
+		"settings":"Settings",
+		"user":"User",
+		"privacy":"Privacy",
+		"accessibility":"Accessibility",
+		"bio":"Enter a bio",
+		"pseudo":"Enter your pseudo",
+		"email":"Enter your email",
+		"changePassword":"Change your password",
+		"newPassword":"New password",
+		"password":"Change your password",
+		"showPassword":"Show password",
+		"savePassword":"Save password changes",
+		"confirmPassword":"Confirm new password",
+		"errorPwd":"Your password is not strong enough",
+		"successMsg":"Your modification was successful",
+		"irreversible":"Beware this action is irreversible",
+		"delete":"Do you want to delete your account?",
+		"deleteSuccess":"Your account was successfully deleted!",
+		"redirection":"You will now be redirected to the login page in a few seconds..."
+	},
+	"pong":{
+		"pongHome":"Pong Home",
+		"joinRoom":"Join a Room",
+		"createRoom":"Create a Room",
+		"enterCode":"Enter a room code:",
+		"join":"Join",
+		"back":"Back",
+		"numberPlayers":"Set the number of players",
+		"create":"Create",
+		"limitPlayer":"Player limit",
+		"roomCode":"Room code"
 	}
 }
 	

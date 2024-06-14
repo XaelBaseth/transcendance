@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context';
+import { useTranslation } from 'react-i18next';
 import '../styles/Login.css';
 
 export default function Login() {	
+	const { t } = useTranslation();
+
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const { login, successMsg, errorMsg } = useAuth();
@@ -27,11 +30,11 @@ export default function Login() {
 			<div className="background" />
 			<form  className="connection-form">
 
-			<label className="login_label" htmlFor="username">Username</label>
-			<input onChange={(event) => {setUsername(event.target.value)}} type="text" placeholder="Username" id="username" />
+			<label className="login_label" htmlFor="username">{t('login.username')}</label>
+			<input onChange={(event) => {setUsername(event.target.value)}} type="text" placeholder={t('login.username')} id="username" />
 
-			<label  className="login_label" htmlFor="password">Password</label>
-			<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder="Password" id="password" />
+			<label  className="login_label" htmlFor="password">{t('login.password')}</label>
+			<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder={t('login.password')} id="password" />
 			<>
 			{
 				successMsg && 
@@ -48,13 +51,13 @@ export default function Login() {
 				</div>
 			}
 			</>
-			<button onClick={handleLogIn} id="login-btn">Log In</button>
+			<button onClick={handleLogIn} id="login-btn">{t('login.login')}</button>
 			<div className="social">
                 <div className="_42auth">
-					<button id='_42auth_btn'>Log In with 42</button>
+					<button id='_42auth_btn'>{t('login.login42')}</button>
 				</div>
 				<div className="signup">
-					<button onClick={handleSignUp} id="signup_btn">Sign up</button>
+					<button onClick={handleSignUp} id="signup_btn">{t('login.signup')}</button>
 				</div>
 			</div>
 			</form>

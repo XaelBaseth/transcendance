@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { IUser } from '../type';
 import DOMPurify from "isomorphic-dompurify"
+import { useTranslation } from 'react-i18next';
 
 import "../styles/Social.css"
 
 export function Social() {
+	const { t } = useTranslation();
     const [activeList, setActiveList] = useState<string | null>(null);
 
     const handleClickComponent = (listType: string) => {
@@ -18,16 +20,16 @@ export function Social() {
             <SearchBar />
             <div className='social-btn'>
                 <button onClick={() => handleClickComponent('allFriends')} className={activeList === 'allFriends' ? 'clicked-btn' : 'btn'}>
-                    All friends
+                    {t('social.all')}
                 </button>
                 <button onClick={() => handleClickComponent('activefriends')} className={activeList === 'activeFriends' ? 'clicked-btn' : 'btn'}>
-                    Active friends
+                    {t('social.active')}
                 </button>
                 <button onClick={() => handleClickComponent('blocked')} className={activeList === 'blocked' ? 'clicked-btn' : 'btn'}>
-                    Blocked users
+				{t('social.blocked')}
                 </button>
                 <button onClick={() => handleClickComponent('pendingRequest')} className={activeList === 'pendingRequest' ? 'clicked-btn' : 'btn'}>
-                    Pending request
+				{t('social.pending')}
                 </button>
             </div>
             {/** set 'activeList' to show it */}
@@ -39,6 +41,8 @@ export function Social() {
 
 /**Search bar*/
 function SearchBar() {
+	const { t } = useTranslation();
+
     const [userInput, setUserInput] = useState("");
     const [searchedUser, setSearchResults] = useState<IUser>();
 
@@ -61,18 +65,18 @@ function SearchBar() {
 
     return (
         <div>
-            <p className='text_searchBar'>Looking for some friend ?</p>
+            <p className='text_searchBar'>{t('social.search')}</p>
             <div className='search_bar'>
                 <input type='text' id='search_input' name='search'
                     onChange={(event) => setUserInput(event.target.value)}
-                    placeholder="Type the nickname of the person you want to find..."
+                    placeholder={t('social.type')}
                 />
             <>
                 { searchedUser && (<div key={searchedUser.id} className='searched_user'>
 					<div className="search_user_infos">
 							<img id="search_user_avatar" src={searchedUser.avatar} alt={searchedUser.username} />
 							<h5 id="title" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(searchedUser.username)}}></h5>
-							< button>Add as friend</button>					
+							< button>{t('social.add')}</button>					
                     </div>
 				 </div>)
                 }

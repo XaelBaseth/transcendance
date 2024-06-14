@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import { useTranslation } from 'react-i18next';
 
 const JoinPongRoomPage = () => {
+	const { t } = useTranslation();
+
 	const [roomCode, setRoomCode] = useState("");
 	const navigate = useNavigate();
 
@@ -30,11 +33,11 @@ const JoinPongRoomPage = () => {
 
 	return (
 		<div id="play-screen2">
-			<h1>Join Pong Page</h1>
-			<p>Enter a room code :</p>
-			<input type="text" placeholder="Room code" value={roomCode} onChange={(e) => setRoomCode(e.target.value)} />
-			<button onClick={joinRoomButtonPressed}>Join</button>
-			<button onClick={() => navigate('/pong')}>Back</button>
+			<h1>{t('pong.joinRoom')}</h1>
+			<p>{t('pong.enterCode')}</p>
+			<input type="text" placeholder={t('pong.roomCode')} value={roomCode} onChange={(e) => setRoomCode(e.target.value)} />
+			<button onClick={joinRoomButtonPressed}>{t("pong.join")}</button>
+			<button onClick={() => navigate('/pong')}>{t("pong.back")}</button>
 		</div>
 	);
 }

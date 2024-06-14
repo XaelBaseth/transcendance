@@ -4,9 +4,10 @@ import '../styles/Gamepage.css'
 import axios from 'axios';
 import api from '../api';
 import { useAuth } from "../context";
-
+import { useTranslation } from 'react-i18next';
 
 export default function GamePage() {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 
 	const pongGameModeButtonPressed = async () => {
@@ -74,17 +75,17 @@ export default function GamePage() {
 	return (
 		<div id="play-screen2">
 			<div className="button1" data-text="MODE PONG"
-				title="Use the up and down arrows of your keyboard to play !"
+				title={t('gamepage.pongLower')}
 				onClick={pongGameModeButtonPressed}>
-				PONG MODE
+				{t('gamepage.pong')}
 			</div>
 			<div className="button2" data-text="MODE OTHER"
-				title="Come try out our /!\/!\PUT A NEW GAME/!\/!\ !">
-				OTHER GAME MODE
+				title={t('gamepage.otherGameLower')}>
+				{t('gamepage.otherGame')}
 			</div>
 			<div className="button3" data-text="MODE TOURNAMENT"
-				title="Compet in a tournament to see who is the best (it's you!)!">
-				TOURNAMENT MODE
+				title={t('gamepage.tournamentLower')}>
+				{t('gamepage.tournament')}
 			</div>
 		</div>
 	);
