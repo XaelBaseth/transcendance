@@ -9,7 +9,8 @@ logs
 db.sqlite3
 
 #front
-frontend/node_modules  
+frontend/node_modules
+node_modules
 
 #ssl
 ssl/certs
