@@ -81,7 +81,7 @@ function UserSettings() {
             <TextCardSettings property={t('settings.bio')}/>
             <TextCardSettings property={t('settings.email')}/>
 			{/** <button onClick={handleUpdate}>Save Changes</button> */}
-			{/**<LanguageSwitcher /> to add in here somewhere*/}
+			<LanguageSwitcher />
 		</div>
 	);
 }
