@@ -1,51 +1,55 @@
 services:
   db:
     container_name: db
-    image: postgres
-    restart: always
     env_file:
       - .env
+    image: postgres
+    restart: always
     networks:
       - main
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"
-        ]
-      interval: 5s
-      retries: 3
-      timeout: 5s
+      test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
 
   django:
     container_name: django
     depends_on:
+      vault:
+        condition: service_healthy
       db:
         condition: service_healthy
     build:
       context: ./
       dockerfile: ./backend/Dockerfile
+    environment:
+      - VAULT_ADDR=${VAULT_INIT_ADDR}
     restart: always
+    volumes:
+      - ./vault/vault-data:/vault/file
+      - ./ssl/certs:/etc/ssl/certs
+      - ./ssl/private:/etc/ssl/private
     networks:
-      - main
+      - main 
     healthcheck:
-      test: [ "CMD-SHELL", "curl localhost:8000/api/ || exit 1" ]
-      interval: 3s
+      test: ["CMD-SHELL", "curl -f localhost:8000/api/ || exit 1"]
+      interval: 10s
       timeout: 10s
-      retries: 3
-    env_file: .env
+      retries: 5
 
   nginx:
     container_name: nginx
-    env_file: .env
     depends_on:
       django:
         condition: service_healthy
+      vault:
+        condition: service_healthy
+    environment:
+      - VAULT_ADDR=${VAULT_INIT_ADDR}
     build:
       context: ./build
       dockerfile: Dockerfile
-      args:
-        - NGINX_PROTOCOL=https
     ports:
       - '8000:8000'
     restart: always
@@ -53,24 +57,77 @@ services:
       - main
     volumes:
       - /var/www/html
+      - ./ssl/certs:/etc/ssl/certs
+      - ./ssl/private:/etc/ssl/private
+      - ./vault/vault-data:/vault/file
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "curl -fk https://localhost:8000/ || exit 1"
-        ]
-      interval: 3s
+      test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  vault:
+    image: hashicorp/vault:1.16
+    container_name: vault
+    environment:
+      - VAULT_ADDR=${VAULT_ADDR}
+      - VAULT_CACERT=${VAULT_CACERT}
+    ports:
+      - 8200:8200
+    restart: always
+    networks:
+      - main
+    volumes:
+      - ./vault/vault-config.hcl:/vault/config/config.hcl
+      - ./vault/vault-data:/vault/file/
+      - ./vault/start-vault.sh:/./start-vault.sh
+      - ./ssl/certs:/etc/vault/certs
+      - ./ssl/private:/etc/vault/private
+    cap_add:
+      - IPC_LOCK
+    entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 30s
       timeout: 10s
       retries: 3
 
+  vault-init:
+    image: hashicorp/vault:1.16
+    container_name: vault-init
+    restart: on-failure
+    networks:
+      - main
+    env_file: .env
+    environment:
+      - VAULT_ADDR=${VAULT_INIT_ADDR}
+      - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
+      - VAULT_CACERT=${VAULT_CACERT}
+    volumes:
+      - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
+      - ./vault/vault-data:/vault/file/
+      - ./ssl/certs:/etc/vault/certs
+      - ./ssl/private:/etc/vault/private
+    command: /usr/local/bin/vault-init.sh
+    depends_on:
+      - vault
+  
   redis:
     container_name: redis
     image: redis
     restart: always
     networks:
       - main
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   main:
     name: main
     driver: bridge
+
+volumes:
+  vault-data:

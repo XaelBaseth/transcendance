@@ -1,5 +1,5 @@
-#virtualenv
-backend/.venv
+#42 setup
+$HOME
 
 #back
 log
@@ -9,4 +9,12 @@ logs
 db.sqlite3
 
 #front
-frontend/node_modules  
+frontend/node_modules
+node_modules
+
+#ssl
+ssl/certs
+ssl/private
+
+#vault
+vault/vault-data

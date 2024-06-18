@@ -1,86 +1,102 @@
 {
 	"home":{
-		" PRESS TO PLAY ":" APPUYEZ POUR JOUER" 
+		"play":" APPUYEZ POUR JOUER " 
 	},
 	"navbar":{
-		"Profil":"Profil",
-		"Social":"Social",
-		"Match History":"Historique des parties",
-		"Settings":"Reglages",
-		"Log in":"Se Connecter"
+		"profile":"Profil",
+		"social":"Social",
+		"about":"A propos",
+		"mHistory":"Historique des parties",
+		"settings":"Reglages"
 	},
 	"error":{
-		"Error":"Erreur"
+		"error":"Erreur"
 	},
 	"gamepage":{
-		"Use the up and down arrows of your keyboard to play !":"Utilisez les fleches haut et bas du clavier pour jouer !",
-		"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !":"Venez essayer notre {INSEREZ JEU ICI} !",
-		"Compete in a tournament to see who is the best (it's you!)!":"Participez a un tournois pour savoir qui est le meilleur (c'est vous!) !",
-		"PONG MODE":"MODE PONG",
-		"OTHER GAME MODE":"MODE AUTRE JEU",
-		"TOURNAMENT MODE":"MODE TOURNOIS",
-		"Looking for a match...":"En recherche de match",
-		"Match found! Redirecting to game...":"Match trouve! Redirection vers le jeu",
-		"Leave Queue":"En train de quittez la file d'attente",
-		"Left Queue":"File d'attente quittee",
-		"Preparing the room...":"Preparation du lobby"
+		"pongLower":"Utilisez les fleches haut et bas du clavier pour jouer !",
+		"otherGameLower":"Venez essayer notre {INSEREZ JEU ICI} !",
+		"tournamentLower":"Participez a un tournoi pour savoir qui est le meilleur (c'est vous!) !",
+		"pong":"MODE PONG",
+		"otherGame":"MODE AUTRE JEU",
+		"tournament":"MODE TOURNOI"
 	},
 	"login":{
-		"Username":"Nom d'utilisateur",
-		"Password":"Mot de passe",
-		"Log In":"Se Connecter",
-		"Log In with 42":"Se connecter avec 42",
-		"Sign up":"S'enregistrer",
-		"Successfully signed up!":"Connecte avec succes",
-		"A user with this username already exists":"Un utilisateur avec ce pseudo existe deja",
-		"User does not exist: please sign up before":"L'utilisateur n'existe pas: merci de vous enregistrer avant de vous connecter.",
-		"Password does not match":"Le mot de passe est erronne"
+		"username":"Nom d'utilisateur",
+		"password":"Mot de passe",
+		"login":"Se Connecter",
+		"login42":"Se connecter avec 42",
+		"signup":"S'enregistrer",
+		"successMsg":"Connecte avec succes",
+		"errorMsg":"Nom d'utilisateur ou mot de passe invalide",
+		"unknownMsg":"Une erreur s'est produite.",
+		"notEmpty":"Veuillez entrer un nom d'utilisateur et un mot de passe",
+		"notExistingMsg":"L'utilisateur n'existe pas: merci de vous enregistrer avant de vous connecter"
 	},
 	"signup":{
-		"Email":"Email",
-		"Username":"Nom d'utilisateur",
-		"Password":"Mot de passe",
-		"Confirm new password":"Confirmer le mot de passe"
-	},
-	"pong":{
-		"Hello":"Bonjour"
+		"email":"Email",
+		"username":"Nom d'utilisateur",
+		"password":"Mot de passe",
+		"successMsg":"Enregistre avec succes!",
+		"confirmPassword":"Confirmer le mot de passe",
+		"errorMsg":"Error lors de l'enregistrement.",
+		"alreadyMsg":"Un utilisateur avec ce pseudo existe deja",
+		"passwordMatch":"Le mot de passe est erronne",
+		"unknownMsg":"Une erreur s'est produite."
 	},
 	"profile":{
-		"BIO":"BIO",
-		"Total Matches":"Nombre total de Match",
-		"Victories":"Victoires",
-		"Friends":"Amis",
-		"COMPETITIVE OVERVIEW":"STATS COMPETITIVES",
-		"Wins":"Victoires",
-		"Loss":"Defaites",
-		"Rank":"Classement",
-		"Aces":"Ace",
-		"Challenge":"Defiez"
+		"bio":"BIO",
+		"total":"Nombre total de Match",
+		"victories":"Victoires",
+		"friends":"Amis",
+		"overview":"STATS COMPETITIVES",
+		"wins":"Victoires",
+		"loss":"Defaites",
+		"rank":"Classement",
+		"aces":"Ace",
+		"challenge":"Defiez",
+		"winrate":"pourcentage de victoires"
 	},
 	"social":{
-		"Looking for some friend ?":"A la recherche d'amis ?",
-		"Type the username of the person you want to find...":"Entrez le nom d'utilisateur de la personne que vous cherchez...",
-		"Add as friend":"Ajoutez en tant qu'ami",
-		"All friends":"Tout les amis",
-		"Active friends":"Amis en ligne",
-		"Blocked users":"Utilisateurs bloques",
-		"Pending request":"Demandes en attente"
-	},
-	"about":{
+		"search":"A la recherche d'amis ?",
+		"type":"Entrez le nom d'utilisateur de la personne que vous cherchez...",
+		"add":"Ajoutez en tant qu'ami",
+		"all":"Tout les amis",
+		"active":"Amis en ligne",
+		"blocked":"Utilisateurs bloques",
+		"pending":"Demandes en attente"
 	},
 	"settings":{
-		"Settings":"Parametre",
-		"User":"Utilisateur",
-		"Privacy and Security":"Vie privee et securite",
-		"Accessibility":"Accessibilite",
-		"Enter a bio":"Entrez une bio",
-		"Enter your pseudo":"Entrez votre nom d'utilisateur",
-		"Enter your email":"Entrez votre addresse email",
-		"Change your password":"Changez votre mot de passe",
-		"Show password":"Montrez votre mot de passe",
-		"Save password changes":"Sauvegarder les modifications de mots de passe",
-		"Beware this action is irreversible":"Attention, cette action est irreversible",
-		"Do you want to delete your account":"Voulez-vous supprimer votre compte"
+		"settings":"Parametre",
+		"user":"Utilisateur",
+		"privacy":"Vie privee et securite",
+		"accessibility":"Accessibilite",
+		"bio":"Entrez une bio",
+		"pseudo":"Entrez votre nom d'utilisateur",
+		"email":"Entrez votre addresse email",
+		"changePassword":"Changer votre mot de passe",
+		"newPassword":"Nouveau mot de passe",
+		"password":"Changez votre mot de passe",
+		"showPassword":"Montrez votre mot de passe",
+		"errorPassword":"Le mot de passe n'est pas assez fort",
+		"confirmPassword":"Confirmer le mot de passe",
+		"savePassword":"Sauvegarder les modifications de mots de passe",
+		"successMsg":"Modifications enregistrees avec succes",
+		"irreversible":"Attention, cette action est irreversible",
+		"delete":"Voulez-vous supprimer votre compte ?",
+		"deleteSuccess":"Votre compte a ete supprimer",
+		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes..."
+	},
+	"pong":{
+		"pongHome":"Pong Maison",
+		"joinRoom":"Rejoindre une Salle",
+		"createRoom":"Creer une Salle",
+		"enterCode":"Entrer un numero de Salle:",
+		"join":"Rejoindre",
+		"back":"Retour",
+		"numberPlayers":"Choisissez le nombre de joueurs",
+		"create":"Creer",
+		"limitPlayer":"Limite de joueurs",
+		"roomCode":"Code de la salle"
 	}
 }
 	

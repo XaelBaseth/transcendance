@@ -1,0 +1,101 @@
+{
+	"home":{
+		"play":" PINCHA PARA JUGAR" 
+	},
+	"navbar":{
+		"profile":"Perfil",
+		"social":"Social",
+		"about":"A propósito",
+		"mHistory":"Historial del juego",
+		"settings":"Configuración"
+	},
+	"error":{
+		"error":"Error"
+	},
+	"gamepage":{
+		"pongLower":"Utiliza las flechas de arriba y abajo para jugar !",
+		"otherGameLower":"Comprueba nuestro {INSERTE JUEGO AQUÍ} !",
+		"tournamentLower":"Participa en un torneo para saber quién es el mejor (¡eres tú!) !",
+		"pong":"MODO PONG",
+		"otherGame":"MODO OTRO JUEGO",
+		"tournament":"MODO TORNEO"
+	},
+	"login":{
+		"username":"Nombre de usuario",
+		"password":"Contraseña",
+		"login":"Conectar",
+		"login42":"Conecta con 42",
+		"signup":"Regístrate",
+		"notEmpty":"Conexion exitosa",
+		"successMsg":"Nombre de usuario o contraseña invalido",
+		"errorMsg":"A occurrido un error",
+		"unknownMsg":"Introdiuce un nombre de usuario y una contraseña",
+		"notExistingMsg":"El usuario no existe: por favor registrate antes de conectarte"
+	},
+	"signup":{
+		"email":"Correo electronico",
+		"username":"Nombre de usuario",
+		"password":"Comtraseña",
+		"successMsg":"Registrado con exito!",
+		"confirmPassword":"Confirma tu contraseña",
+		"errorMsg":"Error para registrarse",
+		"passwordMatch":"Ya existe un usuario con este nombre de usuario",
+		"alreadyMsg":"La contraseña es incorrecta",
+		"unknownMsg":"Occurrio un error."
+	},
+	"profile":{
+		"bio":"BIO",
+		"total":"Numero total de partidos",
+		"victories":"Victorias",
+		"friends":"Amigos",
+		"overview":"Estadisticas competitivas",
+		"wins":"Victorias",
+		"loss":"Derrotas",
+		"rank":"Clasificación",
+		"aces":"Aces",
+		"challenge":"Desafia",
+		"winrate":"Porcentaje de victorias"
+	},
+	"social":{
+		"search":"Buscas amigos ?",
+		"type":"INtroduce el nombre de usuario de la persona que buscas...",
+		"add":"Agregalo como amigo",
+		"all":"Todos los amigos",
+		"active":"Amigos en linea",
+		"blocked":"Usuarios bloqueados",
+		"pending":"Solicitudes pendientes"
+	},
+	"settings":{
+		"settings":"Parámetros",
+		"user":"Usuario",
+		"privacy":"Vida privada y seguridad",
+		"accessibility":"Accesibilidad",
+		"bio":"Introduce tu biografia",
+		"pseudo":"Introduce tu nombre de usuario",
+		"email":"Introduce tu correo electronico",
+		"changePassword":"Cambia tu contraseña",
+		"newPassword":"Nueva contraseña",
+		"password":"Cambia tu contraseña",
+		"showPassword":"Muestra tu contraseña",
+		"savePassword":"Guarda las modificaciones de tu contraseña",
+		"confirmPassword":"Confirma tu contraseña",
+		"errorPwd":"Tu contraseña no es lo suficientemente fuerte",
+		"successMsg":"Modificaciones guardadas con exito",
+		"irreversible":"Cuidado, esta acción es irreversible",
+		"delete":"Deseas eliminar tu cuenta ?",
+		"deleteSuccess":"Tu cuenta ha sido eliminada",
+		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos"
+	},
+	"pong":{
+		"pongHome":"Casa de Pong",
+		"joinRoom":"Incorporarse a una sala",
+		"createRoom":"Crear una sala",
+		"enterCode":"Entra un numero de sala:",
+		"join":"Incorporarse",
+		"back":"Regresar",
+		"numberPlayers":"Elije el numero de jugadores",
+		"create":"Crear",
+		"limitPlayer":"Limite de jugadores",
+		"roomCode":"Codigo de la sala"
+	}
+}

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import { useTranslation } from 'react-i18next';
 
 const CreatePongRoomPage = () => {
+	const { t } = useTranslation();
 	const defaultProps = {
 		player_limit: 1,
 	};
@@ -29,11 +31,11 @@ const CreatePongRoomPage = () => {
 
 	return (
 		<div id="play-screen2">
-			<h1>Create Pong Room</h1>
-			<p>Set the number of players :</p>
-			<input type="number" placeholder="Player limit" value={playerLimit} onChange={(e) => setPlayerLimit(parseInt(e.target.value))} />
-			<button onClick={createRoomButtonPressed}>Create</button>
-			<button onClick={() => navigate('/pong')}>Back</button>
+			<h1>{t('pong.createRoom')}</h1>
+			<p>{t('pong.numberPlayers')}</p>
+			<input type="number" placeholder={t('pong.limitPlayer')} value={playerLimit} onChange={(e) => setPlayerLimit(parseInt(e.target.value))} />
+			<button onClick={createRoomButtonPressed}>{t('pong.create')}</button>
+			<button onClick={() => navigate('/pong')}>{t('pong.back')}</button>
 		</div>
 	);
 }

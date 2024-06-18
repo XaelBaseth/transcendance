@@ -1,8 +1,10 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import "../styles/Profile.css"
 
-
 export function Profile() {
+	const { t } = useTranslation();
+
 	return (
 	<div id="whole-profile-container">
 		<div id="whole-profile">
@@ -14,35 +16,35 @@ export function Profile() {
 							{ }
 						</article>
 						<article className="user__bio">
-							<h1>BIO</h1>
+							<h1>{t('profile.bio')}</h1>
 							<span>{/**user.bio */}</span>
 						</article>
 						<hr />
 						<article id="main-stats">
-							<MainStat title="Total Matches" stat={50} />
-							<MainStat title="Victories" stat={50} />
-							<MainStat title="Friends" stat={90000} />
+							<MainStat title={t('profile.total')} stat={50} />
+							<MainStat title={t('profile.victories')} stat={50} />
+							<MainStat title={t('profile.friends')} stat={90000} />
 						</article>
 						<hr />
 					</div>
 					<div id="stats">
-						<h1>COMPETITIVE OVERVIEW</h1>
+						<h1>{t('profile.overview')}</h1>
 						<div className="winratio__stats">
 							<WinrateCircularBar winRate={0} />
 							<div className="stat__display">
-								<StatDisplay title={"Victories"} stat={50} />
+								<StatDisplay title={t('profile.wins')} stat={50} />
 							</div>
 							<div className="stat__display">
-								<StatDisplay title={"Defeats"} stat={50} />
+								<StatDisplay title={t('profile.loss')} stat={50} />
 							</div>
 						</div>
 						<div className="stat__display">
-							<StatDisplay title={"(Rank)"} stat={1} />
+							<StatDisplay title={t('profile.rank')} stat={1} />
 						</div>
 						<div className="stat__display">
-							<StatDisplay title={"(Acess)"} stat={0} />
+							<StatDisplay title={t('profile.aces')} stat={0} />
 						</div>
-						<button className="challenge-btn">Challenge</button>
+						<button className="challenge-btn">{t('profile.challenge')}</button>
 					</div>
 				</div>
 			</section>
@@ -58,6 +60,8 @@ export function Profile() {
 								//////////////////////
 
 function WinrateCircularBar(props : {winRate: number}) {
+	const { t } = useTranslation();
+	
 	let circularProgress = document.querySelector<HTMLElement>(".circular-progress");
 	let progressValue = document.querySelector<HTMLElement>(".progress-value");
 
@@ -84,7 +88,7 @@ function WinrateCircularBar(props : {winRate: number}) {
 	return (
 	<div className='circular__progress'>
 		<div className='winrate__content'>
-			<h5 className='winrate__title'>Win Rate</h5>
+			<h5 className='winrate__title'>{t('profile.winrate')}</h5>
 			<span className='progress-value'>0%</span>
 		</div>
 	</div>

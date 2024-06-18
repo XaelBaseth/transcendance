@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context';
+import { useTranslation } from 'react-i18next';
 import '../styles/SignUp.css';
 
 export default function SignUp() {
+	const { t } = useTranslation();
+
 	const [username, setusername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -26,16 +29,16 @@ export default function SignUp() {
 				<form  className="signUp-form">
 
 				
-				<label className="signUp_label" htmlFor="email">Email</label>
-				<input onChange={(event) => {setEmail(event.target.value)}} type="text" placeholder="email" id="email" />
+				<label className="signUp_label" htmlFor="email">{t('signup.email')}</label>
+				<input onChange={(event) => {setEmail(event.target.value)}} type="text" placeholder={t('signup.email')} id="email" />
 
-				<label className="signUp_label" htmlFor="username">Username</label>
-				<input onChange={(event) => {setusername(event.target.value)}} type="text" placeholder="username" id="username" />
+				<label className="signUp_label" htmlFor="username">{t('signup.username')}</label>
+				<input onChange={(event) => {setusername(event.target.value)}} type="text" placeholder={t('signup.username')} id="username" />
 
-				<label  className="signUp_label" htmlFor="password">Password</label>
-				<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder="Password" id="password" />
-				<label  className="signUp_label" htmlFor="password">Confirm new password</label>
-				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder="Password" id="password_conf" />
+				<label  className="signUp_label" htmlFor="password">{t('signup.password')}</label>
+				<input onChange={(event) => {setPassword(event.target.value)}} type="password" placeholder={t('signup.password')} id="password" />
+				<label  className="signUp_label" htmlFor="password">{t('signup.confirmPassword')}</label>
+				<input onChange={(event) => {setConfirmPassword(event.target.value)}} type="password" placeholder={t('signup.confirmPassword')} id="password_conf" />
 			
 				<>
 				{

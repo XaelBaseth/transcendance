@@ -3,6 +3,7 @@ import { User, AuthContextType } from './types/auth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import api from './api';
+import { useTranslation } from 'react-i18next';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -16,6 +17,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC = ({ children }) => {
+	const { t } = useTranslation();
 	const [user, setUser] = useState<User | null>(null);
 	const [successMsg, setSuccessMsg] = useState<string>("");
 	const [errorMsg, setErrorMsg] = useState<string>("");
@@ -50,53 +52,43 @@ export const AuthProvider: React.FC = ({ children }) => {
 	//login
 	const login = async (username: string, password: string) => {
 		if (username === "" || password === "") {
-			setErrorMsg("Enter valid username or password");
+			setErrorMsg(t('login.notEmpty'));
 			return;
 		}
 		try {
 			const res = await api.post("/api/token/", {username, password});
-
-			//Print statement
-			console.log("Login Response: ", res);
-			//End of print statement
-
 			if (res.status >= 200 && res.status < 300) {
 				setUser({...res.data });
-				setSuccessMsg("Successfully logged in!")
+				setSuccessMsg(t('login.successMsg'))
 				localStorage.setItem(ACCESS_TOKEN, res.data.access);
 				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
 				navigate("/");	
 			} else {	
-				setErrorMsg("Invalid username or password.");
+				setErrorMsg(t('login.errorMsg'));
 			}	
 		} catch (error) {	
 			console.error(error);
-			setErrorMsg("An error occured during login.")
+			setErrorMsg(t('login.unknownMsg'))
 		}
 	};
 
 	//signUp
 	const signup = async (email: string, username: string, password: string, confirmPassword: string)  => {
 		if (password !== confirmPassword) {
-			setErrorMsg("Passwords do not match.");
+			setErrorMsg(t('signup.passwordMatch'));
 			return;
 		}
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
-
-			//Print
-			console.log("SignUp response: ", res);
-			//End of print statement
-
 			if (res.status >= 200 && res.status < 300) {
-				setSuccessMsg("Registration successful.");
+				setSuccessMsg(t('signup.succesMsg'));
 				navigate('/login');
 			} else {
-				setErrorMsg("Registration failed.");
+				setErrorMsg(t('signup.errorMsg'));
 			}
 		} catch (error) {
 			console.error("Error during registration:", error);
-			setErrorMsg('An error occurred during registration');
+			setErrorMsg(t('signup.unknownMsg'));
 		}
 	};
 

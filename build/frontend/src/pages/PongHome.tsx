@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const PongHomePage = () => {
+	const { t } = useTranslation();
+
 	const navigate = useNavigate();
 
 
@@ -15,10 +18,10 @@ const PongHomePage = () => {
 
 	return (
 		<div id="play-screen2">
-			<h1>Pong Home</h1>
-			<button onClick={joinRoomButtonPressed}>Join a Room</button>
+			<h1>{t('pong.pongHome')}</h1>
+			<button onClick={joinRoomButtonPressed}>{t('pong.joinRoom')}</button>
 			<br /> <br />
-			<button onClick={createRoomButtonPressed}>Create A Room</button>
+			<button onClick={createRoomButtonPressed}>{t('pong.createRoom')}</button>
 		</div>
 	);
 }
