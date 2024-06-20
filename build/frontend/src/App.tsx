@@ -19,6 +19,7 @@ import PongHomePage from "./pages/PongHome"
 import JoinPongRoomPage from "./pages/JoinPongRoomPage"
 import CreatePongRoomPage from "./pages/CreatePongRoomPage"
 import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import './App.css'
 
