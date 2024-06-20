@@ -97,6 +97,8 @@
 		"create":"Creer",
 		"limitPlayer":"Limite de joueurs",
 		"roomCode":"Code de la salle"
+	},
+	"cookie":{
+		"banner":"En continuant à naviguer sur ce site, vous acceptez que nous utilisions des cookies pour le bon fonctionnement du site. Nous n'utilisons pas de cookies à des fins de suivi ou de publicité."
 	}
 }
-	

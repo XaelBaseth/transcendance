@@ -18,6 +18,7 @@ import { AuthProvider } from "./context"
 import PongHomePage from "./pages/PongHome"
 import JoinPongRoomPage from "./pages/JoinPongRoomPage"
 import CreatePongRoomPage from "./pages/CreatePongRoomPage"
+import { useTranslation } from 'react-i18next';
 
 import './App.css'
 
@@ -29,6 +30,7 @@ function RegisterAndLogout() {
 }
 
 function App() {
+	const { t } = useTranslation();
 
 	return (
 		<div id='app'>
@@ -39,8 +41,9 @@ function App() {
 					</video>
 				</div>
 				{/*<div cookie_setting>
-				<CookieConsent>
-					This website uses cookies to enhance user experience, such as user information.
+				<CookieConsent location="bottom" cookieName="RGPD Compliant" expires={999} overlay>
+					{t('cookie.banner')}
+					<span>You can manage your preferences in our <a href="/settings" target="_blank" rel="noopener noreferrer">Settings</a>.</span>
 				</CookieConsent>
 				</div>*/}
 				<BrowserRouter>

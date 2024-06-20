@@ -3,8 +3,13 @@ fix front :
 	- creation Room pour tournois
 	- handle settings
 2FA
+RGPD
+API 42
 RGPD:
 https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:02016R0679-20160504
+Setup the RGPD dans les settings.
+Link vers les settings.
+Installer les dependances necessaires.
 
 
 

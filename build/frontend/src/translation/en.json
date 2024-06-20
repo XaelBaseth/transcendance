@@ -97,6 +97,9 @@
 		"create":"Create",
 		"limitPlayer":"Player limit",
 		"roomCode":"Room code"
+	},
+	"cookie":{
+		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes."
 	}
 }
 	
