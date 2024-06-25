@@ -97,5 +97,30 @@
 		"create":"Crear",
 		"limitPlayer":"Limite de jugadores",
 		"roomCode":"Codigo de la sala"
-	}
+	},
+	"cookie":{
+		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",
+		"policy":"Política de cookies",
+		"introduction":"Introducción",
+		"intro_text":"Nuestro sitio web (en lo sucesivo, \"el sitio web\") utiliza cookies y otras tecnologías relacionadas (por comodidad, todas las tecnologías se denominan \"cookies\"). También colocan cookies terceros contratados por nosotros. En el documento que figura a continuación, le informamos sobre el uso de cookies en nuestro sitio web.",
+		"cookie_title":"¿Qué son las cookies?",
+		"cookie_text":"Las cookies son pequeños archivos de texto que se almacenan en su ordenador o dispositivo móvil cuando visita un sitio web.",
+		"type_title":"Tipos de cookies que utilizamos",
+		"type_text":"Funcionalidad: Algunas cookies garantizan que determinadas partes del sitio web funcionen correctamente y que se sigan conociendo sus preferencias de usuario. Al colocar cookies funcionales, le facilitamos la visita a nuestro sitio web. De este modo, no tendrá que introducir repetidamente la misma información cuando visite nuestro sitio web y, por ejemplo, los artículos permanecerán en su cesta de la compra hasta que haya pagado. Podemos colocar estas cookies sin su consentimiento.",
+		"use_title":"Por qué utilizamos cookies",
+		"manage_title":"Gestión de cookies",
+		"manage_text":"Puede utilizar su navegador de Internet para eliminar las cookies automática o manualmente. También puede especificar que no se coloquen determinadas cookies. Otra opción es cambiar la configuración de su navegador de Internet para que reciba un mensaje cada vez que se instale una cookie. Para más información sobre estas opciones, consulte las instrucciones de la sección de Ayuda de su navegador. Tenga en cuenta que nuestro sitio web puede no funcionar correctamente si se desactivan todas las cookies.",
+		"rights_title":"Sus derechos en materia de datos personales",
+		"rights_1":"Derecho de acceso: Tiene derecho a acceder a sus datos personales que conozcamos.",
+		"rights_2":"Derecho de rectificación: Tiene derecho a completar, rectificar, hacer borrar o bloquear sus datos personales siempre que lo desee.",
+		"rights_3":"Si nos da su consentimiento para tratar sus datos, tiene derecho a revocarlo y a que se supriman sus datos personales.",
+		"rights_4":"Derecho a transferir sus datos: Tienes derecho a solicitar todos tus datos personales al responsable del tratamiento y a transferirlos en su totalidad a otro responsable.",
+		"rights_5":"Derecho de oposición: Puede oponerse al tratamiento de sus datos. Nos atenemos a ello, salvo que existan motivos justificados para el tratamiento.",
+		"rights_text":"Para ejercer estos derechos, póngase en contacto con nosotros. Consulte los datos de contacto en la parte inferior de esta Política de Cookies. Si tiene alguna queja sobre cómo tratamos sus datos, nos gustaría conocerla, pero también tiene derecho a presentar una queja ante la autoridad supervisora (la Autoridad de Protección de Datos).",
+		"contact_title":"Contacte con nosotros",
+		"contact_adress":"Address: ",
+		"contact_phone":"Número de teléfono: ",
+		"contact_email":"Email: ",
+		"contact_text":"Para preguntas y/o comentarios sobre nuestra Política de Cookies y esta declaración, póngase en contacto con nosotros utilizando la información proporcionada anteriormente."
+		}
 }

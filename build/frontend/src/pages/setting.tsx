@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import validator from 'validator';
 import { useAuth } from '../context';
@@ -76,21 +77,25 @@ function UserSettings() {
 	};
 
 	return (
-		<div className="cardSettings">
-			<TextCardSettings property={t('settings.pseudo')}/>
-            <TextCardSettings property={t('settings.bio')}/>
-            <TextCardSettings property={t('settings.email')}/>
-			{/** <button onClick={handleUpdate}>Save Changes</button> */}
-			<LanguageSwitcher />
-		</div>
+			<div className="cardSettings">
+				<TextCardSettings property={t('settings.pseudo')}/> 
+				<TextCardSettings property={t('settings.bio')}/>
+				<TextCardSettings property={t('settings.email')}/>
+				{/** <button onClick={handleUpdate}>Save Changes</button> */}
+				<LanguageSwitcher />
+			</div>
+		
 	);
 }
 
 
 function PrivacySettings() {
 	return (
-		<PasswordCardSettings />
-		//<Activate2FA />
+		<div className="privacy_settings">
+			<PasswordCardSettings />
+			{/** <Activate2FA /> */}
+			<CookieSettings />
+		</div>
 	);
 }
 
@@ -103,16 +108,16 @@ function AccessibilitySettings() {
 }
 
 export function TextCardSettings({ property } : {property: string}) {
-    {/** Automatiser de maniere a ce que chaque 
-        personne puisse avoir son propre avatar */}
+	{/** Automatiser de maniere a ce que chaque 
+		personne puisse avoir son propre avatar */}
 
-    const [userInput, setUserInput] = useState<string>("");
-    const [errorMsg, setErrorMsg] = useState<string>("");
-    const [propertyChanged, setPropertyChange] = useState<boolean>(false);
+	const [userInput, setUserInput] = useState<string>("");
+	const [errorMsg, setErrorMsg] = useState<string>("");
+	const [propertyChanged, setPropertyChange] = useState<boolean>(false);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserInput(event.target.value); }
-    
-    const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { setUserInput(event.target.value); }
+	
+	const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
 		event.preventDefault();
 		if (property !== 'email' ||
 			(property === 'email' && validator.isEmail(userInput) === true)) {
@@ -123,48 +128,48 @@ export function TextCardSettings({ property } : {property: string}) {
 		}
 	};
 
-    return (
-        <div className="text_settings__card">
-          <div className="text_settings_property">{property}</div>
-          <div className="text_settings_input">
-            <input  
-              type="text"
-              name={property}
-              id={property}
-              placeholder="Placeholder"
-              onChange={handleChange}
-              className="text_input"
-            />
-          </div>
-          <div className="setting__line"></div>
-          {propertyChanged &&
-            <div className="settings__alert_ok">
-              <h6>Your modification was success</h6>
-            </div>
-          }
-          {errorMsg &&
-            <div className="settings__alert_err">
-              <h6>{errorMsg}</h6>
-            </div>
-          }
-        </div>
-      );
-    }
+	return (
+		<div className="text_settings__card">
+		<div className="text_settings_property">{property}</div>
+		<div className="text_settings_input">
+			<input  
+			type="text"
+			name={property}
+			id={property}
+			placeholder="Placeholder"
+			onChange={handleChange}
+			className="text_input"
+			/>
+		</div>
+		<div className="setting__line"></div>
+		{propertyChanged &&
+			<div className="settings__alert_ok">
+			<h6>Your modification was success</h6>
+			</div>
+		}
+		{errorMsg &&
+			<div className="settings__alert_err">
+			<h6>{errorMsg}</h6>
+			</div>
+		}
+		</div>
+	);
+}
 
 export function AvatarCardSettings() 
 {
-    {/** Automatiser de maniere a ce que chaque 
-        personne puisse avoir son propre avatar */}
- 
-    const [errorMsg, setErrorMsg] = useState<string>("");
-    const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
-    
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files) {
-            {/** Change Avatar */}
-            setBrowseMsg("File chosen!");
-        }
-    }
+	{/** Automatiser de maniere a ce que chaque 
+		personne puisse avoir son propre avatar */}
+
+	const [errorMsg, setErrorMsg] = useState<string>("");
+	const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
+	
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.files) {
+			{/** Change Avatar */}
+			setBrowseMsg("File chosen!");
+		}
+	}
 
 	return (
 		<div id='avatar_settings'>
@@ -272,19 +277,19 @@ export function PasswordCardSettings() {
 export function Activate2FA() {
 	const { t } = useTranslation();
 
-    const [is2FAActivated, setIs2FAActivated] = useState(false);
+	const [is2FAActivated, setIs2FAActivated] = useState(false);
 
-    return (
-        // Use a React Fragment or a div to wrap all elements
-        <>
-            <div className="checkbox_2FA">
-                <label>
-                    Activate 2FA:
-                    <input type="checkbox" checked={is2FAActivated} onChange={(e) => setIs2FAActivated(e.target.checked)} />
-                </label>
-            </div>
-        </>
-    );
+	return (
+		// Use a React Fragment or a div to wrap all elements
+		<>
+			<div className="checkbox_2FA">
+				<label>
+					Activate 2FA:
+					<input type="checkbox" checked={is2FAActivated} onChange={(e) => setIs2FAActivated(e.target.checked)} />
+				</label>
+			</div>
+		</>
+	);
 }
 
 export function DeleteAccountCardSettings() {
@@ -331,3 +336,68 @@ export function DeleteAccountCardSettings() {
 	);
 }
 
+export function CookieSettings() {
+	const { t } = useTranslation();
+
+	return (
+		<div className="cookie-settings">
+		  <div className="cookie-content">
+			<h3>{t('cookie.policy')}</h3>
+			<section>
+			  <h4>{t('cookie.introduction')}</h4>
+			  <p>
+				{t('cookie.intro_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h4>{t('cookie.cookie_title')}</h4>
+			  <p>
+				{t('cookie.cookie_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h3>{t('cookie.type_title')}</h3>
+			  <p>
+				{t('cookie.type_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h3>{t('cookie.use_title')}</h3>
+			  <p>
+			  		{t('cookie.type_text')}
+			  </p>
+	
+			  <h5>{t('cookie.manage_title')}</h5>
+			  <p>
+				{t('cookie.manage_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h5>{t('cookie.rights_title')}</h5>
+			  <ul>
+				<li>{t('cookie.rights_1')}</li>
+				<li>{t('cookie.rights_2')}</li>
+				<li>{t('cookie.rights_3')}</li>
+				<li>{t('cookie.rights_4')}</li>
+				<li>{t('cookie.rights_5')}</li>
+			  </ul>
+			  <p>{t('cookie.rights_text')}</p>
+			</section>
+	
+			<section>
+			  <h5>{t('cookie.contact_title')}</h5>
+			  <ul>
+				<li>{t('cookie.contact_adress')} </li>
+				<li>{t('cookie.contact_email')} </li>
+				<li>{t('cookie.contact_adress')} </li>
+			  </ul>
+			  <p>{t('cookie.contact_text')}</p>
+			</section>
+		  </div>
+		</div>
+	  );
+}

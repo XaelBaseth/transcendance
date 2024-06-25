@@ -22,5 +22,9 @@ ssl/private
 #vault
 vault/vault-data
 
+#volume
+postgres-data
+redis-data
+
 #MISC
 TODO.md

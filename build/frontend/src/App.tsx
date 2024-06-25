@@ -40,12 +40,14 @@ function App() {
 						<source src={BGVideo} type='video/mp4' />
 					</video>
 				</div>
-				{/*<div cookie_setting>
+				{/**
+				<div cookie_setting>
 				<CookieConsent location="bottom" cookieName="RGPD Compliant" expires={999} overlay>
 					{t('cookie.banner')}
 					<span>You can manage your preferences in our <a href="/settings" target="_blank" rel="noopener noreferrer">Settings</a>.</span>
 				</CookieConsent>
-				</div>*/}
+				</div>
+				*/}
 				<BrowserRouter>
 					<AuthProvider>
 						<div className="Navbar">

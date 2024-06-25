@@ -99,7 +99,29 @@
 		"roomCode":"Room code"
 	},
 	"cookie":{
-		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes."
+		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes.",
+		"policy":"Cookie Policy",
+		"introduction":"Introduction",
+		"intro_text":"Our website (hereinafter: \"the website\") uses cookies and other related technologies (for convenience all technologies are referred to as \"cookies\"). Cookies are also placed by third parties we have engaged. In the document below we inform you about the use of cookies on our website.",
+		"cookie_title":"What Are Cookies?",
+		"cookie_text":"Cookies are small text files that are stored on your computer or mobile device when you visit a website.",
+		"type_title":"Types of Cookies We Use",
+		"type_text":"Functionality: Some cookies ensure that certain parts of the website work properly and that your user preferences remain known. By placing functional cookies, we make it easier for you to visit our website. This way, you do not need to repeatedly enter the same information when visiting our website and, for example, the items remain in your shopping cart until you have paid. We may place these cookies without your consent.",
+		"use_title":"Why We Use Cookies",
+		"manage_title":"Managing Cookies",
+		"manage_text":"You can use your internet browser to automatically or manually delete cookies. You can also specify that certain cookies may not be placed. Another option is to change the settings of your internet browser so that you receive a message each time a cookie is placed. For more information about these options, please refer to the instructions in the Help section of your browser. Please note that our website may not work properly if all cookies are disabled.",
+		"rights_title":"Your Rights Regarding Personal Data",
+		"rights_1":"Right of access: You have the right to access your personal data that is known to us.",
+		"rights_2":"Right to rectification: You have the right to supplement, correct, have deleted or blocked your personal data whenever you wish.",
+		"rights_3":"If you give us your consent to process your data, you have the right to revoke that consent and to have your personal data deleted.",
+		"rights_4":"Right to transfer your data: You have the right to request all your personal data from the controller and transfer it in its entirety to another controller.",
+		"rights_5":"Right to object: You may object to the processing of your data. We comply with this, unless there are justified grounds for processing.",
+		"rights_text":"To exercise these rights, please contact us. Please refer to the contact details at the bottom of this Cookie Policy. If you have a complaint about how we handle your data, we would like to hear from you, but you also have the right to submit a complaint to the supervisory authority (the Data Protection Authority).",
+		"contact_title":"Contact Us",
+		"contact_adress":"Address: ",
+		"contact_phone":"Phone number: ",
+		"contact_email":"Email: ",
+		"contact_text":"For questions and/or comments about our Cookie Policy and this statement, please contact us using the information provided above."
 	}
 }
 	

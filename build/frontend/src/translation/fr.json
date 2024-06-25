@@ -99,6 +99,28 @@
 		"roomCode":"Code de la salle"
 	},
 	"cookie":{
-		"banner":"En continuant à naviguer sur ce site, vous acceptez que nous utilisions des cookies pour le bon fonctionnement du site. Nous n'utilisons pas de cookies à des fins de suivi ou de publicité."
-	}
+		"banner":"En continuant à naviguer sur ce site, vous acceptez que nous utilisions des cookies pour le bon fonctionnement du site. Nous n'utilisons pas de cookies à des fins de suivi ou de publicité.",
+		"policy":"Politique des cookies",
+		"introduction":"Introduction",
+		"intro_text":"Notre site web (ci-après : \"le site web\") utilise des cookies et d'autres technologies connexes (par commodité, toutes les technologies sont désignées par le terme \"cookies\"). Des cookies sont également placés par des tiers que nous avons engagés. Dans le document ci-dessous, nous vous informons sur l'utilisation des cookies sur notre site web.",
+		"cookie_title":"Que sont les cookies ?",
+		"cookie_text":"Les cookies sont de petits fichiers texte qui sont stockés sur votre ordinateur ou votre appareil mobile lorsque vous visitez un site web.",
+		"type_title":"Types de cookies que nous utilisons",
+		"type_text":"Fonctionnalité : Certains cookies garantissent que certaines parties du site web fonctionnent correctement et que vos préférences d'utilisateur restent connues. En plaçant des cookies fonctionnels, nous facilitons votre visite sur notre site web. Ainsi, vous ne devez pas saisir plusieurs fois les mêmes informations lorsque vous visitez notre site web et, par exemple, les articles restent dans votre panier d'achat jusqu'à ce que vous ayez payé. Nous pouvons placer ces cookies sans votre consentement.",
+		"use_title":"Pourquoi nous utilisons des cookies ?",
+		"manage_title":"Gestion des cookies",
+		"manage_text":"Vous pouvez utiliser votre navigateur Internet pour supprimer automatiquement ou manuellement les cookies. Vous pouvez également spécifier que certains cookies ne doivent pas être placés. Vous pouvez également modifier les paramètres de votre navigateur Internet de manière à recevoir un message chaque fois qu'un cookie est placé. Pour plus d'informations sur ces options, veuillez vous référer aux instructions de la section d'aide de votre navigateur. Veuillez noter que notre site web peut ne pas fonctionner correctement si tous les cookies sont désactivés.",
+		"rights_title":"Vos droits en matière de données personnelles",
+		"rights_1":"Droit d'accès : Vous avez le droit d'accéder à vos données personnelles dont nous avons connaissance.",
+		"rights_2":"Droit de rectification : Vous avez le droit de compléter, de corriger, de faire supprimer ou de bloquer vos données personnelles quand vous le souhaitez.",
+		"rights_3":"Si vous nous donnez votre consentement pour traiter vos données, vous avez le droit de révoquer ce consentement et de faire effacer vos données personnelles.",
+		"rights_4":"Droit de transférer vos données : Vous avez le droit de demander au responsable du traitement de vous communiquer toutes vos données à caractère personnel et de les transférer dans leur intégralité à un autre responsable du traitement.",
+		"rights_5":"Droit d'opposition : Vous pouvez vous opposer au traitement de vos données. Nous nous y conformons, à moins qu'il n'existe des motifs justifiés pour le traitement.",
+		"rights_text":"Pour exercer ces droits, veuillez nous contacter. Veuillez vous référer aux coordonnées figurant au bas de la présente politique en matière de cookies. Si vous avez une réclamation concernant la manière dont nous traitons vos données, nous aimerions l'entendre, mais vous avez également le droit de déposer une réclamation auprès de l'autorité de contrôle (l'Autorité de protection des données).",
+		"contact_title":"Nous contacter",
+		"contact_adress":"Addresse: ",
+		"contact_phone":"Numero de telephone: ",
+		"contact_email":"Email: ",
+		"contact_text":"Pour toute question et/ou commentaire concernant notre politique en matière de cookies et la présente déclaration, veuillez nous contacter en utilisant les informations fournies ci-dessus."
+		}
 }
