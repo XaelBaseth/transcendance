@@ -14,7 +14,7 @@ import { Social } from "./pages/social"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { AuthProvider } from "./context"
-//import CookieConsent from "react-cookie-consent"
+import CookieConsent from "react-cookie-consent"
 import PongHomePage from "./pages/PongHome"
 import JoinPongRoomPage from "./pages/JoinPongRoomPage"
 import CreatePongRoomPage from "./pages/CreatePongRoomPage"
@@ -40,14 +40,12 @@ function App() {
 						<source src={BGVideo} type='video/mp4' />
 					</video>
 				</div>
-				{/**
 				<div cookie_setting>
-				<CookieConsent location="bottom" cookieName="RGPD Compliant" expires={999} overlay>
+				<CookieConsent location="bottom" cookieName="RGPD Compliant" expires={999}>
 					{t('cookie.banner')}
 					<span>You can manage your preferences in our <a href="/settings" target="_blank" rel="noopener noreferrer">Settings</a>.</span>
 				</CookieConsent>
 				</div>
-				*/}
 				<BrowserRouter>
 					<AuthProvider>
 						<div className="Navbar">
