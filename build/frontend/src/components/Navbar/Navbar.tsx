@@ -36,8 +36,7 @@ export default function Navbar(){
 			</>
 		</div>
 		
-		{/** <Sidebar /> */}
-		<LanguageSwitcher />
+		<Sidebar />
   </>
   );
 };
