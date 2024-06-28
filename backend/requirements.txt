@@ -1,5 +1,4 @@
 asgiref
-hvac
 daphne
 Django
 django-cors-headers

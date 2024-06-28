@@ -1,7 +1,7 @@
 listener "tcp" {
   address     = "0.0.0.0:8200"
-  tls_cert_file = "/etc/vault/certs/nginx.crt"
-  tls_key_file = "/etc/vault/private/nginx.key"
+  tls_cert_file = "/etc/vault/certs/vault.crt"
+  tls_key_file = "/etc/vault/private/vault.key"
 }
 
 storage "file" {
