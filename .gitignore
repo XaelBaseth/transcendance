@@ -23,7 +23,7 @@ vault/vault-data
 
 #volume
 postgres-data
-redis-data
+db-data
 
 #MISC
 TODO.md
