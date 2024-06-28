@@ -1,0 +1,126 @@
+{
+	"home":{
+		"play":"CLIQUE PARA JOGAR" 
+	},
+	"navbar":{
+		"profile":"Perfil",
+		"social":"Social",
+		"about":"Sobre",
+		"mHistory":"Histórico do jogo",
+		"settings":"Configuração"
+	},
+	"error":{
+		"error":"Erro"
+	},
+	"gamepage":{
+		"pongLower":"Use as setas para cima e para baixo para jogar!",
+		"otherGameLower":"Confira nosso {INSIRA JOGO AQUI}!",
+		"tournamentLower":"Participe de um torneio para saber quem é o melhor (é você!)!",
+		"pong":"MODO PONG",
+		"otherGame":"MODO OUTRO JOGO",
+		"tournament":"MODO TORNEIO"
+	},
+	"login":{
+		"username":"Nome de usuário",
+		"password":"Senha",
+		"login":"Entrar",
+		"login42":"Entrar com 42",
+		"signup":"Registrar",
+		"notEmpty":"Conexão bem-sucedida",
+		"successMsg":"Nome de usuário ou senha inválido",
+		"errorMsg":"Ocorreu um erro",
+		"unknownMsg":"Introduza um nome de usuário e uma senha",
+		"notExistingMsg":"O usuário não existe: por favor registre-se antes de entrar"
+	},
+	"signup":{
+		"email":"Correio eletrônico",
+		"username":"Nome de usuário",
+		"password":"Senha",
+		"successMsg":"Registrado com sucesso!",
+		"confirmPassword":"Confirme sua senha",
+		"errorMsg":"Erro ao registrar",
+		"passwordMatch":"Já existe um usuário com este nome de usuário",
+		"alreadyMsg":"A senha está incorreta",
+		"unknownMsg":"Ocorreu um erro."
+	},
+	"profile":{
+		"bio":"BIO",
+		"total":"Número total de jogos",
+		"victories":"Vitórias",
+		"friends":"Amigos",
+		"overview":"Estatísticas competitivas",
+		"wins":"Vitórias",
+		"loss":"Derrotas",
+		"rank":"Classificação",
+		"aces":"Aces",
+		"challenge":"Desafiar",
+		"winrate":"Percentual de vitórias"
+	},
+	"social":{
+		"search":"Procurando amigos?",
+		"type":"Digite o nome de usuário da pessoa que você está procurando...",
+		"add":"Adicione como amigo",
+		"all":"Todos os amigos",
+		"active":"Amigos online",
+		"blocked":"Usuários bloqueados",
+		"pending":"Solicitações pendentes"
+	},
+	"settings":{
+		"settings":"Parâmetros",
+		"user":"Usuário",
+		"privacy":"Privacidade e segurança",
+		"accessibility":"Acessibilidade",
+		"bio":"Digite sua biografia",
+		"pseudo":"Digite seu nome de usuário",
+		"email":"Digite seu correio eletrônico",
+		"changePassword":"Mudar sua senha",
+		"newPassword":"Nova senha",
+		"password":"Mudar sua senha",
+		"showPassword":"Mostrar sua senha",
+		"savePassword":"Salvar alterações de sua senha",
+		"confirmPassword":"Confirme sua senha",
+		"errorPwd":"Sua senha não é forte o suficiente",
+		"successMsg":"Modificações salvas com sucesso",
+		"irreversible":"Cuidado, esta ação é irreversível",
+		"delete":"Deseja deletar sua conta?",
+		"deleteSuccess":"Sua conta foi deletada",
+		"redirection":"Você será redirecionado para a página inicial em 5 segundos"
+	},
+	"pong":{
+		"pongHome":"Casa do Pong",
+		"joinRoom":"Entrar em uma sala",
+		"createRoom":"Criar uma sala",
+		"enterCode":"Insira um número de sala:",
+		"join":"Entrar",
+		"back":"Voltar",
+		"numberPlayers":"Escolha o número de jogadores",
+		"create":"Criar",
+		"limitPlayer":"Limite de jogadores",
+		"roomCode":"Código da sala"
+	},
+	"cookie":{
+		"banner":"Ao continuar navegando neste site, você aceita que utilizemos cookies para garantir que o site funcione corretamente. Não utilizamos cookies para rastreamento ou publicidade.",
+		"policy":"Política de Cookies",
+		"introduction":"Introdução",
+		"intro_text":"Nosso site (doravante denominado \"site\") utiliza cookies e outras tecnologias relacionadas (por comodidade, todas as tecnologias são chamadas de \"cookies\"). Também colocamos cookies de terceiros contratados por nós. No documento abaixo, informamos sobre o uso de cookies em nosso site.",
+		"cookie_title":"O que são cookies?",
+		"cookie_text":"Cookies são pequenos arquivos de texto que são armazenados no seu computador ou dispositivo móvel quando você visita um site.",
+		"type_title":"Tipos de cookies que utilizamos",
+		"type_text":"Funcionalidade: Alguns cookies garantem que determinadas partes do site funcionem corretamente e que suas preferências de usuário sejam lembradas. Ao colocar cookies funcionais, facilitamos a visita ao nosso site. Desta forma, você não precisa inserir repetidamente as mesmas informações quando visitar nosso site e, por exemplo, os itens permanecerão no seu carrinho de compras até que você pague. Podemos colocar esses cookies sem seu consentimento.",
+		"use_title":"Por que utilizamos cookies",
+		"manage_title":"Gerenciamento de cookies",
+		"manage_text":"Você pode usar seu navegador de Internet para excluir cookies automática ou manualmente. Você também pode especificar que determinados cookies não sejam colocados. Outra opção é alterar as configurações do seu navegador de Internet para que você receba uma mensagem cada vez que um cookie for instalado. Para mais informações sobre essas opções, consulte as instruções na seção de Ajuda do seu navegador. Note que nosso site pode não funcionar corretamente se todos os cookies estiverem desativados.",
+		"rights_title":"Seus direitos em relação a dados pessoais",
+		"rights_1":"Direito de acesso: Você tem o direito de acessar seus dados pessoais que conhecemos.",
+		"rights_2":"Direito de retificação: Você tem o direito de completar, corrigir, excluir ou bloquear seus dados pessoais sempre que desejar.",
+		"rights_3":"Se você nos der seu consentimento para processar seus dados, tem o direito de revogá-lo e de ter seus dados pessoais apagados.",
+		"rights_4":"Direito à portabilidade dos dados: Você tem o direito de solicitar todos os seus dados pessoais ao responsável pelo tratamento e transferi-los na íntegra para outro responsável.",
+		"rights_5":"Direito de oposição: Você pode se opor ao processamento de seus dados. Cumprimos com isso, salvo se houver motivos justificados para o processamento.",
+		"rights_text":"Para exercer esses direitos, entre em contato conosco. Consulte os dados de contato no final desta Política de Cookies. Se você tiver alguma reclamação sobre como tratamos seus dados, gostaríamos de ouvi-la, mas você também tem o direito de apresentar uma queixa à autoridade supervisora (a Autoridade de Proteção de Dados).",
+		"contact_title":"Fale conosco",
+		"contact_adress":"Endereço: ",
+		"contact_phone":"Número de telefone: ",
+		"contact_email":"Email: ",
+		"contact_text":"Para perguntas e/ou comentários sobre nossa Política de Cookies e esta declaração, entre em contato conosco usando as informações fornecidas acima."
+	}
+}
