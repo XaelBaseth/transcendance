@@ -59,18 +59,18 @@ function App() {
 							{/*
         					<Route path="/password" element={<PasswordSettings />} />
 							<Route path="/delete-account" element={<DeleteSettings />} />*/}
-							<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-							<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
-							<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-							<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-							<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-							<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-							<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+							<Route path="/about" element= {<About />}/>
+							<Route path="/social" element={<Social />} />
+							<Route path="/" element={<Home />} />
+							<Route path="/profile" element={<Profile />} />
+							<Route path="/gamepage" element={<GamePage />} />
+							<Route path="/settings" element={<Settings />} />
+							<Route path="/social" element={<Social />} />
 							{/* PONG */}
-							<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
-							<Route path="/pong-join" element={<ProtectedRoute><JoinPongRoomPage /></ProtectedRoute>} />
-							<Route path="/pong-create" element={<ProtectedRoute><CreatePongRoomPage /></ProtectedRoute>} />
-							<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
+							<Route path="/pong" element={<PongHomePage />} />
+							<Route path="/pong-join" element={<JoinPongRoomPage />} />
+							<Route path="/pong-create" element={<CreatePongRoomPage />} />
+							<Route path="/pong/:roomCode" element={<Pong />} />
 						</Routes>
 					</AuthProvider>
 				</BrowserRouter>
