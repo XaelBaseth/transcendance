@@ -51,4 +51,9 @@ setup:
 		exit 1; \
 	fi
 
-.PHONY: all build up stop clean fclean logs setup
+front:
+	 @docker-compose build --no-cache nginx
+	 @echo "$(YELLOW)[TRANSCENDENCE] $(ORANGE)===>	$(GREEN)Nginx rebuild! go check your changes on \n\t\t$(BOLD)https://localhost:8000$(RESET)"
+
+
+.PHONY: all build up stop clean fclean logs setup front

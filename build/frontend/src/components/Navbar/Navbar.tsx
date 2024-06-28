@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import Sidebar from "./Sidebar";
 import Avatar from '../avatar/Avatar';
 import { useAuth } from '../../context';
-import LanguageSwitcher from '../LanguageSwitcher/languageSwitcher';
 import "./Navbar.css";
 
 export default function Navbar(){
@@ -35,7 +34,6 @@ export default function Navbar(){
 				}
 			</>
 		</div>
-		
 		<Sidebar />
   </>
   );
