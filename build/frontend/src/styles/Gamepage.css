@@ -12,9 +12,9 @@
 	font-weight: bold;
 	display: flex;
 	justify-content: left;
-	background-color: var(--linen);
-    border: 6px solid var(--light_teal);
-	color: var(--pink);
+	background-color: var(--bouton_BG);
+    border: 6px solid var(--bouton_border);
+	color: var(--bouton_text);
 	border-radius:15px;
 	padding: 15px 25px;
 	letter-spacing:5px;
@@ -30,9 +30,9 @@
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
-	background-color: var(--linen);
-    border: 6px solid var(--light_teal);
-	color: var(--pink);
+	background-color: var(--bouton_BG);
+    border: 6px solid var(--bouton_border);
+	color: var(--bouton_text);
 	margin-left: 100px;
 	border-radius:15px;
 	padding: 15px 25px;
@@ -49,9 +49,9 @@
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
-	background-color: var(--linen);
-    border: 6px solid var(--light_teal);
-	color: var(--pink);
+	background-color: var(--bouton_BG);
+    border: 6px solid var(--bouton_border);
+	color: var(--bouton_text);
 	margin-left: 100px;
 	border-radius:15px;
 	padding: 15px 25px;
@@ -63,18 +63,18 @@
 } 
 
 .button1:hover {
-	background-color: var(--light_teal);
-	border : 6px solid var(--linen);
+	background-color: var(--bouton_border);
+	border : 6px solid var(--bouton_BG);
 }
 
 .button2:hover {
-	background-color: var(--light_teal);
-	border : 6px solid var(--linen);
+	background-color: var(--bouton_border);
+	border : 6px solid var(--bouton_BG);
 }
 
 .button3:hover {
-	background-color: var(--light_teal);
-	border : 6px solid var(--linen);
+	background-color: var(--bouton_border);
+	border : 6px solid var(--bouton_BG);
 }
 
 
@@ -86,9 +86,9 @@
   bottom: -120px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  border: 3px solid var(--olive_green);
-  background-color:  var(--clear_yellow);
-  color: var(--olive_green);
+  border: 3px solid var(--pong_borber);
+  background-color:  var(--template_BG);
+  color: var(--pong_borber);
   white-space: normal;
   padding: 10px 10px;
   border-radius: 4px;
@@ -109,9 +109,9 @@
 	bottom: -120px;
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	border: 3px solid var(--olive_green);
-	background-color:  var(--clear_yellow);
-	color: var(--olive_green);
+	border: 3px solid var(--pong_borber);
+	background-color:  var(--template_BG);
+	color: var(--pong_borber);
 	white-space: normal;
 	padding: 10px 10px;
 	border-radius: 4px;
@@ -131,9 +131,9 @@
 	position: absolute;
 	bottom: -65px;
 	left: -30%;
-	border: 3px solid var(--olive_green);
-	background-color:  var(--clear_yellow);
-	color: var(--olive_green);
+	border: 3px solid var(--pong_borber);
+	background-color:  var(--template_BG);
+	color: var(--pong_borber);
 	white-space: normal;
 	padding: 10px 10px;
 	border-radius: 4px;

@@ -8,7 +8,7 @@
     top: 50%;
     left: 50%;
     border-radius: 10px;
-    border: 5px solid var(--olive_green);
+    border: 5px solid var(--pong_borber);
     padding: 30px 30px;
 }
 
@@ -26,7 +26,7 @@
     top: 50%;
     left: 50%;
     font-weight: bold;
-    color: var(--olive_green);
+    color: var(--pong_borber);
     font-size: 20px;
     letter-spacing:1.5px;
 }

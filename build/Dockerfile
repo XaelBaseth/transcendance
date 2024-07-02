@@ -47,7 +47,7 @@ RUN ./configure --add-dynamic-module=../ModSecurity-nginx --with-cc-opt='-g -O2 
 	-Wformat -Werror=format-security -fPIC -Wdate-time -D_FORTIFY_SOURCE=2' \
 	--with-ld-opt='-Wl,-z,relro -Wl,-z,now -fPIC' --prefix=/usr/share/nginx \
 	--conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log \
-	--coral-red-log-path=stderr --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid \
+	--error-log-path=stderr --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid \
 	--modules-path=/usr/lib/nginx/modules --http-client-body-temp-path=/var/lib/nginx/body \
 	--http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy \
 	--http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \

@@ -11,7 +11,7 @@
 
 #whole-profile hr {
 	margin : 1vh;
-	color: var(--light_pink);
+	color: var(--setting_textL);
 }
 
 #main-dashboard {
@@ -19,7 +19,7 @@
 	height: 67%;
 	background-color: #f7f2e8af;
     backdrop-filter: blur(10px);
-	border: 5px solid var(--light_teal);
+	border: 5px solid var(--bouton_border);
 	border-radius: 20px;
 	position: absolute;
 	left : 20%;
@@ -30,7 +30,7 @@
 	display : flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	color: var(--pink);
+	color: var(--bouton_text);
 	position: absolute;
 	left: 7%;
 	top: 2%;
@@ -131,7 +131,7 @@
 	height : 100%;
 	width : 100%;
 	border-radius: 50%;
-	background-color: var(--light_teal);
+	background-color: var(--bouton_border);
 	left: -3%;
 	top: 5%;
 }
@@ -147,7 +147,7 @@
 .winrate__title {
 	text-align: center;
 	font-size: 18px;
-	color: var(--pink);
+	color: var(--bouton_text);
 }
 
 .winrate__content {
@@ -175,9 +175,9 @@
 	font-family: "VT323";
 	font-weight: bold;
 	font-size: 20px;
-	color: var(--pink);
-	background-color: var(--linen);
-	border: 3px solid var(--light_teal);
+	color: var(--bouton_text);
+	background-color: var(--bouton_BG);
+	border: 3px solid var(--bouton_border);
 	border-radius: 10px;
 	padding: 10px 30px;
 	letter-spacing: 1px;
@@ -189,7 +189,7 @@
 }
 
 .challenge-btn:hover {
-	color: var(--pink);
-	border: 3px solid var(--linen);
-	background-color: var(--light_teal);
+	color: var(--bouton_text);
+	border: 3px solid var(--bouton_BG);
+	background-color: var(--bouton_border);
 }

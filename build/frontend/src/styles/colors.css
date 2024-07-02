@@ -4,26 +4,18 @@
 
 
 :root {
-    --linen: #f7f2e8;
-    --light_teal: #a0ced9;
-    --pink: #e27396;
-    --light_pink: #ea9ab2;
-    --olive_green: #5c775b;
-    --clear_beige: #f7f2e8ce;
-    --clear_yellow: #fcf5c7a6;
-    --coral-red: #f03e3e;
-    --sea_green : #90be8e;
+    --bouton_BG: #f7f2e8;
+    --bouton_border: #a0ced9;
+    --bouton_text: #e27396;
 
+    --setting_textL: #ea9ab2;
 
-    --clear_teal: #f7f2e8af;
-    --coral-red-D:#E73E3E;
-    --sea_green-D:#92A2A4;
-    --linen-D:#F6ECEC;
-    --light_teal-D:#A2D4D3;
-    --light_pink-D:#E5A7A6;
-    --pink-D:#DC8685;
-    --olive_green-D:#5D6768;
-    --clear_beige-D:#F6ECEC;
-    --clear_yellow-D:#FBDADC;
-    --clear_teal-D: #F6ECEC;
+    --pong_borber: #5c775b;
+
+    --setting_BG: #f7f2e8ce;
+
+    --template_BG: #fcf5c7a6;
+
+    --error: #f03e3e;
+    --ok : #90be8e;
 }

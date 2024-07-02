@@ -13,8 +13,8 @@
     font-family: 'Pixelify Sans';
     font-weight: bold;
     padding: 15px 15px;
-    background-color: var(--linen);
-    border: 6px solid var(--light_teal);
+    background-color: var(--bouton_BG);
+    border: 6px solid var(--bouton_border);
     border-radius: 20px;
     letter-spacing: 5px;
     cursor: pointer;
@@ -24,13 +24,13 @@
 }
 
 .btn__play:hover {
-    background-color: var(--light_teal);
-    border: 6px solid var(--linen);
+    background-color: var(--bouton_border);
+    border: 6px solid var(--bouton_BG);
 }
 
 .link {
     font-weight: bold;
-    color: var(--pink);
+    color: var(--bouton_text);
     font-size: 30px;
     text-decoration: none;
 }
