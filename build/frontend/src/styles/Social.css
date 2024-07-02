@@ -4,12 +4,12 @@
 }
 
 #social-dashboard button {
-	background-color: var(--bouton_BG);
+	background-color: var(--linen);
     font-family: 'Pixelify Sans';
 	font-size: 17px;
     letter-spacing:1px;
-    color: var(--bouton_text);
-    border: 5px solid var(--bouton_border);
+    color: var(--pink);
+    border: 5px solid var(--light_teal);
 	transition: color 0s;
 }
 
@@ -33,8 +33,8 @@
 }
 
 #social-dashboard button:hover {
-	background-color: var(--bouton_BG_hover);
-	border : 5px solid var(--bouton_border_hover);
+	background-color: var(--light_teal);
+	border : 5px solid var(--linen);
 }
 
 /*SeachBar*/
@@ -52,10 +52,10 @@
 	align-items: center;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
-	border-right: 4px solid var(--bouton_border);
-    border-bottom: 4px solid var(--bouton_border);
-    border-left: 4px solid var(--bouton_border);
-	background-color: var(--bouton_BG);
+	border-right: 4px solid var(--light_teal);
+    border-bottom: 4px solid var(--light_teal);
+    border-left: 4px solid var(--light_teal);
+	background-color: var(--linen);
 	text-align: left;
 	position: absolute;
 	left: -3%;
@@ -66,7 +66,7 @@
 	font-family: 'Pixelify Sans';
 	font-size: 18px;
 	outline: 0;
-	color: var(--setting_textD);
+	color: var(--pink);
 }
 
 #search_input:hover, #search_input:focus {
@@ -129,8 +129,8 @@
 }
 
 #social-dashboard button:hover {
-	background-color: var(--bouton_BG_hover);
-	border : 5px solid var(--bouton_border_hover);
+	background-color: var(--light_teal);
+	border : 5px solid var(--linen);
 }
 
 #title {
@@ -188,13 +188,13 @@
 	font-family: 'Pixelify Sans';
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
-	border-right: 4px solid var(--bouton_border);
-    border-top: 4px solid var(--bouton_border);
-    border-left: 4px solid var(--bouton_border);
-	background-color: var(--bouton_BG);
+	border-right: 4px solid var(--light_teal);
+    border-top: 4px solid var(--light_teal);
+    border-left: 4px solid var(--light_teal);
+	background-color: var(--linen);
 	font-size: 25px;
 	font-weight: bold;
-	color: var(--setting_textD);
+	color: var(--pink);
 	padding-left: 1%;
 	text-align: left;
 	position: absolute;
@@ -212,8 +212,8 @@
 #search_input {
 	outline: 0;
 	border: 0px solid #fff;
-	background-color: var(--bouton_BG);
-	color: var(--setting_textD);
+	background-color: var(--linen);
+	color: var(--pink);
 }
 
 #search_input:hover, #search_input:focus {

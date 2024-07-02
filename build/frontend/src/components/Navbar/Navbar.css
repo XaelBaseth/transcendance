@@ -60,8 +60,8 @@
 	font-size: 23px;
     font-family: 'Pixelify Sans';
 	padding : 7px;
-	color: var(--bouton_text);
-	background-color: var(--bouton_BG);
+	color: var(--pink);
+	background-color: var(--linen);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -71,12 +71,12 @@
 }
 
 .logout_btn:hover {
-	background-color: var(--bouton_BG_hover);
+	background-color: var(--light_teal);
 }
 
 /*sidebar*/
 .nav-menu {
-	background-color: var(--template_BG);
+	background-color: var(--clear_yellow);
 	width: 12%;
 	height: 100%;
 	display: flex;
@@ -96,7 +96,7 @@
 	text-decoration: none;
 	position: absolute;
 	font-weight: bold;
-	color: var(--bouton_text);
+	color: var(--pink);
 	font-size: 30px;
 	height: 100%;
 	display: flex;
@@ -107,7 +107,7 @@
   }
 
 .nav-text a:hover{
- 	color: var(--bouton_text_hover);
+ 	color: var(--light_pink);
   }
 
 .nav-menu-items {
@@ -132,7 +132,7 @@
 .settings_btn {
 	position: absolute;
 	font-weight: bold;
-	color: var(--bouton_text);
+	color: var(--pink);
 	font-size: 30px;
 	flex-direction: column;
 	bottom: 0%;
