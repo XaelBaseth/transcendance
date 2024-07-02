@@ -1,0 +1,28 @@
+:root {
+    --linen: #f7f2e8;
+    --light_teal: #a0ced9;
+    --pink: #e27396;
+
+    --linen_hover: #a0ced9;
+    --light_teal_hover:#f7f2e8;
+    --pink_hover: #ea9ab2;
+
+    --pong_BG: #f7f2e8;
+    --olive_green: #5c775b;
+
+    --clear_beige: #f7f2e8ce;
+    --setting_border: #a0ced9;
+    --setting_textD: #e27396;
+    --light_pink: #ea9ab2;
+
+    --clear_yellow: #fcf5c7a6;
+    --template_border: #5c775b;
+    --template_textG: #5c775b;
+    --template_textP: #e27396;
+    --template_textLP: #ea9ab2;
+
+    --navbar_text: #5c775b;
+    --navbar_BG: #f7f2e8;
+
+    --error: #f03e3e;
+}

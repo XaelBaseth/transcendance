@@ -33,15 +33,15 @@
     width: 75%;
     height: 80%; /* Adjusted height */
     border-radius: 20px; /* Updated to px unit */
-    background-color: var(--setting_BG);
-    border: 5px solid var(--bouton_border);
+    background-color: var(--clear_beige);
+    border: 5px solid var(--light_teal);
     backdrop-filter: blur(20px);
 	position: absolute;
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
 	border-radius: 10px;
-	border: 5px solid var(--pong_borber);
+	border: 5px solid var(--olive_green);
 	padding: 30px 30px;
 }
 
@@ -49,7 +49,7 @@
     text-align: center;
     font-size: 35px;
     font-family: 'Pixelify Sans';
-    color: var(--bouton_text);
+    color: var(--pink);
     margin-bottom: 20px; /* Add spacing below the title */
 }
 
@@ -59,7 +59,7 @@
 /* ********************************/
 
 .settings__alert_err {
-	color: var(--setting_BG);
+	color: var(--clear_beige);
 	font-family: 'Pixelify Sans';
 	font-size: 18px;
 	text-align: center;
@@ -91,7 +91,7 @@
 
 .avatar_block > h5 {
     font-family: 'Pixelify Sans';
-    color: var(--bouton_text);
+    color: var(--pink);
     font-size: 18px;
     position: absolute;
     top: 12%;
@@ -118,7 +118,7 @@
 
 #file + label {
     font-weight: 600;
-    color: var(--bouton_text);
+    color: var(--pink);
     display: inline;
     cursor: pointer;
     padding: 7px 0;
@@ -129,7 +129,7 @@
 
 #file + label:hover {
     font-weight: 600;
-    color: var(--setting_textL);
+    color: var(--light_pink);
     display: inline;
     cursor: pointer;
     padding: 7px 0;
@@ -145,12 +145,12 @@
     font-weight: bold;
     display: block;
     font-size: 14px;
-    color: var(--bouton_border);
-    background-color: var(--bouton_text);
+    color: var(--light_teal);
+    background-color: var(--pink);
     padding: 10px 20px;
     border-radius: 50px;
-    border-right: 3px solid var(--bouton_border);
-    border-bottom: 3px solid var(--bouton_border);
+    border-right: 3px solid var(--light_teal);
+    border-bottom: 3px solid var(--light_teal);
     font-family: 'Pixelify Sans';
     cursor: pointer;
     position: absolute;
@@ -159,7 +159,7 @@
 }
 
 #avatar_upload_btn:hover {
-    color: var(--setting_BG);
+    color: var(--clear_beige);
 }
 
 /* ********************************/
@@ -179,7 +179,7 @@
     font-size: 18px;
     font-weight: bold;
     font-family: 'Pixelify Sans'; /* Ensure this font is imported */
-    color: var(--bouton_text);
+    color: var(--pink);
     /* Adjusted transform values for better alignment */
     transform: translateX(8%) translateY(600%);
 }
@@ -199,13 +199,13 @@
     font-family: 'Pixelify Sans';
     /* Removed resize: vertical; for single-line inputs */
     width: 35%;
-    color: var(--bouton_text);
+    color: var(--pink);
     /* Adjusted transform values for better alignment */
     transform: translateY(220%) translateX(10%);
 }
 
 .text_input::placeholder {
-    color: var(--setting_textL);
+    color: var(--light_pink);
 }
 
 /* ligne sous box d'ecriture 3er btn settings */
@@ -246,7 +246,7 @@
 
 .password__card > h2 {
 	font-family: 'Pixelify Sans';
-	color: var(--bouton_text);
+	color: var(--pink);
 	font-size: 20px;
     transform: translateY(-2000%) translateX(25%);
 }
@@ -254,7 +254,7 @@
 .password__card > h4 {
 	font-family: 'Pixelify Sans';
 	font-size: 18px;
-	color: var(--bouton_text);
+	color: var(--pink);
 	width: 30%;
 	text-align: start;
     transform: translateY(-2190%) translateX(189%);
@@ -267,7 +267,7 @@
 
 .input_container > span {
 	font-family: 'Pixelify Sans';
-	color:var(--bouton_border);
+	color:var(--light_teal);
 	font-weight: bold;
 	position: absolute;
     right: 10px;
@@ -279,7 +279,7 @@
 	border: 0px solid #a0ced9;
 	width: 35%;
 	border-radius:5px;
-	color: var(--setting_textL);
+	color: var(--light_pink);
 	font-size: 10px;
     letter-spacing:1px;
 	padding:10px;
@@ -295,18 +295,18 @@
 	display: inline-block;
 	cursor: pointer;
 	padding: 10px 20px;
-	border: solid var(--bouton_border) 4px;
+	border: solid var(--light_teal) 4px;
 	border-radius: 50px;
 	font-family: 'Pixelify Sans';
 	font-size: 16px;
-	color: var(--bouton_text);
+	color: var(--pink);
 	background-color: transparent;
     letter-spacing:1px;
 	transform: translateY(-920%) translateX(150%);
 }
 
 #password__btn:hover {
-	color: var(--setting_textL);
+	color: var(--light_pink);
 }
 
 /* ********************************/
@@ -321,7 +321,7 @@
 .delete_settings__title {
 	width: 30%;
 	font-family: 'Pixelify Sans';
-	color: var(--bouton_text);
+	color: var(--pink);
 	text-align: start;
 	font-size: 18px;
 	transform: translateY(300%) translateX(113%);
@@ -353,7 +353,7 @@
 	font-family: 'Pixelify Sans';
 	font-size: 14px;
 	font-weight: 400;
-	color: var(--bouton_text);
+	color: var(--pink);
 }
 
 .delete_settings__btn > span:hover {
@@ -371,14 +371,14 @@
 }
 
 .delete_settings__alert > h5 {
-	color: var(--bouton_BG);
+	color: var(--linen);
 	font-family: 'Pixelify Sans';
 	font-size: 1em;
 	padding: 0 0 0.5em 0;
 }
 
 .delete_settings__alert > h6 {
-	color: var(--bouton_BG);
+	color: var(--linen);
 	font-family: 'Pixelify Sans';
 	font-size: 1em;
 	padding: 0 0 0.5em 0;
