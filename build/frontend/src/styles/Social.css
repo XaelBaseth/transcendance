@@ -21,7 +21,7 @@
 	align-items: left;
 	flex-wrap: wrap;
 	position: absolute;
-	top: 20%;
+	top: 22%;
 	left: 2%;
 }
 
@@ -59,7 +59,7 @@
 	text-align: left;
 	position: absolute;
 	left: -3%;
-	top: 10%;
+	top: 14.5%;
 }
 
 #search_input {
@@ -206,7 +206,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transform: translateX(32%) translateY(160%);
+	transform: translateX(32%) translateY(130%);
 }
 
 #search_input {

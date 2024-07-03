@@ -14,24 +14,28 @@
 }
 
 .navigation button {
-    background-color: rgba(255, 255, 255, 0.189);
+    background-color: var(--linen);
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 16px;
-    color: #555;
+    color: var(--pink);
     padding: 10px 20px;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom-color 0.3s ease;
+    border: 6px solid var(--light_teal);
+    transition: border-bottom-color .3s ease;
+}
+
+.navigation button:hover {
+    border-color: var(--light_pink);
 }
 
 .navigation button.active {
-    border-bottom-color: var(--primary-color); /* Change color for active button */
+    border-bottom-color: var(--olive_green); /* Change color for active button */
 }
 
 .settings {
     width: 75%;
-    height: 80%; /* Adjusted height */
+    height: 75%; 
     border-radius: 20px; /* Updated to px unit */
     background-color: var(--clear_beige);
     border: 5px solid var(--light_teal);
@@ -39,7 +43,7 @@
 	position: absolute;
 	transform: translate(-50%, -50%);
 	top: 50%;
-	left: 50%;
+	left: 53%;
 	border-radius: 10px;
 	border: 5px solid var(--olive_green);
 	padding: 30px 30px;
@@ -174,14 +178,13 @@
 
 /* Can be 'username', 'bio' or 'email' title */
 .text_settings_property {
-    width: 30%;
+    width: 20%;
     text-align: left;
     font-size: 18px;
-    font-weight: bold;
-    font-family: 'Pixelify Sans'; /* Ensure this font is imported */
+    font-weight: 700;
+    font-family: 'Pixelify Sans';
     color: var(--pink);
-    /* Adjusted transform values for better alignment */
-    transform: translateX(8%) translateY(600%);
+    transform: translate(5%, 450%);
 }
 
 .text_settings_input {
@@ -201,7 +204,7 @@
     width: 35%;
     color: var(--pink);
     /* Adjusted transform values for better alignment */
-    transform: translateY(220%) translateX(10%);
+    transform: translateY(140%) translateX(10%);
 }
 
 .text_input::placeholder {
@@ -248,7 +251,7 @@
 	font-family: 'Pixelify Sans';
 	color: var(--pink);
 	font-size: 20px;
-    transform: translateY(-2000%) translateX(25%);
+    transform: translateY(-1000%) translateX(25%);
 }
 
 .password__card > h4 {
@@ -257,7 +260,7 @@
 	color: var(--pink);
 	width: 30%;
 	text-align: start;
-    transform: translateY(-2190%) translateX(189%);
+    transform: translateY(-940%) translateX(189%);
 }
 
 .input_container {
@@ -271,7 +274,7 @@
 	font-weight: bold;
 	position: absolute;
     right: 10px;
-    transform: translateY(-3180%) translateX(-55%);
+    transform: translateY(-1680%) translateX(-55%);
 }
 
 
@@ -284,7 +287,7 @@
     letter-spacing:1px;
 	padding:10px;
 	font-family: 'Pixelify Sans';
-	transform: translateY(-700%) translateX(160%);
+	transform: translateY(-300%) translateX(160%);
 }
 
 .password__input:hover {
@@ -302,7 +305,7 @@
 	color: var(--pink);
 	background-color: transparent;
     letter-spacing:1px;
-	transform: translateY(-920%) translateX(150%);
+	transform: translateY(-420%) translateX(150%);
 }
 
 #password__btn:hover {
@@ -324,7 +327,7 @@
 	color: var(--pink);
 	text-align: start;
 	font-size: 18px;
-	transform: translateY(300%) translateX(113%);
+	transform: translateY(1100%) translateX(193%);
 }
 
 .delete_settings__subtitle {
@@ -332,7 +335,7 @@
 	color: var(--error);
 	font-size: 15px;
 	text-align: left;
-	transform: translateY(350%) translateX(37%);
+	transform: translateY(1300%) translateX(61%);
 }
 
 .delete_settings__btn {
@@ -344,7 +347,7 @@
 	border-radius: 50px;
 	color: var(--error);
 	background-color: transparent;
-	transform: translateY(120%) translateX(-25%);
+	transform: translateY(650%) translateX(110%);
 }
 
 
@@ -392,10 +395,12 @@
 .cookie-settings {
 	font-family: Arial, sans-serif;
 	padding: 20px;
+    width: 47%;
+    transform: translate(0%, -65%);
   }
   
   .cookie-content {
-	max-height: 400px; /* Set the height to whatever you prefer */
+	max-height: 500px; /* Set the height to whatever you prefer */
 	overflow-y: auto; /* Enable vertical scrolling */
 	padding-right: 20px;
 	padding-left: 20px;
@@ -433,3 +438,99 @@
 	margin: 5px 0;
   }
   
+
+/************************************/
+/**** LANGAGE SETTING COMPONENT ****/
+/**********************************/
+
+  .language-switcher {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    transform: translate(-30%, 300%);
+}
+
+.language-switcher button {
+    background-color: var(--linen);
+    border: 2px solid var(--light_teal);
+    color: var(--pink);
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.language-switcher button:hover {
+    background-color: var(--light_teal);
+    border-color: var(--pink);
+    color: #fff;
+}
+
+/* Ajouter une classe active pour le bouton de la langue sélectionnée */
+.language-switcher button.active {
+    border-color: var(--light_pink);
+    color: var(--light_pink);
+}
+
+/**************************************/
+/**** DALTONISM SETTING COMPONENT ****/
+/*************************************/
+
+.daltonism-switcher {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.daltonism-switcher button {
+    background-color: var(--linen);
+    border: 2px solid var(--light_teal);
+    color: var(--pink);
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.daltonism-switcher button:hover {
+    background-color: var(--light_teal);
+    border-color: var(--pink);
+    color: #fff;
+}
+
+.daltonism-switcher button.active {
+    background-color: var(--pink);
+    border-color: var(--light_teal);
+    color: #fff;
+}
+
+/* Mode Daltonisme */
+.daltonism-mode {
+    --linen: #ff0;
+    --light_teal: #f00;
+    --pink: #00f;
+}
+
+/* Exemple de changement de couleur pour des éléments spécifiques */
+.daltonism-mode .cardSettings {
+    background-color: #ff0; /* jaune au lieu de la couleur normale */
+    border-color: #f00; /* rouge au lieu de la couleur normale */
+}
+
+.daltonism-mode .language-switcher button,
+.daltonism-mode .daltonism-switcher button {
+    background-color: #00f; /* bleu au lieu de la couleur normale */
+    border-color: #f00; /* rouge au lieu de la couleur normale */
+    color: #ff0; /* jaune au lieu de la couleur normale */
+}
+
+.daltonism-mode .language-switcher button.active,
+.daltonism-mode .daltonism-switcher button.active {
+    background-color: #f00; /* rouge au lieu de la couleur normale */
+    border-color: #00f; /* bleu au lieu de la couleur normale */
+    color: #ff0; /* jaune au lieu de la couleur normale */
+}

@@ -16,7 +16,6 @@ export default function Sidebar () {
 			<SidebarElem title={t('navbar.profile')} path="/profile" image={profilIcon} />
 			<SidebarElem title={t('navbar.social')} path="/social" image={socialIcon} />
 		  	<SidebarElem title={t('navbar.about')} path="/about" image={leaderboardIcon} />
-			<SidebarElem title={t('navbar.mHistory')} path="/" image={historyIcon} />
 		  </ul>
 		  <ul className="settings_btn">
 			<SidebarElem  title={t('navbar.settings')} path="/settings" image={settingsIcon} />

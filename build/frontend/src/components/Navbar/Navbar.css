@@ -26,12 +26,12 @@
 
 .navbar__title {
 	position: fixed;
-	font-family: 'Pacifico';
+	font-family: 'Pixelify Sans';
 	font-size: 50px;
 	padding : 0px 35px;
 	text-decoration: none;
 	color: #f4f0e3;
-	top: -1%;
+	top: 0%;
 	letter-spacing: 3px;
   }
 

@@ -41,6 +41,18 @@ export default function Settings() {
 	);
 }
 
+
+const LanguageSwitcher = () => {
+	return (
+		<div className="language-switcher">
+			<button className="active">English</button>
+			<button>Français</button>
+			<button>Español</button>
+			<button>Português</button>
+		</div>
+	);
+};
+
 function UserSettings() {
 	const { t } = useTranslation();
 

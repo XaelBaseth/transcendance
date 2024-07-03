@@ -19,8 +19,7 @@
     letter-spacing: 5px;
     cursor: pointer;
     transition: .5s;
-    top:45%;
-    left:38.5%;
+    transform: translate(13.5%,550%);
 }
 
 .btn__play:hover {

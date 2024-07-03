@@ -104,6 +104,7 @@
 	position: absolute;
 	left : 0%;
 	top: 100%;
+	height: 90%;
 }
 
 
@@ -116,8 +117,8 @@
 /* Radial progress bar for win rate */
 .circular__progress {
 	position: relative;
-	height: 6rem;
-	width: 6rem;
+	height: 10rem;
+	width: 10rem;
 	border-radius: 50%;
 	background: conic-gradient(var(red) 3.6deg, #ededed 0deg);
 	display: flex;
@@ -141,13 +142,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -0%);
+    transform: translate(40%,90%);
 }
 
 .winrate__title {
 	text-align: center;
 	font-size: 18px;
 	color: var(--pink);
+	transform: translate(40%, 90%);
 }
 
 .winrate__content {
@@ -169,6 +171,7 @@
 	flex-wrap: wrap;
 	justify-content: right;
 	letter-spacing: 1px;
+	transform: translate(0%, -250%);
 }
 
 .challenge-btn {

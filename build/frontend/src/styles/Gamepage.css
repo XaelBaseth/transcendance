@@ -3,7 +3,19 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: 'Pixelify Sans';
 }
+
+#play-screen2 h1 {
+	font-size: 42px;
+	color: var(--pink);
+	margin-bottom: 20px;
+	background-color: var(--linen);
+	border: 6px solid var(--light_teal);
+	border-radius: 20px;
+	padding: 10px;
+	transform: translate(83.5%, -300%);
+  }
 
 .button1 {
 	position: absolute;
