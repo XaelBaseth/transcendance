@@ -28,8 +28,15 @@ class PongConsumer(AsyncWebsocketConsumer):
 		from rest_framework_simplejwt.tokens import UntypedToken
 		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
-		logger = logging.getLogger(__name__)
-		logger.info('attempt to coooooonect')
+		if "room_name" not in self.scope["url_route"]["kwargs"] or not self.scope["url_route"]["kwargs"]["room_name"]:
+			self.close(code=4001, reason="No room name")
+		else:
+			#check if the room exists
+			PongRoom = apps.get_model('pong', 'PongRoom')
+			room_result = await sync_to_async(PongRoom.objects.filter)(code=self.scope["url_route"]["kwargs"]["room_name"])
+			if not await sync_to_async(room_result.exists)():
+				self.close(code=4002, reason="Room not found")
+				return
 		self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
 		self.room_group_name = f"pong_{self.room_name}"
 
@@ -41,7 +48,7 @@ class PongConsumer(AsyncWebsocketConsumer):
 			UntypedToken(token)
 			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
 			self.user_id = decoded_data['user_id']
-		except (InvalidToken, TokenError) as e:
+		except (InvalidToken, TokenError):
 			# Token is invalid
 			self.user_id = -1
 
@@ -54,14 +61,21 @@ class PongConsumer(AsyncWebsocketConsumer):
 		# Leave room group
 		await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
 
-   
 	# Receive message from WebSocket
 	async def receive(self, text_data):
 		# print(self.scope["session"].session_key + " : " + text_data)
 		logger = logging.getLogger(__name__)
 		logger.info(str(self.user_id) + ' : ' + text_data)
-		
-		text_data_json = json.loads(text_data)
+
+		# check if text_data is a valid json
+		try:
+			text_data_json = json.loads(text_data)
+		except json.JSONDecodeError:
+			await self.send_message({"message": "Invalid JSON"})
+			return
+		except TypeError:
+			await self.send_message({"message": "Invalid JSON"})
+			return
 
 		match text_data_json["type"]:
 			case "join_game":
@@ -74,6 +88,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 				await self.pause_game(event=text_data_json)
 			case "restart":
 				await self.restart_game(event=text_data_json)
+			case _:
+				await self.send_message({"message": "Invalid message type"})
+			
 
 	async def join_game(self, event):
 		PongRoom = apps.get_model('pong', 'PongRoom')

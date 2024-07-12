@@ -14,12 +14,10 @@ const JoinPongRoomPage = () => {
 			try {
 				const res = await api.post("/pong-api/join-room", requestData);
 				if (res.status >= 200 && res.status < 300) {
-					console.log("join successful.");
 					navigate('/pong/' + res.data.code);
 				}
 				else {
-					console.log("join failed.");
-					console.log(res.data)
+					console.error("join failed", res.data)
 				}
 			} catch (error) {
 				console.error("Error during join:", error);

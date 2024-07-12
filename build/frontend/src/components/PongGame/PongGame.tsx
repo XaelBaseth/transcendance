@@ -35,7 +35,6 @@ const PongGame = () => {
 			socketRef.current.onerror = (error) => {
 				console.error('WebSocket error', error);
 			}
-
 		}
 		catch (error) {
 			console.error("Error during websocket creation:", error);
@@ -110,45 +109,45 @@ const PongGame = () => {
 		};
 	}, [paddles, socketRef, player_side]);
 
-	useEffect(() => {
-		if (gameRunning) {
-			const updateGame = () => {
+	// useEffect(() => {
+	// 	if (gameRunning) {
+	// 		const updateGame = () => {
 
-				// Check for collisions with paddles
-				if
-					(ball.x <= 20 &&
-					ball.x >= 0 &&
-					ball.y <= paddles.left + 100 &&
-					ball.y >= paddles.left && ball.last_collision !== "left") {
-					setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "left" }));
-				}
-				else if
-					(ball.x >= 560 &&
-					ball.x < 580 &&
-					ball.y <= paddles.right + 100 &&
-					ball.y >= paddles.right && ball.last_collision !== "right") {
-					setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "right" }));
-				}
-				// Check for collisions with top and bottom walls
-				if (ball.y <= 0 && ball.last_collision !== "top") {
-					setBall((prevBall) => ({ ...prevBall, y_direction: -prevBall.y_direction, last_collision: "top" }));
-				} else if (ball.y >= MAP_HEIGHT - BALL_DIAMETER && ball.last_collision !== "bottom") {
-					setBall((prevBall) => ({ ...prevBall, y_direction: -prevBall.y_direction, last_collision: "bottom" }));
-				}
+	// 			// Check for collisions with paddles
+	// 			if
+	// 				(ball.x <= 20 &&
+	// 				ball.x >= 0 &&
+	// 				ball.y <= paddles.left + 100 &&
+	// 				ball.y >= paddles.left && ball.last_collision !== "left") {
+	// 				setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "left" }));
+	// 			}
+	// 			else if
+	// 				(ball.x >= 560 &&
+	// 				ball.x < 580 &&
+	// 				ball.y <= paddles.right + 100 &&
+	// 				ball.y >= paddles.right && ball.last_collision !== "right") {
+	// 				setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "right" }));
+	// 			}
+	// 			// Check for collisions with top and bottom walls
+	// 			if (ball.y <= 0 && ball.last_collision !== "top") {
+	// 				setBall((prevBall) => ({ ...prevBall, y_direction: -prevBall.y_direction, last_collision: "top" }));
+	// 			} else if (ball.y >= MAP_HEIGHT - BALL_DIAMETER && ball.last_collision !== "bottom") {
+	// 				setBall((prevBall) => ({ ...prevBall, y_direction: -prevBall.y_direction, last_collision: "bottom" }));
+	// 			}
 
-				setBall((prevBall) => ({
-					...prevBall,
-					x: prevBall.x + prevBall.x_direction * BALL_SPEED,
-					y: prevBall.y + prevBall.y_direction * BALL_SPEED,
-				}));
-			};
-			const intervalId = setInterval(updateGame, (1000 / TPS));
+	// 			setBall((prevBall) => ({
+	// 				...prevBall,
+	// 				x: prevBall.x + prevBall.x_direction * BALL_SPEED,
+	// 				y: prevBall.y + prevBall.y_direction * BALL_SPEED,
+	// 			}));
+	// 		};
+	// 		const intervalId = setInterval(updateGame, (1000 / TPS));
 
-			return () => {
-				clearInterval(intervalId);
-			};
-		}
-	}, [gameRunning, ball]);
+	// 		return () => {
+	// 			clearInterval(intervalId);
+	// 		};
+	// 	}
+	// }, [gameRunning, ball]);
 
 	const startGame = () => {
 		if (!gameRunning && (player_side === 'left' || player_side === 'right')) {

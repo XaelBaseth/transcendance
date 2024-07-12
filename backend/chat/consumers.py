@@ -2,6 +2,8 @@ import json
 
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
+from asgiref.sync import sync_to_async
+from django.apps import apps
 
 from jwt import decode as jwt_decode
 
@@ -40,14 +42,28 @@ class ChatConsumer(AsyncWebsocketConsumer):
 		text_data_json = json.loads(text_data)
 	   
 		message = text_data_json["message"]
+		role = "spectator"
 
 		user = await self.get_user(self.user_id)
+		username = f"{user.username}"
 
-		message = f"{user.username}: {message}"
+		PongRoom = apps.get_model('pong', 'PongRoom')
+		code = self.room_name
+		room_result = await sync_to_async(PongRoom.objects.filter)(code=code)
+		
+		#check if message sender is a player
+		if not await sync_to_async(room_result.exists)():
+			await self.send_message({"message": "Room not found"})
+		else:
+			room = await sync_to_async(room_result.__getitem__)(0)
+			players = room.players_id
+			
+			if self.user_id in players:
+				role = "player"
 
 		# Send message to room group
 		await self.channel_layer.group_send(
-		self.room_group_name, {"type": "chat.message", "message": message}
+		self.room_group_name, {"type": "chat.message", "message": {"message": message, "role": role, "username": username}}
 		)
 
 	# Receive message from room group
@@ -55,7 +71,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 		message = event["message"]
 
 		# Send message to WebSocket
-		await self.send(text_data=json.dumps({"message": message}))
+		await self.send(text_data=json.dumps(message))
 
 	@database_sync_to_async
 	def get_user(self, user_id):
@@ -65,4 +81,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 		try:
 			return User.objects.get(user_id=user_id)
 		except User.DoesNotExist:
+			return AnonymousUser()
+		except Exception:
 			return AnonymousUser()
