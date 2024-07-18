@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Debug option
-set -ex
+#set -ex
 
 unseal() {
 	vault operator unseal "$(grep 'Key 1:' /vault/file/keys | awk '{print $NF}')"

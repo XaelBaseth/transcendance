@@ -21,7 +21,7 @@ all: build
 
 build:
 	@$(MAKE) setup
-	./generate_cert.sh
+	./scripts/generate_cert.sh
 	docker compose build
 
 up:
@@ -35,8 +35,8 @@ clean:
 
 fclean:
 	$(MAKE) clean
-	@chmod +x cleaner.sh
-	./cleaner.sh
+	@chmod +x scripts/cleaner.sh
+	./scripts/cleaner.sh
 	docker system prune --force --volumes --all
 	docker volume prune --all --force
 	@echo "$(GREEN)[TRANSCENDENCE] $(ORANGE)==> $(GREEN)All clean, to make sure run $(BOLD)docker system df$(RESET)"
@@ -46,14 +46,10 @@ logs:
 	@echo "$(BLUE) You can now lookup the logs at $(BOLD).logs$(RESET)"
 
 setup:
+	@mkdir -p volume/db_data
 	if [ ! -f .env ]; then \
 		echo "$(YELLOW)[TRANSCENDENCE] $(ORANGE)==> $(RED)No $(BOLD).env$(RESET)$(RED) file found. Please set one before attempting to build the website.$(RESET)" ;\
 		exit 1; \
 	fi
 
-front:
-	 @docker-compose build --no-cache nginx
-	 @echo "$(YELLOW)[TRANSCENDENCE] $(ORANGE)===>	$(GREEN)Nginx rebuild! go check your changes on \n\t\t$(BOLD)https://localhost:8000$(RESET)"
-
-
-.PHONY: all build up stop clean fclean logs setup front
+.PHONY: all build up stop clean fclean logs setup

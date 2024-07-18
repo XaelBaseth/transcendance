@@ -8,7 +8,7 @@ services:
     networks:
       - main
     volumes:
-      - ./db-data:/var/lib/postgresql/data
+      - ./volume/db_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
       interval: 10s
@@ -24,12 +24,12 @@ services:
         condition: service_healthy
     build:
       context: ./
-      dockerfile: ./backend/Dockerfile
+      dockerfile: ./images/backend/Dockerfile
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
     restart: always
     volumes:
-      - ./vault/vault-data:/vault/file
+      - ./volume/vault-data:/vault/file
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
     networks:
@@ -50,7 +50,7 @@ services:
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
     build:
-      context: ./build
+      context: ./images/build
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
@@ -61,7 +61,7 @@ services:
       - /var/www/html
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
-      - ./vault/vault-data:/vault/file
+      - ./volume/vault-data:/vault/file
     healthcheck:
       test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
       interval: 10s
@@ -80,14 +80,14 @@ services:
     networks:
       - main
     volumes:
-      - ./vault/vault-config.hcl:/vault/config/config.hcl
-      - ./vault/vault-data:/vault/file/
-      - ./vault/start-vault.sh:/./start-vault.sh
+      - ./images/vault/vault-config.hcl:/vault/config/config.hcl
+      - ./volume/vault-data:/vault/file/
+      - ./images/vault/start-vault.sh:/./start-vault.sh
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
     cap_add:
       - IPC_LOCK
-    entrypoint: ["/bin/sh", "-c", "./start-vault.sh"]
+    entrypoint: ["/bin/sh", "-c", "/start-vault.sh"]
     healthcheck:
       test: ["CMD", "vault", "status"]
       interval: 30s
@@ -106,14 +106,14 @@ services:
       - MY_VAULT_TOKEN=${MY_VAULT_TOKEN}
       - VAULT_CACERT=${VAULT_CACERT}
     volumes:
-      - ./vault/vault-init.sh:/usr/local/bin/vault-init.sh
-      - ./vault/vault-data:/vault/file/
+      - ./images/vault/vault-init.sh:/usr/local/bin/vault-init.sh
+      - ./volume/vault-data:/vault/file/
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
     command: /usr/local/bin/vault-init.sh
     depends_on:
       - vault
-  
+
   redis:
     container_name: redis
     image: redis

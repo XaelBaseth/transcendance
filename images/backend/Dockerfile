@@ -2,7 +2,7 @@ FROM python:3.12
 
 RUN mkdir /app
 
-COPY ./backend /app/backend
+COPY ./images/backend /app/backend
 WORKDIR /app/backend
 
 RUN apt-get update \

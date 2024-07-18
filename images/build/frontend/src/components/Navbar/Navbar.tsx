@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Sidebar from "./Sidebar";
-import Avatar from '../Avatar/Avatar';
+import Avatar from '../avatar/Avatar';
 import { useAuth } from '../../context';
 import "./Navbar.css";
 
