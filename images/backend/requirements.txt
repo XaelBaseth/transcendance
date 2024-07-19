@@ -4,6 +4,7 @@ Django
 django-cors-headers
 djangorestframework
 djangorestframework-simplejwt
+django-oauth-toolkit
 hvac
 PyJWT
 pytz
