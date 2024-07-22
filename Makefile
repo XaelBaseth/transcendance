@@ -4,7 +4,7 @@ MAKEFLAGS += --silent
 RESET		=	\033[0;39m
 ORANGE		=	\033[0;33m
 GRAY		=	\033[0;90m
-RED			=	\033[0;91m
+RED		=	\033[0;91m
 GREEN		=	\033[1;92m
 YELLOW		=	\033[1;93m
 BLUE		=	\033[0;94m
@@ -17,7 +17,7 @@ UNDERLINE	=	\033[4m
 #RULES
 all: build
 	 $(MAKE) up
-	 @echo "$(YELLOW)[TRANSCENDENCE] $(ORANGE)===>	$(GREEN)Website's up! go to \n\t\t$(BOLD)https://localhost:8000$(RESET)"
+	 @echo "$(YELLOW)[TRANSCENDENCE] $(ORANGE)==>	$(GREEN)Website's up! go to \n\t\t$(BOLD)https://localhost:8000$(RESET)"
 
 build:
 	@$(MAKE) setup
