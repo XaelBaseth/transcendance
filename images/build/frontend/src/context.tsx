@@ -101,6 +101,27 @@ export const AuthProvider: React.FC = ({ children }) => {
 		navigate('/login');
 	};
 
+	const login_with_42 = async () => {
+		try {
+			// Example payload, adjust according to your API's requirements
+			const payload = { code: "your_authorization_code_here" };
+			const res = await api.post("/api/user/url42", payload);
+			if (res.status >= 200 && res.status < 300) {
+				setUser({...res.data});
+				setSuccessMsg(t('login.successMsg'));
+				// Assuming the response contains tokens
+				//localStorage.setItem(ACCESS_TOKEN, res.data.access);
+				//localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+				//navigate("/");
+			} else {    
+				setErrorMsg(t('login.errorMsg'));
+			}   
+		} catch (error) {    
+			console.error(error);
+			setErrorMsg(t('login.unknownMsg'));
+		}
+	};
+
 	const value = {	
 	user,	
 	setUser,
@@ -109,6 +130,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 	login,
 	signup,
 	logout,
+	login_with_42,
 	};
 	return (
 		<AuthContext.Provider value={value}>

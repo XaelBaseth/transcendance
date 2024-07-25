@@ -21,6 +21,10 @@ dotenv.load_dotenv()
 database_secret_path = 'django/'
 database_secrets = fetch_secrets_from_vault(database_secret_path)
 
+API_CLIENT_ID = database_secrets.get("API_CLIENT_ID")
+API_CLIENT_SECRET = database_secrets.get("API_CLIENT_SECRET")
+API_TOKEN_URL = database_secrets.get("API_TOKEN_URL")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

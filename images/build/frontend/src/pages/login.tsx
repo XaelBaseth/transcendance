@@ -9,7 +9,7 @@ export default function Login() {
 
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const { login, successMsg, errorMsg } = useAuth();
+	const { login, successMsg, errorMsg, login_with_42 } = useAuth();
 	const navigate = useNavigate();
 
     const handleSignUp = () => {
@@ -24,6 +24,15 @@ export default function Login() {
 			console.error(error);
 		}
 	};
+
+	const handleLogIn42 = async (e) => {
+		e.preventDefault();
+		try {
+			await login_with_42();
+		} catch (error) {
+			console.error(error);
+		}
+	}
 
 	return (
 		<div className="Login">
@@ -54,7 +63,7 @@ export default function Login() {
 			<button onClick={handleLogIn} id="login-btn">{t('login.login')}</button>
 			<div className="social">
                 <div className="_42auth">
-					<button id='_42auth_btn'>{t('login.login42')}</button>
+					<button onClick={handleLogIn42} id='_42auth_btn'>{t('login.login42')}</button>
 				</div>
 				<div className="signup">
 					<button onClick={handleSignUp} id="signup_btn">{t('login.signup')}</button>
