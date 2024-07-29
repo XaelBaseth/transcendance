@@ -21,6 +21,7 @@ dotenv.load_dotenv()
 database_secret_path = 'django/'
 database_secrets = fetch_secrets_from_vault(database_secret_path)
 
+# Variable used for the 42 API
 API_CLIENT_ID = database_secrets.get("API_CLIENT_ID")
 API_CLIENT_SECRET = database_secrets.get("API_CLIENT_SECRET")
 API_TOKEN_URL = database_secrets.get("API_TOKEN_URL")

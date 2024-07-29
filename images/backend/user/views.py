@@ -1,5 +1,8 @@
 from rest_framework import generics, status
-from rest_framework.permissions import AllowAny
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import redirect
@@ -8,10 +11,11 @@ import requests
 from django.conf import settings
 from .models import AppUser 
 from .serializers import UserSerializer
+from django.http import HttpResponse, JsonResponse
+from datetime import datetime
+
 
 # Create your views here.
-
-from django.http import HttpResponse, JsonResponse
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
@@ -21,56 +25,106 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
-class Initiate42Login(APIView):
-    permission_classes = [AllowAny]
+@api_view(['POST'])
+@csrf_exempt
+def register(request):
+    form = AppUser(request.data)
+    if form.is_valid():
+        form.save()
+        return Response({'message': 'Registered successfully'}, status=201)
+    return Response(form.errors, status=400)
 
-    def get(self, request):
-        redirect_uri = request.build_absolute_uri('/callback')
-        authorization_url = (
-            f"{settings.API_AUTH_URL}?client_id={settings.API_CLIENT_ID}&redirect_uri={redirect_uri}&response_type=code"
+@api_view(['POST'])
+@csrf_exempt
+def login_view(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return Response({'message': 'Logged in successfully'}, status=200)
+    return Response({'error': 'Invalid credentials'}, status=400)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+@csrf_exempt
+def logout_view(request):
+    logout(request)
+    return Response({'message': 'Logged out successfully'}, status=200)
+
+def _call_api(user_code):
+    if user_code is None:
+        return None, 'Error on API response'
+
+    data = {
+        'grant_type': 'authorization_code',
+        'client_id': settings.API_CLIENT_ID,
+        'client_secret': settings.API_CLIENT_SECRET,
+        'code': user_code,
+        'redirect_uri': settings.API_TOKEN_URL,
+    }
+
+    response = requests.post('https://api.intra.42.fr/oauth/token', data=data)
+
+    if response.status_code != 200:
+        return None, 'Error getting token'
+
+    response = requests.get(
+        'https://api.intra.42.fr/v2/me',
+        headers={'Authorization': 'Bearer ' + response.json()['access_token']}
+    )
+
+    if response.status_code != 200:
+        return None, 'Error getting user data'
+
+    jsón = response.json()
+    ctx = {
+        'username': jsón['login'],
+        'email': jsón['email'],
+    }
+
+    if jsón.get('image') is None or not jsón['image']['link']:
+        ctx['picture_url'] = None
+    else:
+        ctx['picture_url'] = jsón['image']['link']
+
+    return ctx, None
+
+
+def _register_intra(request, ctx):
+    if AppUser.objects.filter(username=ctx['username']).exists():
+        ctx['username'] += str(datetime.now().time().microsecond)
+    try:
+        pong_user = AppUser.objects.create_user(
+            email=ctx['email'],
+            username=ctx['username'],
+            profile_picture=None
         )
-        return redirect(authorization_url)
+        if ctx['picture_url'] is not None:
+            pong_user.profile_picture.save(
+                f"{ctx['username']}.png",
+               # ContentFile(requests.get(ctx['picture_url']).content)
+            )
+        pong_user.save()
+    except:
+        return JsonResponse({'error': 'Error creating user'}, status=400)
 
-class Register42(APIView):
-    permission_classes = [AllowAny]
+    login(request, pong_user)
+    return redirect('account')
 
-    def get(self, request):
-        code = request.query_params.get('code')
-        if not code:
-            return Response({"error": "Missing authorization code"}, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET'])
+@csrf_exempt
+def intra(request):
+    ctx, err = _call_api(request.GET.get('code'))
+    if err is not None:
+        return Response({'error': err}, status=400)
+    if AppUser.objects.filter(email=ctx['email']).exists():
+        user = AppUser.objects.get(email=ctx['email'])
+        login(request, user)
+        return Response({'message': 'Logged in successfully'}, status=200)
+    return _register_intra(request, ctx)
 
-        redirect_uri = request.build_absolute_uri()
-
-        # Exchange the authorization code for an access token
-        token_response = requests.post(
-            settings.API_TOKEN_URL,
-            data={
-                'grant_type': 'authorization_code',
-                'client_id': settings.API_CLIENT_ID,
-                'client_secret': settings.API_CLIENT_SECRET,
-                'code': code,
-                'redirect_uri': redirect_uri,
-            }
-        )
-
-        if token_response.status_code != 200:
-            return Response({"error": "Failed to obtain access token", "details": token_response.json()}, status=status.HTTP_400_BAD_REQUEST)
-
-        access_token = token_response.json().get('access_token')
-        if not access_token:
-            return Response({"error": "No access token found in response"}, status=status.HTTP_400_BAD_REQUEST)
-
-        # Retrieve user information using the access token
-        user_info_response = requests.get(
-            settings.API_INFO_URL,
-            headers={'Authorization': f'Bearer {access_token}'}
-        )
-
-        if user_info_response.status_code != 200:
-            return Response({"error": "Failed to retrieve user information", "details": user_info_response.json()}, status=status.HTTP_400_BAD_REQUEST)
-
-        user_info = user_info_response.json()
-        
-        # Process the user information (e.g., create user account)
-        # Example response
-        return Response({"connected": True, "user_info": user_info})
+@api_view(['GET'])
+@csrf_exempt
+def intra_confirm(request):
+    return Response({'redirect_url': os.getenv('INTRA_LINK')}, status=200)

@@ -10,7 +10,6 @@ urlpatterns = [
     path("api/token/", jwt_views.TokenObtainPairView.as_view(), name="get_token"),
     path("api/token/refresh/", jwt_views.TokenRefreshView.as_view(), name="refresh"),
     path("api-auth/", include("rest_framework.urls")),
-    path("api/", include("user.urls")),
 	path("pong-api/", include("pong.urls")),
 ]
 
