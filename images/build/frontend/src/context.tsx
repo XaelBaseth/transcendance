@@ -50,27 +50,30 @@ export const AuthProvider: React.FC = ({ children }) => {
 	//end of print statement
 
 	//login
-	const login = async (username: string, password: string) => {
-		if (username === "" || password === "") {
+	const login = async (email: string, password: string) => {
+		if (email === "" || password === "") {
 			setErrorMsg(t('login.notEmpty'));
 			return;
 		}
+	
 		try {
-			const res = await api.post("/api/token/", {username, password});
+			const res = await api.post("/api/token/", { email, password });
+	
 			if (res.status >= 200 && res.status < 300) {
-				setUser({...res.data });
-				setSuccessMsg(t('login.successMsg'))
+				setUser({ ...res.data });
+				setSuccessMsg(t('login.successMsg'));
 				localStorage.setItem(ACCESS_TOKEN, res.data.access);
 				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-				navigate("/");	
-			} else {	
+				navigate("/");
+			} else {
 				setErrorMsg(t('login.errorMsg'));
-			}	
-		} catch (error) {	
+			}
+		} catch (error) {
 			console.error(error);
-			setErrorMsg(t('login.unknownMsg'))
+			setErrorMsg(t('login.unknownMsg'));
 		}
 	};
+	
 
 	//signUp
 	const signup = async (email: string, username: string, password: string, confirmPassword: string)  => {

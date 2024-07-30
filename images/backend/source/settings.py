@@ -179,6 +179,10 @@ CORS_ORIGIN_WHITELIST = (
   'https://localhost:8000',
   'https://localhost:8200',
 )
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',
+]
+
 
 CHANNEL_LAYERS = {
     "default": {
