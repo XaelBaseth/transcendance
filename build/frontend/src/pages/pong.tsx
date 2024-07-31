@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/Pong.css';
 import PongGame from '../components/PongGame/PongGame';
-import PongChat from '../components/PongGame/GameChat';
 
 const Pong = () => {
 	return (
@@ -12,7 +11,6 @@ const Pong = () => {
 			{/* Terrain de football */}
 			<div className="football-field">
 				<PongGame />
-				<PongChat />
 			</div>
 
 

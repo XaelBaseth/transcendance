@@ -20,6 +20,8 @@ import JoinPongRoomPage from "./pages/JoinPongRoomPage"
 import CreatePongRoomPage from "./pages/CreatePongRoomPage"
 
 import './App.css'
+import { ChatContextProvider } from "./components/Chat/ChatProvider"
+import FloatingChat from "./components/Chat/FloatingChat"
 
 /**Register the user, gives him a jwt and login 
  * cleanly so that we can avoid error */
@@ -48,27 +50,30 @@ function App() {
 						<div className="Navbar">
 							<Navbar />
 						</div>
-						<Routes>
-							<Route path="/login" element={<Login />} />
-							<Route path="*" element={<Error />} />
-							<Route path="/signup" element={<RegisterAndLogout />} />
-							<Route path="/about" element={<About />} />
-							{/*
-        					<Route path="/password" element={<PasswordSettings />} />
-							<Route path="/delete-account" element={<DeleteSettings />} />*/}
-							<Route path="/social" element={<Social />} />
-							<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-							<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-							<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-							{/* <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} /> */}
-							<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-							<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
-							{/* PONG */}
-							<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
-							<Route path="/pong-join" element={<ProtectedRoute><JoinPongRoomPage /></ProtectedRoute>} />
-							<Route path="/pong-create" element={<ProtectedRoute><CreatePongRoomPage /></ProtectedRoute>} />
-							<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
-						</Routes>
+						<ChatContextProvider>
+							<Routes>
+								<Route path="/login" element={<Login />} />
+								<Route path="*" element={<Error />} />
+								<Route path="/signup" element={<RegisterAndLogout />} />
+								<Route path="/about" element={<About />} />
+								{/*
+								<Route path="/password" element={<PasswordSettings />} />
+								<Route path="/delete-account" element={<DeleteSettings />} />*/}
+								<Route path="/social" element={<Social />} />
+								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+								<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+								<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
+								{/* <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} /> */}
+								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+								<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+								{/* PONG */}
+								<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
+								<Route path="/pong-join" element={<ProtectedRoute><JoinPongRoomPage /></ProtectedRoute>} />
+								<Route path="/pong-create" element={<ProtectedRoute><CreatePongRoomPage /></ProtectedRoute>} />
+								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
+							</Routes>
+							<FloatingChat />
+						</ChatContextProvider>
 					</AuthProvider>
 				</BrowserRouter>
 			</section>
