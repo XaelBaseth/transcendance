@@ -122,6 +122,10 @@
 		"contact_phone":"Phone number: ",
 		"contact_email":"Email: ",
 		"contact_text":"For questions and/or comments about our Cookie Policy and this statement, please contact us using the information provided above."
+	},
+	"chat":{
+		"send":"Send",
+		"close":"Close"
 	}
 }
 	

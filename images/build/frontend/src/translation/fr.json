@@ -122,5 +122,9 @@
 		"contact_phone":"Numero de telephone: ",
 		"contact_email":"Email: ",
 		"contact_text":"Pour toute question et/ou commentaire concernant notre politique en matière de cookies et la présente déclaration, veuillez nous contacter en utilisant les informations fournies ci-dessus."
-		}
+	},
+	"chat":{
+		"send":"Envoyer",
+		"close":"Fermer"
+	}
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RoomProps, useChatContext,ChatMessage } from './ChatProvider';
+import { useTranslation } from 'react-i18next';
 
 const ChatComponent = ({ roomId }: { roomId: String }) => {
     const [message, setMessage] = useState<String>('');
@@ -26,6 +27,8 @@ const ChatComponent = ({ roomId }: { roomId: String }) => {
         sendMessage(roomId, message);
         setMessage('');
     };
+
+	const { t } = useTranslation();
 
     return (
 		<>
@@ -69,7 +72,7 @@ const ChatComponent = ({ roomId }: { roomId: String }) => {
 						value={message}
 						onChange={e => setMessage(e.target.value)}
 					/><br />
-					<button onClick={onSendMessage}>Send</button>
+					<button onClick={onSendMessage}>{t('chat.send')}</button>
 				</div>
 			</div>
 		</>

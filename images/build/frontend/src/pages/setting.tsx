@@ -78,9 +78,9 @@ function UserSettings() {
 
 	return (
 			<div className="cardSettings">
-				<TextCardSettings property={t('settings.pseudo')}/> 
+				{/** <TextCardSettings property={t('settings.pseudo')}/> 
 				<TextCardSettings property={t('settings.bio')}/>
-				<TextCardSettings property={t('settings.email')}/>
+				<TextCardSettings property={t('settings.email')}/> */}
 				{/** <button onClick={handleUpdate}>Save Changes</button> */}
 				<LanguageSwitcher />
 			</div>
