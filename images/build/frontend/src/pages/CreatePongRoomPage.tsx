@@ -19,10 +19,9 @@ const CreatePongRoomPage = () => {
 		try {
 			const res = await api.post('/pong-api/create-room', requestData);
 			if (res.status >= 200 && res.status < 300) {
-				console.log("Room creation successful.");
 				navigate('/pong/' + res.data.code);
 			} else {
-				console.log("Room creation failed.");
+				console.error("Room creation failed.", res.data);
 			}
 		} catch (error) {
 			console.error("Error during room creation:", error);

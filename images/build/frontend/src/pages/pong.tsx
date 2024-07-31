@@ -13,6 +13,7 @@ const Pong = () => {
 				<PongGame />
 			</div>
 
+
 			{/* Contenu du jeu (texte, etc.) */}
 		</div>
 	);
