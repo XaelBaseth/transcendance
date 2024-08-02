@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model, login, logout
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import UserRegisterSerializer, UserLoginSerializer, UserSerializer, HistorySerializer, ServerSerializer, FriendListSerializer
+from .serializers import UserUpdateSerializer, UserRegisterSerializer, UserLoginSerializer, UserSerializer, HistorySerializer, ServerSerializer, FriendListSerializer
 from rest_framework import permissions, status
 from rest_framework.decorators import authentication_classes
 from .validations import custom_validation, validate_email, validate_password
@@ -61,6 +61,18 @@ class UserLogin(APIView):
             token = create_user_token(user)
             return Response(json.dumps({"token": token.key}), status=status.HTTP_200_OK)
 
+class UserProfileUpdate(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        clean_data = custom_validation(request.data)
+        serializer = UserUpdateSerializer(user, data=clean_data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 # Post request to logout user
 class UserLogout(APIView):
     permission_classes = [permissions.AllowAny]
@@ -98,44 +110,44 @@ class UserView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as error:
             return Response({'user': "You are not connected"}, status=status.HTTP_200_OK)
-    
-class UpateUserInfo(APIView):
-    permission_classes = [permissions.AllowAny]
+
+ 
+class UpdateUserInfo(APIView):
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        from . models import AppUser
         logger = logging.getLogger(__name__)
-
         data = request.data
         user_id = data.get("userId")
-        user_obj = AppUser.objects.get(pk=user_id)
-        if user_obj:
-            # Update username
-            try:
-                username = data.get("username")
-                if username != "":
-                    user_obj.username = username
-            except:
-                pass
-            # Update password
-            try:
-                password = data.get("password")
-                if password != "" and len(password) >= 8:
-                    user_obj.set_password(password)
-            except:
-                pass
-            # Update image
-            try:
-                image = request.FILES['file']
-                if image:
-                    user_obj.image.save(image.name, image)
-            except:
-                pass
-            user_obj.save()
-            return Response({"message": "Info updated successfuly"}, status=status.HTTP_200_OK)
-        else:
-            return Response({"message": "Info update failed"}, status=status.HTTP_200_OK)
+        
+        try:
+            user_obj = AppUser.objects.get(pk=user_id)
+        except AppUser.DoesNotExist:
+            return Response({"message": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
+        # Update username
+        username = data.get("username")
+        if username and username != "":
+            user_obj.username = username
+
+        # Update email
+        email = data.get("email")
+        if email and email != "":
+            user_obj.email = email
+
+        # Update bio
+        bio = data.get("bio")
+        if bio and bio != "":
+            user_obj.bio = bio
+
+        try:
+            user_obj.save()
+        except Exception as e:
+            logger.error(f"Error updating user info: {e}")
+            return Response({"message": "Failed to update user info"}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "Info updated successfully"}, status=status.HTTP_200_OK)
+    
 class UpdateUserOption(APIView):
     permission_classes = [permissions.AllowAny]
 
