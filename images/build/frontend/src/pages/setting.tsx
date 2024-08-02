@@ -75,7 +75,7 @@ const UserSettings: React.FC = () => {
         formData.append('confirmPassword', confirmPassword);
     
         try {
-            const response = await api.post('/api/UpdateUserInfo', formData, {
+            const response = await api.post('/api/user/UpdateUserInfo', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${user.token}`,

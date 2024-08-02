@@ -32,7 +32,7 @@ class AppUserManager(BaseUserManager):
 class AppUser(AbstractBaseUser, PermissionsMixin):
 	user_id = models.AutoField(primary_key=True)
 	email = models.EmailField(max_length=50, unique=True)
-	username = models.CharField(max_length=50, default="boloss")
+	username = models.CharField(max_length=50, default="username")
 	date_joined = models.DateField(default=django.utils.timezone.now)
 	language = models.CharField(max_length=50, default='English')
 	color = models.CharField(max_length=50, default="white")
