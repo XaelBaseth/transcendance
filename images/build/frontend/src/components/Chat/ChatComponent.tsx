@@ -10,7 +10,7 @@ const ChatComponent = ({ roomId }: { roomId: String }) => {
     useEffect(() => {
         const room = rooms.find((room: RoomProps) => room.id === roomId);
 		if (!room) {
-			 connectToRoom(roomId);		 
+			 connectToRoom(roomId, null);		 
 		} else {
 			listenForMessages(roomId);
 		}

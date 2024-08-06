@@ -25,13 +25,15 @@ const useChat = () => {
 		initChat();
     }, []);
 
-    const connectToRoom = (roomId: String) => {
+    const connectToRoom = (roomId: string, roomName: string | null) => {
         try {
+			console.log("room name ? :", roomName ? roomName : roomId);
+
 			// console.log("Creating websocket for room:", roomId);
 			const token = localStorage.getItem(ACCESS_TOKEN);
 			const wssConnection = new WebSocket('wss://localhost:8000/ws/chat/' + roomId + '/?token=' + token);
 
-			setRooms([...rooms, { id: roomId, name: roomId, messages: [{text: "Welcome to the chat", role: "system",username: "useChat"}], wssConnection: wssConnection }]);
+			setRooms([...rooms, { id: roomId, name: roomName ? roomName : roomId, messages: [{text: "Welcome to the chat", role: "system",username: "useChat"}], wssConnection: wssConnection }]);
 			setCurrentRoomId(roomId);
 		}
 		catch (error) {
@@ -74,8 +76,21 @@ const useChat = () => {
         {
             switch (data.command) {
                 case "open_private_room":
-                    if (typeof data.arguments === "string")
-                        connectToRoom(data.arguments)
+					
+
+                    if (typeof data.arguments === "object" && data.arguments !== null) {
+						const args = data.arguments as { room_id?: string; room_name?: string };
+						if (typeof args.room_id === "string" && typeof args.room_name === "string") {
+							// check if a room with the same id already exists
+							const existingRoom = rooms.find((room: RoomProps) => room.id === data.arguments.room_id);
+							if (existingRoom !== undefined) {
+								console.log("Room already exists:", existingRoom);
+							} else {
+								console.log("Opening private room:" + args.room_id + "name :" + args.room_name);
+								connectToRoom(args.room_id, args.room_name);
+							}
+						}
+					}
                     break;
                 default:
                     console.log("Command not recognized: ", data.command);
