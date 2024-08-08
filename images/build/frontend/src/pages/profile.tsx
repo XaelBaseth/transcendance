@@ -49,6 +49,30 @@ export function Profile() {
 		setIsEditing(false);
 	};
 
+	const handleDeleteAccount = async () => {
+		if (window.confirm(t('profile.confirmDelete'))) {
+			try {
+				const response = await fetch('/api/user/delete/', {
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${localStorage.getItem('token')}`  // Assurez-vous que le token d'authentification est stocké correctement
+					}
+				});
+
+				if (response.ok) {
+					alert(t('profile.deleteSuccess'));
+					// Rediriger l'utilisateur vers la page d'accueil ou de connexion
+					window.location.href = '/login';  // Modifier l'URL selon vos besoins
+				} else {
+					alert(t('profile.deleteError'));
+				}
+			} catch (error) {
+				alert(t('profile.deleteError'));
+			}
+		}
+	};
+
 	return (
 		<div id="whole-profile-container">
 			<div id="whole-profile">
@@ -103,6 +127,7 @@ export function Profile() {
 							<>
 								<button onClick={handleSave}>{t('profile.save')}</button>
 								<button onClick={handleCancel}>{t('profile.cancel')}</button>
+								<button onClick={handleDeleteAccount} className="delete-account-btn">{t('profile.deleteAccount')}</button>
 							</>
 						) : (
 							<button onClick={handleEdit}>{t('profile.edit')}</button>
@@ -114,11 +139,7 @@ export function Profile() {
 	);
 }
 
-								//////////////////////
-								//                  //
-								//   COMPONENTS     //
-								//                  //
-								//////////////////////
+// COMPONENTS //
 
 function WinrateCircularBar(props : {winRate: number}) {
 	const { t } = useTranslation();
@@ -190,6 +211,7 @@ function StatDisplay(props : {title: string, stat: number}) {
 		</div>
 	);
 }
+
 
 /*
 function UserInfos( {} : {}) {

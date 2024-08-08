@@ -1,23 +1,23 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
-from . models import HistoryModel, GameServerModel, AppUser
+from . models import AppUser
 
 UserModel = get_user_model()
 
-class UserUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AppUser
-        fields = ['username', 'email', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
+# class UserUpdateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = AppUser
+#         fields = ['username', 'email', 'password']
+#         extra_kwargs = {'password': {'write_only': True}}
 
-    def update(self, instance, validated_data):
-        password = validated_data.pop('password', None)
-        instance = super().update(instance, validated_data)
-        if password:
-            instance.set_password(password)
-            instance.save()
-        return instance
+#     def update(self, instance, validated_data):
+#         password = validated_data.pop('password', None)
+#         instance = super().update(instance, validated_data)
+#         if password:
+#             instance.set_password(password)
+#             instance.save()
+#         return instance
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -47,31 +47,4 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = AppUser
-        fields = ('user_id', 'email', 'username', 'nbGamePlayed', 'nbGameWin', 'nbGameLose', 'winRate', 'image',
-                  'nbTouchedBall', 'nbAce', 'aceRate', 'LongestExchange', 'nbPointMarked', 'nbPointLose', 'language', 'color', 'music', 'key1', 'key2', 'key3', 'key4')
-    
-    def get_winRate(self, obj):
-        if (obj.nbGamePlayed == 0):
-            return 0
-        return (obj.nbGameWin / obj.nbGamePlayed) * 100
-    
-    def get_aceRate(self, obj):
-        if (obj.nbTouchedBall == 0):
-            return 0
-        return (obj.nbAce / obj.nbTouchedBall) * 100
-
-
-class HistorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = HistoryModel
-        fields = '__all__'
-
-class ServerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GameServerModel
-        fields = ('serverId')
-
-class FriendListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AppUser
-        fields = ('user_id', 'username', 'isOnline', 'image')
+        fields = ('user_id', 'email', 'username')
