@@ -21,6 +21,8 @@ class PongRoom(models.Model):
 	player_limit = models.IntegerField(default=2)
 	left_paddle_position = models.IntegerField(default=150)
 	right_paddle_position = models.IntegerField(default=150)
+	top_paddle_position = models.IntegerField(default=150)
+	bottom_paddle_position = models.IntegerField(default=150)
 	pause = models.BooleanField(default=False)
 	restart = models.BooleanField(default=False)
 

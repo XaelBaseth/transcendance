@@ -19,7 +19,8 @@ const CreatePongRoomPage = () => {
 		try {
 			const res = await api.post('/pong-api/create-room', requestData);
 			if (res.status >= 200 && res.status < 300) {
-				navigate('/pong/' + res.data.code);
+				const params = new URLSearchParams({ player_limit: res.data.player_limit}).toString();
+				navigate(`/pong/${res.data.code}?${params}`);
 			} else {
 				console.error("Room creation failed.", res.data);
 			}
@@ -32,7 +33,7 @@ const CreatePongRoomPage = () => {
 		<div id="play-screen2">
 			<h1>{t('pong.createRoom')}</h1>
 			<p>{t('pong.numberPlayers')}</p>
-			<input type="number" placeholder={t('pong.limitPlayer')} value={playerLimit} onChange={(e) => setPlayerLimit(parseInt(e.target.value))} />
+			<input type="number" placeholder={t('pong.limitPlayer')} value={playerLimit} min={1} max={4} onChange={(e) => setPlayerLimit(parseInt(e.target.value))} />
 			<button onClick={createRoomButtonPressed}>{t('pong.create')}</button>
 			<button onClick={() => navigate('/pong')}>{t('pong.back')}</button>
 		</div>

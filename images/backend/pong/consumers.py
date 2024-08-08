@@ -4,7 +4,7 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 from django.apps import apps
-from .manage_game import game_loop
+from .manage_game import game_loop_2_players, game_loop_4_players
 from channels.db import database_sync_to_async
 
 import logging
@@ -108,6 +108,10 @@ class PongConsumer(AsyncWebsocketConsumer):
 					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
 				elif self.user_id == room.players_id[1]:
 					await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
+				elif self.user_id == room.players_id[2]:
+					await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
+				elif self.user_id == room.players_id[3]:
+					await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
 				return
 			players_count = len(players)
 			if players_count < room.player_limit:
@@ -115,8 +119,12 @@ class PongConsumer(AsyncWebsocketConsumer):
 				await sync_to_async(room.save)()
 				if players_count == 0:
 					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
-				else:
+				elif players_count == 1:
 					await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
+				elif players_count == 2:
+					await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
+				elif players_count == 3:
+					await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
 			else:
 				await self.send_message({"message" : {"type" : "join_game", "side": "spectator"}})
 
@@ -170,6 +178,16 @@ class PongConsumer(AsyncWebsocketConsumer):
 				room.right_paddle_position = room.right_paddle_position - 10
 			elif text_data_json["direction"] == "down" and room.right_paddle_position < 300:
 				room.right_paddle_position = room.right_paddle_position + 10
+		elif text_data_json["side"] == "top" and self.user_id == room.players_id[2]:
+			if text_data_json["direction"] == "left" and room.top_paddle_position > 0:
+				room.top_paddle_position = room.top_paddle_position - 10
+			elif text_data_json["direction"] == "right" and room.top_paddle_position < 300:
+				room.top_paddle_position = room.top_paddle_position + 10
+		elif text_data_json["side"] == "bottom" and self.user_id == room.players_id[3]:
+			if text_data_json["direction"] == "left" and room.bottom_paddle_position > 0:
+				room.bottom_paddle_position = room.bottom_paddle_position - 10
+			elif text_data_json["direction"] == "right" and room.bottom_paddle_position < 300:
+				room.bottom_paddle_position = room.bottom_paddle_position + 10
 		else:
 			await self.send_message({"message": "Invalid paddle update request"})
 			return
@@ -188,7 +206,10 @@ class PongConsumer(AsyncWebsocketConsumer):
 		await self.channel_layer.group_send(
 					self.room_group_name, {"type": "send_message", "message":  {"type":"game_start"}}
 		)
-		asyncio.ensure_future(game_loop(self=self, event=event))
+		if room.player_limit <= 2:			
+			asyncio.ensure_future(game_loop_2_players(self=self, event=event))
+		else:
+			asyncio.ensure_future(game_loop_4_players(self=self, event=event))
 
 
 	# Receive a message to send to the client

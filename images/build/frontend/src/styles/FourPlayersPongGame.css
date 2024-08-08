@@ -1,0 +1,108 @@
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	position: fix;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Pong css */
+
+.four-player-ping-pong-container {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	border: 1px solid #ccc;
+	margin: 20px auto;
+	overflow: hidden;
+
+}
+
+.paddle-vertical {
+	position: absolute;
+	width: 20px;
+	height: 100px;
+	background-color: #333;
+	transition: top 0.2s;
+	transition-timing-function: linear;
+}
+
+.paddle-horizontal {
+	position: absolute;
+	width: 100px;
+	height: 20px;
+	background-color: #333;
+	transition: left 0.2s;
+	transition-timing-function: linear;
+}
+
+.paddle-top {
+	top: 0;
+}
+
+.paddle-bottom {
+	bottom: 0;
+}
+
+.paddle-left {
+	left: 0;
+}
+
+.paddle-right {
+	right: 0;
+}
+
+.ball {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: red;
+	border-radius: 50%;
+	transition: top 0.2s, left 0.2s;
+	transition-timing-function: linear;
+}
+
+.paused {
+	animation-play-state: paused;
+}
+
+.controls {
+	margin-top: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+button {
+	padding: 5px 10px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.four-player-game-over {
+	width: 500px;
+	height: 500px;
+	display: flex;
+	background-color: red;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
