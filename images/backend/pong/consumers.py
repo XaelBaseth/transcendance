@@ -58,6 +58,25 @@ class PongConsumer(AsyncWebsocketConsumer):
 		await self.accept()
 
 	async def disconnect(self, close_code):
+		logger = logging.getLogger(__name__)
+		logger.info(str(self.user_id) + " disconnected")
+
+		PongRoom = apps.get_model('pong', 'PongRoom')
+		code = self.room_name
+		room_result = await sync_to_async(PongRoom.objects.filter)(code=code)
+
+		if await sync_to_async(room_result.exists)():
+			room = await sync_to_async(room_result.__getitem__)(0)
+			if room.state == 'initial':
+				if self.user_id in room.players_id:
+					room.players_id.remove(self.user_id)
+					await sync_to_async(room.save)()
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"player_count", "player_count": len(room.players_id)}}
+					)
+			elif room.state == 'playing':
+				# Todo: handle disconnect during game
+				pass
 		# Leave room group
 		await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
 
@@ -112,21 +131,27 @@ class PongConsumer(AsyncWebsocketConsumer):
 					await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
 				elif self.user_id == room.players_id[3]:
 					await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
-				return
-			players_count = len(players)
-			if players_count < room.player_limit:
-				await sync_to_async(room.players_id.append)(self.user_id)
-				await sync_to_async(room.save)()
-				if players_count == 0:
-					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
-				elif players_count == 1:
-					await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
-				elif players_count == 2:
-					await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
-				elif players_count == 3:
-					await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
+				await self.channel_layer.group_send(
+					self.room_group_name, {"type": "send_message", "message":  {"type":"player_count", "player_count": players_count}}
+				)
 			else:
-				await self.send_message({"message" : {"type" : "join_game", "side": "spectator"}})
+				players_count = len(players)
+				if players_count < room.player_limit:
+					await sync_to_async(room.players_id.append)(self.user_id)
+					await sync_to_async(room.save)()
+					if players_count == 0:
+						await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
+					elif players_count == 1:
+						await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
+					elif players_count == 2:
+						await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
+					elif players_count == 3:
+						await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"player_count", "player_count": (players_count +1)}}
+					)
+				else:
+					await self.send_message({"message" : {"type" : "join_game", "side": "spectator"}})
 
 	async def restart_game(self, event):
 		PongRoom = apps.get_model('pong', 'PongRoom')
@@ -203,10 +228,15 @@ class PongConsumer(AsyncWebsocketConsumer):
 		if self.user_id not in room.players_id:
 			await self.send_message({"message": "You are not a player"})
 			return
+		if len(room.players_id) < room.player_limit:
+			await self.send_message({"message": "Not enough players"})
+			return
 		await self.channel_layer.group_send(
-					self.room_group_name, {"type": "send_message", "message":  {"type":"game_start"}}
+			self.room_group_name, {"type": "send_message", "message":  {"type":"game_start"}}
 		)
-		if room.player_limit <= 2:			
+		room.state = 'playing'
+		await sync_to_async(room.save)()
+		if room.player_limit <= 2:
 			asyncio.ensure_future(game_loop_2_players(self=self, event=event))
 		else:
 			asyncio.ensure_future(game_loop_4_players(self=self, event=event))

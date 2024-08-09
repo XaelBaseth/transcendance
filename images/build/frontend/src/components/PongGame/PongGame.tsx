@@ -12,7 +12,6 @@ const PongGame = () => {
 	const params = useParams();
 	const initialBallState = { x: 290, y: 190, x_direction: 0, y_direction: 0, last_collision: "" };
 	const initialPaddleState = { left: 150, right: 150 };
-	const playerCount = 2;
 	const [ball, setBall] = useState(initialBallState);
 	const [paddles, setPaddles] = useState(initialPaddleState);
 	const [gameOver, setGameOver] = useState(false);
@@ -20,6 +19,7 @@ const PongGame = () => {
 	const [player_side, setPlayerSide] = useState(); //left, right or spectator
 	const ballRef = useRef(null);
 	const socketRef = useRef<WebSocket | null>(null);
+	const [playerCount, setPlayerCount] = useState("0");
 
 	useEffect(() => {
 		try {
@@ -41,6 +41,10 @@ const PongGame = () => {
 		}
 
 		return () => {
+			if (socketRef.current) {
+                socketRef.current.close();
+                console.log('WebSocket connection closed');
+            };
 		};
 	}, []);
 
@@ -95,8 +99,9 @@ const PongGame = () => {
 					if (data.side === 'spectator') {
 						window.removeEventListener('keydown', handleKeyPress);
 					}
-				}
-				else {
+				} else if (data.type == "player_count") {
+					setPlayerCount(data.player_count);
+				} else {
 					console.log('Unknown message type', data);
 				}
 			};
@@ -166,7 +171,7 @@ const PongGame = () => {
 			setGameOver(false);
 			setGameRunning(true);
 			if (socketRef.current) {
-				socketRef.current.send(JSON.stringify({ type: 'restart', nb_players: playerCount }));
+				socketRef.current.send(JSON.stringify({ type: 'restart', nb_players: 2 }));
 			}
 		}
 	};
@@ -183,6 +188,7 @@ const PongGame = () => {
 	return (<>
 		<h2>Room code : {params.roomCode}</h2>
 		<p>player side : {player_side}</p>
+		<p>player count : {playerCount}</p>
 		<p>ball x : {ball.x}</p>
 		<p>ball y : {ball.y}</p>
 		<div className="controls">

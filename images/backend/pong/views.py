@@ -20,6 +20,8 @@ class CreatePongRoomView(APIView):
 			serializer = self.serializer_class(data=request.data)
 			if serializer.is_valid():
 				player_limit = serializer.data.get('player_limit')
+				if player_limit != 2 and player_limit != 4:
+					return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 				room = PongRoom.objects.create(player_limit=player_limit, players_id=[])
 				room.save()
 				return Response(PongRoomSerializer(room).data, status=status.HTTP_201_CREATED)
@@ -47,4 +49,26 @@ class JoinPongRoomView(APIView):
 			return Response({'Bad Request': 'Malformed JSON...'}, status=status.HTTP_400_BAD_REQUEST)
 		except Exception as e:
 			logger.error(f'Unexpected error: {str(e)}')
+			return Response({'Error': 'Something went wrong'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class JoinMatchMaking(APIView):
+	
+	def post(self, request, format=None):
+		try:
+			player_limit = request.data.get('player_limit')
+			if player_limit and isinstance(player_limit, int):
+				if player_limit != 2 and player_limit != 4:
+					return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+				rooms = PongRoom.objects.filter(player_limit=player_limit, state='initial')
+				if len(rooms) > 0:
+					room = rooms[0]
+					return Response(PongRoomSerializer(room).data, status=status.HTTP_202_ACCEPTED)
+				else:
+					room = PongRoom.objects.create(player_limit=player_limit, players_id=[], state='initial')
+					room.save()
+					return Response(PongRoomSerializer(room).data, status=status.HTTP_201_CREATED)
+			return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
+		except JSONDecodeError:
+			return Response({'Bad Request': 'Malformed JSON...'}, status=status.HTTP_400_BAD_REQUEST)
+		except Exception as e:
 			return Response({'Error': 'Something went wrong'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

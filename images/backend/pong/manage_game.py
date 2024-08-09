@@ -48,16 +48,8 @@ async def game_loop_2_players(self, event):
             room = await sync_to_async(room_result.__getitem__)(0)
 
             # update paddles from users messages
-            if left_paddle_position != room.left_paddle_position:
-                left_paddle_position = room.left_paddle_position
-                # await self.channel_layer.group_send(
-                #     self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
-                # )
-            if room.player_limit == 2 and right_paddle_position != room.right_paddle_position:
-                right_paddle_position = room.right_paddle_position
-                # await self.channel_layer.group_send(
-                #     self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
-                # )
+            left_paddle_position = room.left_paddle_position
+            right_paddle_position = room.right_paddle_position
         
             # Ball movement
             ball_position["x"] += (ball_direction["x"] * BALL_SPEED)
@@ -80,30 +72,19 @@ async def game_loop_2_players(self, event):
                 )
                 break
             
-            if room.player_limit < 2:
-                # right paddle AI
-                if  ball_direction["x"] > 0 and ball_position["x"] > 300 :
-                    if ball_position["y"] > right_paddle_position + (PADDLE_HEIGHT / 2) and right_paddle_position < MAP_HEIGHT - PADDLE_HEIGHT:
-                        right_paddle_position += 10
-                        # await self.channel_layer.group_send(
-                        #     self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
-                        # )
-                    elif right_paddle_position > 0:
-                        right_paddle_position -= 10
-                        # await self.channel_layer.group_send(
-                        #     self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
-                        # )
-                else:
-                    if right_paddle_position > 150:
-                        right_paddle_position -= 10
-                        # await self.channel_layer.group_send(
-                        #     self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
-                        # )
-                    elif right_paddle_position < 150:
-                        right_paddle_position += 10
-                        # await self.channel_layer.group_send(
-                        #     self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
-                        # )
+            # if room.player_limit < 2:
+            #     # right paddle AI
+            #     if  ball_direction["x"] > 0 and ball_position["x"] > 300 :
+            #         if ball_position["y"] > right_paddle_position + (PADDLE_HEIGHT / 2) and right_paddle_position < MAP_HEIGHT - PADDLE_HEIGHT:
+            #             right_paddle_position += 10
+            #         elif right_paddle_position > 0:
+            #             right_paddle_position -= 10
+            #     else:
+            #         if right_paddle_position > 150:
+            #             right_paddle_position -= 10
+            #         elif right_paddle_position < 150:
+            #             right_paddle_position += 10
+                       
             await self.channel_layer.group_send(
                 self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
             )
@@ -151,30 +132,10 @@ async def game_loop_4_players(self, event):
             room = await sync_to_async(room_result.__getitem__)(0)
 
             # update paddles from users messages
-            if room.player_limit == 1:
-                if left_paddle_position != room.left_paddle_position:
-                    left_paddle_position = room.left_paddle_position
-            if room.player_limit == 2:
-                if left_paddle_position != room.left_paddle_position:
-                    left_paddle_position = room.left_paddle_position
-                if right_paddle_position != room.right_paddle_position:
-                    right_paddle_position = room.right_paddle_position
-            if room.player_limit == 3:
-                if left_paddle_position != room.left_paddle_position:
-                    left_paddle_position = room.left_paddle_position
-                if right_paddle_position != room.right_paddle_position:
-                    right_paddle_position = room.right_paddle_position
-                if top_paddle_position != room.top_paddle_position:
-                    top_paddle_position = room.top_paddle_position
-            if room.player_limit == 4:
-                if left_paddle_position != room.left_paddle_position:
-                    left_paddle_position = room.left_paddle_position
-                if right_paddle_position != room.right_paddle_position:
-                    right_paddle_position = room.right_paddle_position
-                if top_paddle_position != room.top_paddle_position:
-                    top_paddle_position = room.top_paddle_position
-                if bottom_paddle_position != room.bottom_paddle_position:
-                    bottom_paddle_position = room.bottom_paddle_position
+            left_paddle_position = room.left_paddle_position
+            right_paddle_position = room.right_paddle_position
+            top_paddle_position = room.top_paddle_position
+            bottom_paddle_position = room.bottom_paddle_position
         
             # Ball movement
             ball_position["x"] += (ball_direction["x"] * BALL_SPEED)
@@ -197,40 +158,40 @@ async def game_loop_4_players(self, event):
                 )
                 break
 
-            if room.player_limit == 3:
-                # right paddle AI
-                if  ball_direction["x"] > 0 and ball_position["x"] > 250 :
-                    if ball_position["y"] > right_paddle_position + (PADDLE_HEIGHT / 2) and right_paddle_position < MAP_HEIGHT - PADDLE_HEIGHT:
-                        right_paddle_position += 10
-                    elif right_paddle_position > 0:
-                        right_paddle_position -= 10
-                else:
-                    if right_paddle_position > 250:
-                        right_paddle_position -= 10
-                    elif right_paddle_position < 250:
-                        right_paddle_position += 10
-                # bottom paddle AI
-                if  ball_direction["y"] > 0 and ball_position["y"] > 250 :
-                    if ball_position["x"] > bottom_paddle_position + (PADDLE_HEIGHT / 2) and bottom_paddle_position < MAP_WIDTH - PADDLE_HEIGHT:
-                        bottom_paddle_position += 10
-                    elif bottom_paddle_position > 0:
-                        bottom_paddle_position -= 10
-                else:
-                    if bottom_paddle_position > 250:
-                        bottom_paddle_position -= 10
-                    elif bottom_paddle_position < 250:
-                        bottom_paddle_position += 10
-                # top paddle AI
-                if  ball_direction["y"] < 0 and ball_position["y"] < 250 :
-                    if ball_position["x"] > top_paddle_position + (PADDLE_HEIGHT / 2) and top_paddle_position < MAP_WIDTH - PADDLE_HEIGHT:
-                        top_paddle_position += 10
-                    elif top_paddle_position > 0:
-                        top_paddle_position -= 10
-                else:
-                    if top_paddle_position > 250:
-                        top_paddle_position -= 10
-                    elif top_paddle_position < 250:
-                        top_paddle_position += 10
+            # if room.player_limit == 3:
+            #     # right paddle AI
+            #     if  ball_direction["x"] > 0 and ball_position["x"] > 250 :
+            #         if ball_position["y"] > right_paddle_position + (PADDLE_HEIGHT / 2) and right_paddle_position < MAP_HEIGHT - PADDLE_HEIGHT:
+            #             right_paddle_position += 10
+            #         elif right_paddle_position > 0:
+            #             right_paddle_position -= 10
+            #     else:
+            #         if right_paddle_position > 250:
+            #             right_paddle_position -= 10
+            #         elif right_paddle_position < 250:
+            #             right_paddle_position += 10
+            #     # bottom paddle AI
+            #     if  ball_direction["y"] > 0 and ball_position["y"] > 250 :
+            #         if ball_position["x"] > bottom_paddle_position + (PADDLE_HEIGHT / 2) and bottom_paddle_position < MAP_WIDTH - PADDLE_HEIGHT:
+            #             bottom_paddle_position += 10
+            #         elif bottom_paddle_position > 0:
+            #             bottom_paddle_position -= 10
+            #     else:
+            #         if bottom_paddle_position > 250:
+            #             bottom_paddle_position -= 10
+            #         elif bottom_paddle_position < 250:
+            #             bottom_paddle_position += 10
+            #     # top paddle AI
+            #     if  ball_direction["y"] < 0 and ball_position["y"] < 250 :
+            #         if ball_position["x"] > top_paddle_position + (PADDLE_HEIGHT / 2) and top_paddle_position < MAP_WIDTH - PADDLE_HEIGHT:
+            #             top_paddle_position += 10
+            #         elif top_paddle_position > 0:
+            #             top_paddle_position -= 10
+            #     else:
+            #         if top_paddle_position > 250:
+            #             top_paddle_position -= 10
+            #         elif top_paddle_position < 250:
+            #             top_paddle_position += 10
               
             await self.channel_layer.group_send(
                 self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position, "top_paddle_position": top_paddle_position, "bottom_paddle_position": bottom_paddle_position}}
