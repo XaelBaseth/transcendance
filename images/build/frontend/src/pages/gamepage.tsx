@@ -1,19 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import '../styles/Gamepage.css'
-import axios from 'axios';
-import api from '../api';
-import { useAuth } from "../context";
 import { useTranslation } from 'react-i18next';
 
 export default function GamePage() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	const pongGameModeButtonPressed = async () => {
+	const pongGameModeButtonPressed = () => {
 		navigate('/pong');
 	}
-
 
 	return (
 		<div id="play-screen2">

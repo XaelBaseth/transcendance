@@ -19,7 +19,6 @@ const PongGame = () => {
 	const [player_side, setPlayerSide] = useState(); //left, right or spectator
 	const ballRef = useRef(null);
 	const socketRef = useRef<WebSocket | null>(null);
-	const [playerCount, setPlayerCount] = useState("0");
 
 	useEffect(() => {
 		try {
@@ -99,8 +98,6 @@ const PongGame = () => {
 					if (data.side === 'spectator') {
 						window.removeEventListener('keydown', handleKeyPress);
 					}
-				} else if (data.type == "player_count") {
-					setPlayerCount(data.player_count);
 				} else {
 					console.log('Unknown message type', data);
 				}
@@ -188,7 +185,6 @@ const PongGame = () => {
 	return (<>
 		<h2>Room code : {params.roomCode}</h2>
 		<p>player side : {player_side}</p>
-		<p>player count : {playerCount}</p>
 		<p>ball x : {ball.x}</p>
 		<p>ball y : {ball.y}</p>
 		<div className="controls">

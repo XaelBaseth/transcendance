@@ -12,6 +12,7 @@ import os
 from django.core.asgi import get_asgi_application
 from pong.routing import pong_websocket_urlpatterns
 from chat.routing import chat_websocket_urlpatterns
+from matchmaking.routing import matchmaking_websocket_urlpatterns
 
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
@@ -25,7 +26,8 @@ application = ProtocolTypeRouter({
 	"websocket": AuthMiddlewareStack(
 		URLRouter(
 			pong_websocket_urlpatterns +
-			chat_websocket_urlpatterns
+			chat_websocket_urlpatterns +
+            matchmaking_websocket_urlpatterns
 		)
 	),
 })

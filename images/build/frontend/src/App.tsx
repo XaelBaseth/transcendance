@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next';
 import './App.css'
 import { ChatContextProvider } from "./components/Chat/ChatProvider"
 import FloatingChat from "./components/Chat/FloatingChat"
+import LocalPong from "./pages/LocalPong"
 
 /**Register the user, gives him a jwt and login 
  * cleanly so that we can avoid error */
@@ -58,6 +59,7 @@ function App() {
 								<Route path="/login" element={<Login />} />
 								<Route path="*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
+								<Route path="/localpong" element={<LocalPong />} />
 								{/*
         					<Route path="/password" element={<PasswordSettings />} />
 							<Route path="/delete-account" element={<DeleteSettings />} />*/}
