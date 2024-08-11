@@ -3,7 +3,7 @@ import '../styles/Pong.css';
 import PongLocal from '../components/PongGame/PongLocal';
 
 
-const LocalPong = () => {
+const LocalPongPage = () => {
 
 	return(
 		<div>
@@ -19,4 +19,4 @@ const LocalPong = () => {
 	);
 }
 
-export default LocalPong;
+export default LocalPongPage;
