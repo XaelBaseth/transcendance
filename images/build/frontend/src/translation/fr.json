@@ -3,10 +3,8 @@
 		"play":" APPUYEZ POUR JOUER " 
 	},
 	"navbar":{
-		"profile":"Profil",
-		"social":"Social",
 		"about":"A propos",
-		"mHistory":"Historique des parties",
+		"logout":"Se Deconnecter",
 		"settings":"Reglages"
 	},
 	"error":{
@@ -14,7 +12,6 @@
 	},
 	"gamepage":{
 		"pongLower":"Utilisez les fleches haut et bas du clavier pour jouer !",
-		"otherGameLower":"Venez essayer notre {INSEREZ JEU ICI} !",
 		"tournamentLower":"Participez a un tournoi pour savoir qui est le meilleur (c'est vous!) !",
 		"pong":"MODE PONG",
 		"otherGame":"MODE AUTRE JEU",
@@ -24,7 +21,6 @@
 		"username":"Nom d'utilisateur",
 		"password":"Mot de passe",
 		"login":"Se Connecter",
-		"login42":"Se connecter avec 42",
 		"signup":"S'enregistrer",
 		"successMsg":"Connecte avec succes",
 		"errorMsg":"Nom d'utilisateur ou mot de passe invalide",
@@ -43,44 +39,10 @@
 		"passwordMatch":"Le mot de passe est erronne",
 		"unknownMsg":"Une erreur s'est produite."
 	},
-	"profile":{
-		"bio":"BIO",
-		"total":"Nombre total de Match",
-		"victories":"Victoires",
-		"friends":"Amis",
-		"overview":"STATS COMPETITIVES",
-		"wins":"Victoires",
-		"loss":"Defaites",
-		"rank":"Classement",
-		"aces":"Ace",
-		"challenge":"Defiez",
-		"winrate":"pourcentage de victoires"
-	},
-	"social":{
-		"search":"A la recherche d'amis ?",
-		"type":"Entrez le nom d'utilisateur de la personne que vous cherchez...",
-		"add":"Ajoutez en tant qu'ami",
-		"all":"Tout les amis",
-		"active":"Amis en ligne",
-		"blocked":"Utilisateurs bloques",
-		"pending":"Demandes en attente"
-	},
 	"settings":{
 		"settings":"Parametre",
-		"user":"Utilisateur",
 		"privacy":"Vie privee et securite",
 		"accessibility":"Accessibilite",
-		"bio":"Entrez une bio",
-		"pseudo":"Entrez votre nom d'utilisateur",
-		"email":"Entrez votre addresse email",
-		"changePassword":"Changer votre mot de passe",
-		"newPassword":"Nouveau mot de passe",
-		"password":"Changez votre mot de passe",
-		"showPassword":"Montrez votre mot de passe",
-		"errorPassword":"Le mot de passe n'est pas assez fort",
-		"confirmPassword":"Confirmer le mot de passe",
-		"savePassword":"Sauvegarder les modifications de mots de passe",
-		"successMsg":"Modifications enregistrees avec succes",
 		"irreversible":"Attention, cette action est irreversible",
 		"delete":"Voulez-vous supprimer votre compte ?",
 		"deleteSuccess":"Votre compte a ete supprimer",
@@ -122,9 +84,5 @@
 		"contact_phone":"Numero de telephone: ",
 		"contact_email":"Email: ",
 		"contact_text":"Pour toute question et/ou commentaire concernant notre politique en matière de cookies et la présente déclaration, veuillez nous contacter en utilisant les informations fournies ci-dessus."
-	},
-	"chat":{
-		"send":"Envoyer",
-		"close":"Fermer"
 	}
 }

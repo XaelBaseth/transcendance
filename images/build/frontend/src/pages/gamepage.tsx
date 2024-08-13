@@ -22,10 +22,6 @@ export default function GamePage() {
 				onClick={pongGameModeButtonPressed}>
 				{t('gamepage.pong')}
 			</div>
-			<div className="button2" data-text="MODE OTHER"
-				title={t('gamepage.otherGameLower')}>
-				{t('gamepage.otherGame')}
-			</div>
 			<div className="button3" data-text="MODE TOURNAMENT"
 				title={t('gamepage.tournamentLower')}>
 				{t('gamepage.tournament')}

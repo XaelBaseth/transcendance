@@ -53,9 +53,6 @@ export default function Login() {
 				</>
 				<button onClick={handleLogIn} id="login-btn">{t('login.login')}</button>
 				<div className="social">
-					<div className="_42auth">
-						<button id='_42auth_btn'>{t('login.login42')}</button>
-					</div>
 					<div className="signup">
 						<button onClick={handleSignUp} id="signup_btn">{t('login.signup')}</button>
 					</div>

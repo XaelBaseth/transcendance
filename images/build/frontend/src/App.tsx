@@ -7,10 +7,8 @@ import GamePage from "./pages/gamepage"
 import About from "./pages/about"
 import Login from "./pages/login"
 import Pong from "./pages/pong"
-import { Profile } from "./pages/profile"
 import Settings from "./pages/setting"
 import SignUp from "./pages/signUp"
-import { Social } from "./pages/social"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { AuthProvider } from "./context"
@@ -19,10 +17,7 @@ import PongHomePage from "./pages/PongHome"
 import JoinPongRoomPage from "./pages/JoinPongRoomPage"
 import CreatePongRoomPage from "./pages/CreatePongRoomPage"
 import { useTranslation } from 'react-i18next';
-
 import './App.css'
-import { ChatContextProvider } from "./components/Chat/ChatProvider"
-import FloatingChat from "./components/Chat/FloatingChat"
 
 /**Register the user, gives him a jwt and login 
  * cleanly so that we can avoid error */
@@ -53,30 +48,21 @@ function App() {
 						<div className="Navbar">
 							<Navbar />
 						</div>
-						<ChatContextProvider>
 							<Routes>
 								<Route path="/login" element={<Login />} />
 								<Route path="*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
-								{/*
-        					<Route path="/password" element={<PasswordSettings />} />
-							<Route path="/delete-account" element={<DeleteSettings />} />*/}
+								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-								<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-								<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 								<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
-								{/* <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} /> */}
 								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-								<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
 								{/* PONG */}
 								<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
 								<Route path="/pong-join" element={<ProtectedRoute><JoinPongRoomPage /></ProtectedRoute>} />
 								<Route path="/pong-create" element={<ProtectedRoute><CreatePongRoomPage /></ProtectedRoute>} />
 								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
 							</Routes>
-							<FloatingChat />
-						</ChatContextProvider>
 					</AuthProvider>
 				</BrowserRouter>
 			</section>
