@@ -41,14 +41,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [location]);
 
-	//Print statement
-	useEffect(() => {
-		if (user) {
-		  console.log("Updated User data: ", user.username);
-		}
-	  }, [user]);
-	//end of print statement
-
 	//login
 	const login = async (username: string, password: string) => {
 		if (username === "" || password === "") {

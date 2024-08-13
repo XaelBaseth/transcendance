@@ -13,10 +13,10 @@ export default function Sidebar () {
     return (
 		<nav className={'nav-menu'}>
 		  <ul className='nav-menu-items' >
-		  	<SidebarElem title={t('navbar.about')} path="/about" image={aboutIcon} />
 			<SidebarElem title={t('navbar.local')} path="/localpong" image={localIcon} />
 			<SidebarElem title={t('navbar.network')} path="/pong" image={networkIcon} />
 			<SidebarElem title={t('navbar.tournament')} path="" image={tournamentIcon} />
+			<SidebarElem title={t('navbar.about')} path="/about" image={aboutIcon} />
 		  </ul>
 		  <ul className="settings_btn">
 			<SidebarElem  title={t('navbar.settings')} path="/settings" image={settingsIcon} />

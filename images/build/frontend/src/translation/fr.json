@@ -6,7 +6,7 @@
 		"about":"A propos",
 		"logout":"Se Deconnecter",
 		"settings":"Reglages",
-		"local":"Locale",
+		"local":"Local",
 		"network":"En Ligne",
 		"tournament":"Tournois"
 	},
@@ -17,7 +17,6 @@
 		"pongLower":"Utilisez les fleches haut et bas du clavier pour jouer !",
 		"tournamentLower":"Participez a un tournoi pour savoir qui est le meilleur (c'est vous!) !",
 		"pong":"MODE PONG",
-		"otherGame":"MODE AUTRE JEU",
 		"tournament":"MODE TOURNOI"
 	},
 	"login":{
