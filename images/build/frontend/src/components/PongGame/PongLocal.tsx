@@ -162,7 +162,7 @@ const LocalPongGame = () => {
 	return (<>
 		<div className="controls">
 			{!gameRunning && !gameOver && <button onClick={pauseGame}>Start</button>}
-			{gameRunning && <button onClick={pauseGame}> Pause</button>}
+			{gameRunning && <button onClick={pauseGame}>Pause</button>}
 			{gameOver && <button onClick={restartGame}>Play Again</button>}
 			
 		</div>

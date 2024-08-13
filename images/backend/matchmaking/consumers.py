@@ -4,8 +4,6 @@ from channels.generic.websocket import  WebsocketConsumer
 from asgiref.sync import async_to_sync
 from django.apps import apps
 
-import logging
-
 class MatchMakingConsumer(WebsocketConsumer):
 	duel_queue = []
 	quarrel_queue = []
@@ -22,9 +20,6 @@ class MatchMakingConsumer(WebsocketConsumer):
 		async_to_sync(self.channel_layer.group_discard)(self.room_group_name, self.channel_name)
 
 	def receive(self, text_data):
-		logger = logging.getLogger(__name__)
-		logger.info(str(self.channel_name) + ' : ' + text_data)
-
 		try:
 			text_data_json = json.loads(text_data)
 		except json.JSONDecodeError:
@@ -49,10 +44,7 @@ class MatchMakingConsumer(WebsocketConsumer):
 				return
 
 	def join_queue(self, event):
-		logger = logging.getLogger(__name__)
-		logger.info(str(self.channel_name) + ' join la queue : ' + event)
 		if event == "duel":
-			logger.info(str(self.channel_name) + ' join la queue duel')
 			MatchMakingConsumer.duel_queue.append(self.channel_name)
 			if len(MatchMakingConsumer.duel_queue) >= 2:
 				self.start_match("duel")
@@ -62,7 +54,6 @@ class MatchMakingConsumer(WebsocketConsumer):
 					{"type": "send_message", "message": {"type": "queue", "in_queue": "1", "needed": "2"}}
 				)
 		elif event == "quarrel":
-			logger.info(str(self.channel_name) + ' join la queue quarrel')
 			MatchMakingConsumer.quarrel_queue.append(self.channel_name)
 			if len(MatchMakingConsumer.quarrel_queue) >= 4:
 				self.start_match("quarrel")
@@ -134,8 +125,5 @@ class MatchMakingConsumer(WebsocketConsumer):
 
 	# Receive a message to send to the client
 	def send_message(self, event):
-		logger = logging.getLogger(__name__)
-		logger.info(str(self.channel_name) + 'matchmaking sending : ' + str(event["message"]))
-
 		# Send message to WebSocket
 		self.send(text_data=json.dumps(event["message"]))
