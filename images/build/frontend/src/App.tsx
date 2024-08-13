@@ -54,9 +54,6 @@ function App() {
 								<Route path="*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
 								<Route path="/localpong" element={<LocalPongPage />} />
-								{/*
-        					<Route path="/password" element={<PasswordSettings />} />
-							<Route path="/delete-account" element={<DeleteSettings />} />*/}
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />

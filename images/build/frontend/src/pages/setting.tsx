@@ -50,48 +50,7 @@ function AccessibilitySettings() {
 		<div className="privacy_settings">
 		{/**Colorbling mode */}
 		<LanguageSwitcher />
-		<AvatarCardSettings />
 	</div>
-	);
-}
-
-export function AvatarCardSettings() 
-{
-	{/** Automatiser de maniere a ce que chaque 
-		personne puisse avoir son propre avatar */}
-
-	const [errorMsg, setErrorMsg] = useState<string>("");
-	const [browseMsg, setBrowseMsg] = useState<string>("Choose a file");
-	
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files) {
-			{/** Change Avatar */}
-			setBrowseMsg("File chosen!");
-		}
-	}
-
-	return (
-		<div id='avatar_settings'>
-			<div>
-				<img src={''} alt='user_avatar' id='user_avatar'/>
-			</div>
-			<div className='avatar_block'>
-				<h5>Change your avatar :</h5>
-				<input onChange={handleChange} type='file' accept='image/png, image/jpeg, image/gif' name="file" id='file' />
-				<label htmlFor='file' id='chose_file'>
-					<span>Choose a new file</span>
-				</label>
-				<>
-					{
-						errorMsg &&
-						<div className="setting__alert_err">
-							<h6>{errorMsg}</h6>
-						</div>
-					}
-				</>
-				<button id="avatar_upload_btn" /**onClick={handleSubmit} */>Upload</button>
-			</div>
-		</div>
 	);
 }
 
@@ -196,7 +155,7 @@ export function CookieSettings() {
 			  <ul>
 				<li>{t('cookie.contact_adress')} </li>
 				<li>{t('cookie.contact_email')} </li>
-				<li>{t('cookie.contact_adress')} </li>
+				<li>{t('cookie.contact_phone')} </li>
 			  </ul>
 			  <p>{t('cookie.contact_text')}</p>
 			</section>

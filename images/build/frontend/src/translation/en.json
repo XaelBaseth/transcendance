@@ -5,7 +5,10 @@
 	"navbar":{
 		"about":"About",
 		"logout":"Logout",
-		"settings":"Settings"
+		"settings":"Settings",
+		"local":"Local",
+		"network":"Online",
+		"tournament":"Tournament"
 	},
 	"error":{
 		"error":"Error"

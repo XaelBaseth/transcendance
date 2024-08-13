@@ -5,7 +5,10 @@
 	"navbar":{
 		"about":"A propósito",
 		"logout":"Desconectar",
-		"settings":"Configuración"
+		"settings":"Configuración",
+		"local":"Local",
+		"network":"En línea",
+		"tournament":"Torneo"
 	},
 	"error":{
 		"error":"Error"
