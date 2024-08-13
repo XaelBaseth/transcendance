@@ -76,168 +76,6 @@
 	text-align: center;
 }
 
-
-/* ********************************/
-/* ***     AVATAR COMPONENT     ***/
-/* ********************************/
-
-#avatar_settings {
-    grid-column: auto; /* Reset grid column for Avatar settings */
-}
-
-.avatar_block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative; /* Add position relative */
-}
-
-.avatar_block > h5 {
-    font-family: 'Pixelify Sans';
-    color: var(--pink);
-    font-size: 18px;
-    position: absolute;
-    top: 12%;
-    left: 25%;
-}
-
-#user_avatar {
-    height: 9em;
-    width: 9em;
-    background-size: cover;
-    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    position: absolute;
-    top: 12%;
-    left: 5%;
-}
-
-#file {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    z-index: -1;
-    color: #000;
-}
-
-#file + label {
-    font-weight: 600;
-    color: var(--pink);
-    display: inline;
-    cursor: pointer;
-    padding: 7px 0;
-    position: absolute;
-    top: 18%;
-    left: 26%;
-}
-
-#file + label:hover {
-    font-weight: 600;
-    color: var(--light_pink);
-    display: inline;
-    cursor: pointer;
-    padding: 7px 0;
-}
-
-#file + label > span {
-    font-family: 'Pixelify Sans';
-    letter-spacing: 2px;
-    font-size: 16px;
-}
-
-#avatar_upload_btn {
-    font-weight: bold;
-    display: block;
-    font-size: 14px;
-    color: var(--light_teal);
-    background-color: var(--pink);
-    padding: 10px 20px;
-    border-radius: 50px;
-    border-right: 3px solid var(--light_teal);
-    border-bottom: 3px solid var(--light_teal);
-    font-family: 'Pixelify Sans';
-    cursor: pointer;
-    position: absolute;
-    top: 22%;
-    left: 28%;
-}
-
-#avatar_upload_btn:hover {
-    color: var(--clear_beige);
-}
-
-/* ********************************/
-/* ***   INPUT TEXT COMPONENT   ***/
-/* ********************************/
-
-
-#text_settings_card {
-    width: 60%; /* Adjust width as needed */
-    margin-left: 20px; /* Add margin between Avatar and Input Text components */
-}
-
-/* Can be 'username', 'bio' or 'email' title */
-.text_settings_property {
-    width: 20%;
-    text-align: left;
-    font-size: 18px;
-    font-weight: 700;
-    font-family: 'Pixelify Sans';
-    color: var(--pink);
-    transform: translate(5%, 450%);
-}
-
-.text_settings_input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* inside box 1e et 3e btn*/
-.text_input[type=text] {
-    padding: 10px;
-    border: 0;
-    font-size: 15px;
-    border-radius: 5px;
-    font-family: 'Pixelify Sans';
-    /* Removed resize: vertical; for single-line inputs */
-    width: 35%;
-    color: var(--pink);
-    /* Adjusted transform values for better alignment */
-    transform: translateY(140%) translateX(10%);
-}
-
-.text_input::placeholder {
-    color: var(--light_pink);
-}
-
-/* ligne sous box d'ecriture 3er btn settings */
-.text_input[type=text]:hover {
-    border: 0;
-    border-bottom: 2px solid #a0ced9;
-}
-
-.text_settings_btn {
-    background-color: #007bff; /* Example background color */
-    border: none;
-    padding: 10px 20px; /* Example padding */
-    cursor: pointer;
-    color: white; /* Example text color */
-    border-radius: 5px; /* Rounded corners */
-}
-
-.text_settings_btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-.text_checkbox {
-    color: black;
-}
-
-.text_checkbox:hover {
-    color: #90d0f0;
-}
-
 /* ********************************/
 /* ***    PASSWORD COMPONENT    ***/
 /* ********************************/
@@ -474,63 +312,66 @@
     color: var(--light_pink);
 }
 
-/**************************************/
-/**** DALTONISM SETTING COMPONENT ****/
-/*************************************/
+/* ********************************/
+/* *** COLOR BLIND SWITCHER       ***/
+/* ********************************/
 
-.daltonism-switcher {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 20px 0; /* Adjust margin as needed */
 }
 
-.daltonism-switcher button {
-    background-color: var(--linen);
-    border: 2px solid var(--light_teal);
-    color: var(--pink);
-    padding: 10px 15px;
-    margin: 0 5px;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
     cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light_grey); /* Adjust color as needed */
+    transition: .4s;
+    border-radius: 34px;
 }
 
-.daltonism-switcher button:hover {
-    background-color: var(--light_teal);
-    border-color: var(--pink);
-    color: #fff;
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
 }
 
-.daltonism-switcher button.active {
-    background-color: var(--pink);
-    border-color: var(--light_teal);
-    color: #fff;
+input:checked + .slider {
+    background-color: var(--olive_green); /* Color when switch is active */
 }
 
-/* Mode Daltonisme */
-.daltonism-mode {
-    --linen: #ff0;
-    --light_teal: #f00;
-    --pink: #00f;
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
 
-/* Exemple de changement de couleur pour des éléments spécifiques */
-.daltonism-mode .cardSettings {
-    background-color: #ff0; /* jaune au lieu de la couleur normale */
-    border-color: #f00; /* rouge au lieu de la couleur normale */
+.slider.round {
+    border-radius: 34px;
 }
 
-.daltonism-mode .language-switcher button,
-.daltonism-mode .daltonism-switcher button {
-    background-color: #00f; /* bleu au lieu de la couleur normale */
-    border-color: #f00; /* rouge au lieu de la couleur normale */
-    color: #ff0; /* jaune au lieu de la couleur normale */
+.slider.round:before {
+    border-radius: 50%;
 }
 
-.daltonism-mode .language-switcher button.active,
-.daltonism-mode .daltonism-switcher button.active {
-    background-color: #f00; /* rouge au lieu de la couleur normale */
-    border-color: #00f; /* bleu au lieu de la couleur normale */
-    color: #ff0; /* jaune au lieu de la couleur normale */
+.switch span {
+    margin-left: 10px;
+    font-family: 'Megrim';
+    font-size: 16px;
 }

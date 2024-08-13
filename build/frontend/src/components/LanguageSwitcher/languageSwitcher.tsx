@@ -13,7 +13,6 @@ return (
 	<button onClick={() => changeLanguage('en')}>English</button>
 	<button onClick={() => changeLanguage('fr')}>French</button>
 	<button onClick={() => changeLanguage('es')}>Spanish</button>
-	<button onClick={() => changeLanguage('pt')}>Portuguese</button>
 	</div>
 );
 }
