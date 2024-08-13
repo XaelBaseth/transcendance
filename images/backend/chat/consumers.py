@@ -37,6 +37,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
 		await self.accept()
 
+		logger = logging.getLogger(__name__)
+		logger.info('created consumer : ' + self.room_group_name)
+
 	async def disconnect(self, close_code):
 		# Leave room group
 		await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
@@ -48,7 +51,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 		message = text_data_json["message"]
 		role = "spectator"
 
-		user = await self.get_user(self.user_id)
+		user = await self.get_user_by_id(self.user_id)
 		username = f"{user.username}"
 
 		PongRoom = apps.get_model('pong', 'PongRoom')
@@ -83,12 +86,29 @@ class ChatConsumer(AsyncWebsocketConsumer):
 				# Send command result to the player
 				# await self.chat_message({ "message": {"type": "command", "command": "open_private_room", "arguments": username+argument}, "players": [username, argument]})
 				
+				# check if username == argument
+				if username == argument:
+					await self.chat_message({"message": {"text": "You can't send a private message to yourself", "role": "system", "username": "system"}})
+					return
+				
+				# check if argument is a valid username
+				argument_user = await self.get_user_by_username(argument)
+				if argument_user.is_anonymous:
+					await self.chat_message({"message": {"text": "User not found", "role": "system", "username": "system"}})
+					return
+
+				# create a room name with the two usernames in ascii order
+				if username < argument:
+					room_id = username + argument
+				else:
+					room_id = argument + username
+
 				logger = logging.getLogger(__name__)
-				logger.info('je crée une room pour : ' + username+argument)
+				logger.info('je crée une room pour : ' + room_id)
 
 				# Send message to room group
 				await self.channel_layer.group_send(
-				self.room_group_name, {"type": "create.private.chat", "message": {"type": "command", "command": "open_private_room", "arguments": username+argument}, "players": [username, argument]}
+				self.room_group_name, {"type": "create.private.chat", "message": {"type": "command", "command": "open_private_room", "arguments": {"room_id":room_id}}, "players": [username, argument]}
 				)
 					 
 				return
@@ -108,13 +128,17 @@ class ChatConsumer(AsyncWebsocketConsumer):
 		message = event["message"]
 		players = event["players"]
 
-		user = await self.get_user(self.user_id)
+		user = await self.get_user_by_id(self.user_id)
 		username = f"{user.username}"
 
 		logger = logging.getLogger(__name__)
 
 		if (username in players):
 			logger.info('je crée une room pour : ' + username + " players = " + str(players))
+			# remove username from players
+			players.remove(username)
+			room_name = players[0]
+			message["arguments"]["room_name"] = room_name
 			await self.send(text_data=json.dumps(message))
 
 	# Receive message from room group
@@ -125,12 +149,24 @@ class ChatConsumer(AsyncWebsocketConsumer):
 		await self.send(text_data=json.dumps(message))
 
 	@database_sync_to_async
-	def get_user(self, user_id):
+	def get_user_by_id(self, user_id):
 		from django.contrib.auth.models import AnonymousUser
 		from django.contrib.auth import get_user_model
 		User = get_user_model()
 		try:
 			return User.objects.get(user_id=user_id)
+		except User.DoesNotExist:
+			return AnonymousUser()
+		except Exception:
+			return AnonymousUser()
+	
+	@database_sync_to_async
+	def get_user_by_username(self, username):
+		from django.contrib.auth.models import AnonymousUser
+		from django.contrib.auth import get_user_model
+		User = get_user_model()
+		try:
+			return User.objects.get(username=username)
 		except User.DoesNotExist:
 			return AnonymousUser()
 		except Exception:

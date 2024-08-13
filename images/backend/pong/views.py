@@ -20,6 +20,8 @@ class CreatePongRoomView(APIView):
 			serializer = self.serializer_class(data=request.data)
 			if serializer.is_valid():
 				player_limit = serializer.data.get('player_limit')
+				if player_limit != 2 and player_limit != 4:
+					return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 				room = PongRoom.objects.create(player_limit=player_limit, players_id=[])
 				room.save()
 				return Response(PongRoomSerializer(room).data, status=status.HTTP_201_CREATED)

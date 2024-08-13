@@ -1,20 +1,30 @@
 import asyncio
 import json
 
-from channels.generic.websocket import AsyncWebsocketConsumer
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'source.settings')
+import django
+django.setup()
+
+from channels.generic.websocket import AsyncWebsocketConsumer, WebsocketConsumer
 from asgiref.sync import sync_to_async
 from django.apps import apps
-from .manage_game import game_loop
 from channels.db import database_sync_to_async
+from pong.models import PongGameData
 
 import logging
+import random
+import datetime
 
 
 from jwt import decode as jwt_decode
 
-class PongConsumer(AsyncWebsocketConsumer):	 
+class PongConsumer(AsyncWebsocketConsumer):
+	pong_rooms = []
+	pong_rooms_lock = asyncio.Lock()
+
 	@database_sync_to_async
-	def get_user(self, user_id):
+	def get_user_by_id(self, user_id):
 		from django.contrib.auth.models import AnonymousUser
 		from django.contrib.auth import get_user_model
 		User = get_user_model()
@@ -22,12 +32,16 @@ class PongConsumer(AsyncWebsocketConsumer):
 			return User.objects.get(user_id=user_id)
 		except User.DoesNotExist:
 			return AnonymousUser()
+		except Exception:
+			return AnonymousUser()
 
 	async def connect(self):
 		from django.conf import settings
 		from rest_framework_simplejwt.tokens import UntypedToken
 		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 
+		self.user_id = -1
+		self.username = "Anonymous"
 		if "room_name" not in self.scope["url_route"]["kwargs"] or not self.scope["url_route"]["kwargs"]["room_name"]:
 			self.close(code=4001, reason="No room name")
 		else:
@@ -37,6 +51,10 @@ class PongConsumer(AsyncWebsocketConsumer):
 			if not await sync_to_async(room_result.exists)():
 				self.close(code=4002, reason="Room not found")
 				return
+			else:
+				room = await sync_to_async(room_result.__getitem__)(0)
+				if await self.find_room_by_code(PongConsumer.pong_rooms, room.code) is None:
+					PongConsumer.pong_rooms.append(PongGameData(room.code, room.player_limit))
 		self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
 		self.room_group_name = f"pong_{self.room_name}"
 
@@ -48,9 +66,12 @@ class PongConsumer(AsyncWebsocketConsumer):
 			UntypedToken(token)
 			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
 			self.user_id = decoded_data['user_id']
+			user = await self.get_user_by_id(self.user_id)
+			self.username = f"{user.username}"
 		except (InvalidToken, TokenError):
 			# Token is invalid
 			self.user_id = -1
+			self.username = "Anonymous"
 
 		# Join room group
 		await self.channel_layer.group_add(self.room_group_name, self.channel_name)
@@ -58,14 +79,31 @@ class PongConsumer(AsyncWebsocketConsumer):
 		await self.accept()
 
 	async def disconnect(self, close_code):
+		logger = logging.getLogger(__name__)
+		logger.info(str(self.username) + " disconnected")
+
+		# check if self.room_name exists
+		if hasattr(self, 'room_name'):
+			code = self.room_name
+			
+			#check if the room exists in pong_rooms
+			room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
+
+			if room is not None:
+				if room.state == 'playing':
+					if self.username in room.players:
+						room.disconnected_players.append(self.username)
+						await self.update_room(room)
+					pass
 		# Leave room group
-		await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
+		if hasattr(self, 'room_group_name'):
+			await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
 
 	# Receive message from WebSocket
 	async def receive(self, text_data):
 		# print(self.scope["session"].session_key + " : " + text_data)
 		logger = logging.getLogger(__name__)
-		logger.info(str(self.user_id) + ' : ' + text_data)
+		logger.info(str(self.username) + ' : ' + text_data)
 
 		# check if text_data is a valid json
 		try:
@@ -76,6 +114,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 		except TypeError:
 			await self.send_message({"message": "Invalid JSON"})
 			return
+		
+		if text_data_json.get("type") is None:
+			await self.send_message({"message": "'type' field missing"})
 
 		match text_data_json["type"]:
 			case "join_game":
@@ -86,113 +127,347 @@ class PongConsumer(AsyncWebsocketConsumer):
 				await self.update_paddle(event=text_data_json)
 			case "pause":
 				await self.pause_game(event=text_data_json)
-			case "restart":
-				await self.restart_game(event=text_data_json)
 			case _:
 				await self.send_message({"message": "Invalid message type"})
-			
 
 	async def join_game(self, event):
-		PongRoom = apps.get_model('pong', 'PongRoom')
 		code = self.room_name
-		room_result = await sync_to_async(PongRoom.objects.filter)(code=code)
-		
-		if not await sync_to_async(room_result.exists)():
+		room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
+
+		if room is None:
 			await self.send_message({"message": "Room not found"})
 		else:
-			room = await sync_to_async(room_result.__getitem__)(0)
-			players = room.players_id
+			players = room.players
 			#check if player is already in the room
-			if self.user_id in players:
-				if self.user_id == room.players_id[0]:
+			if self.username in players:
+				if self.username in room.disconnected_players:
+					room.disconnected_players.remove(self.username)
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"players_disconnected", "players": room.disconnected_players }}
+					)
+					await self.update_room(room)
+				if self.username == room.players[0]:
 					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
-				elif self.user_id == room.players_id[1]:
+				elif self.username == room.players[1]:
 					await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
-				return
-			players_count = len(players)
-			if players_count < room.player_limit:
-				await sync_to_async(room.players_id.append)(self.user_id)
-				await sync_to_async(room.save)()
-				if players_count == 0:
-					await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
-				else:
-					await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
+				elif self.username == room.players[2]:
+					await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
+				elif self.username == room.players[3]:
+					await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
 			else:
-				await self.send_message({"message" : {"type" : "join_game", "side": "spectator"}})
-
-	async def restart_game(self, event):
-		PongRoom = apps.get_model('pong', 'PongRoom')
-		room_result = await sync_to_async(PongRoom.objects.filter)(code=self.room_name)
-		if not await sync_to_async(room_result.exists)():
-			await self.send_message({"message": "Room not found"})
-			return
-		room = await sync_to_async(room_result.__getitem__)(0)
-
-		room.restart = True
-		room.pause = False
-		await sync_to_async(room.save)()
-		await asyncio.sleep(1.5)
-		await self.start_game(event=event)
+				players_count = len(players)
+				if players_count < room.player_limit:
+					async with PongConsumer.pong_rooms_lock:
+						room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
+						await sync_to_async(room.players.append)(self.username)
+						# update the room in pong_rooms
+						await self.update_room(room)
+					if players_count == 0:
+						await self.send_message({"message" : {"type" : "join_game", "side": "left"}})
+					elif players_count == 1:
+						await self.send_message({"message" : {"type" : "join_game", "side": "right"}})
+					elif players_count == 2:
+						await self.send_message({"message" : {"type" : "join_game", "side": "top"}})
+					elif players_count == 3:
+						await self.send_message({"message" : {"type" : "join_game", "side": "bottom"}})
+				else:
+					await self.send_message({"message" : {"type" : "join_game", "side": "spectator"}})
+		
 
 	async def pause_game(self, event):
-		PongRoom = apps.get_model('pong', 'PongRoom')
-		room_result = await sync_to_async(PongRoom.objects.filter)(code=self.room_name)
-		if not await sync_to_async(room_result.exists)():
+		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+		if room is None:
 			await self.send_message({"message": "Room not found"})
 			return
-		room = await sync_to_async(room_result.__getitem__)(0)
-		room.pause = not room.pause
-		await sync_to_async(room.save)()
+		pause = event["pause"]
+		# convert pause to boolean
+		if pause == "true":
+			room.pause = True
+		else:
+			room.pause = False 
+		await self.update_room(room)
 
 	async def update_paddle(self, event):
-		PongRoom = apps.get_model('pong', 'PongRoom')
-		room_result = await sync_to_async(PongRoom.objects.filter)(code=self.room_name)
-		if not await sync_to_async(room_result.exists)():
+		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+		if room is None:
 			await self.send_message({"message": "Room not found"})
 			return
-		room = await sync_to_async(room_result.__getitem__)(0)
 		text_data_json = event
 		
 		#todo check user permissions
-		if self.user_id not in room.players_id:
+		if self.username not in room.players:
 			await self.send_message({"message": "You are not a player"})
 			return
 		elif room.pause:
 			return
+		
+		if not "side" in text_data_json or not "direction" in text_data_json:
+			await self.send_message({"message": "Invalid padel update request"})
+			return
 
-		if text_data_json["side"] == "left" and self.user_id == room.players_id[0]:
+		if text_data_json["side"] == "left" and self.username == room.players[0]:
 			if text_data_json["direction"] == "up" and room.left_paddle_position > 0:
 				room.left_paddle_position = room.left_paddle_position - 10
 			elif text_data_json["direction"] == "down" and room.left_paddle_position < 300:
 				room.left_paddle_position = room.left_paddle_position + 10
-		elif text_data_json["side"] == "right" and self.user_id == room.players_id[1]:
+		elif text_data_json["side"] == "right" and self.username == room.players[1]:
 			if text_data_json["direction"] == "up" and room.right_paddle_position > 0:
 				room.right_paddle_position = room.right_paddle_position - 10
 			elif text_data_json["direction"] == "down" and room.right_paddle_position < 300:
 				room.right_paddle_position = room.right_paddle_position + 10
+		elif text_data_json["side"] == "top" and self.username == room.players[2]:
+			if text_data_json["direction"] == "left" and room.top_paddle_position > 0:
+				room.top_paddle_position = room.top_paddle_position - 10
+			elif text_data_json["direction"] == "right" and room.top_paddle_position < 300:
+				room.top_paddle_position = room.top_paddle_position + 10
+		elif text_data_json["side"] == "bottom" and self.username == room.players[3]:
+			if text_data_json["direction"] == "left" and room.bottom_paddle_position > 0:
+				room.bottom_paddle_position = room.bottom_paddle_position - 10
+			elif text_data_json["direction"] == "right" and room.bottom_paddle_position < 300:
+				room.bottom_paddle_position = room.bottom_paddle_position + 10
 		else:
 			await self.send_message({"message": "Invalid paddle update request"})
 			return
-		await sync_to_async(room.save)()
+		await self.update_room(room)
 
 	async def start_game(self, event):
-		PongRoom = apps.get_model('pong', 'PongRoom')
-		room_result = await sync_to_async(PongRoom.objects.filter)(code=self.room_name)
-		if not await sync_to_async(room_result.exists)():
+		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+		if room is None:
 			await self.send_message({"message": "Room not found"})
 			return
-		room = await sync_to_async(room_result.__getitem__)(0)
-		if self.user_id not in room.players_id:
+		if self.username not in room.players:
 			await self.send_message({"message": "You are not a player"})
 			return
 		await self.channel_layer.group_send(
-					self.room_group_name, {"type": "send_message", "message":  {"type":"game_start"}}
+			self.room_group_name, {"type": "send_message", "message":  {"type":"game_start"}}
 		)
-		asyncio.ensure_future(game_loop(self=self, event=event))
+		room.state = 'playing'
+		await self.update_room(room)
+		PongRoom = apps.get_model('pong', 'PongRoom')
+		room_result = await sync_to_async(PongRoom.objects.filter)(code=self.scope["url_route"]["kwargs"]["room_name"])
+		if await sync_to_async(room_result.exists)():
+			db_room = await sync_to_async(room_result.__getitem__)(0)
+			db_room.state = 'playing'
+			await sync_to_async(db_room.save)()
+		if room.player_limit <= 2:
+			asyncio.ensure_future(self.game_loop_2_players(event=event))
+		else:
+			asyncio.ensure_future(self.game_loop_4_players(event=event))
 
 
 	# Receive a message to send to the client
 	async def send_message(self, event):
+		logger = logging.getLogger(__name__)
+		logger.info(str(self.username) + " reçoit " + str(event["message"]))
 
 		# Send message to WebSocket
 		await self.send(text_data=json.dumps(event["message"]))
+
+	async def find_room_by_code(self, pong_rooms, code):
+		return next((room for room in pong_rooms if room.code == code), None)
+	
+	async def update_room(self, room):
+		await sync_to_async(PongConsumer.pong_rooms.__setitem__)(PongConsumer.pong_rooms.index(room), room)
+
+	# Concidérer que le x et y de la balle sont le haut gauche de la balle, et donc tapper les murs bas et droit à BALL_DIAMETER de distance
+	# le y du paddle est le haut du paddle
+	async def game_loop_2_players(self, event):
+			MAP_HEIGHT = 400
+			MAP_WIDTH = 600
+			BALL_DIAMETER = 20
+			BALL_SPEED = 5
+			PADDLE_HEIGHT = 100
+			TPS = 10
+			WIN_SCORE = 2
+
+			room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+
+			ball_direction = {"x": random.choice([-1, 1]), "y": random.choice([-1, 1])}
+			ball_position = {"x": 290.0, "y": 190.0}
+			left_paddle_position = 150
+			right_paddle_position = 150
+			room.pause = False
+			room.score = {"left": 0, "right": 0}
+			await self.update_room(room)
+
+			players_break_time = {}
+			for player in room.players:
+				players_break_time[player] = 15
+
+			logger = logging.getLogger(__name__)
+			logger.info("players_break_time : " + str(players_break_time))
+
+			await self.channel_layer.group_send(
+				self.room_group_name, {"type": "send_message", "message":  {"type":"game_state", "ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position,  "timestamp": datetime.datetime.now().isoformat()}}
+			)
+
+			while True:
+				room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+
+				if room.pause:
+					while room.pause:
+						await asyncio.sleep(1)
+						room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+					# resume the game
+					remaining_time = 3
+					while remaining_time > 0:
+						await self.channel_layer.group_send(
+							self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_pause", "remaining_time": remaining_time }}
+						)
+						await asyncio.sleep(1)
+						remaining_time -= 1
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_pause", "remaining_time": remaining_time }}
+					)
+
+				if len(room.disconnected_players) > 0 and len(players_break_time) > 0:
+					player_have_time = False
+					for player in room.disconnected_players:
+						if player in players_break_time:
+							player_have_time = True
+							break
+					if player_have_time:
+						remaining_time = 3
+						while len(room.disconnected_players) > 0 and len(players_break_time) > 0 and remaining_time > 0:
+							for player in room.disconnected_players:
+								if player in players_break_time:
+									remaining_time = max(players_break_time[player], remaining_time)
+									players_break_time[player] -= 1
+									if players_break_time[player] <= 0:
+										players_break_time.pop(player)
+								remaining_time -= 1
+							await self.channel_layer.group_send(
+								self.room_group_name, {"type": "send_message", "message":  {"type":"players_disconnected", "players": room.disconnected_players }}
+							)
+							await self.channel_layer.group_send(
+								self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_pause", "remaining_time": remaining_time }}
+							)
+							await asyncio.sleep(1)
+						# resume the game
+						remaining_time = 3
+						while remaining_time > 0:
+							await self.channel_layer.group_send(
+								self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_pause", "remaining_time": remaining_time }}
+							)
+							await asyncio.sleep(1)
+							remaining_time -= 1
+						await self.channel_layer.group_send(
+								self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_pause", "remaining_time": remaining_time }}
+						)
+					
+				# update paddles from users messages
+				left_paddle_position = room.left_paddle_position
+				right_paddle_position = room.right_paddle_position
+			
+				# Ball movement
+				ball_position["x"] += (ball_direction["x"] * BALL_SPEED)
+				ball_position["y"] += (ball_direction["y"] * BALL_SPEED)
+
+				# Wall collisions
+				if ball_position["y"] <= 0 or ball_position["y"] >= MAP_HEIGHT - BALL_DIAMETER:
+					ball_direction["y"] = -ball_direction["y"]
+
+				# Paddle collisions
+				if ball_position["x"] <= 20 and ball_position["x"] >= 0 and ball_position["y"] <= left_paddle_position + 100 and ball_position["y"] >= left_paddle_position:
+					ball_direction["x"] = -ball_direction["x"]
+				elif ball_position["x"] >= 560 and ball_position["x"] < 580 and ball_position["y"] <= right_paddle_position + 100 and ball_position["y"] >= right_paddle_position:
+					ball_direction["x"] = -ball_direction["x"]
+				
+				# Point counter
+				if ball_position["x"] <= 0:
+					room.score["right"] += 1
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"score", "score": room.score}}
+					)
+					ball_direction = {"x": random.choice([-1, 1]), "y": random.choice([-1, 1])}
+					ball_position = {"x": 290.0, "y": 190.0}
+					left_paddle_position = 150
+					right_paddle_position = 150
+					await self.update_room(room)
+					if room.score["right"] >= WIN_SCORE:
+						await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"game_over", "winner": "right"}}
+						)
+						break
+				elif ball_position["x"] >= MAP_WIDTH:
+					room.score["left"] += 1
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"score", "score": room.score}}
+					)
+					ball_direction = {"x": random.choice([-1, 1]), "y": random.choice([-1, 1])}
+					ball_position = {"x": 290.0, "y": 190.0}
+					left_paddle_position = 150
+					right_paddle_position = 150
+					await self.update_room(room)
+					if room.score["right"] >= WIN_SCORE:
+						await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"game_over", "winner": "right"}}
+						)
+						break
+						
+				await self.channel_layer.group_send(
+					self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
+				)
+				await asyncio.sleep(1/TPS)
+
+	async def game_loop_4_players(self, event):
+			MAP_HEIGHT = 500
+			MAP_WIDTH = 500
+			BALL_DIAMETER = 20
+			BALL_SPEED = 5
+			PADDLE_HEIGHT = 100
+			TPS = 10
+
+			room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+
+			ball_direction = {"x": random.choice([-1, 1]), "y": random.choice([-1, 1])}
+			ball_position = {"x": 240.0, "y": 240.0}
+			left_paddle_position = 200
+			right_paddle_position = 200
+			top_paddle_position = 200
+			bottom_paddle_position = 200
+			room.pause = False
+			await self.update_room(room)
+
+			await self.channel_layer.group_send(
+				self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position, "top_paddle_position": top_paddle_position, "bottom_paddle_position": bottom_paddle_position, "timestamp": datetime.datetime.now().isoformat()}}
+			)
+
+			while True:
+				room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+
+				while room.pause:
+					await asyncio.sleep(1)
+					room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+				
+				# update paddles from users messages
+				left_paddle_position = room.left_paddle_position
+				right_paddle_position = room.right_paddle_position
+				top_paddle_position = room.top_paddle_position
+				bottom_paddle_position = room.bottom_paddle_position
+			
+				# Ball movement
+				ball_position["x"] += (ball_direction["x"] * BALL_SPEED)
+				ball_position["y"] += (ball_direction["y"] * BALL_SPEED)
+
+				# Paddle collisions
+				if ball_position["x"] <= 20 and ball_position["x"] >= 0 and ball_position["y"] <= left_paddle_position + 100 and ball_position["y"] >= left_paddle_position:
+					ball_direction["x"] = -ball_direction["x"]
+				elif ball_position["x"] >= 460 and ball_position["x"] < 480 and ball_position["y"] <= right_paddle_position + 100 and ball_position["y"] >= right_paddle_position:
+					ball_direction["x"] = -ball_direction["x"]
+				elif ball_position["y"] <= 20 and ball_position["y"] >= 0 and ball_position["x"] <= top_paddle_position + 100 and ball_position["x"] >= top_paddle_position:
+					ball_direction["y"] = -ball_direction["y"]
+				elif ball_position["y"] >= 460 and ball_position["y"] < 480 and ball_position["x"] <= bottom_paddle_position + 100 and ball_position["x"] >= bottom_paddle_position:
+					ball_direction["y"] = -ball_direction["y"]
+				
+				# End of game
+				if ball_position["x"] <= 0 or ball_position["x"] >= MAP_WIDTH or ball_position["y"] <= 0 or ball_position["y"] >= MAP_HEIGHT:
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"game_over"}}
+					)
+					break
+				
+				await self.channel_layer.group_send(
+					self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position, "top_paddle_position": top_paddle_position, "bottom_paddle_position": bottom_paddle_position}}
+				)
+				await asyncio.sleep(1/TPS)

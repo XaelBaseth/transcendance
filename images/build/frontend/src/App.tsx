@@ -18,6 +18,7 @@ import JoinPongRoomPage from "./pages/JoinPongRoomPage"
 import CreatePongRoomPage from "./pages/CreatePongRoomPage"
 import { useTranslation } from 'react-i18next';
 import './App.css'
+import LocalPongPage from "./pages/LocalPongPage"
 
 /**Register the user, gives him a jwt and login 
  * cleanly so that we can avoid error */
@@ -52,6 +53,10 @@ function App() {
 								<Route path="/login" element={<Login />} />
 								<Route path="*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
+								<Route path="/localpong" element={<LocalPongPage />} />
+								{/*
+        					<Route path="/password" element={<PasswordSettings />} />
+							<Route path="/delete-account" element={<DeleteSettings />} />*/}
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />

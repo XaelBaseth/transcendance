@@ -13,14 +13,38 @@ def generate_unique_code():
 	
 	return code
 
+INITIAL = 'initial'
+PLAYING = 'playing'
+FINISHED = 'finished'
+    
+STATE_CHOICES = [
+    (INITIAL, 'Initial'),
+    (PLAYING, 'Playing'),
+    (FINISHED, 'Finished'),
+]
+
 class PongRoom(models.Model):
 	code = models.CharField(max_length=10, default=generate_unique_code, unique=True)
 	players_id = models.JSONField()
 	score = models.IntegerField(default=0)
 	created_at = models.DateTimeField(auto_now_add=True)
 	player_limit = models.IntegerField(default=2)
-	left_paddle_position = models.IntegerField(default=150)
-	right_paddle_position = models.IntegerField(default=150)
-	pause = models.BooleanField(default=False)
-	restart = models.BooleanField(default=False)
+	state = models.CharField(
+        max_length=10,
+        choices=STATE_CHOICES,
+        default=INITIAL,
+    )
 
+class PongGameData:
+	def __init__(self, code, player_limit):
+		self.code = code
+		self.player_limit = player_limit
+		self.players = []
+		self.disconnected_players = []
+		self.score = {}
+		self.left_paddle_position = 150
+		self.right_paddle_position = 150
+		self.top_paddle_position = 150
+		self.bottom_paddle_position = 150
+		self.pause = False
+		self.state = INITIAL
