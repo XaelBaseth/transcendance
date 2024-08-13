@@ -10,8 +10,11 @@ const useChat = () => {
     useEffect(() => {
         const initChat = () => {
             try {
+				const hostname = window.location.hostname;
+				const port = window.location.port;
+
 				const token = localStorage.getItem(ACCESS_TOKEN);
-                const wssConnection = new WebSocket('wss://localhost:8000/ws/chat/global' + '/?token=' + token);
+                const wssConnection = new WebSocket('wss://'+hostname+':'+port+'/ws/chat/global' + '/?token=' + token);
                 // TODO c'est ici que ça crotte et qu'il faut le token
 
 				if (wssConnection)
@@ -31,7 +34,9 @@ const useChat = () => {
 
 			// console.log("Creating websocket for room:", roomId);
 			const token = localStorage.getItem(ACCESS_TOKEN);
-			const wssConnection = new WebSocket('wss://localhost:8000/ws/chat/' + roomId + '/?token=' + token);
+			const hostname = window.location.hostname;
+			const port = window.location.port;
+			const wssConnection = new WebSocket('wss://'+hostname+':'+port+'/ws/chat/' + roomId + '/?token=' + token);
 
 			setRooms([...rooms, { id: roomId, name: roomName ? roomName : roomId, messages: [{text: "Welcome to the chat", role: "system",username: "useChat"}], wssConnection: wssConnection }]);
 			setCurrentRoomId(roomId);

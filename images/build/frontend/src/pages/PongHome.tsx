@@ -19,8 +19,11 @@ const PongHomePage = () => {
 
 	const joinMatchMaking = async (player_limit: number) => {
 		try {
+			const hostname = window.location.hostname;
+			const port = window.location.port;
+
 			if (!socketRef.current || socketRef.current.readyState === WebSocket.CLOSED) {
-				socketRef.current = new WebSocket('wss://localhost:8000/ws/matchmaking/');
+				socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/matchmaking/');
 			}
 
 			socketRef.current.onopen = () => {

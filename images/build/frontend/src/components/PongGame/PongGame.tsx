@@ -27,8 +27,11 @@ const PongGame = () => {
 
 	useEffect(() => {
 		try {
+			const hostname = window.location.hostname;
+			const port = window.location.port;
+
 			const token = localStorage.getItem(ACCESS_TOKEN);
-			socketRef.current = new WebSocket('wss://localhost:8000/ws/pong/' + params.roomCode + '/?token=' + token);
+			socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/pong/' + params.roomCode + '/?token=' + token);
 
 			socketRef.current.onopen = () => {
 				if (socketRef.current) {
@@ -112,16 +115,19 @@ const PongGame = () => {
 						setGameRunning(data.pause);
 						break;
 					case 'remaining_pause':
-						setRemainingTime(data.remaining_time);
-						if (data.remaining_time === 0) {
+						const res = data.remaining_time
+						setRemainingTime(res);
+						if (res === 0) {
+							console.log("fin de la pause je set running true")
 							setGameRunning(true);
 						}
 						break
 					case 'players_disconnected':
 						setPlayersDisconnected(data.players);
 					case 'join_game':
-						setPlayerSide(data.side);
-						if (data.side === 'spectator') {
+						const side = data.side
+						setPlayerSide(side);
+						if (side === 'spectator') {
 							window.removeEventListener('keydown', handleKeyPress);
 						}
 						break;
