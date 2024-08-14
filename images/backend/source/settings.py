@@ -54,6 +54,14 @@ SIMPLE_JWT = {
 }
 
 
+
+# SIMPLE_JWT = {
+#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+#     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+# 	'USER_ID_FIELD': 'user_id',
+# }
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -180,6 +188,10 @@ CORS_ORIGIN_WHITELIST = (
   'https://localhost:8000',
   'https://localhost:8200',
 )
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',
+]
+
 
 CHANNEL_LAYERS = {
     "default": {
