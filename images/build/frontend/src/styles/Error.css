@@ -13,14 +13,14 @@
 }
 
 .connection-error-form > h1 {
-    font-family: "Pixelify Sans";
+    font-family: "VT323";
     color: #5c775b;
     letter-spacing:1px;
     font-size: 30px;
     text-decoration: 2px underline;
 }
 .error-message {
-    font-family: "Pixelify Sans";
+    font-family: "VT323";
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;

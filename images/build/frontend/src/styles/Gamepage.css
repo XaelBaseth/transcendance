@@ -7,7 +7,7 @@
 
 .button1 {
 	position: absolute;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
@@ -26,7 +26,7 @@
 
 .button2 {
 	position: absolute;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
@@ -45,7 +45,7 @@
 
 .button3 {
 	position: absolute;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;

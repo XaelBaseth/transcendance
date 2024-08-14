@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
 //import '../assets';
 import { useTranslation } from 'react-i18next';
+import frenchFlag from '../assets/fr.png'
+import spanishFlag from '../assets/es.png'
+import ukFlag from '../assets/uk.png'
 
 import '../styles/Setting.css'
-{/*}
-// Composant pour le switcher de langue
+
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
 
@@ -18,45 +20,55 @@ function LanguageSwitcher() {
     return (
         <div className="language-switcher">
             <img
-                src="../assets/en.png"
-                alt="English"
-                onClick={() => changeLanguage('en')}
-                style={{ cursor: 'pointer', width: '30px', marginRight: '10px' }}
-            />
-            <img
-                src="../assets/fr.png"
+                src={frenchFlag}
                 alt="French"
                 onClick={() => changeLanguage('fr')}
-                style={{ cursor: 'pointer', width: '30px', marginRight: '10px' }}
             />
             <img
-                src="../assets/es.png"
+                src={spanishFlag}
                 alt="Spanish"
                 onClick={() => changeLanguage('es')}
-                style={{ cursor: 'pointer', width: '30px', marginRight: '10px' }}
+            />
+            <img
+                src={ukFlag}
+                alt="English"
+                onClick={() => changeLanguage('en')}
             />
         </div>
     );
-}*/}
+}
 
-// Composant pour le switcher de mode daltonien
+
 function ColorBlindSwitcher() {
     const [isColorBlind, setIsColorBlind] = useState(false);
 
     const toggleColorBlindMode = () => {
         setIsColorBlind(!isColorBlind);
+
         if (!isColorBlind) {
             // Activer le mode daltonien
             document.documentElement.style.setProperty('--linen', 'var(--linen-D)');
             document.documentElement.style.setProperty('--olive_green', 'var(--olive_green-D)');
-            document.documentElement.style.setProperty('--coral', 'var(--coral-D)');
-            document.documentElement.style.setProperty('--sky_blue', 'var(--sky_blue-D)');
+            document.documentElement.style.setProperty('--light_teal', 'var(--light_teal-D)');
+            document.documentElement.style.setProperty('--pink', 'var(--pink-D)');
+            document.documentElement.style.setProperty('--light_pink', 'var(--light_pink-D)');
+            document.documentElement.style.setProperty('--clear_beige', 'var(--clear_beige-D)');
+            document.documentElement.style.setProperty('--clear_yellow', 'var(--clear_yellow-D)');
+            document.documentElement.style.setProperty('--clear_teal', 'var(--clear_teal-D)');
+            document.documentElement.style.setProperty('--error', 'var(--error-D)');
+            document.documentElement.style.setProperty('--ok', 'var(--ok-D)');
         } else {
             // Désactiver le mode daltonien et revenir aux couleurs normales
-            document.documentElement.style.setProperty('--linen', 'var(--linen)');
-            document.documentElement.style.setProperty('--olive_green', 'var(--olive_green)');
-            document.documentElement.style.setProperty('--coral', 'var(--coral)');
-            document.documentElement.style.setProperty('--sky_blue', 'var(--sky_blue)');
+            document.documentElement.style.setProperty('--linen', '#f7f2e8 !important');
+            document.documentElement.style.setProperty('--olive_green', '#5c775b !important');
+            document.documentElement.style.setProperty('--light_teal', '#a0ced9 !important');
+            document.documentElement.style.setProperty('--pink', '#e27396 !important');
+            document.documentElement.style.setProperty('--light_pink', '#ea9ab2 !important');
+            document.documentElement.style.setProperty('--clear_beige', '#f7f2e8ce !important');
+            document.documentElement.style.setProperty('--clear_yellow', '#fcf5c7a6 !important');
+            document.documentElement.style.setProperty('--clear_teal', '#f7f2e8af !important');
+            document.documentElement.style.setProperty('--error', '#f03e3e !important');
+            document.documentElement.style.setProperty('--ok', '#90be8e !important');
         }
     };
 
@@ -68,6 +80,7 @@ function ColorBlindSwitcher() {
         </label>
     );
 }
+
 
 export default function Settings() {
     const { t } = useTranslation();

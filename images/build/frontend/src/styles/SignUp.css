@@ -9,7 +9,7 @@
 }
 
 .signUp-form {
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
     height: 75%;
     width: 46%;
     background-color: var(--clear_yellow);
@@ -24,7 +24,7 @@
 }
 
 .mini-form > * , #signUp-btn {
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
   color: #ff0000;
   letter-spacing: 0.5px;
   outline: none;
@@ -43,7 +43,7 @@
 }
 
 .signUp_label {
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
 	color: var(--pink);
   display: block;
   font-size: 30px;
@@ -53,7 +53,7 @@
 
 .signUp__title {
   position: absolute;
-  font-family: "Pixelify Sans";
+  font-family: "VT323";
   color: var(--pink);
   font-weight: bold;
   font-size: 45px;
@@ -65,7 +65,7 @@
 
 .signUp-form > .title {
   font-size: 35px;
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
   color: var(--pink);
   position: absolute;
   top: 18%;
@@ -75,14 +75,14 @@
   padding-top: 25px;
   margin-left: 30px;
   color: var(--olive_green);
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
 }
 
 .social ._42auth{
   padding-top: 25px;
   margin-left: 30px;
   color: #e3eef1;
-  font-family: 'Pixelify Sans';
+  font-family: 'VT323';
 }*/
 
 
@@ -113,7 +113,7 @@
 
 .signUp__alert_err {
 	color: var(--error);
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 20px;
   position: absolute;
   top: 59%;
@@ -122,7 +122,7 @@
 
 .signUp__alert_ok {
 	color: var(--ok);
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 20px;
   position: absolute;
   top: 59%;

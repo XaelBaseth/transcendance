@@ -51,7 +51,7 @@
 .settings > h1 {
     text-align: center;
     font-size: 35px;
-    font-family: 'Pixelify Sans';
+    font-family: 'VT323';
     color: var(--pink);
     margin-bottom: 20px; /* Add spacing below the title */
 }
@@ -63,14 +63,14 @@
 
 .settings__alert_err {
 	color: var(--clear_beige);
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 18px;
 	text-align: center;
 }
 
 .settings__alert_ok {
 	color: var(--error);
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 18px;
 	text-align: center;
 }
@@ -85,14 +85,14 @@
 }
 
 .password__card > h2 {
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	color: var(--pink);
 	font-size: 20px;
     transform: translateY(-1000%) translateX(25%);
 }
 
 .password__card > h4 {
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 18px;
 	color: var(--pink);
 	width: 30%;
@@ -106,7 +106,7 @@
 
 
 .input_container > span {
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	color:var(--light_teal);
 	font-weight: bold;
 	position: absolute;
@@ -123,7 +123,7 @@
 	font-size: 10px;
     letter-spacing:1px;
 	padding:10px;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	transform: translateY(-300%) translateX(160%);
 }
 
@@ -137,7 +137,7 @@
 	padding: 10px 20px;
 	border: solid var(--light_teal) 4px;
 	border-radius: 50px;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 16px;
 	color: var(--pink);
 	background-color: transparent;
@@ -160,7 +160,7 @@
 
 .delete_settings__title {
 	width: 30%;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	color: var(--pink);
 	text-align: start;
 	font-size: 18px;
@@ -168,7 +168,7 @@
 }
 
 .delete_settings__subtitle {
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	color: var(--error);
 	font-size: 15px;
 	text-align: left;
@@ -177,7 +177,7 @@
 
 .delete_settings__btn {
 	display: inline-block;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	cursor: pointer;
 	padding: 10px 20px;
 	border: solid #a0ced9 4px;
@@ -190,7 +190,7 @@
 
 .delete_settings__btn > span {
 	padding-left: 15px;
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 14px;
 	font-weight: 400;
 	color: var(--pink);
@@ -212,14 +212,14 @@
 
 .delete_settings__alert > h5 {
 	color: var(--linen);
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 1em;
 	padding: 0 0 0.5em 0;
 }
 
 .delete_settings__alert > h6 {
 	color: var(--linen);
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: 1em;
 	padding: 0 0 0.5em 0;
 }
@@ -279,12 +279,16 @@
 /************************************/
 /**** LANGAGE SETTING COMPONENT ****/
 /**********************************/
-/*
+
   .language-switcher {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    transform: translate(-30%, 300%);
+	width: 100px;
+  	height: 100px;
+	top: 45%;
+	position: absolute;
+	left: 69.3%;
 }
 
 .language-switcher button {
@@ -305,7 +309,7 @@
     color: #fff;
 }
 
-/* Ajouter une classe active pour le bouton de la langue sélectionnée *//*
+/* Ajouter une classe active pour le bouton de la langue sélectionnée */
 .language-switcher button.active {
     border-color: var(--light_pink);
     color: var(--light_pink);
@@ -317,10 +321,13 @@
 
 .switch {
     position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin: 20px 0; /* Adjust margin as needed */
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	width: 100px;
+	margin: 20px 0;
+	left: 20%;
+ 	top: 215%;
 }
 
 .switch input {
@@ -330,14 +337,14 @@
 }
 
 .slider {
-    position: absolute;
+    position: relative;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 60px;
+    height: 34px;
+    background-color: #fff; /* Background blanc pour le switch */
     transition: .4s;
     border-radius: 34px;
+    border: 1px solid var(--pink); /* Bordure pour mieux définir le switch */
 }
 
 .slider:before {
@@ -353,11 +360,12 @@
 }
 
 input:checked + .slider {
-    background-color: var(--pink); /* Color when switch is active */
+    background-color: #fff; /* Maintient le fond blanc même en mode actif */
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
+    background-color: var(--pink); /* Couleur du bouton en mode actif */
 }
 
 .slider.round {
@@ -369,7 +377,10 @@ input:checked + .slider:before {
 }
 
 .switch span {
-    margin-left: 10px;
-    font-family: 'Megrim';
+    margin-top: 10px;
+    font-family: 'VT323';
     font-size: 16px;
+    white-space: nowrap; /* Empêche le texte de se couper en plusieurs lignes */
+	color: var(--pink);
+	font-weight: bold;
 }
