@@ -16,7 +16,8 @@ const PongGame = () => {
 	const [ball, setBall] = useState(initialBallState);
 	const [paddles, setPaddles] = useState(initialPaddleState);
 	const [gameOver, setGameOver] = useState(false);
-	const [gameRunning, setGameRunning] = useState(false);
+	const [gameState, setGameState] = useState("initial");
+	const [pause, setPause] = useState(false);
 	const [player_side, setPlayerSide] = useState("spectator"); //left, right or spectator
 	const [score, setScore] = useState({ left: 0, right: 0 });
 	const [winner, setWinner] = useState("");
@@ -57,10 +58,11 @@ const PongGame = () => {
 
 	useEffect(() => {
 		const handleKeyPress = (e: { key: any; }) => {
-			if (player_side === 'spectator' || !gameRunning) {
+			if (player_side === 'spectator' || gameState !== 'running') {
 				return;
 			}
 			if (socketRef.current) {
+				console.log("side :" + player_side)
 				switch (e.key) {
 					case 'ArrowUp':
 						socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "up" }));
@@ -78,26 +80,31 @@ const PongGame = () => {
 		if (socketRef.current) {
 			socketRef.current.onmessage = (event) => {
 				const data = JSON.parse(event.data);
-				console.log('Received message', data);
+				if (data.type != "game_state")
+				{
+					console.log('Received message', data);
+				}
 				switch (data.type) {
 					case 'game_start':
-						setGameRunning(true);
+						setGameState('running');
+						setPause(false);
 						setGameOver(false);
 						setBall(initialBallState);
 						setPaddles(initialPaddleState);
 						break;
 					case 'game_state':
-						if (!gameRunning) {
-							setGameRunning(true);
+						if (gameState !== 'running') {
+							setGameState('running');
+						}
+						if (pause) {
+							setPause(false);
 						}
 						const ball_position = data.ball_position;
 						const rightPaddle = data.right_paddle_position;
 						const leftPaddle = data.left_paddle_position;
-						// if (Math.abs(ball.x - ball_position.x) > 5 || Math.abs(ball.y - ball_position.y) > 5) {
-							setBall((prevBall) => ({
-								...prevBall, x: ball_position.x, y: ball_position.y,
-							}));
-						// }
+						setBall((prevBall) => ({
+							...prevBall, x: ball_position.x, y: ball_position.y,
+						}));
 						setPaddles({ right: rightPaddle, left: leftPaddle });
 						break;
 					case 'score':
@@ -105,25 +112,22 @@ const PongGame = () => {
 						setScore({ left: score.left, right: score.right });
 						break;
 					case 'game_over':
-						setGameRunning(false);
+						setGameState('finished');
 						setGameOver(true);
 						setBall(initialBallState);
 						setPaddles(initialPaddleState);
 						setWinner(data.winner);
 						break;
 					case 'pause':
-						setGameRunning(data.pause);
+						setPause(data.pause);
 						break;
-					case 'remaining_pause':
+					case 'remaining_time':
 						const res = data.remaining_time
 						setRemainingTime(res);
-						if (res === 0) {
-							console.log("fin de la pause je set running true")
-							setGameRunning(true);
-						}
 						break
 					case 'players_disconnected':
 						setPlayersDisconnected(data.players);
+						break;
 					case 'join_game':
 						const side = data.side
 						setPlayerSide(side);
@@ -146,7 +150,7 @@ const PongGame = () => {
 	}, [paddles, socketRef, player_side]);
 
 	const startGame = () => {
-		if (!gameRunning && (player_side === 'left' || player_side === 'right')) {
+		if (gameState === "initial" && (player_side === 'left' || player_side === 'right')) {
 			if (socketRef.current) {
 				socketRef.current.send(JSON.stringify({ type: 'start_game' }));
 			}
@@ -156,36 +160,36 @@ const PongGame = () => {
 	const pauseGame = () => {
 		if (player_side === 'left' || player_side === 'right') {
 			if (socketRef.current) {
-				socketRef.current.send(JSON.stringify({ type: 'pause', pause: !gameRunning }));
+				socketRef.current.send(JSON.stringify({ type: 'pause', pause: !pause }));
 			}
 		}
 	};
 
 	return (<>
 		<div className="controls">
-			{!gameRunning && !gameOver && <button onClick={startGame}>Start</button>}
-			{<button onClick={pauseGame}>Pause</button>}
+			{gameState === "initial" && <button onClick={startGame}>Start</button>}
+			{gameState === "running" && <button onClick={pauseGame}>Pause</button>}
 		</div>
 		<div className="controls">
 			<p>Score : left : {score.left} right : {score.right}</p>
 			<p>player side : {player_side}</p>
-			<p>Game running : {gameRunning.toString()}</p>
+			<p>Game state : {gameState}</p>
 			{remaining_time !== 0 && <p>Pause : Remaining time : {remaining_time}</p>}
 			{players_disconnected.length > 0 && <p>Players disconnected : {players_disconnected.join(', ')}</p>}
 		</div>
 		<div className="ping-pong-container" tabIndex={0} style={{width: MAP_WIDTH, height: MAP_HEIGHT}}>
 			<div
-				className={`paddle paddle-left ${gameRunning ? '' : 'paused'}`}
+				className={`paddle paddle-left`}
 				id="paddle-left"
 				style={{ top: `${paddles.left}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
 			/>
 			<div
-				className={`paddle paddle-right ${gameRunning ? '' : 'paused'}`}
+				className={`paddle paddle-right`}
 				id="paddle-right"
 				style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH-PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
 			/>
 			<div
-				className={`ball ${gameRunning ? '' : 'paused'}`}
+				className={`ball`}
 				ref={ballRef}
 				style={{ top: `${ball.y}px`, left: `${ball.x}px`,
 				width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
