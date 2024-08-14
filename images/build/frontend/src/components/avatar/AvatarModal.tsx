@@ -1,5 +1,9 @@
 import React from 'react';
-import './AvatarModal.css'; // Vous pouvez créer ce fichier pour styliser le modal
+import './AvatarModal.css'; // Import your custom styles
+
+import avatar1 from '../../assets/acharlot.jpg';
+import avatar2 from '../../assets/aramier.jpg';
+import avatar3 from '../../assets/rrault.jpg';
 
 interface AvatarModalProps {
     show: boolean;
@@ -7,11 +11,8 @@ interface AvatarModalProps {
     onSelect: (avatar: string) => void;
 }
 
-const avatars = [
-    require('../../assets/acharlot.jpg'), // Remplacez avec vos chemins d'avatar
-    require('../../assets/aramier.jpg'),
-    require('../../assets/rrault.jpg'),
-];
+// Array of imported avatars
+const avatars = [avatar1, avatar2, avatar3];
 
 export default function AvatarModal({ show, onClose, onSelect }: AvatarModalProps) {
     if (!show) {

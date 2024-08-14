@@ -5,8 +5,8 @@ urlpatterns = [
     path('register', views.UserRegister.as_view(), name='register'),
     path('login', views.UserLogin.as_view(), name='login'),
     path('logout', views.UserLogout.as_view(), name='logout'),
-    path('delete', views.UserDelete.as_view(), name='delete'),
     path('user', views.UserView.as_view(), name='user'),
+    path('delete', views.DeleteAccountView.as_view(), name='delete_account'), 
     path('', views.UserView.as_view(), name='user'),
 ]
 # from django.conf.urls.static import static
