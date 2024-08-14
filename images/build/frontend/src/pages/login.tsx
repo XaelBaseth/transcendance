@@ -4,7 +4,7 @@ import { useAuth } from '../context';
 import { useTranslation } from 'react-i18next';
 import '../styles/Login.css';
 
-export default function Login() {	
+export default function Login() {
 	const { t } = useTranslation();
 
 	const [email, setEmail] = useState<string>("");
@@ -13,6 +13,7 @@ export default function Login() {
 	const { login, successMsg, errorMsg } = useAuth();
 	const navigate = useNavigate();
 
+	const handleSignUp = () => {
 	const handleSignUp = () => {
 		navigate("/signup");
 	};
@@ -76,5 +77,6 @@ export default function Login() {
 				</div>
 			</form>
 		</div>
+	);
 	);
 }

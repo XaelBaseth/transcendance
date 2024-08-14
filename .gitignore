@@ -1,5 +1,5 @@
 #environment
-#.env /!\ to uncomment before final push
+.env
 
 #42 setup
 $HOME
@@ -11,19 +11,20 @@ logs
 .logs
 db.sqlite3
 
+#front
 frontend/node_modules
 node_modules
 
 #ssl
+ssl
 ssl/certs
 ssl/private
 
-#vault
-vault/vault-data
-
 #volume
-postgres-data
-db-data
+volume
+volume/postgres-data
+volume/vaul-data
+volume/db-data
 
 #MISC
 TODO.md

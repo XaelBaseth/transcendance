@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom';
 import Sidebar from "./Sidebar";
 import Avatar from '../avatar/Avatar';
 import { useAuth } from '../../context';
+import { useTranslation } from 'react-i18next';
 import "./Navbar.css";
 
 export default function Navbar(){
+	const { t } = useTranslation();
 	const { user, logout } = useAuth();
 	
 	const handleLogout = () => {
@@ -29,7 +31,7 @@ export default function Navbar(){
 				{
 					<div className='nav--avatar'>
 						<Avatar />
-						<button className="logout_btn" onClick={handleLogout}>Logout</button>
+						<button className="logout_btn" onClick={handleLogout}>{t('navbar.logout')}</button>
 					</div>
 				}
 			</>

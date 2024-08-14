@@ -3,18 +3,18 @@
 		"play":" PINCHA PARA JUGAR" 
 	},
 	"navbar":{
-		"profile":"Perfil",
-		"social":"Social",
 		"about":"A propósito",
-		"mHistory":"Historial del juego",
-		"settings":"Configuración"
+		"logout":"Desconectar",
+		"settings":"Configuración",
+		"local":"Local",
+		"network":"En línea",
+		"tournament":"Torneo"
 	},
 	"error":{
 		"error":"Error"
 	},
 	"gamepage":{
 		"pongLower":"Utiliza las flechas de arriba y abajo para jugar !",
-		"otherGameLower":"Comprueba nuestro {INSERTE JUEGO AQUÍ} !",
 		"tournamentLower":"Participa en un torneo para saber quién es el mejor (¡eres tú!) !",
 		"pong":"MODO PONG",
 		"otherGame":"MODO OTRO JUEGO",
@@ -24,7 +24,6 @@
 		"username":"Nombre de usuario",
 		"password":"Contraseña",
 		"login":"Conectar",
-		"login42":"Conecta con 42",
 		"signup":"Regístrate",
 		"notEmpty":"Conexion exitosa",
 		"successMsg":"Nombre de usuario o contraseña invalido",
@@ -43,44 +42,10 @@
 		"alreadyMsg":"La contraseña es incorrecta",
 		"unknownMsg":"Occurrio un error."
 	},
-	"profile":{
-		"bio":"BIO",
-		"total":"Numero total de partidos",
-		"victories":"Victorias",
-		"friends":"Amigos",
-		"overview":"Estadisticas competitivas",
-		"wins":"Victorias",
-		"loss":"Derrotas",
-		"rank":"Clasificación",
-		"aces":"Aces",
-		"challenge":"Desafia",
-		"winrate":"Porcentaje de victorias"
-	},
-	"social":{
-		"search":"Buscas amigos ?",
-		"type":"INtroduce el nombre de usuario de la persona que buscas...",
-		"add":"Agregalo como amigo",
-		"all":"Todos los amigos",
-		"active":"Amigos en linea",
-		"blocked":"Usuarios bloqueados",
-		"pending":"Solicitudes pendientes"
-	},
 	"settings":{
 		"settings":"Parámetros",
-		"user":"Usuario",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
-		"bio":"Introduce tu biografia",
-		"pseudo":"Introduce tu nombre de usuario",
-		"email":"Introduce tu correo electronico",
-		"changePassword":"Cambia tu contraseña",
-		"newPassword":"Nueva contraseña",
-		"password":"Cambia tu contraseña",
-		"showPassword":"Muestra tu contraseña",
-		"savePassword":"Guarda las modificaciones de tu contraseña",
-		"confirmPassword":"Confirma tu contraseña",
-		"errorPwd":"Tu contraseña no es lo suficientemente fuerte",
-		"successMsg":"Modificaciones guardadas con exito",
 		"irreversible":"Cuidado, esta acción es irreversible",
 		"delete":"Deseas eliminar tu cuenta ?",
 		"deleteSuccess":"Tu cuenta ha sido eliminada",
@@ -122,5 +87,5 @@
 		"contact_phone":"Número de teléfono: ",
 		"contact_email":"Email: ",
 		"contact_text":"Para preguntas y/o comentarios sobre nuestra Política de Cookies y esta declaración, póngase en contacto con nosotros utilizando la información proporcionada anteriormente."
-		}
+	}
 }

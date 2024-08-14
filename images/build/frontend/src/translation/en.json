@@ -3,18 +3,18 @@
 		"play":" PRESS TO PLAY " 
 	},
 	"navbar":{
-		"profile":"Profil",
-		"social":"Social",
 		"about":"About",
-		"mHistory":"Match History",
-		"settings":"Settings"
+		"logout":"Logout",
+		"settings":"Settings",
+		"local":"Local",
+		"network":"Online",
+		"tournament":"Tournament"
 	},
 	"error":{
 		"error":"Error"
 	},
 	"gamepage":{
 		"pongLower":"Use the up and down arrows of your keyboard to play !",
-		"otherGameLower":"Come try out our /!\/!\/PUT A NEW GAME/!\/!\/ !",
 		"tournamentLower":"Compete in a tournament to see who is the best (it's you!)!",
 		"pong":"PONG MODE",
 		"otherGame":"OTHER GAME MODE",
@@ -24,7 +24,6 @@
 		"username":"Username",
 		"password":"Password",
 		"login":"Log In",
-		"login42":"Log In with 42",
 		"signup":"Sign up",
 		"notEmpty":"Please enter an username and a password",
 		"successMsg":"Successfully logged in!",
@@ -43,44 +42,11 @@
 		"passwordMatch":"Password does not match",
 		"unknownMsg":"An error occured."
 	},
-	"profile":{
-		"bio":"BIO",
-		"total":"Total Matches",
-		"victories":"Victories",
-		"friends":"Friends",
-		"overview":"COMPETITIVE OVERVIEW",
-		"wins":"Wins",
-		"loss":"Loss",
-		"rank":"Rank",
-		"aces":"Aces",
-		"challenge":"Challenge",
-		"winrate":"Winrate"
-	},
-	"social":{
-		"search":"Looking for some friend ?",
-		"type":"Type the nickname of the person you want to find...",
-		"add":"Add as friend",
-		"all":"All friends",
-		"active":"Active friends",
-		"blocked":"Blocked users",
-		"pending":"Pending request"
-	},
 	"settings":{
 		"settings":"Settings",
 		"user":"User",
 		"privacy":"Privacy",
 		"accessibility":"Accessibility",
-		"bio":"Enter a bio",
-		"pseudo":"Enter your pseudo",
-		"email":"Enter your email",
-		"changePassword":"Change your password",
-		"newPassword":"New password",
-		"password":"Change your password",
-		"showPassword":"Show password",
-		"savePassword":"Save password changes",
-		"confirmPassword":"Confirm new password",
-		"errorPwd":"Your password is not strong enough",
-		"successMsg":"Your modification was successful",
 		"irreversible":"Beware this action is irreversible",
 		"delete":"Do you want to delete your account?",
 		"deleteSuccess":"Your account was successfully deleted!",

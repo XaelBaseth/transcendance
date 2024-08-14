@@ -1,0 +1,8 @@
+.message-player {
+	color: black;
+}
+
+.message-spectator {
+	color: gray;
+	font-style: italic;
+}

@@ -27,23 +27,40 @@ body {
 
 /* Pong css */
 
-.ping-pong-container {
+.four-player-ping-pong-container {
 	position: relative;
-	width: 600px;
-	height: 400px;
+	width: 500px;
+	height: 500px;
 	border: 1px solid #ccc;
 	margin: 20px auto;
 	overflow: hidden;
 
 }
 
-.paddle {
+.paddle-vertical {
 	position: absolute;
 	width: 20px;
 	height: 100px;
 	background-color: #333;
 	transition: top 0.2s;
 	transition-timing-function: linear;
+}
+
+.paddle-horizontal {
+	position: absolute;
+	width: 100px;
+	height: 20px;
+	background-color: #333;
+	transition: left 0.2s;
+	transition-timing-function: linear;
+}
+
+.paddle-top {
+	top: 0;
+}
+
+.paddle-bottom {
+	bottom: 0;
 }
 
 .paddle-left {
@@ -80,9 +97,9 @@ button {
 	cursor: pointer;
 }
 
-.game-over {
-	width: 600px;
-	height: 400px;
+.four-player-game-over {
+	width: 500px;
+	height: 500px;
 	display: flex;
 	background-color: red;
 	justify-content: center;

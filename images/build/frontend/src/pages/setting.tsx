@@ -1,9 +1,7 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
-import { toast } from 'react-hot-toast';
+import React from 'react';
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import validator from 'validator';
-import { useAuth } from '../context';
-import api from '../api';
+import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
 import { useTranslation } from 'react-i18next';
 import '../styles/Setting.css';
 
@@ -20,244 +18,54 @@ const Settings: React.FC = () => {
     const { t } = useTranslation();
     const [currentSection, setCurrentSection] = useState('USER');
 
-    const handleSectionChange = (section: string) => {
-        setCurrentSection(section);
-    };
+	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
 
-    return (
-        <div className='settings__flex'>
-            <div className='settings'>
-                <h1>{t('settings.settings')}</h1>
-                <div className='settings__container'>
-                    <div className="navigation">
-                        <button className={currentSection === 'USER' ? 'active' : ''} onClick={() => handleSectionChange('USER')}>{t('settings.user')}</button>
-                        <button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
-                        <button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
-                    </div>
-                    <div className="settings_grid">
-                        {currentSection === 'USER' && <UserSettings />} 
-                        {currentSection === 'PRIVACY' && <PrivacySettings />} 
-                        {currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
+	const handleSectionChange = (section) => {
+		setCurrentSection(section);
+	};
 
-const UserSettings: React.FC = () => {
-    const { t } = useTranslation();
-    const { user, setUser, successMsg, errorMsg } = useAuth();
-    const [username, setUsername] = useState<string>(user?.username || '');
-    const [email, setEmail] = useState<string>(user?.email || '');
-    const [password, setPassword] = useState<string>('');
-    const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const [selectedImage, setSelectedImage] = useState<File | null>(null);
-    const navigate = useNavigate();
+	return (
+		<div className='settings__flex'>
+			<div className='settings'>
+				<h1>{t('settings.settings')}</h1>
+				<img src="" alt="" />
+				<div className='settings__container'>
+					<div className="navigation">
+						<button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
+						<button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
+					</div>
+					<div className="settings_grid">
+						{currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
+						{currentSection === 'PRIVACY' && <PrivacySettings />} 
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
 
-    useEffect(() => {
-        if (user) {
-            setUsername(user.username);
-            setEmail(user.email);
-        }
-    }, [user]);
 
-    const handleUpdate = async (e: FormEvent) => {
-        e.preventDefault();
-    
-        const formData = new FormData();
-        if (selectedImage) {
-            formData.append('file', selectedImage);
-        }
-        formData.append('username', username);
-        formData.append('email', email);
-        formData.append('password', password);
-        formData.append('confirmPassword', confirmPassword);
-    
-        try {
-            const response = await api.post('/api/user/UpdateUserInfo', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${user.token}`,
-                    'X-CSRFToken': getCookie('csrftoken') // Inclure le token CSRF si nécessaire
-                }
-            });
-    
-            if (response.status >= 200 && response.status < 300) {
-                setUser(response.data);
-                toast.success('Information mise à jour avec succès');
-                navigate('/profile'); // Exemple de redirection
-            } else {
-                throw new Error('Échec de la mise à jour');
-            }
-        } catch (error) {
-            console.error('Échec de la mise à jour', error);
-            toast.error('Échec de la mise à jour');
-        }
-    };
-    
+function PrivacySettings() {
+	return (
+		<div className="privacy_settings">
+			<CookieSettings />
+			<DeleteAccountCardSettings />
+		</div>
+	);
+}
 
-    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            setSelectedImage(e.target.files[0]);
-        }
-    };
+function AccessibilitySettings() {
+	return (
+		<div className="privacy_settings">
+		{/**Colorbling mode */}
+		<LanguageSwitcher />
+	</div>
+	);
+}
 
-    return (
-        <div className="userSettings">
-            <h1>{t('settings.title')}</h1>
-            <form onSubmit={handleUpdate}>
-                <label htmlFor="username">{t('settings.username')}</label>
-                <input
-                    id="username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <label htmlFor="email">{t('settings.email')}</label>
-                <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <label htmlFor="password">{t('settings.password')}</label>
-                <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <label htmlFor="confirmPassword">{t('settings.confirmPassword')}</label>
-                <input
-                    id="confirmPassword"
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <label htmlFor="profileImage">{t('settings.uploadImage')}</label>
-                <input
-                    id="profileImage"
-                    type="file"
-                    onChange={handleImageChange}
-                />
-                <button type="submit">{t('settings.update')}</button>
-                {successMsg && <div className="successMsg">{successMsg}</div>}
-                {errorMsg && <div className="errorMsg">{errorMsg}</div>}
-            </form>
-        </div>
-    );
-};
-
-const PrivacySettings: React.FC = () => {
-    return (
-        <div className="privacy_settings">
-            <PasswordCardSettings />
-            {/* <Activate2FA /> */}
-            <CookieSettings />
-        </div>
-    );
-};
-
-const AccessibilitySettings: React.FC = () => {
-    return (
-        <div>
-            <DeleteAccountCardSettings />
-            {/* Additional accessibility settings can go here */}
-        </div>
-    );
-};
-
-const PasswordCardSettings: React.FC = () => {
-    const { t } = useTranslation();
-    const [password, setPassword] = useState<string>('');
-    const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const [errorMsg, setErrorMsg] = useState<string>('');
-    const [passwordChanged, setPasswordChange] = useState<boolean>(false);
-    const [type, setType] = useState<string>('password');
-
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-        validatePassword(event.target.value);
-    };
-
-    const handleConfirmation = (event: ChangeEvent<HTMLInputElement>) => {
-        setConfirmPassword(event.target.value);
-        if (event.target.value !== password) {
-            setErrorMsg(t("settings.passwordMismatch"));
-        } else {
-            setErrorMsg('');
-        }
-    };
-
-    const validatePassword = (password: string) => {
-        if (!validator.isStrongPassword(password, {
-            minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1
-        })) {
-            setErrorMsg(t("settings.weakPassword"));
-        } else {
-            setErrorMsg('');
-        }
-    };
-
-    const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
-        event.preventDefault();
-        if (errorMsg === '') {
-            try {
-                const response = await api.post('/api/user/update/password/', { password });
-                if (response.status >= 200 && response.status < 300) {
-                    setPasswordChange(true);
-                } else {
-                    setErrorMsg('Failed to update password');
-                }
-            } catch (error) {
-                console.error('Error updating password:', error);
-                setErrorMsg('Error updating password');
-            }
-        }
-    };
-
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        event.preventDefault();
-        setType(type === 'password' ? 'text' : 'password');
-    };
-
-    return (
-        <div className="password__card">
-            <h2>{t("settings.changePassword")}</h2>
-            <h4>{t('settings.newPassword')}</h4>
-            <div className="input_container">
-                <input
-                    type={type}
-                    name="password"
-                    value={password}
-                    onChange={handleChange}
-                    className="password__input"
-                />
-                <span onClick={handleClick}>{t('settings.showPassword')}</span>
-            </div>
-            <h4>{t('settings.confirmPassword')}</h4>
-            <div className="input_container">
-                <input
-                    type={type}
-                    name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={handleConfirmation}
-                    className="password__input"
-                />
-                <span onClick={handleClick}>{t('settings.showPassword')}</span>
-            </div>
-            <button id="password__btn" onClick={handleUpdate}>{t('settings.savePassword')}</button>
-            {passwordChanged && <div className="settings__alert_ok"><h6>{t('settings.successMsg')}</h6></div>}
-            {errorMsg && <div className="settings__alert_err"><h6>{errorMsg}</h6></div>}
-        </div>
-    );
-};
-
-const DeleteAccountCardSettings: React.FC = () => {
-    const { t } = useTranslation();
-    const [isDeleted, setDeleted] = useState<boolean>(false);
-    const navigate = useNavigate();
+export function DeleteAccountCardSettings() {
+	const { t } = useTranslation();
+	const [isDeleted, setDeleted] = useState<boolean>(false);
 
     const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
@@ -299,14 +107,68 @@ const DeleteAccountCardSettings: React.FC = () => {
     );
 };
 
-const CookieSettings: React.FC = () => {
-    return (
-        <div className="cookie_settings">
-            <h2>Cookie Settings</h2>
-            <p>Manage your cookie preferences here.</p>
-        </div>
-    );
-};
+export function CookieSettings() {
+	const { t } = useTranslation();
 
-export default Settings;
-
+	return (
+		<div className="cookie-settings">
+		  <div className="cookie-content">
+			<h3>{t('cookie.policy')}</h3>
+			<section>
+			  <h4>{t('cookie.introduction')}</h4>
+			  <p>
+				{t('cookie.intro_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h4>{t('cookie.cookie_title')}</h4>
+			  <p>
+				{t('cookie.cookie_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h3>{t('cookie.type_title')}</h3>
+			  <p>
+				{t('cookie.type_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h3>{t('cookie.use_title')}</h3>
+			  <p>
+			  		{t('cookie.type_text')}
+			  </p>
+	
+			  <h5>{t('cookie.manage_title')}</h5>
+			  <p>
+				{t('cookie.manage_text')}
+			  </p>
+			</section>
+	
+			<section>
+			  <h5>{t('cookie.rights_title')}</h5>
+			  <ul>
+				<li>{t('cookie.rights_1')}</li>
+				<li>{t('cookie.rights_2')}</li>
+				<li>{t('cookie.rights_3')}</li>
+				<li>{t('cookie.rights_4')}</li>
+				<li>{t('cookie.rights_5')}</li>
+			  </ul>
+			  <p>{t('cookie.rights_text')}</p>
+			</section>
+	
+			<section>
+			  <h5>{t('cookie.contact_title')}</h5>
+			  <ul>
+				<li>{t('cookie.contact_adress')} </li>
+				<li>{t('cookie.contact_email')} </li>
+				<li>{t('cookie.contact_phone')} </li>
+			  </ul>
+			  <p>{t('cookie.contact_text')}</p>
+			</section>
+		  </div>
+		</div>
+	  );
+}
