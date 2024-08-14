@@ -21,7 +21,7 @@
 		"tournament":"MODO TORNEO"
 	},
 	"login":{
-		"username":"Nombre de usuario",
+		"email":"Correo electronico",
 		"password":"Contraseña",
 		"login":"Conectar",
 		"signup":"Regístrate",

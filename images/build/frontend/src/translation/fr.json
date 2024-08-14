@@ -20,7 +20,7 @@
 		"tournament":"MODE TOURNOI"
 	},
 	"login":{
-		"username":"Nom d'utilisateur",
+		"email":"Adresse electronique",
 		"password":"Mot de passe",
 		"login":"Se Connecter",
 		"signup":"S'enregistrer",

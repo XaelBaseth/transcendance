@@ -14,7 +14,6 @@ export default function Login() {
 	const navigate = useNavigate();
 
 	const handleSignUp = () => {
-	const handleSignUp = () => {
 		navigate("/signup");
 	};
 
@@ -68,9 +67,6 @@ export default function Login() {
 				<button type="submit" id="login-btn">{t('login.login')}</button>
 
 				<div className="social">
-					<div className="_42auth">
-						<button id='_42auth_btn'>{t('login.login42')}</button>
-					</div>
 					<div className="signup">
 						<button type="button" onClick={handleSignUp} id="signup_btn">{t('login.signup')}</button>
 					</div>
@@ -78,5 +74,5 @@ export default function Login() {
 			</form>
 		</div>
 	);
-	);
 }
+
