@@ -19,7 +19,7 @@
     font-family: "Poetsen One";
     font-size: 27px;
     font-weight: bold;
-    color: var(--bouton_BG); /* Couleur du texte */
+    color: var(--linen); /* Couleur du texte */
     top: -3%;
     left: 45%;
   }

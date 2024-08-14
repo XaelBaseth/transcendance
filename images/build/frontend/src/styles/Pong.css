@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     width: 140vh; /* Largeur du terrain */
     height: 75vh; /* Hauteur du terrain */
-    background-color: var(--pong_BG); /* Couleur de fond verte pour représenter l'herbe */
+    background-color: var(--linen); /* Couleur de fond verte pour représenter l'herbe */
     border: 6px solid #acd8aa; /* Bordure blanche */
     border-radius: 10px; /* Bords arrondis */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner de la profondeur */
