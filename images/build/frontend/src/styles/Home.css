@@ -24,8 +24,8 @@
 }
 
 .btn__play:hover {
-    background-color: var(--linen_hover);
-    border: 6px solid var(--light_teal_hover);
+    background-color: var(--light_teal);
+    border: 6px solid var(--linen);
 }
 
 .link {

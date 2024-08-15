@@ -103,8 +103,8 @@
 }
 
 #signUp-btn:hover{
-  background-color: var(--linen_hover);
-  border: 3px solid var(--light_teal_hover);
+  background-color: var(--linen);
+  border: 3px solid var(--light_teal);
 }
 
 /* ********************************/

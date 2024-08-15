@@ -63,18 +63,18 @@
 } 
 
 .button1:hover {
-	background-color: var(--linen_hover);
-	border : 6px solid var(--light_teal_hover);
+	background-color: var(--linen);
+	border : 6px solid var(--light_teal);
 }
 
 .button2:hover {
-	background-color: var(--linen_hover);
-	border : 6px solid var(--light_teal_hover);
+	background-color: var(--linen);
+	border : 6px solid var(--light_teal);
 }
 
 .button3:hover {
-	background-color: var(--linen_hover);
-	border : 6px solid var(--light_teal_hover);
+	background-color: var(--linen);
+	border : 6px solid var(--light_teal);
 }
 
 

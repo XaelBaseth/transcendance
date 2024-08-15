@@ -9,9 +9,7 @@
 	align-items: center;
 	justify-content: space-around;
 	flex-wrap: wrap;
-
 	padding-top: 30vh;
-	
 	height: 70%;
 	width: 60%;
 	background-color: #fcf5c7a6;
@@ -21,7 +19,7 @@
 	top: 50%;
 	left: 50%;
 	border-radius: 10px;
-	border: 5px solid var(--linen);
+	border: 5px solid var(--olive_green);
 	padding: 30px 30px;
 }
 
@@ -41,6 +39,6 @@
 .text {
 	font-family: "VT323";
 	font-weight: bold;
-	color: var(--linen);
-	font-size: 15px;
+	color: var(--pink);
+	font-size: 18px;
 	}

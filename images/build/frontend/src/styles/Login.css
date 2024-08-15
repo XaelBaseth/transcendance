@@ -94,8 +94,8 @@ input::placeholder{
 }
 
 #login-btn:hover{
-  background-color: var(--linen_hover);
-  border: 3px solid var(--light_teal_hover);
+  background-color: var(--linen);
+  border: 3px solid var(--light_teal);
 }
 
 #_42auth_btn {
@@ -120,7 +120,8 @@ input::placeholder{
   cursor: pointer;
   position: absolute;
   top: 80%;
-  right: 17%;
+  left: 50%;
+  transform: translateX(-50%);
 	font-family: 'VT323';
 }
 
@@ -131,7 +132,7 @@ input::placeholder{
 .login__alert_err {
 	color: var(--error);
 	font-family: 'VT323';
-	font-size: 20px;
+	font-size: 25px;
 	text-align: center;
 }
 
