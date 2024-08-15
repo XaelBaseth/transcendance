@@ -11,8 +11,7 @@
 		"tournament":"Tournament"
 	},
 	"error":{
-		"error":"Error",
-		"sorry":"Sorry! The page you are trying to access does not exist."
+		"title":"Error"
 	},
 	"gamepage":{
 		"pongLower":"Use the up and down arrows of your keyboard to play !",

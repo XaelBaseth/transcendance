@@ -11,8 +11,7 @@
 		"tournament":"Torneo"
 	},
 	"error":{
-		"error":"Error",
-		"sorry":"Lo sentimos. La página solicitada no existe"
+		"title":"Error"
 	},
 	"gamepage":{
 		"pongLower":"Utiliza las flechas de arriba y abajo para jugar !",
