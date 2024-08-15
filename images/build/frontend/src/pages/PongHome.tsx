@@ -73,9 +73,9 @@ const PongHomePage = () => {
 			{
 				inQueue !== "0" && 
 				<div>
-					<h3>Waiting for other players...</h3>
-					<h3>Players in queue: {inQueue}</h3>
-					<button onClick={leaveMatchMaking}>Leave</button>
+					<h3>{t('pong.waiting')}</h3>
+					<h3>{t('pong.playercounter')} {inQueue}</h3>
+					<button onClick={leaveMatchMaking}>{t('pong.quit')}</button>
 				</div>
 			}
 			{
@@ -83,9 +83,9 @@ const PongHomePage = () => {
 				<div>
 					<h1>{t('pong.pongHome')}</h1>
 					<br /> <br />
-					<button onClick={()=> joinMatchMaking(2)}>2 Players Pong</button>
+					<button onClick={()=> joinMatchMaking(2)}>{t('pong.pongTwoPlayer')}</button>
 					<br /> <br />
-					<button onClick={()=> joinMatchMaking(4)}>4 Players Pong</button>
+					<button onClick={()=> joinMatchMaking(4)}>{t('pong.pongFourPlayer')}</button>
 				</div>
 
 			}

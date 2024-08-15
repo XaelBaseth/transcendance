@@ -1,11 +1,11 @@
 import React from 'react';
-import SidebarElem from './SidebarElem';	
-import settingsIcon from "../../assets/settingsIcon.png";
-import aboutIcon from "../../assets/leaderboardIcon.png";
-import localIcon from "../../assets/iconeLocal.png";
-import networkIcon from "../../assets/iconeNetwork.png"
-import tournamentIcon from "../../assets/iconeTournament.png"
 import { useTranslation } from 'react-i18next';
+import SidebarElem from './SidebarElem';	
+import settingsIcon from "../../assets/icone_setting.webp"
+import aboutIcon from "../../assets/icone_about.webp";
+import localIcon from "../../assets/icone_local.webp";
+import networkIcon from "../../assets/icone_online.webp"
+import tournamentIcon from "../../assets/icone_tournament.webp"
 import './Navbar.css';
 
 export default function Sidebar () {

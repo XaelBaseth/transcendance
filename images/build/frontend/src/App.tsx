@@ -1,27 +1,23 @@
-import React, { useState } from "react"
+import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import BGVideo from './assets/BG.mp4'
+import CookieConsent from "react-cookie-consent"
 import Home from "./pages/home"
 import Error from "./pages/error"
 import GamePage from "./pages/gamepage"
 import About from "./pages/about"
 import Login from "./pages/login"
-import Pong from "./pages/pong"
 import Settings from "./pages/setting"
 import SignUp from "./pages/signUp"
 import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
-import { AuthProvider } from "./context"
-import CookieConsent from "react-cookie-consent"
-import PongHomePage from "./pages/PongHome"
-import JoinPongRoomPage from "./pages/JoinPongRoomPage"
-import CreatePongRoomPage from "./pages/CreatePongRoomPage"
-import { useTranslation } from 'react-i18next';
-import './App.css'
 import LocalPongPage from "./pages/LocalPongPage"
+import PongHomePage from "./pages/PongHome"
+import { AuthProvider } from "./context"
+import { useTranslation } from 'react-i18next';
 
-/**Register the user, gives him a jwt and login 
- * cleanly so that we can avoid error */
+import './App.css'
+
 function RegisterAndLogout() {
 	localStorage.clear()
 	return <SignUp />
@@ -51,9 +47,8 @@ function App() {
 						</div>
 							<Routes>
 								<Route path="/login" element={<Login />} />
-								<Route path="*" element={<Error />} />
+								<Route path="/*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
-								<Route path="/localpong" element={<LocalPongPage />} />
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -61,9 +56,7 @@ function App() {
 								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 								{/* PONG */}
 								<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
-								<Route path="/pong-join" element={<ProtectedRoute><JoinPongRoomPage /></ProtectedRoute>} />
-								<Route path="/pong-create" element={<ProtectedRoute><CreatePongRoomPage /></ProtectedRoute>} />
-								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
+								<Route path="/localpong" element={<ProtectedRoute><LocalPongPage /></ProtectedRoute>} />
 							</Routes>
 					</AuthProvider>
 				</BrowserRouter>

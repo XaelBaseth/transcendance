@@ -24,9 +24,10 @@ Pour tester si ModSecurity fonctionne correctement sur votre serveur Nginx, vous
 
 Exemple de test manuel
 
-    Créez une requête malveillante. Par exemple, une tentative d'injection SQL pourrait ressembler à ceci : http://votre-domaine.com/page.php?id=123 OR '1'='1'
-    Envoyez cette requête à votre serveur via un navigateur ou un outil comme curl : curl -s http://votre-domaine.com/page.php?id=123 OR '1'='1'
-    Vérifiez la réponse. Si ModSecurity est correctement configuré, il devrait bloquer la requête et renvoyer une erreur 403 (Forbidden).
+    Créez une requête malveillante. Par exemple, une tentative d'injection SQL pourrait ressembler à ceci : https://localhost:8000/login?query=1' OR '1'='1'
+    Envoyez cette requête à votre serveur via un navigateur ou un outil comme curl : curl -s https://localhost:8000/login?query=1' OR '1'='1'
+
+Vérifiez la réponse. Si ModSecurity est correctement configuré, il devrait bloquer la requête et renvoyer une erreur 403 (Forbidden).
 
 ### Conclusion
 

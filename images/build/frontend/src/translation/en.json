@@ -11,7 +11,8 @@
 		"tournament":"Tournament"
 	},
 	"error":{
-		"error":"Error"
+		"error":"Error",
+		"sorry":"Sorry! The page you are trying to access does not exist."
 	},
 	"gamepage":{
 		"pongLower":"Use the up and down arrows of your keyboard to play !",
@@ -54,15 +55,11 @@
 	},
 	"pong":{
 		"pongHome":"Pong Home",
-		"joinRoom":"Join a Room",
-		"createRoom":"Create a Room",
-		"enterCode":"Enter a room code:",
-		"join":"Join",
-		"back":"Back",
-		"numberPlayers":"Set the number of players",
-		"create":"Create",
-		"limitPlayer":"Player limit",
-		"roomCode":"Room code"
+		"pongTwoPlayer":"2 players",
+		"pongFourPlayer":"4 players",
+		"waiting":"Waitings for other players",
+		"playercounter":"PLayers in queue: ",
+		"quit":"Back"
 	},
 	"cookie":{
 		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes.",

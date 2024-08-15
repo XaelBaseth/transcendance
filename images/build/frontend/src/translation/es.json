@@ -11,13 +11,13 @@
 		"tournament":"Torneo"
 	},
 	"error":{
-		"error":"Error"
+		"error":"Error",
+		"sorry":"Lo sentimos. La página solicitada no existe"
 	},
 	"gamepage":{
 		"pongLower":"Utiliza las flechas de arriba y abajo para jugar !",
 		"tournamentLower":"Participa en un torneo para saber quién es el mejor (¡eres tú!) !",
 		"pong":"MODO PONG",
-		"otherGame":"MODO OTRO JUEGO",
 		"tournament":"MODO TORNEO"
 	},
 	"login":{
@@ -53,15 +53,11 @@
 	},
 	"pong":{
 		"pongHome":"Casa de Pong",
-		"joinRoom":"Incorporarse a una sala",
-		"createRoom":"Crear una sala",
-		"enterCode":"Entra un numero de sala:",
-		"join":"Incorporarse",
-		"back":"Regresar",
-		"numberPlayers":"Elije el numero de jugadores",
-		"create":"Crear",
-		"limitPlayer":"Limite de jugadores",
-		"roomCode":"Codigo de la sala"
+		"pongTwoPlayer":"2 jugadores",
+		"pongFourPlayer":"4 jugadores",
+		"waiting":"A la espera de un jugador",
+		"playercounter":"Jugador en espera: ",
+		"quit":"Regresar"
 	},
 	"cookie":{
 		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",
