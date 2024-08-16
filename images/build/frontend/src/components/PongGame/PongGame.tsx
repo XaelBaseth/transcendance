@@ -62,7 +62,6 @@ const PongGame = () => {
 				return;
 			}
 			if (socketRef.current) {
-				console.log("side :" + player_side)
 				switch (e.key) {
 					case 'ArrowUp':
 						socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "up" }));
@@ -130,6 +129,8 @@ const PongGame = () => {
 						break;
 					case 'join_game':
 						const side = data.side
+						const state = data.state
+						setGameState(state);
 						setPlayerSide(side);
 						if (side === 'spectator') {
 							window.removeEventListener('keydown', handleKeyPress);

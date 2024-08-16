@@ -25,6 +25,9 @@ RUN apt-get install -y libmaxminddb-dev bison libperl-dev \
 					zlib1g-dev libxslt-dev libgd-dev \
 					systemctl jq
 
+# Set LDFLAGS to explicitly link against pthread
+ENV LDFLAGS="-lpthread"
+
 # Clone ModSecurity repository && install it
 WORKDIR /tmp
 RUN git clone https://github.com/SpiderLabs/ModSecurity

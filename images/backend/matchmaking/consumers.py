@@ -4,11 +4,31 @@ from channels.generic.websocket import  WebsocketConsumer
 from asgiref.sync import async_to_sync
 from django.apps import apps
 
+from pong.consumers import PongConsumer
+import logging
+
+from jwt import decode as jwt_decode
+
 class MatchMakingConsumer(WebsocketConsumer):
 	duel_queue = []
 	quarrel_queue = []
 
 	def connect(self):
+		from rest_framework_simplejwt.tokens import UntypedToken
+		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+		from django.conf import settings
+
+		# Try to decode the token and get the user_id
+		try:
+			token = self.scope['query_string'].decode().split('token=')[-1]
+			UntypedToken(token)
+			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+			user_id = decoded_data['user_id']
+			user = self.get_user_by_id(user_id)
+			self.playername = f"{user.username}"
+		except (InvalidToken, TokenError):
+			self.playername = None
+
 		self.room_group_name = "matchmaking"
 		# Join room group
 		async_to_sync(self.channel_layer.group_add)(self.room_group_name, self.channel_name)
@@ -37,11 +57,24 @@ class MatchMakingConsumer(WebsocketConsumer):
 				self.join_queue(event="duel")
 			case "queue_quarrel":
 				self.join_queue(event="quarrel")
+			case "check_game":
+				self.check_game()
 			case "leave_queue":
 				self.leave_queue()
 			case _:
 				self.send_message({"message": "Invalid message type"})
 				return
+
+	def check_game(self):
+		rooms = PongConsumer.pong_rooms
+
+		if len(rooms) > 0 and self.playername is not None:
+			logger = logging.getLogger(__name__)
+			logger.info("je cherche : " + self.playername + " dans les rooms")
+			for room in rooms:
+				if self.playername in room.players and room.state != "finished":
+					self.send_message({"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}})
+					return
 
 	def join_queue(self, event):
 		if event == "duel":
@@ -74,11 +107,11 @@ class MatchMakingConsumer(WebsocketConsumer):
 			room.save()
 			async_to_sync(self.channel_layer.send)(
 				player1,
-				{"type": "send_message", "message": {"type": "join_game", "code": room.code}}
+				{"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}}
 			)
 			async_to_sync(self.channel_layer.send)(
 				player2,
-				{"type": "send_message", "message": {"type": "join_game", "code": room.code}}
+				{"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}}
 			)
 		elif event == "quarrel":
 			player1 = MatchMakingConsumer.quarrel_queue.pop(0)
@@ -89,19 +122,19 @@ class MatchMakingConsumer(WebsocketConsumer):
 			room.save()
 			async_to_sync(self.channel_layer.send)(
 				player1,
-				{"type": "send_message", "message": {"type": "join_game", "code": room.code}}
+				{"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}}
 			)
 			async_to_sync(self.channel_layer.send)(
 				player2,
-				{"type": "send_message", "message": {"type": "join_game", "code": room.code}}
+				{"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}}
 			)
 			async_to_sync(self.channel_layer.send)(
 				player3,
-				{"type": "send_message", "message": {"type": "join_game", "code": room.code}}
+				{"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}}
 			)
 			async_to_sync(self.channel_layer.send)(
 				player4,
-				{"type": "send_message", "message": {"type": "join_game", "code": room.code}}
+				{"type": "send_message", "message": {"type": "join_game", "code": room.code, "player_limit": room.player_limit}}
 			)
 
 	def leave_queue(self):
@@ -127,3 +160,14 @@ class MatchMakingConsumer(WebsocketConsumer):
 	def send_message(self, event):
 		# Send message to WebSocket
 		self.send(text_data=json.dumps(event["message"]))
+
+	def get_user_by_id(self, user_id):
+		from django.contrib.auth.models import AnonymousUser
+		from django.contrib.auth import get_user_model
+		User = get_user_model()
+		try:
+			return User.objects.get(user_id=user_id)
+		except User.DoesNotExist:
+			return AnonymousUser()
+		except Exception:
+			return AnonymousUser()
