@@ -36,14 +36,12 @@ body {
 
 .paddle {
 	position: absolute;
-	background-color: #333;
 	transition: top 0.2s;
 	transition-timing-function: linear;
 }
 
 .ball {
 	position: absolute;
-	background-color: red;
 	border-radius: 50%;
 }
 

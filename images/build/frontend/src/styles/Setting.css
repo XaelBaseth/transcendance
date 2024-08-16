@@ -35,17 +35,15 @@
 }
 
 .settings {
-    width: 75%;
-    height: 75%; 
-    border-radius: 20px; /* Updated to px unit */
-    background-color: var(--clear_beige);
-    backdrop-filter: blur(20px);
+	box-sizing: border-box;
+    width: calc(140vh);
+    height: calc(75vh); 
+    background-color: var(--linen);
 	position: absolute;
-	transform: translate(-50%, -50%);
-	top: 50%;
-	left: 53%;
+	top: 15%;
+	left: 20%;
 	border-radius: 10px;
-	border: 5px solid var(--olive_green);
+	border: 6px solid var(--olive_green);
 	padding: 30px 30px;
 }
 
@@ -283,39 +281,46 @@
 /**** LANGAGE SETTING COMPONENT ****/
 /**********************************/
 
-  .language-switcher {
+.language-switcher {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 	width: 100px;
-  	height: 100px;
-	top: 45%;
+  	height: 50px;
+	top: 55%;
 	position: absolute;
-	left: 69.3%;
+	left:71%;
+	flex-direction: column;
+	align-items: center;
 }
 
-.language-switcher button {
-    background-color: var(--linen);
-    border: 2px solid var(--light_teal);
+.language-title {
+    margin-bottom: 10px;
+	font-size: 25px;
+    font-family: 'VT323';
     color: var(--pink);
-    padding: 10px 15px;
-    margin: 0 5px;
+    white-space: nowrap;
+}
+
+.language-switcher img {
+    width: 120px;
+    height: 120px;
     cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.language-switcher button:hover {
-    background-color: var(--light_teal);
-    border-color: var(--pink);
-    color: #fff;
+.language-switcher img:hover {
+    transform: scale(1.1); /* Légère augmentation de la taille au survol */
 }
 
-/* Ajouter une classe active pour le bouton de la langue sélectionnée */
-.language-switcher button.active {
-    border-color: var(--light_pink);
-    color: var(--light_pink);
+.language-switcher img:last-child {
+    margin-right: 0; /* Retirer la marge à droite du dernier drapeau */
+}
+
+/* Optionnel : ajouter une bordure ou un effet de sélection si besoin */
+.language-switcher img.active {
+    border: 2px solid var(--light_pink);
+    border-radius: 50%; /* Rondir légèrement les bords */
 }
 
 /* ********************************/
@@ -323,14 +328,14 @@
 /* ********************************/
 
 .switch {
-    position: relative;
+    position: absolute;
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
 	width: 100px;
 	margin: 20px 0;
-	left: 20%;
- 	top: 215%;
+	left: 23%;
+ 	top: 45%;
 }
 
 .switch input {
@@ -371,19 +376,12 @@ input:checked + .slider:before {
     background-color: var(--pink); /* Couleur du bouton en mode actif */
 }
 
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
 .switch span {
     margin-top: 10px;
+    margin-bottom: 10px;
     font-family: 'VT323';
-    font-size: 16px;
-    white-space: nowrap; /* Empêche le texte de se couper en plusieurs lignes */
+    font-size: 25px;
+    white-space: nowrap;
 	color: var(--pink);
 	font-weight: bold;
 }

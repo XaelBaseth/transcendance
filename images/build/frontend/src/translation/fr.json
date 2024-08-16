@@ -4,7 +4,7 @@
 	},
 	"navbar":{
 		"about":"A propos",
-		"logout":"Se Deconnecter",
+		"logout":"Déconnexion",
 		"settings":"Reglages",
 		"local":"Local",
 		"network":"En Ligne",
@@ -43,6 +43,7 @@
 	},
 	"settings":{
 		"settings":"Parametre",
+		"Choose your language":"Choix de langue",
 		"privacy":"Vie privee et securite",
 		"accessibility":"Accessibilite",
 		"irreversible":"Attention, cette action est irreversible",
