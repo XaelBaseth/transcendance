@@ -8,7 +8,9 @@
 		"settings":"Settings",
 		"local":"Local",
 		"network":"Online",
-		"tournament":"Tournament"
+		"tournament":"Tournament",
+		"profile":"Profile",
+		"social":"Social"
 	},
 	"error":{
 		"title":"Error"
@@ -62,6 +64,7 @@
 	},
 	"cookie":{
 		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes.",
+		"span":"You can learn more in our",
 		"policy":"Cookie Policy",
 		"introduction":"Introduction",
 		"intro_text":"Our website (hereinafter: \"the website\") uses cookies and other related technologies (for convenience all technologies are referred to as \"cookies\"). Cookies are also placed by third parties we have engaged. In the document below we inform you about the use of cookies on our website.",

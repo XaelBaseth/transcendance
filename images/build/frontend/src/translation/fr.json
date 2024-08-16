@@ -8,7 +8,9 @@
 		"settings":"Réglages",
 		"local":"Local",
 		"network":"En Ligne",
-		"tournament":"Tournois"
+		"tournament":"Tournois",
+		"profile":"Profil",
+		"social":"Social"
 	},
 	"error":{
 		"title":"Erreur"
@@ -60,6 +62,7 @@
 	},
 	"cookie":{
 		"banner":"En continuant à naviguer sur ce site, vous acceptez que nous utilisions des cookies pour le bon fonctionnement du site. Nous n'utilisons pas de cookies à des fins de suivi ou de publicité.",
+		"span":"Vous pouvez en apprendre plus dans nos",
 		"policy":"Politique des cookies",
 		"introduction":"Introduction",
 		"intro_text":"Notre site web (ci-après : \"le site web\") utilise des cookies et d'autres technologies connexes (par commodité, toutes les technologies sont désignées par le terme \"cookies\"). Des cookies sont également placés par des tiers que nous avons engagés. Dans le document ci-dessous, nous vous informons sur l'utilisation des cookies sur notre site web.",

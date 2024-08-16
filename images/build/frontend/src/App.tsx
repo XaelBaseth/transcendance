@@ -13,6 +13,8 @@ import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import LocalPongPage from "./pages/LocalPongPage"
 import PongHomePage from "./pages/PongHome"
+//import { Profile } from "./pages/profile"
+//import { Social } from "./pages/social"
 import { AuthProvider } from "./context"
 import { useTranslation } from 'react-i18next';
 
@@ -37,7 +39,7 @@ function App() {
 				<div cookie_setting>
 					<CookieConsent location="bottom" cookieName="RGPD Compliant" expires={999}>
 						{t('cookie.banner')}
-						<span>You can manage your preferences in our <a href="/settings" target="_blank" rel="noopener noreferrer">Settings</a>.</span>
+						<span>{t('cookie.span')} <a href="/settings" target="_blank" rel="noopener noreferrer">Settings</a>.</span>
 					</CookieConsent>
 				</div>
 				<BrowserRouter>
@@ -51,6 +53,8 @@ function App() {
 								<Route path="/signup" element={<RegisterAndLogout />} />
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+								{/** <Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
+								<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} /> */}
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 								<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
 								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
