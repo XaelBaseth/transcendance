@@ -18,7 +18,7 @@ const Settings: React.FC = () => {
     const { t } = useTranslation();
     const [currentSection, setCurrentSection] = useState('USER');
 
-	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
+	// const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
 
 	const handleSectionChange = (section) => {
 		setCurrentSection(section);
@@ -172,3 +172,4 @@ export function CookieSettings() {
 		</div>
 	  );
 }
+export default Settings;
