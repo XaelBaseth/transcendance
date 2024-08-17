@@ -17,6 +17,7 @@ import PongHomePage from "./pages/PongHome"
 //import { Social } from "./pages/social"
 import { AuthProvider } from "./context"
 import { useTranslation } from 'react-i18next';
+import Pong from "./pages/pong"
 
 import './App.css'
 
@@ -61,6 +62,7 @@ function App() {
 								{/* PONG */}
 								<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
 								<Route path="/localpong" element={<ProtectedRoute><LocalPongPage /></ProtectedRoute>} />
+								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
 							</Routes>
 					</AuthProvider>
 				</BrowserRouter>
