@@ -8,7 +8,7 @@ UserModel = get_user_model()
 # class UserUpdateSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = AppUser
-#         fields = ['username', 'email', 'password']
+#         fields = ['username', 'email', 'password','avatar']
 #         extra_kwargs = {'password': {'write_only': True}}
 
 #     def update(self, instance, validated_data):
@@ -18,7 +18,6 @@ UserModel = get_user_model()
 #             instance.set_password(password)
 #             instance.save()
 #         return instance
-
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -46,6 +45,11 @@ class UserSerializer(serializers.ModelSerializer):
         model = AppUser
         fields = ('user_id', 'email', 'username', 'avatar', 'wins', 'losses', 'is_online')
         read_only_fields = ('user_id', 'email', 'wins', 'losses', 'is_online')
+        
+    def update_avatar(self, instance, validated_data):
+        instance.avatar = validated_data.get('avatar', instance.avatar)
+        instance.save()
+        return instance
 
 class FriendshipSerializer(serializers.ModelSerializer):
     friend = UserSerializer(read_only=True)

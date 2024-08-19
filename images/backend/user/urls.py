@@ -14,8 +14,9 @@ urlpatterns = [
     path('friend-request', views.FriendRequestView.as_view(), name='friend_request'),
     path('friends', views.FriendListView.as_view(), name='friend_list'),
     path('match-history', views.MatchHistoryView.as_view(), name='match_history'),
+    path('user/change-Avatar', views.ChangeAvatar.as_view(), name='change_avatar'),
+]
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # from django.conf.urls.static import static
 # from django.urls import path
 # from django.conf import settings
