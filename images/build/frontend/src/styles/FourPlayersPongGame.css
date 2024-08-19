@@ -92,12 +92,6 @@ body {
 	gap: 10px;
 }
 
-button {
-	padding: 5px 10px;
-	font-size: 16px;
-	cursor: pointer;
-}
-
 .four-player-game-over {
 	width: 500px;
 	height: 500px;

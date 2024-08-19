@@ -19,7 +19,7 @@ function LanguageSwitcher() {
 
     return (
         <div className="language-switcher">
-            <p className="language-title">Choose your language:</p>
+            <p className="language-title">{t('settings.language')}</p>
             <img
                 src={frenchFlag}
                 alt="French"
