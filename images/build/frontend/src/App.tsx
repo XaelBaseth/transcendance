@@ -53,6 +53,7 @@ function App() {
 								<Route path="/login" element={<Login />} />
 								<Route path="*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
+								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 								<Route path="/localpong" element={<LocalPongPage />} />
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
@@ -64,7 +65,10 @@ function App() {
 								<Route path="/pong-join" element={<ProtectedRoute><JoinPongRoomPage /></ProtectedRoute>} />
 								<Route path="/pong-create" element={<ProtectedRoute><CreatePongRoomPage /></ProtectedRoute>} />
 								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
-							</Routes>
+								{/* <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                    			<Route path="/friends" element={<ProtectedRoute><FriendList /></ProtectedRoute>} />
+                  		  		<Route path="/match-history" element={<ProtectedRoute><MatchHistory /></ProtectedRoute>} /> */}
+                </Routes>
 					</AuthProvider>
 				</BrowserRouter>
 			</section>

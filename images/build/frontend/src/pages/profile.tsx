@@ -17,7 +17,9 @@ export function Profile() {
         wins: 50,
         losses: 50,
         rank: 1,
-        aces: 0
+        aces: 0,
+        email: "",
+        avatar: null
     });
 
     // État pour les informations modifiables
@@ -25,15 +27,51 @@ export function Profile() {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        setEditableUser(user);
-    }, [user]);
+        fetchUserData();
+    }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const fetchUserData = async () => {
+        try {
+            const response = await api.get('/api/user/');
+            setUser(response.data);
+        } catch (error) {
+            console.error("Failed to fetch user data", error);
+            toast.error("Failed to load user data");
+        }
+    };
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        setEditableUser(prevState => ({
+        setUser(prevState => ({
             ...prevState,
             [name]: value
         }));
+    };
+
+    const handleAvatarChange = (e) => {
+        setUser(prevState => ({
+            ...prevState,
+            avatar: e.target.files[0]
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        Object.keys(user).forEach(key => {
+            formData.append(key, user[key]);
+        });
+
+        try {
+            await api.put('/api/user/update-profile', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+            toast.success("Profile updated successfully");
+            setIsEditing(false);
+        } catch (error) {
+            console.error("Failed to update profile", error);
+            toast.error("Failed to update profile");
+        }
     };
 
     const handleEdit = () => {
@@ -70,71 +108,32 @@ export function Profile() {
     };
 
     return (
-        <div id="whole-profile-container">
-            <div id="whole-profile">
-                <section id="main-dashboard">
-                    <div id="top-dashboard">
-                        <div id="bio-container">
-                            <article id="bio">
-                                <div id="hexagon-avatar"></div>
-                            </article>
-                            <article className="user__bio">
-                                <h1>{t('profile.bio')}</h1>
-                                {isEditing ? (
-                                    <textarea
-                                        name="bio"
-                                        value={editableUser.bio}
-                                        onChange={handleChange}
-                                    />
-                                ) : (
-                                    <span>{user.bio}</span>
-                                )}
-                            </article>
-                            <hr />
-                            <article id="main-stats">
-                                <MainStat title={t('profile.total')} stat={user.total} />
-                                <MainStat title={t('profile.victories')} stat={user.victories} />
-                                <MainStat title={t('profile.friends')} stat={user.friends} />
-                            </article>
-                            <hr />
-                        </div>
-                        <div id="stats">
-                            <h1>{t('profile.overview')}</h1>
-                            <div className="winratio__stats">
-                                <WinrateCircularBar winRate={user.winRate} />
-                                <div className="stat__display">
-                                    <StatDisplay title={t('profile.wins')} stat={user.wins} />
-                                </div>
-                                <div className="stat__display">
-                                    <StatDisplay title={t('profile.loss')} stat={user.losses} />
-                                </div>
-                            </div>
-                            <div className="stat__display">
-                                <StatDisplay title={t('profile.rank')} stat={user.rank} />
-                            </div>
-                            <div className="stat__display">
-                                <StatDisplay title={t('profile.aces')} stat={user.aces} />
-                            </div>
-                            <button className="challenge-btn">{t('profile.challenge')}</button>
-                        </div>
-                    </div>
-                    <div id="edit-buttons">
-                        {isEditing ? (
-                            <>
-                                <button onClick={handleSave}>{t('profile.save')}</button>
-                                <button onClick={handleCancel}>{t('profile.cancel')}</button>
-                            </>
-                        ) : (
-                            <button onClick={handleEdit}>{t('profile.edit')}</button>
-                        )}
-                        <button className="delete-btn" onClick={handleDelete}>{t('profile.delete')}</button>
-                    </div>
-                </section>
-            </div>
+        <div className="profile">
+            <h1>{t('profile.title')}</h1>
+            <img src={user.avatar || "/default-avatar.png"} alt="User Avatar" />
+            {isEditing ? (
+                <form onSubmit={handleSubmit}>
+                    <input type="file" onChange={handleAvatarChange} accept="image/*" />
+                    <input type="text" name="username" value={user.username} onChange={handleChange} />
+                    <input type="email" name="email" value={user.email} onChange={handleChange} />
+                    <textarea name="bio" value={user.bio} onChange={handleChange}></textarea>
+                    <button type="submit">{t('profile.save')}</button>
+                    <button type="button" onClick={() => setIsEditing(false)}>{t('profile.cancel')}</button>
+                </form>
+            ) : (
+                <>
+                    <p>{user.username}</p>
+                    <p>{user.email}</p>
+                    <p>{user.bio}</p>
+                    <p>{t('profile.wins')}: {user.wins}</p>
+                    <p>{t('profile.losses')}: {user.losses}</p>
+                    <p>{t('profile.winRate')}: {user.winRate}%</p>
+                    <button onClick={() => setIsEditing(true)}>{t('profile.edit')}</button>
+                </>
+            )}
         </div>
     );
 }
-
 // COMPONENTS //
 
 function WinrateCircularBar(props: { winRate: number }) {
