@@ -19,7 +19,7 @@ function LanguageSwitcher() {
 
     return (
         <div className="language-switcher">
-            <p className="language-title">Choose your language:</p>
+            <p className="language-title">{t('settings.language')}</p>
             <img
                 src={frenchFlag}
                 alt="French"
@@ -191,7 +191,7 @@ export function DeleteAccountCardSettings() {
         <div className="delete_settings">
             <h2 className="delete_settings__title">{t('settings.delete')}</h2>
             <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
-            <button className="delete_settings__btn" onClick={handleDelete}>
+            <button className="delete_settings__btn" >
                 Delete
                 <span>Delete your account</span>
             </button>

@@ -45,7 +45,7 @@
 		"unknownMsg":"Une erreur s'est produite."
 	},
 	"settings":{
-		"Choose your language":"Choix de langue",
+		"language":"Choix de langue",
 		"settings":"Paramètres",
 		"privacy":"Vie privée et sécurité",
 		"accessibility":"Accessibilité",

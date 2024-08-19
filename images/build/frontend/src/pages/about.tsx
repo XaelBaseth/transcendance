@@ -3,6 +3,7 @@ import AmelieImage from "../assets/aramier.jpg"
 import AxelImage from "../assets/acharlot.jpg"
 import RaphaelImage from "../assets/rrault.jpg"
 import ValentinImage from "../assets/vmalassi.jpg"
+import RobinImage from "../assets/rluiz.jpg"
 import '../styles/About.css';
 
 interface Member {
