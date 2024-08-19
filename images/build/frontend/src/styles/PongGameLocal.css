@@ -32,12 +32,26 @@ body {
 	border: 1px solid #ccc;
 	margin: 20px auto;
 	overflow: hidden;
+	top: 5%;
 }
 
 .paddle {
 	position: absolute;
 	transition: top 0.2s;
 	transition-timing-function: linear;
+	border-radius: 10px;
+}
+
+.paddle-left {
+	left: 0;
+	background-color: var(--pink);
+	margin-left: 5px;
+}
+
+.paddle-right {
+	right: 0;
+	background-color: var(--light_teal);
+	margin-right: 5px;
 }
 
 .ball {
@@ -58,8 +72,20 @@ body {
 
 button {
 	padding: 5px 10px;
-	font-size: 16px;
+	font-size: 25px;
 	cursor: pointer;
+	background-color: var(--clear_beige);
+	border: 4px solid var(--light_teal);
+	border-radius: 20px;
+	margin: 15px;
+	font-family: 'VT323';
+	color: var(--pink);
+}
+
+button:hover 
+{
+	background-color: var(--light_teal);
+	border: 4px solid var(--clear_beige);
 }
 
 .game-loose {
@@ -80,3 +106,16 @@ button {
 	color: white;
 }
 
+.score-text {
+    font-size: 20px;
+    color: var(--pink);
+    font-weight: bold;
+    text-align: center;
+	background-color: var(--clear_yellow);
+	width: 350px;
+	border: 5px solid var(--light_teal);
+	border-radius: 100px;
+	font-family: 'VT323';
+	margin: 10px auto;
+	margin-top: 40px;
+}

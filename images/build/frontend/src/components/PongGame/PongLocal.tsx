@@ -159,39 +159,64 @@ const LocalPongGame = () => {
 		setGameRunning(!gameRunning);
 	};
 
-	return (<>
-		<div className="controls">
-			{!gameRunning && !gameOver && <button onClick={pauseGame}>Start</button>}
-			{gameRunning && <button onClick={pauseGame}>Pause</button>}
-			{gameOver && <button onClick={restartGame}>Play Again</button>}
-			
-		</div>
-		<div className="controls">
-			<p>Score : left : {score.left} right : {score.right}</p>
-		</div>
-		<div className="ping-pong-container" tabIndex={0} style={{width: MAP_WIDTH, height: MAP_HEIGHT}}>
-			<div
-				className={`paddle ${gameRunning ? '' : 'paused'}`}
-				id="paddle-left"
-				style={{ top: `${paddles.left}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
-			/>
-			<div
-				className={`paddle ${gameRunning ? '' : 'paused'}`}
-				id="paddle-right"
-				style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH-PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
-			/>
-			<div
-				className={`ball ${gameRunning ? '' : 'paused'}`}
-				ref={ballRef}
-				style={{ top: `${ball.y}px`, left: `${ball.x}px`,
-				width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
-				transition: `top ${1/TPS}s, left ${1/TPS}s`,
-				transitionTimingFunction: 'linear' }} 
-			/>
-			{gameOver && <div className="game-win" style={{ left: `${score.left >= WIN_SCORE ? 0 : MAP_WIDTH / 2 }px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>You win !</div>}
-			{gameOver && <div className="game-loose" style={{ left: `${score.left >= WIN_SCORE ? MAP_WIDTH / 2 : 0 }px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>Game Over</div>}
-		</div>
-	</>
+	return (
+		<>
+			<div className="controls">
+				{!gameRunning && !gameOver && <button onClick={pauseGame}>Start</button>}
+				{gameRunning && <button onClick={pauseGame}>Pause</button>}
+				{gameOver && <button onClick={restartGame}>Play Again</button>}
+			</div>
+			<div className="controls score-text">
+   				<p>Score : left : {score.left} right : {score.right}</p>
+			</div>
+			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+				<div
+					className={`paddle paddle-left ${gameRunning ? '' : 'paused'}`}
+					style={{ top: `${paddles.left}px` }}
+				/>
+				<div
+					className={`paddle paddle-right ${gameRunning ? '' : 'paused'}`}
+					style={{ top: `${paddles.right}px` }}
+				/>
+				<div
+					className={`ball ${gameRunning ? '' : 'paused'}`}
+					ref={ballRef}
+					style={{
+						top: `${ball.y}px`,
+						left: `${ball.x}px`,
+						width: `${BALL_DIAMETER}px`,
+						height: `${BALL_DIAMETER}px`,
+						transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
+						transitionTimingFunction: 'linear',
+					}}
+				/>
+				{gameOver && (
+					<div
+						className="game-win"
+						style={{
+							left: `${score.left >= WIN_SCORE ? 0 : MAP_WIDTH / 2}px`,
+							width: MAP_WIDTH / 2,
+							height: MAP_HEIGHT,
+						}}
+					>
+						You win!
+					</div>
+				)}
+				{gameOver && (
+					<div
+						className="game-loose"
+						style={{
+							left: `${score.left >= WIN_SCORE ? MAP_WIDTH / 2 : 0}px`,
+							width: MAP_WIDTH / 2,
+							height: MAP_HEIGHT,
+						}}
+					>
+						Game Over
+					</div>
+				)}
+			</div>
+		</>
 	);
 };
+
 export default LocalPongGame;

@@ -55,7 +55,7 @@
 
 /*Logout_btn*/
 .logout_btn {
-	min-width: 90px; /* Largeur fixe de 200 pixels */
+	min-width: 100px; /* Largeur fixe de 200 pixels */
     height: 35px;
 	font-size: 25px;
     font-family: 'VT323';
@@ -70,6 +70,7 @@
 	transition : color 0s;
 	width: auto;
 	border: 6px solid var(--light_teal);
+	padding: 15px;
 }
 
 .logout_btn:hover {
