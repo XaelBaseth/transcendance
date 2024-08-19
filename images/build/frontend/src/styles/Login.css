@@ -61,15 +61,17 @@
 }
 
 input{
-    display: block;
-    height: 50px;
-    width: 90%;
-    background-color: rgba(0, 0, 0, 0.048);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: 300;
+  display: block;
+  height: 50px;
+  width: 90%;
+  background-color: var(--white);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--pink);
+  font-family: VT323;
 }
 
 input::placeholder{

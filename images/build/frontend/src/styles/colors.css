@@ -6,7 +6,7 @@
 
 
 :root {
-    --linen: #f7f2e8;
+    --linen: #FDF0D5;
     --light_teal: #a0ced9;
     --pink: #e27396;
     --light_pink: #ea9ab2;
@@ -16,10 +16,11 @@
     --clear_teal: #f7f2e8af;
     --error: #f03e3e;
     --ok : #90be8e;
+    --white: #f5efe6;
 
     --error-D:#adba3e;
     --ok-D:#a19d9c;
-    --linen-D:#f5f5ea;
+    --linen-D:#f8f9dd;
     --light_teal-D:#b1add5;
     --light_pink-D:#ccd1aa;
     --pink-D:#b8c08b;
@@ -27,4 +28,5 @@
     --clear_beige-D:#F6ECEC;
     --clear_yellow-D:#FBDADC;
     --clear_teal-D: #F6ECEC;
+    --white-D: #f5f5e8;
 }

@@ -12,11 +12,11 @@ const allFriendsList: IUser[] = [
 ];
 
 const blockedUsersList: IUser[] = [
-    { id: '3', username: 'Charlie', avatar: 'avatar3.png' }
+    { id: '3', username: 'Leonardo', avatar: 'avatar3.png' }
 ];
 
 const pendingRequestsList: IUser[] = [
-    { id: '4', username: 'David', avatar: 'avatar4.png' }
+    { id: '4', username: 'Charlie', avatar: 'avatar4.png' }
 ];
 
 export function Social() {

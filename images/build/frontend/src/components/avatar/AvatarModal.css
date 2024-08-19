@@ -37,7 +37,7 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: var(--light_pink);
     text-decoration: none;
     cursor: pointer;
 }
@@ -53,10 +53,10 @@
     height: 60px;
     cursor: pointer;
     border-radius: 50%;
-    border: 2px solid var(--pink);
+    border: 1px solid var(--olive_green);
     transition: border-color 0.3s ease;
 }
 
 .avatar-option:hover {
-    border-color: #3498db;
+    border-color: 4px solid var(--pink);
 }

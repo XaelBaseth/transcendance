@@ -269,7 +269,7 @@ export function TextCardSettings({ property }: { property: string }) {
                     onChange={handleChange}
                 />
             </div>
-            <div className="button_user">
+            <div>
                 <button className="button_user" onClick={handleUpdate}>
                     Update
                 </button>
@@ -285,6 +285,7 @@ export function PasswordCardSettings() {
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [errorMsg, setErrorMsg] = useState<string>("");
     const [passwordChanged, setPasswordChanged] = useState<boolean>(false);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
@@ -327,19 +328,22 @@ export function PasswordCardSettings() {
             <div className="input_user">
                 <input
                     className="password_input"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'} // Afficher ou cacher le mot de passe
                     placeholder="Enter new password"
                     onChange={handlePasswordChange}
                 />
                 <input
                     className="password_input"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'} // Afficher ou cacher le mot de passe
                     placeholder="Confirm new password"
                     onChange={handleConfirmPasswordChange}
                 />
+                <button className="show-password" onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? 'Hide' : 'Show'}
+                </button>
             </div>
-            <div className="button_user">
-                <button className="button_user" onClick={handleUpdate}>
+            <div>
+                <button className="button_password" onClick={handleUpdate}>
                     Update Password
                 </button>
             </div>

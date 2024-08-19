@@ -70,7 +70,7 @@ body {
 	gap: 10px;
 }
 
-.button-start {
+.button_start {
 	padding: 5px 10px;
 	font-size: 25px;
 	cursor: pointer;
@@ -82,7 +82,7 @@ body {
 	color: var(--pink);
 }
 
-.button-start:hover 
+.button_start:hover 
 {
 	background-color: var(--light_teal);
 	border: 4px solid var(--pink);
@@ -111,11 +111,11 @@ body {
 }
 
 .score-text {
-    font-size: 20px;
+    font-size: 24px;
     color: var(--pink);
     font-weight: bold;
     text-align: center;
-	background-color: var(--clear_yellow);
+	background-color: var(--linen);
 	width: 350px;
 	border: 5px solid var(--light_teal);
 	border-radius: 100px;
