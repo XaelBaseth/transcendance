@@ -2,10 +2,8 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
-//import '../assets';
 import { useTranslation } from 'react-i18next';
-import api from "../api"
-import '../styles/Setting.css'
+import '../styles/Setting.css';
 
 const getCookie = (name: string) => {
     const cookieValue = document.cookie
@@ -18,7 +16,9 @@ const getCookie = (name: string) => {
 
 const Settings: React.FC = () => {
     const { t } = useTranslation();
-	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
+    const [currentSection, setCurrentSection] = useState('USER');
+
+	// const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
 
 	const handleSectionChange = (section) => {
 		setCurrentSection(section);
@@ -43,7 +43,6 @@ const Settings: React.FC = () => {
 		</div>
 	);
 }
-export default Settings;
 
 
 function PrivacySettings() {
@@ -67,23 +66,21 @@ function AccessibilitySettings() {
 export function DeleteAccountCardSettings() {
 	const { t } = useTranslation();
 	const [isDeleted, setDeleted] = useState<boolean>(false);
-	
 
-    // const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
-    //     e.preventDefault();
-    //     // Appel API pour supprimer le compte utilisateur
-    //     api.post('/api/user/delete', {}, {
-    //         headers: {
-    //             'Authorization': `Token ${user.token}`
-    //         }
-    //     }).then(() => {
-    //         setDeleted(true);
-    //     }).catch((error) => {
-    //         console.error('Error deleting account:', error);
-    //     });
-    // };
+    const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        // Appel API pour supprimer le compte utilisateur
+        api.post('/api/user/delete', {}, {
+            headers: {
+                'Authorization': `Token ${user.token}`
+            }
+        }).then(() => {
+            setDeleted(true);
+        }).catch((error) => {
+            console.error('Error deleting account:', error);
+        });
+    };
 
-	const navigate = useNavigate();
     useEffect(() => {
         if (isDeleted) {
             setTimeout(() => {
@@ -96,7 +93,7 @@ export function DeleteAccountCardSettings() {
         <div className="delete_settings">
             <h2 className="delete_settings__title">{t('settings.delete')}</h2>
             <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
-            <button className="delete_settings__btn"> {/** Add the actual delete button */}
+            <button className="delete_settings__btn" onClick={handleDelete}>
                 {t('settings.delete')}
                 <span>{t('settings.deleteYourAccount')}</span>
             </button>
@@ -175,3 +172,4 @@ export function CookieSettings() {
 		</div>
 	  );
 }
+export default Settings;
