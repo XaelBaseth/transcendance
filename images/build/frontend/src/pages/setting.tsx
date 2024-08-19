@@ -2,12 +2,11 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
-//import '../assets';
 import { useTranslation } from 'react-i18next';
 import frenchFlag from '../assets/fr.png'
 import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
-
+import validator from 'validator';
 import '../styles/Setting.css'
 
 function LanguageSwitcher() {
@@ -38,7 +37,6 @@ function LanguageSwitcher() {
         </div>
     );
 }
-
 
 function ColorBlindSwitcher() {
     const [isColorBlind, setIsColorBlind] = useState(false);
@@ -84,44 +82,13 @@ function ColorBlindSwitcher() {
 
 const Settings: React.FC = () => {
     const { t } = useTranslation();
-	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
+	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY');
 
-	const handleSectionChange = (section) => {
+	const handleSectionChange = (section: string) => {
 		setCurrentSection(section);
 	};
 
 	return (
-		<div className='settings__flex'>
-			<div className='settings'>
-				<h1>{t('settings.settings')}</h1>
-				<img src="" alt="" />
-				<div className='settings__container'>
-					<div className="navigation">
-						<button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
-						<button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
-					</div>
-					<div className="settings_grid">
-						{currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
-						{currentSection === 'PRIVACY' && <PrivacySettings />} 
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-}
-export default Settings;
-
-/*
-export default function Settings() {
-    const { t } = useTranslation();
-    const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
-    const navigate = useNavigate();
-
-    const handleSectionChange = (section: string) => {
-        setCurrentSection(section);
-    };
-
-    return (
         <div className='settings__flex'>
             <div className='settings'>
                 <h1>{t('settings.settings')}</h1>
@@ -130,16 +97,20 @@ export default function Settings() {
                     <div className="navigation">
                         <button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
                         <button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
+                        <button className={currentSection === 'USER' ? 'active' : ''} onClick={() => handleSectionChange('USER')}>{t('settings.user')}</button>
                     </div>
                     <div className="settings_grid">
                         {currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
-                        {currentSection === 'PRIVACY' && <PrivacySettings />} 
+                        {currentSection === 'PRIVACY' && <PrivacySettings />}
+                        {currentSection === 'USER' && <UserSettings />}
                     </div>
                 </div>
             </div>
         </div>
     );
-}*/
+};
+
+export default Settings;
 
 function PrivacySettings() {
     return (
@@ -159,26 +130,22 @@ function AccessibilitySettings() {
     );
 }
 
+function UserSettings() {
+    return (
+        <div className="user_settings">
+            <PasswordCardSettings />
+            <TextCardSettings property="bio" />
+            <TextCardSettings property="username" />
+            <TextCardSettings property="email" />
+        </div>
+    );
+}
+
 export function DeleteAccountCardSettings() {
 	const { t } = useTranslation();
 	const [isDeleted, setDeleted] = useState<boolean>(false);
-	
-
-    // const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
-    //     e.preventDefault();
-    //     // Appel API pour supprimer le compte utilisateur
-    //     api.post('/api/user/delete', {}, {
-    //         headers: {
-    //             'Authorization': `Token ${user.token}`
-    //         }
-    //     }).then(() => {
-    //         setDeleted(true);
-    //     }).catch((error) => {
-    //         console.error('Error deleting account:', error);
-    //     });
-    // };
-
 	const navigate = useNavigate();
+
     useEffect(() => {
         if (isDeleted) {
             setTimeout(() => {
@@ -191,7 +158,7 @@ export function DeleteAccountCardSettings() {
         <div className="delete_settings">
             <h2 className="delete_settings__title">{t('settings.delete')}</h2>
             <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
-            <button className="delete_settings__btn" onClick={handleDelete}>
+            <button className="delete_settings__btn">
                 Delete
                 <span>Delete your account</span>
             </button>
@@ -256,6 +223,128 @@ export function CookieSettings() {
                     <p>{t('cookie.contact_text')}</p>
                 </section>
             </div>
+        </div>
+    );
+}
+
+export function TextCardSettings({ property }: { property: string }) {
+    const [userInput, setUserInput] = useState<string>("");
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [propertyChanged, setPropertyChange] = useState<boolean>(false);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUserInput(event.target.value);
+    };
+
+    const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        if (validator.isEmpty(userInput)) {
+            setErrorMsg('Field is empty');
+            return;
+        }
+
+        if (property === 'email' && !validator.isEmail(userInput)) {
+            setErrorMsg('Invalid email');
+            return;
+        }
+
+        // Simulating an API call with setTimeout
+        setTimeout(() => {
+            console.log(`Property: ${property}, New Value: ${userInput}`);
+            setPropertyChange(true);
+            setErrorMsg('');
+        }, 1000);
+    };
+
+    return (
+        <div className={`text_settings ${property === 'password' ? 'independent_password' : ''}`}>
+            <div className="title_user">
+                <h2>{`Update ${property}`}</h2>
+            </div>
+            <div className="input_user">
+                <input
+                    className="text_input"
+                    type="text"
+                    placeholder={`Enter new ${property}`}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="button_user">
+                <button className="button_user" onClick={handleUpdate}>
+                    Update
+                </button>
+            </div>
+            {errorMsg && <div className="error_msg">{errorMsg}</div>}
+            {propertyChanged && <div className="success_msg">{`${property} updated successfully!`}</div>}
+        </div>
+    );
+};
+
+export function PasswordCardSettings() {
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const [passwordChanged, setPasswordChanged] = useState<boolean>(false);
+
+    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value);
+    };
+
+    const handleConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(event.target.value);
+    };
+
+    const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
+        event.preventDefault();
+        if (validator.isEmpty(password) || validator.isEmpty(confirmPassword)) {
+            setErrorMsg('Both fields are required');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setErrorMsg('Passwords do not match');
+            return;
+        }
+
+        if (!validator.isStrongPassword(password)) {
+            setErrorMsg('Password is not strong enough');
+            return;
+        }
+
+        // Simulating an API call with setTimeout
+        setTimeout(() => {
+            console.log(`Password changed to: ${password}`);
+            setPasswordChanged(true);
+            setErrorMsg('');
+        }, 1000);
+    };
+
+    return (
+        <div className="independent_password">
+            <div className="title_user">
+                <h2>Update Password</h2>
+            </div>
+            <div className="input_user">
+                <input
+                    className="password_input"
+                    type="password"
+                    placeholder="Enter new password"
+                    onChange={handlePasswordChange}
+                />
+                <input
+                    className="password_input"
+                    type="password"
+                    placeholder="Confirm new password"
+                    onChange={handleConfirmPasswordChange}
+                />
+            </div>
+            <div className="button_user">
+                <button className="button_user" onClick={handleUpdate}>
+                    Update Password
+                </button>
+            </div>
+            {errorMsg && <div className="error_msg">{errorMsg}</div>}
+            {passwordChanged && <div className="success_msg">Password updated successfully!</div>}
         </div>
     );
 }

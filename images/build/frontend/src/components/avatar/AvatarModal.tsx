@@ -23,7 +23,9 @@ export default function AvatarModal({ show, onClose, onSelect }: AvatarModalProp
         <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={onClose}>&times;</span>
-                <h2>Choose your avatar</h2>
+                <div className="avatar-text">
+                    <h2>Choose your avatar</h2>
+                </div>
                 <div className="avatar-options">
                     {avatars.map((avatar, index) => (
                         <img

@@ -69,7 +69,7 @@
 	margin: 10px auto;
 	transition : color 0s;
 	width: auto;
-	border: 6px solid var(--light_teal);
+	border: 4px solid var(--light_teal);
 	padding: 15px;
 }
 
