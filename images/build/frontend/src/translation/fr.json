@@ -3,67 +3,68 @@
 		"play":" APPUYEZ POUR JOUER " 
 	},
 	"navbar":{
-		"about":"A propos",
-		"logout":"Se Deconnecter",
-		"settings":"Reglages",
+
+		"about":"À propos",
+		"logout":"Déconnexion",
+		"settings":"Réglages",
 		"local":"Local",
 		"network":"En Ligne",
-		"tournament":"Tournois"
+		"tournament":"Tournois",
+		"profile":"Profil",
+		"social":"Social"
 	},
 	"error":{
-		"error":"Erreur"
+		"title":"Erreur"
 	},
 	"gamepage":{
-		"pongLower":"Utilisez les fleches haut et bas du clavier pour jouer !",
+		"pongLower":"Utilisez les flèches haut et bas du clavier pour jouer !",
 		"tournamentLower":"Participez a un tournoi pour savoir qui est le meilleur (c'est vous!) !",
 		"pong":"MODE PONG",
 		"tournament":"MODE TOURNOI"
 	},
 	"login":{
-		"username":"Nom d'utilisateur",
+		"email":"Adresse électronique",
 		"password":"Mot de passe",
 		"login":"Se Connecter",
 		"signup":"S'enregistrer",
-		"successMsg":"Connecte avec succes",
+		"successMsg":"connecté avec succes",
 		"errorMsg":"Nom d'utilisateur ou mot de passe invalide",
 		"unknownMsg":"Une erreur s'est produite.",
 		"notEmpty":"Veuillez entrer un nom d'utilisateur et un mot de passe",
 		"notExistingMsg":"L'utilisateur n'existe pas: merci de vous enregistrer avant de vous connecter"
 	},
 	"signup":{
-		"email":"Email",
+		"email":"Adresse électronique",
 		"username":"Nom d'utilisateur",
 		"password":"Mot de passe",
-		"successMsg":"Enregistre avec succes!",
+		"successMsg":"Enregistré avec succes!",
 		"confirmPassword":"Confirmer le mot de passe",
-		"errorMsg":"Error lors de l'enregistrement.",
-		"alreadyMsg":"Un utilisateur avec ce pseudo existe deja",
-		"passwordMatch":"Le mot de passe est erronne",
+		"errorMsg":"Erreur lors de l'enregistrement.",
+		"alreadyMsg":"Un utilisateur avec ce nom d'utilisateur existe deja",
+		"passwordMatch":"Le mot de passe est erroné",
 		"unknownMsg":"Une erreur s'est produite."
 	},
 	"settings":{
-		"settings":"Parametre",
-		"privacy":"Vie privee et securite",
-		"accessibility":"Accessibilite",
-		"irreversible":"Attention, cette action est irreversible",
+		"Choose your language":"Choix de langue",
+		"settings":"Paramètres",
+		"privacy":"Vie privée et sécurité",
+		"accessibility":"Accessibilité",
+		"irreversible":"Attention, cette action est irréversible",
 		"delete":"Voulez-vous supprimer votre compte ?",
 		"deleteSuccess":"Votre compte a ete supprimer",
 		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes..."
 	},
 	"pong":{
-		"pongHome":"Pong Maison",
-		"joinRoom":"Rejoindre une Salle",
-		"createRoom":"Creer une Salle",
-		"enterCode":"Entrer un numero de Salle:",
-		"join":"Rejoindre",
-		"back":"Retour",
-		"numberPlayers":"Choisissez le nombre de joueurs",
-		"create":"Creer",
-		"limitPlayer":"Limite de joueurs",
-		"roomCode":"Code de la salle"
+		"pongHome":"Pong",
+		"pongTwoPlayer":"2 joueurs",
+		"pongFourPlayer":"4 joueurs",
+		"waiting":"En attente de joueurs",
+		"playercounter":"Joueurs dans la file: ",
+		"quit":"Retour"
 	},
 	"cookie":{
 		"banner":"En continuant à naviguer sur ce site, vous acceptez que nous utilisions des cookies pour le bon fonctionnement du site. Nous n'utilisons pas de cookies à des fins de suivi ou de publicité.",
+		"span":"Vous pouvez en apprendre plus dans nos",
 		"policy":"Politique des cookies",
 		"introduction":"Introduction",
 		"intro_text":"Notre site web (ci-après : \"le site web\") utilise des cookies et d'autres technologies connexes (par commodité, toutes les technologies sont désignées par le terme \"cookies\"). Des cookies sont également placés par des tiers que nous avons engagés. Dans le document ci-dessous, nous vous informons sur l'utilisation des cookies sur notre site web.",

@@ -8,7 +8,7 @@ const LocalPongGame = () => {
 	const MAP_WIDTH = 600
 	const BALL_DIAMETER = 20
 	const PADDLE_HEIGHT = 100
-	const PADDLE_WIDTH = 20
+	const PADDLE_WIDTH = 21
 	const WIN_SCORE = 3
 	const initialBallState = { x: MAP_WIDTH / 2 - BALL_DIAMETER / 2, y: MAP_HEIGHT / 2 - BALL_DIAMETER / 2, x_direction: Math.random() < 0.5 ? 1 : -1, y_direction: Math.random() < 0.5 ? 1 : -1, last_collision: "" };
 	const initialPaddleState = { left: (MAP_HEIGHT - PADDLE_HEIGHT) / 2, right: (MAP_HEIGHT - PADDLE_HEIGHT) / 2 };
@@ -97,13 +97,13 @@ const LocalPongGame = () => {
 				if (ball.x <= PADDLE_WIDTH &&
 					ball.x >= 0 &&
 					ball.y <= paddles.left + PADDLE_HEIGHT &&
-					ball.y >= paddles.left && ball.last_collision !== "left") {
+					ball.y + BALL_DIAMETER >= paddles.left && ball.last_collision !== "left") {
 					setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "left" }));
 				}
 				else if (ball.x >= MAP_WIDTH - PADDLE_WIDTH - BALL_DIAMETER &&
 					ball.x < MAP_WIDTH - PADDLE_WIDTH  &&
 					ball.y <= paddles.right + PADDLE_HEIGHT &&
-					ball.y >= paddles.right && ball.last_collision !== "right") {
+					ball.y + BALL_DIAMETER >= paddles.right && ball.last_collision !== "right") {
 					setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "right" }));
 				}
 				// Check for collisions with top and bottom walls
@@ -159,39 +159,64 @@ const LocalPongGame = () => {
 		setGameRunning(!gameRunning);
 	};
 
-	return (<>
-		<div className="controls">
-			{!gameRunning && !gameOver && <button onClick={pauseGame}>Start</button>}
-			{gameRunning && <button onClick={pauseGame}>Pause</button>}
-			{gameOver && <button onClick={restartGame}>Play Again</button>}
-			
-		</div>
-		<div className="controls">
-			<p>Score : left : {score.left} right : {score.right}</p>
-		</div>
-		<div className="ping-pong-container" tabIndex={0} style={{width: MAP_WIDTH, height: MAP_HEIGHT}}>
-			<div
-				className={`paddle ${gameRunning ? '' : 'paused'}`}
-				id="paddle-left"
-				style={{ top: `${paddles.left}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
-			/>
-			<div
-				className={`paddle ${gameRunning ? '' : 'paused'}`}
-				id="paddle-right"
-				style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH-PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
-			/>
-			<div
-				className={`ball ${gameRunning ? '' : 'paused'}`}
-				ref={ballRef}
-				style={{ top: `${ball.y}px`, left: `${ball.x}px`,
-				width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
-				transition: `top ${1/TPS}s, left ${1/TPS}s`,
-				transitionTimingFunction: 'linear' }} 
-			/>
-			{gameOver && <div className="game-win" style={{ left: `${score.left >= WIN_SCORE ? 0 : MAP_WIDTH / 2 }px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>You win !</div>}
-			{gameOver && <div className="game-loose" style={{ left: `${score.left >= WIN_SCORE ? MAP_WIDTH / 2 : 0 }px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>Game Over</div>}
-		</div>
-	</>
+	return (
+		<>
+			<div className="controls">
+				{!gameRunning && !gameOver && <button className="button_start" onClick={pauseGame}>Start</button>}
+				{gameRunning && <button className="button_start" onClick={pauseGame}>Pause</button>}
+				{gameOver && <button className="button_start" onClick={restartGame}>Play Again</button>}
+			</div>
+			<div className="controls score-text">
+   				<p>{score.left}   -   {score.right}</p>
+			</div>
+			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+				<div
+					className={`paddle paddle-left ${gameRunning ? '' : 'paused'}`}
+					style={{ top: `${paddles.left}px` }}
+				/>
+				<div
+					className={`paddle paddle-right ${gameRunning ? '' : 'paused'}`}
+					style={{ top: `${paddles.right}px` }}
+				/>
+				<div
+					className={`ball ${gameRunning ? '' : 'paused'}`}
+					ref={ballRef}
+					style={{
+						top: `${ball.y}px`,
+						left: `${ball.x}px`,
+						width: `${BALL_DIAMETER}px`,
+						height: `${BALL_DIAMETER}px`,
+						transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
+						transitionTimingFunction: 'linear',
+					}}
+				/>
+				{gameOver && (
+					<div
+						className="game-win"
+						style={{
+							left: `${score.left >= WIN_SCORE ? 0 : MAP_WIDTH / 2}px`,
+							width: MAP_WIDTH / 2,
+							height: MAP_HEIGHT,
+						}}
+					>
+						You win!
+					</div>
+				)}
+				{gameOver && (
+					<div
+						className="game-loose"
+						style={{
+							left: `${score.left >= WIN_SCORE ? MAP_WIDTH / 2 : 0}px`,
+							width: MAP_WIDTH / 2,
+							height: MAP_HEIGHT,
+						}}
+					>
+						Game Over
+					</div>
+				)}
+			</div>
+		</>
 	);
 };
+
 export default LocalPongGame;

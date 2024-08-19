@@ -4,24 +4,25 @@
 	},
 	"navbar":{
 		"about":"A propósito",
-		"logout":"Desconectar",
+		"logout":"desconexión",
 		"settings":"Configuración",
 		"local":"Local",
 		"network":"En línea",
-		"tournament":"Torneo"
+		"tournament":"Torneo",
+		"profile":"Perfil",
+		"social":"Social"
 	},
 	"error":{
-		"error":"Error"
+		"title":"Error"
 	},
 	"gamepage":{
 		"pongLower":"Utiliza las flechas de arriba y abajo para jugar !",
 		"tournamentLower":"Participa en un torneo para saber quién es el mejor (¡eres tú!) !",
 		"pong":"MODO PONG",
-		"otherGame":"MODO OTRO JUEGO",
 		"tournament":"MODO TORNEO"
 	},
 	"login":{
-		"username":"Nombre de usuario",
+		"email":"Correo electronico",
 		"password":"Contraseña",
 		"login":"Conectar",
 		"signup":"Regístrate",
@@ -44,6 +45,7 @@
 	},
 	"settings":{
 		"settings":"Parámetros",
+		"Choose your language":"Elige tu idioma",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
 		"irreversible":"Cuidado, esta acción es irreversible",
@@ -53,18 +55,15 @@
 	},
 	"pong":{
 		"pongHome":"Casa de Pong",
-		"joinRoom":"Incorporarse a una sala",
-		"createRoom":"Crear una sala",
-		"enterCode":"Entra un numero de sala:",
-		"join":"Incorporarse",
-		"back":"Regresar",
-		"numberPlayers":"Elije el numero de jugadores",
-		"create":"Crear",
-		"limitPlayer":"Limite de jugadores",
-		"roomCode":"Codigo de la sala"
+		"pongTwoPlayer":"2 jugadores",
+		"pongFourPlayer":"4 jugadores",
+		"waiting":"A la espera de un jugador",
+		"playercounter":"Jugador en espera: ",
+		"quit":"Regresar"
 	},
 	"cookie":{
 		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",
+		"span":"Puede obtener más información en nuestra",
 		"policy":"Política de cookies",
 		"introduction":"Introducción",
 		"intro_text":"Nuestro sitio web (en lo sucesivo, \"el sitio web\") utiliza cookies y otras tecnologías relacionadas (por comodidad, todas las tecnologías se denominan \"cookies\"). También colocan cookies terceros contratados por nosotros. En el documento que figura a continuación, le informamos sobre el uso de cookies en nuestro sitio web.",

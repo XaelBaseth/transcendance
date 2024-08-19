@@ -4,15 +4,15 @@ import '../styles/Error.css'
 
 const ErrorPage = () => {
 	const { t } = useTranslation();
-
+  
 	return (
-		<div className="Error">
-			<div className="background" />
-			<form className="connection-error-form">
-				<h1>{t('error.error')}</h1>
-			</form>
-		</div>
+	  <div className="Error">
+		<div className="background" />
+		<form className="connection-error-form">
+		  <label>{t('error.title')}</label>
+		</form>
+	  </div>
 	);
-};
-
-export default ErrorPage;
+  };
+  
+  export default ErrorPage;

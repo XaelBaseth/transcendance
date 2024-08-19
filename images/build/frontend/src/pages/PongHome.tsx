@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { ACCESS_TOKEN } from '../constants';
 
 const PongHomePage = () => {
 	const { t } = useTranslation();
@@ -9,26 +10,18 @@ const PongHomePage = () => {
 	const socketRef = useRef<WebSocket | null>(null);
 
 	useEffect(() => {
-		return () => {
-			if (socketRef.current) {
-                socketRef.current.close();
-                console.log('WebSocket connection closed');
-            };
-		};
-	}, []);
-
-	const joinMatchMaking = async (player_limit: number) => {
 		try {
 			const hostname = window.location.hostname;
 			const port = window.location.port;
 
 			if (!socketRef.current || socketRef.current.readyState === WebSocket.CLOSED) {
-				socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/matchmaking/');
+				const token = localStorage.getItem(ACCESS_TOKEN);
+				socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/matchmaking/' + '?token=' + token);
 			}
 
 			socketRef.current.onopen = () => {
 				if (socketRef.current) {
-					socketRef.current.send(JSON.stringify({ type: player_limit === 2 ? 'queue_duel' : 'queue_quarrel' }));
+					socketRef.current.send(JSON.stringify({ type: 'check_game'  }));
 				}
 			};
 
@@ -39,7 +32,8 @@ const PongHomePage = () => {
 					if (data.type === 'queue') {
 						setInQueue(data.in_queue);
 					} else if (data.type === 'join_game') {
-						const params = new URLSearchParams({ player_limit: player_limit.toString()}).toString();
+						const game_player_limit = data.player_limit;
+						const params = new URLSearchParams({ player_limit: game_player_limit.toString()}).toString();
 						navigate(`/pong/${data.code}?${params}`);
 					}
 				};
@@ -52,14 +46,25 @@ const PongHomePage = () => {
 		catch (error) {
 			console.error("Error during websocket creation:", error);
 		}
+
+		return () => {
+			if (socketRef.current) {
+                socketRef.current.close();
+                console.log('WebSocket connection closed');
+            };
+		};
+	}, []);
+
+	const joinMatchMaking = async (player_limit: number) => {
+		if (socketRef.current) {
+			socketRef.current.send(JSON.stringify({ type: player_limit === 2 ? 'queue_duel' : 'queue_quarrel' }));
+		}
 	}
 
 	const leaveMatchMaking = () => {
 		try {
 			if (socketRef.current) {
 				socketRef.current.send(JSON.stringify({ type: 'leave_queue' }));
-				socketRef.current.close();
-				socketRef.current = null;
 			}
 			setInQueue("0");
 		}
@@ -73,19 +78,19 @@ const PongHomePage = () => {
 			{
 				inQueue !== "0" && 
 				<div>
-					<h3>Waiting for other players...</h3>
-					<h3>Players in queue: {inQueue}</h3>
-					<button onClick={leaveMatchMaking}>Leave</button>
+					<h3>{t('pong.waiting')}</h3>
+					<h3>{t('pong.playercounter')} {inQueue}</h3>
+					<button onClick={leaveMatchMaking}>{t('pong.quit')}</button>
 				</div>
 			}
 			{
 				inQueue === "0" && 
 				<div>
-					<h1>{t('pong.pongHome')}</h1>
+					<h1> classname="home-text"{t('pong.pongHome')}</h1>
 					<br /> <br />
-					<button onClick={()=> joinMatchMaking(2)}>2 Players Pong</button>
+					<button onClick={()=> joinMatchMaking(2)}>{t('pong.pongTwoPlayer')}</button>
 					<br /> <br />
-					<button onClick={()=> joinMatchMaking(4)}>4 Players Pong</button>
+					<button onClick={()=> joinMatchMaking(4)}>{t('pong.pongFourPlayer')}</button>
 				</div>
 
 			}

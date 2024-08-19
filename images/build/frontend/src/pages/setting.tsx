@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
 //import '../assets';
+//import '../assets';
 import { useTranslation } from 'react-i18next';
+import frenchFlag from '../assets/fr.png'
+import spanishFlag from '../assets/es.png'
+import ukFlag from '../assets/uk.png'
 import frenchFlag from '../assets/fr.png'
 import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
@@ -148,9 +152,21 @@ function PrivacySettings() {
             <DeleteAccountCardSettings />
         </div>
     );
+    return (
+        <div className="privacy_settings">
+            <CookieSettings />
+            <DeleteAccountCardSettings />
+        </div>
+    );
 }
 
 function AccessibilitySettings() {
+    return (
+        <div className="accessibility_settings">
+            <LanguageSwitcher />
+            <ColorBlindSwitcher />
+        </div>
+    );
     return (
         <div className="accessibility_settings">
             <LanguageSwitcher />
@@ -177,8 +193,30 @@ export function DeleteAccountCardSettings() {
     //         console.error('Error deleting account:', error);
     //     });
     // };
+	
+
+    // const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
+    //     e.preventDefault();
+    //     // Appel API pour supprimer le compte utilisateur
+    //     api.post('/api/user/delete', {}, {
+    //         headers: {
+    //             'Authorization': `Token ${user.token}`
+    //         }
+    //     }).then(() => {
+    //         setDeleted(true);
+    //     }).catch((error) => {
+    //         console.error('Error deleting account:', error);
+    //     });
+    // };
 
 	const navigate = useNavigate();
+    useEffect(() => {
+        if (isDeleted) {
+            setTimeout(() => {
+                navigate('/login');
+            }, 3000);
+        }
+    }, [isDeleted, navigate]);
     useEffect(() => {
         if (isDeleted) {
             setTimeout(() => {
@@ -204,10 +242,78 @@ export function DeleteAccountCardSettings() {
         </div>
     );
 };
+    return (
+        <div className="delete_settings">
+            <h2 className="delete_settings__title">{t('settings.delete')}</h2>
+            <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
+            <button className="delete_settings__btn" onClick={handleDelete}>
+                Delete
+                <span>Delete your account</span>
+            </button>
+            {isDeleted && (
+                <div className="delete_settings__alert">
+                    <h5>{t('settings.deleteSuccess')}</h5>
+                    <h6>{t('settings.redirection')}</h6>
+                </div>
+            )}
+        </div>
+    );
+};
 
 export function CookieSettings() {
     const { t } = useTranslation();
+    const { t } = useTranslation();
 
+    return (
+        <div className="cookie-settings">
+            <div className="cookie-content">
+                <h3>{t('cookie.policy')}</h3>
+                <section>
+                    <h4>{t('cookie.introduction')}</h4>
+                    <p>{t('cookie.intro_text')}</p>
+                </section>
+
+                <section>
+                    <h4>{t('cookie.cookie_title')}</h4>
+                    <p>{t('cookie.cookie_text')}</p>
+                </section>
+
+                <section>
+                    <h3>{t('cookie.type_title')}</h3>
+                    <p>{t('cookie.type_text')}</p>
+                </section>
+
+                <section>
+                    <h3>{t('cookie.use_title')}</h3>
+                    <p>{t('cookie.type_text')}</p>
+                    <h5>{t('cookie.manage_title')}</h5>
+                    <p>{t('cookie.manage_text')}</p>
+                </section>
+
+                <section>
+                    <h5>{t('cookie.rights_title')}</h5>
+                    <ul>
+                        <li>{t('cookie.rights_1')}</li>
+                        <li>{t('cookie.rights_2')}</li>
+                        <li>{t('cookie.rights_3')}</li>
+                        <li>{t('cookie.rights_4')}</li>
+                        <li>{t('cookie.rights_5')}</li>
+                    </ul>
+                    <p>{t('cookie.rights_text')}</p>
+                </section>
+
+                <section>
+                    <h5>{t('cookie.contact_title')}</h5>
+                    <ul>
+                        <li>{t('cookie.contact_adress')}</li>
+                        <li>{t('cookie.contact_email')}</li>
+                        <li>{t('cookie.contact_adress')}</li>
+                    </ul>
+                    <p>{t('cookie.contact_text')}</p>
+                </section>
+            </div>
+        </div>
+    );
     return (
         <div className="cookie-settings">
             <div className="cookie-content">

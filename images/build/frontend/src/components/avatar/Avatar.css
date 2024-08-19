@@ -3,7 +3,10 @@
   }
 
 #nav--avatar {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  top: 55px;
+  position: absolute;
+  left: -45%;
   }
