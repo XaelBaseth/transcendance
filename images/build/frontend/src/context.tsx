@@ -13,7 +13,7 @@ export const useAuth = () => {
 	if (!context) {
 		throw new Error('useAuth must be used within an AuthProvider');
 	}
-		return context;
+	return context;
 };
 
 export const AuthProvider: React.FC = ({ children }) => {
@@ -24,48 +24,49 @@ export const AuthProvider: React.FC = ({ children }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	//check if the user already has a JWT to stay connected.
+	// Check if the user already has a JWT to stay connected.
 	useEffect(() => {
 		const token = localStorage.getItem(ACCESS_TOKEN);
 		if (token) {
-			const decodedToken = jwtDecode(token);
-			setUser({ ...decodedToken.data });
+			const decodedToken = jwtDecode(token) as User;
+			setUser({ ...decodedToken });
 		}
 	}, []);
 
-	//clear the message for login and signup.
+	// Clear the message for login and signup.
 	useEffect(() => {
-		if (location.pathname === '/login' || location.pathname === '/signup'){
+		if (location.pathname === '/login' || location.pathname === '/signup') {
 			setErrorMsg("");
 			setSuccessMsg("");
 		}
 	}, [location]);
 
-	//login
-	const login = async (username: string, password: string) => {
-		if (username === "" || password === "") {
+	// Login
+	const login = async (email: string, password: string) => {
+		if (email === "" || password === "") {
 			setErrorMsg(t('login.notEmpty'));
 			return;
 		}
 		try {
-			const res = await api.post("/api/token/", {username, password});
+			const res = await api.post("/api/token/", { email, password });
 			if (res.status >= 200 && res.status < 300) {
-				setUser({...res.data });
-				setSuccessMsg(t('login.successMsg'))
+				const decodedToken = jwtDecode(res.data.access) as User;
+				setUser({ ...decodedToken });
+				setSuccessMsg(t('login.successMsg'));
 				localStorage.setItem(ACCESS_TOKEN, res.data.access);
 				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-				navigate("/");	
-			} else {	
+				navigate("/");
+			} else {
 				setErrorMsg(t('login.errorMsg'));
-			}	
-		} catch (error) {	
+			}
+		} catch (error) {
 			console.error(error);
-			setErrorMsg(t('login.unknownMsg'))
+			setErrorMsg(t('login.unknownMsg'));
 		}
 	};
 
-	//signUp
-	const signup = async (email: string, username: string, password: string, confirmPassword: string)  => {
+	// Sign up
+	const signup = async (email: string, username: string, password: string, confirmPassword: string) => {
 		if (password !== confirmPassword) {
 			setErrorMsg(t('signup.passwordMatch'));
 			return;
@@ -84,24 +85,46 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	};
 
-	//logout
+	// Logout
 	const logout = () => {
 		localStorage.removeItem(ACCESS_TOKEN);
 		localStorage.removeItem(REFRESH_TOKEN);
-
 		setUser(null);
 		navigate('/login');
 	};
 
-	const value = {	
-	user,	
-	setUser,
-	successMsg,
-	errorMsg,	
-	login,
-	signup,
-	logout,
+	// Update profile
+	const updateProfile = async (username: string, email: string, currentPassword: string, newPassword: string, confirmNewPassword: string) => {
+		if (newPassword !== confirmNewPassword) {
+			setErrorMsg(t('updateProfile.passwordMatch'));
+			return;
+		}
+		try {
+			const res = await api.post("/api/user/update", { username, email, currentPassword, newPassword });
+			if (res.status >= 200 && res.status < 300) {
+				const updatedUser = { ...user, username, email } as User;
+				setUser(updatedUser);
+				setSuccessMsg(t('updateProfile.successMsg'));
+				setErrorMsg("");
+			} else {
+				setErrorMsg(t('updateProfile.errorMsg'));
+			}
+		} catch (error) {
+			console.error("Error updating profile:", error);
+			setErrorMsg(t('updateProfile.unknownMsg'));
+		}
 	};
+
+	const value = {
+		user,
+		setUser,
+		successMsg,
+		errorMsg,
+		login,
+		signup,
+		logout,
+	};
+
 	return (
 		<AuthContext.Provider value={value}>
 			{children}

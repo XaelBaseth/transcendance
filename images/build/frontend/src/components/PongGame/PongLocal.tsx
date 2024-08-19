@@ -97,13 +97,13 @@ const LocalPongGame = () => {
 				if (ball.x <= PADDLE_WIDTH &&
 					ball.x >= 0 &&
 					ball.y <= paddles.left + PADDLE_HEIGHT &&
-					ball.y >= paddles.left && ball.last_collision !== "left") {
+					ball.y + BALL_DIAMETER >= paddles.left && ball.last_collision !== "left") {
 					setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "left" }));
 				}
 				else if (ball.x >= MAP_WIDTH - PADDLE_WIDTH - BALL_DIAMETER &&
 					ball.x < MAP_WIDTH - PADDLE_WIDTH  &&
 					ball.y <= paddles.right + PADDLE_HEIGHT &&
-					ball.y >= paddles.right && ball.last_collision !== "right") {
+					ball.y + BALL_DIAMETER >= paddles.right && ball.last_collision !== "right") {
 					setBall((prevBall) => ({ ...prevBall, x_direction: -prevBall.x_direction, last_collision: "right" }));
 				}
 				// Check for collisions with top and bottom walls

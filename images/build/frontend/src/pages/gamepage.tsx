@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import '../styles/Gamepage.css'
 import { useTranslation } from 'react-i18next';
+
+import '../styles/Gamepage.css'
 
 export default function GamePage() {
 	const { t } = useTranslation();

@@ -8,10 +8,12 @@
 		"settings":"Settings",
 		"local":"Local",
 		"network":"Online",
-		"tournament":"Tournament"
+		"tournament":"Tournament",
+		"profile":"Profile",
+		"social":"Social"
 	},
 	"error":{
-		"error":"Error"
+		"title":"Error"
 	},
 	"gamepage":{
 		"pongLower":"Use the up and down arrows of your keyboard to play !",
@@ -21,7 +23,7 @@
 		"tournament":"TOURNAMENT MODE"
 	},
 	"login":{
-		"username":"Username",
+		"email":"Email",
 		"password":"Password",
 		"login":"Log In",
 		"signup":"Sign up",
@@ -55,18 +57,15 @@
 	},
 	"pong":{
 		"pongHome":"Pong Home",
-		"joinRoom":"Join a Room",
-		"createRoom":"Create a Room",
-		"enterCode":"Enter a room code:",
-		"join":"Join",
-		"back":"Back",
-		"numberPlayers":"Set the number of players",
-		"create":"Create",
-		"limitPlayer":"Player limit",
-		"roomCode":"Room code"
+		"pongTwoPlayer":"2 players",
+		"pongFourPlayer":"4 players",
+		"waiting":"Waitings for other players",
+		"playercounter":"PLayers in queue: ",
+		"quit":"Back"
 	},
 	"cookie":{
 		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes.",
+		"span":"You can learn more in our",
 		"policy":"Cookie Policy",
 		"introduction":"Introduction",
 		"intro_text":"Our website (hereinafter: \"the website\") uses cookies and other related technologies (for convenience all technologies are referred to as \"cookies\"). Cookies are also placed by third parties we have engaged. In the document below we inform you about the use of cookies on our website.",

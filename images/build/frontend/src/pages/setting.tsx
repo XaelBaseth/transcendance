@@ -80,7 +80,46 @@ function ColorBlindSwitcher() {
             <span>{isColorBlind ? 'Colorblind Mode: On' : 'Colorblind Mode: Off'}</span>
         </label>
     );
+import api from "../api"
+import '../styles/Setting.css'
+
+const getCookie = (name: string) => {
+    const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith(name + '='))
+        ?.split('=')[1];
+    return cookieValue;
+};
+
+
+const Settings: React.FC = () => {
+    const { t } = useTranslation();
+	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
+
+	const handleSectionChange = (section) => {
+		setCurrentSection(section);
+	};
+
+	return (
+		<div className='settings__flex'>
+			<div className='settings'>
+				<h1>{t('settings.settings')}</h1>
+				<img src="" alt="" />
+				<div className='settings__container'>
+					<div className="navigation">
+						<button className={currentSection === 'ACCESSIBILITY' ? 'active' : ''} onClick={() => handleSectionChange('ACCESSIBILITY')}>{t('settings.accessibility')}</button>
+						<button className={currentSection === 'PRIVACY' ? 'active' : ''} onClick={() => handleSectionChange('PRIVACY')}>{t('settings.privacy')}</button>
+					</div>
+					<div className="settings_grid">
+						{currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
+						{currentSection === 'PRIVACY' && <PrivacySettings />} 
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
+export default Settings;
 
 
 export default function Settings() {
@@ -131,17 +170,27 @@ function AccessibilitySettings() {
 }
 
 export function DeleteAccountCardSettings() {
-    const { t } = useTranslation();
-    const [isDeleted, setDeleted] = useState<boolean>(false);
+	const { t } = useTranslation();
+	const [isDeleted, setDeleted] = useState<boolean>(false);
+	
 
-    const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
-        e.preventDefault();
-        setDeleted(true);
-    };
+    // const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
+    //     e.preventDefault();
+    //     // Appel API pour supprimer le compte utilisateur
+    //     api.post('/api/user/delete', {}, {
+    //         headers: {
+    //             'Authorization': `Token ${user.token}`
+    //         }
+    //     }).then(() => {
+    //         setDeleted(true);
+    //     }).catch((error) => {
+    //         console.error('Error deleting account:', error);
+    //     });
+    // };
 
-    const navigate = useNavigate();
-    React.useEffect(() => {
-        if (isDeleted === true) {
+	const navigate = useNavigate();
+    useEffect(() => {
+        if (isDeleted) {
             setTimeout(() => {
                 navigate('/login');
             }, 3000);
@@ -164,7 +213,7 @@ export function DeleteAccountCardSettings() {
             )}
         </div>
     );
-}
+};
 
 export function CookieSettings() {
     const { t } = useTranslation();
