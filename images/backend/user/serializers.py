@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
-from . models import AppUser
+from .models import AppUser, Friendship, MatchHistory
 
 UserModel = get_user_model()
 
@@ -42,9 +42,23 @@ class UserLoginSerializer(serializers.Serializer):
         return user
     
 class UserSerializer(serializers.ModelSerializer):
-    winRate = serializers.SerializerMethodField()
-    aceRate = serializers.SerializerMethodField()
-    
     class Meta:
         model = AppUser
-        fields = ('user_id', 'email', 'username')
+        fields = ('user_id', 'email', 'username', 'avatar', 'wins', 'losses', 'is_online')
+        read_only_fields = ('user_id', 'email', 'wins', 'losses', 'is_online')
+
+class FriendshipSerializer(serializers.ModelSerializer):
+    friend = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Friendship
+        fields = ('id', 'friend', 'created_at')
+
+class MatchHistorySerializer(serializers.ModelSerializer):
+    player1 = UserSerializer(read_only=True)
+    player2 = UserSerializer(read_only=True)
+    winner = UserSerializer(read_only=True)
+
+    class Meta:
+        model = MatchHistory
+        fields = ('id', 'player1', 'player2', 'winner', 'date', 'score')
