@@ -80,17 +80,7 @@ function ColorBlindSwitcher() {
             <span>{isColorBlind ? 'Colorblind Mode: On' : 'Colorblind Mode: Off'}</span>
         </label>
     );
-import api from "../api"
-import '../styles/Setting.css'
-
-const getCookie = (name: string) => {
-    const cookieValue = document.cookie
-        .split('; ')
-        .find(row => row.startsWith(name + '='))
-        ?.split('=')[1];
-    return cookieValue;
-};
-
+}
 
 const Settings: React.FC = () => {
     const { t } = useTranslation();
@@ -121,7 +111,7 @@ const Settings: React.FC = () => {
 }
 export default Settings;
 
-
+/*
 export default function Settings() {
     const { t } = useTranslation();
     const [currentSection, setCurrentSection] = useState('ACCESSIBILITY'); // Default section is 'USER'
@@ -149,7 +139,7 @@ export default function Settings() {
             </div>
         </div>
     );
-}
+}*/
 
 function PrivacySettings() {
     return (
