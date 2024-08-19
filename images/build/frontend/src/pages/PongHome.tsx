@@ -81,7 +81,7 @@ const PongHomePage = () => {
 			{
 				inQueue === "0" && 
 				<div>
-					<h1>{t('pong.pongHome')}</h1>
+					<h1> classname="home-text"{t('pong.pongHome')}</h1>
 					<br /> <br />
 					<button onClick={()=> joinMatchMaking(2)}>2 Players Pong</button>
 					<br /> <br />

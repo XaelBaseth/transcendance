@@ -45,6 +45,7 @@
 	border-radius: 10px;
 	border: 6px solid var(--olive_green);
 	padding: 30px 30px;
+	overflow: hidden;
 }
 
 .settings > h1 {
@@ -163,7 +164,9 @@
 	color: var(--pink);
 	text-align: start;
 	font-size: 18px;
-	transform: translateY(1100%) translateX(193%);
+	position: absolute;
+  	top: 200%;
+  	left: 60%;
 }
 
 .delete_settings__subtitle {
@@ -171,7 +174,9 @@
 	color: var(--error);
 	font-size: 15px;
 	text-align: left;
-	transform: translateY(1300%) translateX(61%);
+	position: absolute;
+  	top: 220%;
+  	left: 62.5%;
 }
 
 .delete_settings__btn {
@@ -235,7 +240,7 @@
   }
   
   .cookie-content {
-	max-height: 500px; /* Set the height to whatever you prefer */
+	max-height: 430px; /* Set the height to whatever you prefer */
 	overflow-y: auto; /* Enable vertical scrolling */
 	padding-right: 20px;
 	padding-left: 20px;

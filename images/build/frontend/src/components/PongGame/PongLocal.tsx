@@ -8,7 +8,7 @@ const LocalPongGame = () => {
 	const MAP_WIDTH = 600
 	const BALL_DIAMETER = 20
 	const PADDLE_HEIGHT = 100
-	const PADDLE_WIDTH = 20
+	const PADDLE_WIDTH = 21
 	const WIN_SCORE = 3
 	const initialBallState = { x: MAP_WIDTH / 2 - BALL_DIAMETER / 2, y: MAP_HEIGHT / 2 - BALL_DIAMETER / 2, x_direction: Math.random() < 0.5 ? 1 : -1, y_direction: Math.random() < 0.5 ? 1 : -1, last_collision: "" };
 	const initialPaddleState = { left: (MAP_HEIGHT - PADDLE_HEIGHT) / 2, right: (MAP_HEIGHT - PADDLE_HEIGHT) / 2 };
@@ -162,12 +162,12 @@ const LocalPongGame = () => {
 	return (
 		<>
 			<div className="controls">
-				{!gameRunning && !gameOver && <button onClick={pauseGame}>Start</button>}
-				{gameRunning && <button onClick={pauseGame}>Pause</button>}
-				{gameOver && <button onClick={restartGame}>Play Again</button>}
+				{!gameRunning && !gameOver && <button className="button_start" onClick={pauseGame}>Start</button>}
+				{gameRunning && <button className="button_start" onClick={pauseGame}>Pause</button>}
+				{gameOver && <button className="button_start" onClick={restartGame}>Play Again</button>}
 			</div>
 			<div className="controls score-text">
-   				<p>Score : left : {score.left} right : {score.right}</p>
+   				<p>{score.left}   -   {score.right}</p>
 			</div>
 			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div
