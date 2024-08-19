@@ -3,6 +3,7 @@
 		"play":" APPUYEZ POUR JOUER " 
 	},
 	"navbar":{
+
 		"about":"À propos",
 		"logout":"Déconnexion",
 		"settings":"Réglages",
@@ -44,6 +45,7 @@
 		"unknownMsg":"Une erreur s'est produite."
 	},
 	"settings":{
+		"Choose your language":"Choix de langue",
 		"settings":"Paramètres",
 		"privacy":"Vie privée et sécurité",
 		"accessibility":"Accessibilité",

@@ -8,25 +8,25 @@
     top: 50%;
     left: 50%;
     border-radius: 10px;
-    border: 5px solid var(--pong_borber);
+    border: 5px solid var(--linen);
     padding: 30px 30px;
 }
 
 .connection-error-form > h1 {
-    font-family: "Pixelify Sans";
+    font-family: "VT323";
     color: #5c775b;
     letter-spacing:1px;
     font-size: 30px;
     text-decoration: 2px underline;
 }
 .error-message {
-    font-family: "Pixelify Sans";
+    font-family: "VT323";
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     font-weight: bold;
-    color: var(--pong_borber);
+    color: var(--linen);
     font-size: 20px;
     letter-spacing:1.5px;
 }
