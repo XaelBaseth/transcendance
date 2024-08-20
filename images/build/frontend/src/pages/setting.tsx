@@ -321,7 +321,7 @@ export function PasswordCardSettings() {
             <div className="title_user">
                 <h2>Update Password</h2>
             </div>
-            <div className="settings_input">
+            <div className="input_user">
                 <input
                     className="password_input"
                     type={showPassword ? 'text' : 'password'} // Afficher ou cacher le mot de passe

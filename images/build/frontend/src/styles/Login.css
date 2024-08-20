@@ -59,7 +59,7 @@
   color: #e3eef1;
   font-family: 'VT323';
 }
-/*ici*/
+
 input{
   display: block;
   height: 50px;
@@ -84,7 +84,7 @@ input::placeholder{
 
 #login-btn {
     width: 85%;
-    background-color: var(--white);
+    background-color: var(--linen);
     border: 3px solid var(--light_teal);
 	  color: var(--pink);
     padding: 15px 0;
@@ -98,8 +98,8 @@ input::placeholder{
 }
 
 #login-btn:hover{
-  background-color: var(--light_teal);
-  border: 3px solid var(--white);
+  background-color: var(--linen);
+  border: 3px solid var(--light_teal);
 }
 
 #_42auth_btn {
