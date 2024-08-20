@@ -22,5 +22,19 @@ api.interceptors.request.use(
       return Promise.reject(error);
     }
   );
-  
-  export default api;
+
+  const updateUserProfile = async (userData) => {
+    try {
+      const response = await api.put('/api/user/', userData);
+      return response.data;
+    } catch (error) {
+      console.error('Error updating user profile:', error);
+      throw error;
+    }
+  };
+
+  export default 
+  {
+    api,
+    updateUserProfile
+  };

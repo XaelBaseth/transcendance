@@ -30,12 +30,19 @@ class AppUserManager(BaseUserManager):
 		return user
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
-	user_id = models.AutoField(primary_key=True)
-	email = models.EmailField(max_length=50, unique=True)
-	username = models.CharField(max_length=50, default="username")
-	is_staff = models.BooleanField(default=False)
-	USERNAME_FIELD = 'email'
-	REQUIRED_FIELDS = ['username']
-	objects = AppUserManager()
-	def __str__(self):
-		return f"ID : {self.user_id} | EMAIL : {self.email} |  USERNAME : {self.username}"
+    user_id = models.AutoField(primary_key=True)
+    email = models.EmailField(max_length=50, unique=True)
+    username = models.CharField(max_length=50, default="username")
+    is_staff = models.BooleanField(default=False)
+    bio = models.TextField(blank=True)
+    avatar = models.FilePathField(path="/media", default="/media/profil.png")
+    total_games = models.IntegerField(default=0)
+    victories = models.IntegerField(default=0)
+    friends = ArrayField(models.IntegerField(), default=list, blank=True)
+    
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+    objects = AppUserManager()
+
+    def __str__(self):
+        return f"ID : {self.user_id} | EMAIL : {self.email} |  USERNAME : {self.username}"

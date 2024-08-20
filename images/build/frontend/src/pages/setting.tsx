@@ -8,6 +8,10 @@ import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import api from '../api';
+import '../styles/Setting.css';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
