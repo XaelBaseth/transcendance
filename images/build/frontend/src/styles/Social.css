@@ -208,7 +208,7 @@
 #search_input {
 	outline: 0;
 	border: 0px solid #fff;
-	background-color: var(--linen);
+	background-color: var(--white);
 	color: var(--pink);
 }
 

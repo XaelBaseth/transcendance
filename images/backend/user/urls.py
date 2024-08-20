@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('register', views.UserRegister.as_view(), name='register'),
@@ -8,8 +10,13 @@ urlpatterns = [
     path('user', views.UserView.as_view(), name='user'),
     path('delete', views.DeleteAccountView.as_view(), name='delete_account'), 
     path('', views.UserView.as_view(), name='user'),
-    path('update-settings', views.UserSettingsUpdateView.as_view(), name='update_settings'),
+    path('update-profile', views.UpdateProfileView.as_view(), name='update_profile'),
+    path('friend-request', views.FriendRequestView.as_view(), name='friend_request'),
+    path('friends', views.FriendListView.as_view(), name='friend_list'),
+    path('match-history', views.MatchHistoryView.as_view(), name='match_history'),
+    path('user/change-Avatar', views.ChangeAvatar.as_view(), name='change_avatar'),
 ]
+
 # from django.conf.urls.static import static
 # from django.urls import path
 # from django.conf import settings

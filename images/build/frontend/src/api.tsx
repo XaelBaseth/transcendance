@@ -9,7 +9,7 @@ const BASE_URL = import.meta.VITE_API_URL
 
 /** Give the user a JWT to identify him and stores it into localStorage */
 const api = axios.create({
-  baseURL: BASE_URL
+  baseURL: 'https://localhost:8000',
 });
 
 const token = localStorage.getItem(ACCESS_TOKEN);
@@ -46,6 +46,7 @@ api.interceptors.request.use(
   }
 );
 
+///export default api;
 const updateUserProfile = async (userData) => {
   try {
     const response = await api.put('/api/user/', userData);

@@ -65,7 +65,7 @@
 }
 
 .button_user {
-	background-color: var(--linen);
+	background-color: var(--white);
 	border: 3px solid var(--light_teal);
 	color: var(--pink);
 	font-family: 'VT323';
@@ -75,7 +75,7 @@
 
 .button_user:hover{
 	background-color: var(--light_teal);
-	border: 3px solid var(--linen);
+	border: 3px solid var(--white);
 }
 .button_password {
 	background-color: var(--white);
@@ -84,8 +84,8 @@
 	font-family: 'VT323';
 	font-size: 16px;
 	position: absolute;
-	left: 2%;
-	top: 150%;
+	left: 1%;
+  	top: 95%;
 	border-radius: 10px;
 }
 
@@ -96,13 +96,16 @@
 
 .show-password {
 	color: var(--light_teal);
-	font-family: VT323;
-	font-size: 18px;
+	font-family: 'VT323';
+	font-size: 20px;
 	position: absolute;
-	border: none;
-	left: 35%;
-	top: 29%;
+	left: 39%;
+	top: 20%;
 	background-color: var(--white);
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 2px solid var(--light_teal);
 }
 
 .show-password:hover {

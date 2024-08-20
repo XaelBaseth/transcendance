@@ -39,9 +39,10 @@ export default function Avatar() {
 
     return (
         <div id='navicon--avatar'>
-            <NavLink className='link-profile' onClick={handleAvatarClick}>
+            <NavLink className='link-profile' to="/settings" onClick={handleAvatarClick}>
                 <img src={avatarSrc || defaultAvatar} alt={user?.username || 'Default Avatar'} id='nav--avatar'/>
             </NavLink>
+            <div id="active-dot"></div>
             <AvatarModal show={showModal} onClose={handleCloseModal} onSelect={handleAvatarSelect} />
         </div>
     );
