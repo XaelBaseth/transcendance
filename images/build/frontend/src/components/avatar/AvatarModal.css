@@ -13,17 +13,23 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--linen);
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 300px;
+    border: 6px solid var(--olive_green);
+    min-width: 400px;
     border-radius: 10px;
     text-align: center;
 }
 
+.avatar-text {
+    color: var(--pink);
+    font-family: 'VT323';
+    font-size: 20px;
+}
+
 .close {
-    color: #aaa;
+    color: var(--olive_green);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -31,7 +37,7 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: var(--light_pink);
     text-decoration: none;
     cursor: pointer;
 }
@@ -47,10 +53,10 @@
     height: 60px;
     cursor: pointer;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 1px solid var(--olive_green);
     transition: border-color 0.3s ease;
 }
 
 .avatar-option:hover {
-    border-color: #3498db;
+    border-color: 4px solid var(--pink);
 }

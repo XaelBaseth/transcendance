@@ -26,11 +26,11 @@
 
 .navbar__title {
 	position: fixed;
-	font-family: 'Pacifico';
+	font-family: 'Press Start 2P';
 	font-size: 50px;
-	padding : 0px 35px;
+	padding : 10px 0px;
 	text-decoration: none;
-	color: #f4f0e3;
+	color: var(--linen);
 	top: -1%;
 	letter-spacing: 3px;
   }
@@ -55,28 +55,33 @@
 
 /*Logout_btn*/
 .logout_btn {
-	width: 100px; /* Largeur fixe de 200 pixels */
+	min-width: 100px; /* Largeur fixe de 200 pixels */
     height: 35px;
-	font-size: 23px;
-    font-family: 'Pixelify Sans';
+	font-size: 25px;
+    font-family: 'VT323';
 	padding : 7px;
-	color: var(--bouton_text);
-	background-color: var(--bouton_BG);
+	color: var(--pink);
+	background-color: var(--linen);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	cursor: pointer;
-	margin: 0 auto;
+	margin: 10px auto;
 	transition : color 0s;
+	width: auto;
+	border: 4px solid var(--light_teal);
+	padding: 15px;
+	border-radius: 10px;
 }
 
 .logout_btn:hover {
-	background-color: var(--bouton_BG_hover);
+	background-color: var(--light_teal);
+	border: 4px solid var(--linen);
 }
 
 /*sidebar*/
 .nav-menu {
-	background-color: var(--template_BG);
+	background-color: var(--clear_yellow);
 	width: 12%;
 	height: 100%;
 	display: flex;
@@ -96,7 +101,7 @@
 	text-decoration: none;
 	position: absolute;
 	font-weight: bold;
-	color: var(--bouton_text);
+	color: var(--pink);
 	font-size: 30px;
 	height: 100%;
 	display: flex;
@@ -107,7 +112,7 @@
   }
 
 .nav-text a:hover{
- 	color: var(--bouton_text_hover);
+ 	color: var(--pink);
   }
 
 .nav-menu-items {
@@ -132,7 +137,7 @@
 .settings_btn {
 	position: absolute;
 	font-weight: bold;
-	color: var(--bouton_text);
+	color: var(--pink);
 	font-size: 30px;
 	flex-direction: column;
 	bottom: 0%;
@@ -143,7 +148,7 @@
 }
 
 .item_title{
-	font-family: 'Pixelify Sans';
+	font-family: 'VT323';
 	font-size: large;
 	text-align: center;
  }

@@ -46,6 +46,7 @@
 	},
 	"settings":{
 		"settings":"Settings",
+		"language":"Choose your language :",
 		"user":"User",
 		"privacy":"Privacy",
 		"accessibility":"Accessibility",

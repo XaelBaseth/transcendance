@@ -4,7 +4,7 @@
 	},
 	"navbar":{
 		"about":"A propósito",
-		"logout":"Desconectar",
+		"logout":"desconexión",
 		"settings":"Configuración",
 		"local":"Local",
 		"network":"En línea",
@@ -45,6 +45,7 @@
 	},
 	"settings":{
 		"settings":"Parámetros",
+		"language":"Elige tu idioma :",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
 		"irreversible":"Cuidado, esta acción es irreversible",

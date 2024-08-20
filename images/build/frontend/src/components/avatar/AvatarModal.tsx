@@ -72,11 +72,20 @@ export default function AvatarModal({ show, onClose, onSelect }: AvatarModalProp
         <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={onClose}>&times;</span>
-                <h2>Choose your avatar</h2>
-                <input type="file" onChange={handleFileChange} accept="image/*" />
-                <button onClick={changeAvatar} disabled={!selectedFile}>
-                    Upload Avatar
-                </button>
+                <div className="avatar-text">
+                    <h2>Choose your avatar</h2>
+                </div>
+                <div className="avatar-options">
+                    {avatars.map((avatar, index) => (
+                        <img
+                            key={index}
+                            src={avatar}
+                            alt={`Avatar ${index + 1}`}
+                            className="avatar-option"
+                            onClick={() => onSelect(avatar)}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

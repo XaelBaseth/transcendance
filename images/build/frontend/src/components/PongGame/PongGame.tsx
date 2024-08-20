@@ -168,8 +168,8 @@ const PongGame = () => {
 
 	return (<>
 		<div className="controls">
-			{gameState === "initial" && <button onClick={startGame}>Start</button>}
-			{gameState === "running" && <button onClick={pauseGame}>Pause</button>}
+			{gameState === "initial" && <button className="button_start" onClick={startGame}>Start</button>}
+			{gameState === "running" && <button className="button_start" onClick={pauseGame}>Pause</button>}
 		</div>
 		<div className="controls">
 			<p>Score : left : {score.left} right : {score.right}</p>
