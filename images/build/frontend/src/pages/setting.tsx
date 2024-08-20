@@ -8,7 +8,6 @@ import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
-
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
 
@@ -83,7 +82,6 @@ function ColorBlindSwitcher() {
 const Settings: React.FC = () => {
     const { t } = useTranslation();
 	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY');
-
 	const handleSectionChange = (section: string) => {
 		setCurrentSection(section);
 	};
@@ -145,7 +143,6 @@ export function DeleteAccountCardSettings() {
 	const { t } = useTranslation();
 	const [isDeleted, setDeleted] = useState<boolean>(false);
 	const navigate = useNavigate();
-
     useEffect(() => {
         if (isDeleted) {
             setTimeout(() => {
@@ -174,7 +171,6 @@ export function DeleteAccountCardSettings() {
 
 export function CookieSettings() {
     const { t } = useTranslation();
-
     return (
         <div className="cookie-settings">
             <div className="cookie-content">

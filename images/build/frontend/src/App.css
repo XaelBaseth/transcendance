@@ -1,5 +1,6 @@
 @import url(https://fonts.google.com/specimen/Poetsen+One);
 
+
 .videobg{
 	position: fixed;
     overflow: hidden;
@@ -10,6 +11,7 @@
     width: auto;
     height: auto;
     transform: translateX(-50%) translateY(-45%);
+    font-family: 'Poetsen One', cursive;
     z-index: -10;
 }
 

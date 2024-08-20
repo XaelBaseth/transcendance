@@ -22,13 +22,12 @@ import Pong from "./pages/pong"
 import './App.css'
 
 function RegisterAndLogout() {
-	localStorage.clear()
-	return <SignUp />
+    localStorage.clear()
+    return <SignUp />
 }
 
 function App() {
-	const { t } = useTranslation();
-
+    const { t } = useTranslation();
 	return (
 		<div id='app'>
 			<section id="main_content">
@@ -72,4 +71,3 @@ function App() {
 }
 
 export default App
-

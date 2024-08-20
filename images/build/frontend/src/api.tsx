@@ -1,26 +1,22 @@
 import axios from "axios"
 import { ACCESS_TOKEN } from "./constants";
 
-axios.default.debug =  true;
-
-const BASE_URL = import.meta.VITE_API_URL
-
-/** Give the user a JWT to identify him and stores it into localStorage */
 const api = axios.create({
-  baseURL: BASE_URL
+  baseURL: 'https://localhost:8000',
 });
 
 api.interceptors.request.use(
-    (config: axios.AxiosRequestConfig) => {
-      const token = localStorage.getItem(ACCESS_TOKEN);
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error: axios.AxiosError) => {
-      return Promise.reject(error);
+  (config) => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
-  );
-  
-  export default api;
+    // Don't set Content-Type here, let axios set it automatically for file uploads
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+export default api;
