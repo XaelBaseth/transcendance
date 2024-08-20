@@ -1,6 +1,20 @@
+import React from 'react';
 import React, { useState } from 'react';
-import './AvatarModal.css';
-import api from '../../api';
+import './AvatarModal.css'; // Import your custom styles
+
+import avatar1 from '../../assets/acharlot.jpg';
+import avatar2 from '../../assets/aramier.jpg';
+import avatar3 from '../../assets/rrault.jpg';
+import giratina from '../../assets/giratina.png'
+import amphinobi from '../../assets/amphinobi.png'
+import emolga from '../../assets/emolga.png'
+import pingoleon from '../../assets/pingoleon.png'
+import mimiqui1 from '../../assets/mimiqui1.png'
+import mimiqui2 from '../../assets/mimiqui2.png'
+import manaphy from '../../assets/manaphy.png'
+import momartik from '../../assets/momartik.png'
+import simiabraz from '../../assets/simiabraz.png'
+import florizarre from '../../assets/florizarre.png'
 
 interface AvatarModalProps {
     show: boolean;
@@ -8,65 +22,22 @@ interface AvatarModalProps {
     onSelect: (avatar: string) => void;
 }
 
-export default function AvatarModal({ show, onClose, onSelect }: AvatarModalProps) {
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+// Array of imported avatars
+const avatars = [avatar1, avatar2, avatar3, giratina, amphinobi, emolga, pingoleon, mimiqui1, mimiqui2, manaphy, florizarre, momartik, simiabraz];
 
+export default function AvatarModal({ show, onClose, onSelect }: AvatarModalProps) {
+    const [currentIndex, setCurrentIndex] = useState(0);
     if (!show) {
         return null;
     }
-    
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            setSelectedFile(event.target.files[0]);
-        }
+
+    const handlePrevClick = () => {
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? avatars.length - 1 : prevIndex - 1));
     };
-    // const changeAvatar = async (avatar: string) => {
-    //     try {
-    //         const res = await api.put("/api/user/change-Avatar", { avatar });
-    //         if (res.status >= 200 && res.status < 300) {
-    //             onSelect(avatar);
-    //         } else {
-    //             console.error("Failed to change avatar", res);
-    //         }
-    //     }
-    //     catch (error) {
-    //         console.error("Failed to change avatar", error);
-    //         if (error.response) {
-    //             console.error("Response data:", error.response.data);
-    //             console.error("Response status:", error.response.status);
-    //             console.error("Response headers:", error.response.headers);
-    //         }
-    //     }
-    // }
-    const changeAvatar = async () => {
-        if (!selectedFile) {
-            console.error("No file selected");
-            return;
-        }
 
-        const formData = new FormData();
-        formData.append('avatar', selectedFile);
-
-        try {
-            const res = await api.put("/api/user/change-Avatar", formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            if (res.status >= 200 && res.status < 300) {
-                onSelect(URL.createObjectURL(selectedFile));
-            } else {
-                console.error("Failed to change avatar", res);
-            }
-        } catch (error) {
-            console.error("Failed to change avatar", error);
-            if (error.response) {
-                console.error("Response data:", error.response.data);
-                console.error("Response status:", error.response.status);
-                console.error("Response headers:", error.response.headers);
-            }
-        }
-    }
+    const handleNextClick = () => {
+        setCurrentIndex((prevIndex) => (prevIndex === avatars.length - 3 ? 0 : prevIndex + 1)); // Change to show the next 3 avatars
+    };
 
     return (
         <div className="modal">
@@ -75,16 +46,20 @@ export default function AvatarModal({ show, onClose, onSelect }: AvatarModalProp
                 <div className="avatar-text">
                     <h2>Choose your avatar</h2>
                 </div>
-                <div className="avatar-options">
-                    {avatars.map((avatar, index) => (
-                        <img
-                            key={index}
-                            src={avatar}
-                            alt={`Avatar ${index + 1}`}
-                            className="avatar-option"
-                            onClick={() => onSelect(avatar)}
-                        />
-                    ))}
+                <div className="avatar-carousel">
+                    <button onClick={handlePrevClick} className="carousel-button">◀</button>
+                    <div className="avatar-options">
+                        {avatars.slice(currentIndex, currentIndex + 3).map((avatar, index) => (
+                            <img
+                                key={index}
+                                src={avatar}
+                                alt={`Avatar ${index + 1}`}
+                                className="avatar-option"
+                                onClick={() => onSelect(avatar)}
+                            />
+                        ))}
+                    </div>
+                    <button onClick={handleNextClick} className="carousel-button">▶</button>
                 </div>
             </div>
         </div>
