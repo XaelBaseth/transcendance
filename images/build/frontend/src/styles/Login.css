@@ -64,7 +64,7 @@ input{
   display: block;
   height: 50px;
   width: 90%;
-  background-color: var(--white);
+  background-color: rgba(0, 0, 0, 0.219);
   border-radius: 3px;
   padding: 0 10px;
   margin-top: 8px;

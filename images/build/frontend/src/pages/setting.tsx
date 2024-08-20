@@ -261,9 +261,9 @@ export function TextCardSettings({ property }: { property: string }) {
             <div className="title_user">
                 <h2>{`Update ${property}`}</h2>
             </div>
-            <div className="input_user">
+            <div className="info_user">
                 <input
-                    className="text_input"
+                    className="input_user"
                     type="text"
                     placeholder={`Enter new ${property}`}
                     onChange={handleChange}
