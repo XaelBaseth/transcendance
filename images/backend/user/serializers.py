@@ -5,39 +5,25 @@ from . models import AppUser
 
 UserModel = get_user_model()
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AppUser
-        fields = ('user_id', 'email', 'username', 'bio', 'avatar', 'total_games', 'victories', 'friends')
-        read_only_fields = ('user_id', 'total_games', 'victories', 'friends')
-
 class UserUpdateSerializer(serializers.ModelSerializer):
-    current_password = serializers.CharField(write_only=True, required=False)
-    new_password = serializers.CharField(write_only=True, required=False)
-
     class Meta:
         model = AppUser
         fields = ('username', 'email', 'bio', 'avatar', 'current_password', 'new_password')
-
-    def validate(self, data):
-        if 'new_password' in data and not data.get('current_password'):
-            raise serializers.ValidationError({"current_password": "Current password is required to set a new password."})
-        return data
-
+    
     def update(self, instance, validated_data):
         if 'current_password' in validated_data:
+            print("here:",validated_data)
             if not instance.check_password(validated_data['current_password']):
                 raise serializers.ValidationError({"current_password": "Wrong password."})
             if 'new_password' in validated_data:
                 instance.set_password(validated_data['new_password'])
-        
+        if 'avatar' in validated_data:
+            instance.avatar = validated_data['avatar']
         instance.username = validated_data.get('username', instance.username)
         instance.email = validated_data.get('email', instance.email)
         instance.bio = validated_data.get('bio', instance.bio)
-        instance.avatar = validated_data.get('avatar', instance.avatar)
         instance.save()
         return instance
-
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -59,3 +45,17 @@ class UserLoginSerializer(serializers.Serializer):
         if not user:
             raise ValidationError('user not found')
         return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+    winRate = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = AppUser
+        fields = ('user_id', 'email', 'username', 'bio', 'avatar', 'total_games', 'victories', 'friends', 'winRate')
+        read_only_fields = ('user_id', 'total_games', 'victories', 'friends')
+    
+    def get_winRate(self, obj):
+        if obj.total_games == 0:
+            return 0
+        return obj.victories / obj.total_games

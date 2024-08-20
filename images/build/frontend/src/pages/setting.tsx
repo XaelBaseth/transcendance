@@ -240,6 +240,7 @@ export function TextCardSettings({ property }: { property: string }) {
         setUserInput(event.target.value);
     };
 
+
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         if (validator.isEmpty(userInput)) {
@@ -258,6 +259,11 @@ export function TextCardSettings({ property }: { property: string }) {
             setPropertyChange(true);
             setErrorMsg('');
         }, 1000);
+        try {
+            await api.updateUserProfile({ [property]: userInput });
+        } catch (error) {
+            console.error('Error updating user profile:', error);
+        }
     };
 
     return (
