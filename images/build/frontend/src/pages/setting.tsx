@@ -242,26 +242,8 @@ export function DeleteAccountCardSettings() {
         </div>
     );
 };
-    return (
-        <div className="delete_settings">
-            <h2 className="delete_settings__title">{t('settings.delete')}</h2>
-            <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
-            <button className="delete_settings__btn" onClick={handleDelete}>
-                Delete
-                <span>Delete your account</span>
-            </button>
-            {isDeleted && (
-                <div className="delete_settings__alert">
-                    <h5>{t('settings.deleteSuccess')}</h5>
-                    <h6>{t('settings.redirection')}</h6>
-                </div>
-            )}
-        </div>
-    );
-};
 
 export function CookieSettings() {
-    const { t } = useTranslation();
     const { t } = useTranslation();
 
     return (

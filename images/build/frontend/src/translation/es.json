@@ -41,7 +41,8 @@
 		"errorMsg":"Error para registrarse",
 		"passwordMatch":"Ya existe un usuario con este nombre de usuario",
 		"alreadyMsg":"La contraseña es incorrecta",
-		"unknownMsg":"Occurrio un error."
+		"unknownMsg":"Occurrio un error.",
+		"passwordTooShort":"Elija otra contraseña, de 8 caracteres mínimo."
 	},
 	"settings":{
 		"settings":"Parámetros",

@@ -282,7 +282,7 @@ class PongConsumer(AsyncWebsocketConsumer):
 			MAP_HEIGHT = 400
 			MAP_WIDTH = 600
 			BALL_DIAMETER = 20
-			BALL_SPEED = 5
+			BALL_SPEED = 20
 			PADDLE_HEIGHT = 100
 			TPS = 10
 			WIN_SCORE = 2

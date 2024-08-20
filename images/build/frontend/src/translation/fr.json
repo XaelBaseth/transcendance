@@ -42,7 +42,8 @@
 		"errorMsg":"Erreur lors de l'enregistrement.",
 		"alreadyMsg":"Un utilisateur avec ce nom d'utilisateur existe deja",
 		"passwordMatch":"Le mot de passe est erroné",
-		"unknownMsg":"Une erreur s'est produite."
+		"unknownMsg":"Une erreur s'est produite.",
+		"passwordTooShort":"Choisissez un autre mot de passe, 8 caractères minimum."
 	},
 	"settings":{
 		"Choose your language":"Choix de langue",

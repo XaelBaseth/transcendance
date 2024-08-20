@@ -46,9 +46,11 @@ const LocalPongGame = () => {
 			// keysToPlay.current.forEach(key => {
             pressedKeys.current.forEach(key => {
                 switch (key) {
+					case 'E':
                     case 'e':
                         setPaddles(prev => ({ ...prev, left: Math.max(prev.left - 10, 0) }));
                         break;
+					case 'D':
                     case 'd':
                         setPaddles(prev => ({ ...prev, left: Math.min(prev.left + 10, MAP_HEIGHT - PADDLE_HEIGHT) }));
                         break;
