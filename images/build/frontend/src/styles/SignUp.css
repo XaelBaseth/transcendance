@@ -90,7 +90,7 @@
 #signUp-btn {
   position: absolute;
     width: 80%;
-    background-color: var(--linen);
+    background-color: var(--white);
     border: 3px solid var(--light_teal);
 	  color: var(--pink);
     padding: 15px 0;
@@ -103,8 +103,8 @@
 }
 
 #signUp-btn:hover{
-  background-color: var(--linen);
-  border: 3px solid var(--light_teal);
+  background-color: var(--light_teal);
+  border: 3px solid var(--white);
 }
 
 /* ********************************/
