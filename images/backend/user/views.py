@@ -106,15 +106,22 @@ class UserLogout(APIView):
 
 # Get info of user connected
 class UserView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated]
     
     def get(self, request):
-        try:
-            logger = logging.getLogger(__name__)
-            serializer = UserSerializer(request.user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except Exception as error:
-            return Response({'user': "You are not connected"}, status=status.HTTP_200_OK)
+        if not request.user.is_authenticated:
+            raise NotAuthenticated("User is not authenticated")
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        if not request.user.is_authenticated:
+            raise NotAuthenticated("User is not authenticated")
+        serializer = UserUpdateSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
 class DeleteAccountView(APIView):
     permission_classes = [IsAuthenticated]
