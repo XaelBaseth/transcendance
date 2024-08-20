@@ -109,14 +109,6 @@
 	color: var(--pink);
 }
 
-.settings_input {
-	width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 .input_user {
 	display: block;
 	height: 50px;
@@ -278,7 +270,7 @@
 	color: var(--error);
 	background-color: transparent;
 	position: relative;
-	transform: translateY(350%);
+	top: 350%;
 	left: 21%;
 }
 

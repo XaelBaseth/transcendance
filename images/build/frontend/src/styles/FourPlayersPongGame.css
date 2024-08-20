@@ -105,21 +105,17 @@ body {
 .game-loose {
 	position: absolute;
 	display: flex;
-	background-color: var(--error);
+	background-color: red;
 	justify-content: center;
 	align-items: center;
-	color: var(--linen);
-	font-size: 30px;
-	font-family: 'VT323';
+	color: white;
 }
 
 .game-win {
 	display: flex;
 	position: absolute;
-	background-color: var(--ok);
+	background-color: green;
 	justify-content: center;
 	align-items: center;
-	color: var(--linen);
-	font-size: 30px;
-	font-family: 'VT323';
+	color: white;
 }
