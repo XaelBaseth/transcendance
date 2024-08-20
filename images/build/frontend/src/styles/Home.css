@@ -13,7 +13,7 @@
     font-family: 'VT323';
     font-weight: bold;
     padding: 15px 15px;
-    background-color: var(--linen);
+    background-color: var(--white);
     border: 6px solid var(--light_teal);
     border-radius: 20px;
     letter-spacing: 5px;
@@ -25,7 +25,7 @@
 
 .btn__play:hover {
     background-color: var(--light_teal);
-    border: 6px solid var(--linen);
+    border: 6px solid var(--white);
 }
 
 .link {
