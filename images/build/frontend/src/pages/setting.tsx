@@ -8,6 +8,7 @@ import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
+
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
 
@@ -82,6 +83,7 @@ function ColorBlindSwitcher() {
 const Settings: React.FC = () => {
     const { t } = useTranslation();
 	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY');
+
 	const handleSectionChange = (section: string) => {
 		setCurrentSection(section);
 	};
@@ -143,6 +145,7 @@ export function DeleteAccountCardSettings() {
 	const { t } = useTranslation();
 	const [isDeleted, setDeleted] = useState<boolean>(false);
 	const navigate = useNavigate();
+
     useEffect(() => {
         if (isDeleted) {
             setTimeout(() => {
@@ -171,6 +174,7 @@ export function DeleteAccountCardSettings() {
 
 export function CookieSettings() {
     const { t } = useTranslation();
+
     return (
         <div className="cookie-settings">
             <div className="cookie-content">
@@ -257,9 +261,9 @@ export function TextCardSettings({ property }: { property: string }) {
             <div className="title_user">
                 <h2>{`Update ${property}`}</h2>
             </div>
-            <div className="input_user">
+            <div className="info_user">
                 <input
-                    className="text_input"
+                    className="input_user"
                     type="text"
                     placeholder={`Enter new ${property}`}
                     onChange={handleChange}
