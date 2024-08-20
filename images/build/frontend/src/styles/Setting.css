@@ -113,8 +113,11 @@
 	width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.info_user {
+	position: relative;
 }
 
 .input_user {
@@ -125,10 +128,28 @@
 	border-radius: 3px;
 	padding: 0 10px;
 	margin-top: 10px;
-	font-size: 12px;
-	font-weight: blod;
+	font-size: 16px;
+	font-weight: bold;
 	margin-bottom: 10px;
-	color: var(--light_pink)
+	color: var(--light_pink);
+	font-family: 'VT323';
+
+}
+
+.password_input {
+	display: block;
+	height: 50px;
+	width: 40%;
+	background-color: var(--white);
+	border-radius: 3px;
+	padding: 0 10px;
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: var(--light_pink);
+	font-family: 'VT323';
+
 }
 
 .error_msg {
@@ -244,7 +265,7 @@
 
 .delete_settings {
 	text-align: center;
-	transform: translateY(-150%) translateX(5%);
+	transform: translateY(130%) translateX(5%);
 }
 
 .delete_settings__title {
