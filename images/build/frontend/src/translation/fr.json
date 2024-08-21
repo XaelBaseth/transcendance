@@ -53,14 +53,27 @@
 		"emailOrUsernameAlreadyUsed":"Le nom d'utilisateur ou le mail est deja utilisé."
 	},
 	"settings":{
-		"language":"Choix de langue",
+		"language":"Choix de langue :",
 		"settings":"Paramètres",
+		"user":"Utilisateur",
 		"privacy":"Vie privée et sécurité",
 		"accessibility":"Accessibilité",
 		"irreversible":"Attention, cette action est irréversible",
 		"delete":"Voulez-vous supprimer votre compte ?",
 		"deleteSuccess":"Votre compte a ete supprimer",
-		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes..."
+		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes...",
+		"update":"Mettre à jour ",
+		"placeholder":"Entrez votre nouveau",
+		"btn_update":"Mettre à jour",
+		"update_successfull":" a été mis à jour avec succès"
+	},
+	"social":{
+		"all":"Tous les amis",
+		"blocked":"Utilisateur bloques",
+		"pending":"Demande en attente",
+		"add":"Ajouter",
+		"search":"Rechercher",
+		"type":"Cherche tes amis connard"
 	},
 	"colorblindMode":{
 		"on":"Mode Daltonien : Activé",
@@ -113,5 +126,23 @@
 		"contact_phone":"Numero de telephone: ",
 		"contact_email":"Email: ",
 		"contact_text":"Pour toute question et/ou commentaire concernant notre politique en matière de cookies et la présente déclaration, veuillez nous contacter en utilisant les informations fournies ci-dessus."
+	},
+	"profil":{
+		"total":"Total des Match",
+		"victories":"Victoires",
+		"friends":"Amis",
+		"overview":"Vue d'ensemble",
+		"wins":"Victoires",
+		"loss":"Défaites",
+		"save":"Enregistrer les modifications",
+		"cancel":"Annuler les modifications",
+		"edit":"Modifier",
+		"online":"En ligne",
+		"offline":"Hors ligne",
+		"addFriendPlaceholder":"Nom d'utilisateur",
+		"addFriend":"Ajouter un ami",
+		"matchHistory":"Historique des matchs",
+		"winner":"Gagnant",
+		"score":"Score"
 	}
 }

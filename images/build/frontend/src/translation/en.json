@@ -58,15 +58,27 @@
 	},
 	"settings":{
 		"settings":"Settings",
-		"language":"Choose your language",
+		"language":"Choose your language :",
 		"user":"User",
 		"privacy":"Privacy",
 		"accessibility":"Accessibility",
 		"irreversible":"Beware this action is irreversible",
 		"delete":"Do you want to delete your account?",
 		"deleteSuccess":"Your account was successfully deleted!",
-		"redirection":"You will now be redirected to the login page in a few seconds..."
+		"redirection":"You will now be redirected to the login page in a few seconds...",
+		"update":"Update ",
+		"placeholder":"Enter your new",
+		"btn_update":"Update",
+		"update_successfull":" has been updated successfully"
 	},
+	"social": {
+		"all": "All friends",
+		"blocked": "Blocked users",
+		"pending": "Pending requests",
+		"add": "Add",
+		"search": "Search",
+		"type": "Search for your friends, idiot"
+	},	
 	"colorblindMode":{
 		"on":"Colorblind Mode: On",
 		"off":"Colorblind Mode: Off"
@@ -118,6 +130,25 @@
 		"contact_phone":"Phone number: ",
 		"contact_email":"Email: ",
 		"contact_text":"For questions and/or comments about our Cookie Policy and this statement, please contact us using the information provided above."
+	},
+	"profil":{
+		"bio":"Bio",
+		"total":"Total Matches",
+		"victories":"Victories",
+		"friends":"Friends",
+		"overview":"Overview",
+		"wins":"Wins",
+		"loss":"Losses",
+		"save":"Save changes",
+		"cancel":"Cancel changes",
+		"edit":"Edit",
+		"online":"Online",
+		"offline":"Offline",
+		"addFriendPlaceholder":"Add Friends placeholder",
+		"addFriend":"Add Friend",
+		"matchHistory":"Match History",
+		"winner":"Winner",
+		"score":"Score"
 	}
 }
 	

@@ -4,7 +4,7 @@
 }
 
 #social-dashboard button {
-	background-color: var(--linen);
+	background-color: var(--white);
     font-family: 'Pixelify Sans';
 	font-size: 17px;
     letter-spacing:1px;
@@ -14,15 +14,10 @@
 }
 
 .social-btn {
-	display:flex;
 	width: 15%;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: left;
-	flex-wrap: wrap;
 	position: absolute;
-	top: 22%;
-	left: 2%;
+	top: 33%;
+	left: 15%;
 }
 
 .social-btn > button {
@@ -34,7 +29,7 @@
 
 #social-dashboard button:hover {
 	background-color: var(--light_teal);
-	border : 5px solid var(--linen);
+	border : 5px solid var(--white);
 }
 
 /*SeachBar*/
@@ -47,7 +42,7 @@
 .search_bar {
 	font-family: 'Pixelify Sans';
 	display: flex;
-	width: 50%;
+	width: 64%;
 	justify-content: center;
 	align-items: center;
 	border-bottom-right-radius: 20px;
@@ -55,7 +50,7 @@
 	border-right: 4px solid var(--light_teal);
     border-bottom: 4px solid var(--light_teal);
     border-left: 4px solid var(--light_teal);
-	background-color: var(--linen);
+	background-color: var(--white);
 	text-align: left;
 	position: absolute;
 	left: -3%;
@@ -118,7 +113,6 @@
 	justify-content: space-around;
 	align-items: left;
 	flex-wrap: wrap;
-	transform: translateX(75%) translateY(30%);
 }
 
 .social-btn > button {
@@ -130,7 +124,7 @@
 
 #social-dashboard button:hover {
 	background-color: var(--light_teal);
-	border : 5px solid var(--linen);
+	border : 5px solid var(--white);
 }
 
 #title {
@@ -184,21 +178,21 @@
 /*SeachBar*/
 
 .text_searchBar{
-	width: 49%;
+	width: 63%;
 	font-family: 'Pixelify Sans';
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
 	border-right: 4px solid var(--light_teal);
     border-top: 4px solid var(--light_teal);
     border-left: 4px solid var(--light_teal);
-	background-color: var(--linen);
+	background-color: var(--white);
 	font-size: 25px;
 	font-weight: bold;
 	color: var(--pink);
 	padding-left: 1%;
 	text-align: left;
 	position: absolute;
-	left: 13.1%;
+	left: 15%;
 	top: 17%;
 }
 
@@ -206,13 +200,15 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transform: translateX(32%) translateY(130%);
+	position: absolute;
+	top: 23.2%;
+	left: 15%;
 }
 
 #search_input {
 	outline: 0;
 	border: 0px solid #fff;
-	background-color: var(--linen);
+	background-color: var(--white);
 	color: var(--pink);
 }
 
@@ -258,4 +254,105 @@
 	height: 6vh;
 	width: auto;
 	border-radius: 50%;
+}
+
+/* Conteneur pour les listes d'utilisateurs */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2vh 10vw 0vh 10vw;
+    padding-bottom: 700px;
+}
+
+/* Styles communs pour les listes d'utilisateurs */
+.friends-list {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.friends-list h5 {
+    font-size: 24px;
+	margin: 2px;
+	padding: 2px;
+}
+
+
+
+.friends-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacement entre les éléments */
+}
+
+.friends-list li {
+    padding: 8px;
+}
+
+
+/*
+.friends-list ul {
+    list-style-type: none;
+    padding: 1px;
+}
+
+.friends-list li {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 0.5em 0;
+    border-bottom: 1px solid var(--light_teal);
+}*/
+
+.user-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.friends-list.allFriends {
+    background-color: var(--white);
+	position: absolute;
+	max-height: 60%;
+	width: 45%;
+	left: 32%;
+	top: 32%;
+	border: 6px solid var(--light_teal);
+	font-size: 20px;
+	font-family: 'VT323';
+	color: var(--pink);
+
+}
+
+.friends-list.blocked {
+    background-color: var(--linen);
+	position: absolute;
+	max-height: 60%;
+	width: 45%;
+	left: 32%;
+	top: 32%;
+	border: 6px solid var(--light_teal);
+	font-size: 20px;
+	font-family: VT323;
+	color: var(--pink);
+
+}
+
+.friends-list.pendingRequest {
+    background-color: var(--linen);
+	position: absolute;
+	max-height: 60%;
+	width: 45%;
+	left: 32%;
+	top: 32%;
+	border: 6px solid var(--light_teal);
+	font-size: 20px;
+	font-family: VT323;
+	color: var(--pink);
 }

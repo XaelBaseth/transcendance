@@ -30,7 +30,7 @@
 	font-size: 50px;
 	padding : 10px 0px;
 	text-decoration: none;
-	color: var(--linen);
+	color: var(--white);
 	top: -1%;
 	letter-spacing: 3px;
   }
@@ -69,13 +69,14 @@
 	margin: 10px auto;
 	transition : color 0s;
 	width: auto;
-	border: 6px solid var(--light_teal);
+	border: 4px solid var(--light_teal);
 	padding: 15px;
+	border-radius: 10px;
 }
 
 .logout_btn:hover {
 	background-color: var(--light_teal);
-	border: 6px solid var(--linen);
+	border: 4px solid var(--linen);
 }
 
 /*sidebar*/

@@ -70,7 +70,7 @@ body {
 	gap: 10px;
 }
 
-button_start {
+.button_start {
 	padding: 5px 10px;
 	font-size: 25px;
 	cursor: pointer;
@@ -82,7 +82,7 @@ button_start {
 	color: var(--pink);
 }
 
-button_start:hover 
+.button_start:hover 
 {
 	background-color: var(--light_teal);
 	border: 4px solid var(--pink);
@@ -111,11 +111,11 @@ button_start:hover
 }
 
 .score-text {
-    font-size: 20px;
+    font-size: 24px;
     color: var(--pink);
     font-weight: bold;
     text-align: center;
-	background-color: var(--clear_yellow);
+	background-color: var(--white);
 	width: 350px;
 	border: 5px solid var(--light_teal);
 	border-radius: 100px;
@@ -126,15 +126,15 @@ button_start:hover
 
 .home-text {
 	font-size: 30px;
-  font-family: 'VT323';
-  background-color: var(--clear_beige);
-  border: 4px solid var(--light_teal);
-  border-radius: 20px;
-  margin: auto auto;
-  color: var(--pink);
-  padding: 10px;
-  text-align: center;
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
+	font-family: 'VT323';
+	background-color: var(--clear_beige);
+	border: 4px solid var(--light_teal);
+	border-radius: 20px;
+	margin: auto auto;
+	color: var(--pink);
+	padding: 10px;
+	text-align: center;
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
 }
