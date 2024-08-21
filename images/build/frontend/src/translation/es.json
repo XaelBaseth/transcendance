@@ -58,6 +58,14 @@
 		"btn_update":"Actualizar",
 		"update_successfull":" ha sido actualizado con exito"
 	},
+	"social": {
+		"all": "Todos los amigos",
+		"blocked": "Usuarios bloqueados",
+		"pending": "Solicitudes pendientes",
+		"add": "Añadir",
+		"search": "Buscar",
+		"type": "Busca a tus amigos, idiota"
+	},	
 	"pong":{
 		"pongHome":"Casa de Pong",
 		"pongTwoPlayer":"2 jugadores",

@@ -59,6 +59,14 @@
 		"btn_update":"Mettre à jour",
 		"update_successfull":" a été mis à jour avec succès"
 	},
+	"social":{
+		"all":"Tous les amis",
+		"blocked":"Utilisateur bloques",
+		"pending":"Demande en attente",
+		"add":"Ajouter",
+		"search":"Rechercher",
+		"type":"Cherche tes amis connard"
+	},
 	"pong":{
 		"pongHome":"Pong",
 		"pongTwoPlayer":"2 joueurs",
