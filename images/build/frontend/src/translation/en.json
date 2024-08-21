@@ -53,7 +53,11 @@
 		"irreversible":"Beware this action is irreversible",
 		"delete":"Do you want to delete your account?",
 		"deleteSuccess":"Your account was successfully deleted!",
-		"redirection":"You will now be redirected to the login page in a few seconds..."
+		"redirection":"You will now be redirected to the login page in a few seconds...",
+		"update":"Update ",
+		"placeholder":"Enter your new",
+		"btn_update":"Update",
+		"update_successfull":" has been updated successfully"
 	},
 	"pong":{
 		"pongHome":"Pong Home",

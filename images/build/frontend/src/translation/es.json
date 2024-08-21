@@ -46,12 +46,17 @@
 	"settings":{
 		"settings":"Parámetros",
 		"language":"Elige tu idioma :",
+		"user":"Usuario",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
 		"irreversible":"Cuidado, esta acción es irreversible",
 		"delete":"Deseas eliminar tu cuenta ?",
 		"deleteSuccess":"Tu cuenta ha sido eliminada",
-		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos"
+		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos",
+		"update":"Actualizar ",
+		"placeholder":"Introduce tu nueva",
+		"btn_update":"Actualizar",
+		"update_successfull":" ha sido actualizado con exito"
 	},
 	"pong":{
 		"pongHome":"Casa de Pong",

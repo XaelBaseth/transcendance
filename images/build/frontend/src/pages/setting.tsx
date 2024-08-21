@@ -98,9 +98,9 @@ const Settings: React.FC = () => {
                         <button className={currentSection === 'USER' ? 'active' : ''} onClick={() => handleSectionChange('USER')}>{t('settings.user')}</button>
                     </div>
                     <div className="settings_grid">
+						{currentSection === 'USER' && <UserSettings />}
                         {currentSection === 'ACCESSIBILITY' && <AccessibilitySettings />}
                         {currentSection === 'PRIVACY' && <PrivacySettings />}
-                        {currentSection === 'USER' && <UserSettings />}
                     </div>
                 </div>
             </div>
@@ -109,6 +109,17 @@ const Settings: React.FC = () => {
 };
 
 export default Settings;
+
+function UserSettings() {
+    return (
+        <div className="user_settings">
+            <PasswordCardSettings />
+            <TextCardSettings property="bio" />
+            <TextCardSettings property="username" />
+            <TextCardSettings property="email" />
+        </div>
+    );
+}
 
 function PrivacySettings() {
     return (
@@ -124,17 +135,6 @@ function AccessibilitySettings() {
         <div className="accessibility_settings">
             <LanguageSwitcher />
             <ColorBlindSwitcher />
-        </div>
-    );
-}
-
-function UserSettings() {
-    return (
-        <div className="user_settings">
-            <PasswordCardSettings />
-            <TextCardSettings property="bio" />
-            <TextCardSettings property="username" />
-            <TextCardSettings property="email" />
         </div>
     );
 }
@@ -227,6 +227,7 @@ export function TextCardSettings({ property }: { property: string }) {
     const [userInput, setUserInput] = useState<string>("");
     const [errorMsg, setErrorMsg] = useState<string>("");
     const [propertyChanged, setPropertyChange] = useState<boolean>(false);
+	const { t } = useTranslation();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
@@ -255,23 +256,23 @@ export function TextCardSettings({ property }: { property: string }) {
     return (
         <div className={`text_settings ${property === 'password' ? 'independent_password' : ''}`}>
             <div className="title_user">
-                <h2>{`Update ${property}`}</h2>
+                <h2>{`${t('settings.update')} ${property}`}</h2>
             </div>
             <div className="input_user">
                 <input
                     className="text_input"
                     type="text"
-                    placeholder={`Enter new ${property}`}
+                    placeholder={`${t('settings.placeholder')} ${property}`}
                     onChange={handleChange}
                 />
             </div>
             <div>
                 <button className="button_user" onClick={handleUpdate}>
-                    Update
+				{t('settings.btn_update')}
                 </button>
             </div>
             {errorMsg && <div className="error_msg">{errorMsg}</div>}
-            {propertyChanged && <div className="success_msg">{`${property} updated successfully!`}</div>}
+            {propertyChanged && <div className="success_msg">{`${property} {t('settings.update_successful')}`}</div>}
         </div>
     );
 };

@@ -47,12 +47,17 @@
 	"settings":{
 		"language":"Choix de langue :",
 		"settings":"Paramètres",
+		"user":"Utilisateur",
 		"privacy":"Vie privée et sécurité",
 		"accessibility":"Accessibilité",
 		"irreversible":"Attention, cette action est irréversible",
 		"delete":"Voulez-vous supprimer votre compte ?",
 		"deleteSuccess":"Votre compte a ete supprimer",
-		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes..."
+		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes...",
+		"update":"Mettre à jour ",
+		"placeholder":"Entrez votre nouveau",
+		"btn_update":"Mettre à jour",
+		"update_successfull":" a été mis à jour avec succès"
 	},
 	"pong":{
 		"pongHome":"Pong",
