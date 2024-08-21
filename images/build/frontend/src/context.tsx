@@ -41,10 +41,17 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [location]);
 
+
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 	// Login
 	const login = async (email: string, password: string) => {
 		if (email === "" || password === "") {
 			setErrorMsg(t('login.notEmpty'));
+			return;
+		}
+		if (!emailRegex.test(email)) {
+			setErrorMsg(t('login.invalidCredentials'));
 			return;
 		}
 		try {
@@ -59,31 +66,70 @@ export const AuthProvider: React.FC = ({ children }) => {
 			} else {
 				setErrorMsg(t('login.errorMsg'));
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error(error);
-			setErrorMsg(t('login.unknownMsg'));
+			if (error.response && error.response.status === 401) {
+				setErrorMsg(t('login.invalidCredentials')); 
+			} else {
+				setErrorMsg(t('login.unknownMsg'));
+			}
 		}
 	};
 
 	// Sign up
 	const signup = async (email: string, username: string, password: string, confirmPassword: string) => {
+		// Vérifications côté client
+		if (email === "" || username === "" || password === "") {
+			setErrorMsg(t('signup.fieldsNotEmpty'));
+			return;
+		}
 		if (password !== confirmPassword) {
 			setErrorMsg(t('signup.passwordMatch'));
 			return;
 		}
+		if (password.length < 8) {
+			setErrorMsg(t('signup.passwordTooShort'));
+			return;
+		}
+	
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(email)) {
+			setErrorMsg(t('signup.invalidEmail'));
+			return;
+		}
+	
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
 			if (res.status >= 200 && res.status < 300) {
-				setSuccessMsg(t('signup.succesMsg'));
+				setSuccessMsg(t('signup.successMsg'));
 				navigate('/login');
 			} else {
-				setErrorMsg(t('signup.errorMsg'));
+				// Regrouper les erreurs d'email et d'username
+				const errorMessage = res.data.message || ''; // Extraire le message de la réponse
+	
+				if (errorMessage.includes("already exists")) {
+					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
+				} else {
+					setErrorMsg(t('signup.errorMsg'));
+				}
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error("Error during registration:", error);
-			setErrorMsg(t('signup.unknownMsg'));
+	
+			if (error.response && error.response.status === 500) {
+				const responseText = error.response.data;
+	
+				if (responseText && (responseText.includes("email") || responseText.includes("username"))) {
+					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
+				} else {
+					setErrorMsg(t('signup.errorMsg'));
+				}
+			} else {
+				setErrorMsg(t('signup.unknownMsg'));
+			}
 		}
 	};
+	
 
 	// Logout
 	const logout = () => {

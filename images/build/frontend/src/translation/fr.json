@@ -13,6 +13,12 @@
 		"profile":"Profil",
 		"social":"Social"
 	},
+	"quote":{
+		"amelieQuote":"Insérez une phrase cool ici",
+		"axelQuote":"Vous connaissez FF14 ?",
+		"raphaelQuote":"Insérez une phrase cool ici",
+		"valentinQuote":"Insérez une phrase cool ici"
+	},
 	"error":{
 		"title":"Erreur"
 	},
@@ -42,17 +48,36 @@
 		"errorMsg":"Erreur lors de l'enregistrement.",
 		"alreadyMsg":"Un utilisateur avec ce nom d'utilisateur existe deja",
 		"passwordMatch":"Le mot de passe est erroné",
-		"unknownMsg":"Une erreur s'est produite."
+		"unknownMsg":"Une erreur s'est produite.",
+		"passwordTooShort":"Choisissez un autre mot de passe, 8 caractères minimum.",
+		"emailOrUsernameAlreadyUsed":"Le nom d'utilisateur ou le mail est deja utilisé."
 	},
 	"settings":{
 		"language":"Choix de langue :",
 		"settings":"Paramètres",
+		"user":"Utilisateur",
 		"privacy":"Vie privée et sécurité",
 		"accessibility":"Accessibilité",
 		"irreversible":"Attention, cette action est irréversible",
 		"delete":"Voulez-vous supprimer votre compte ?",
 		"deleteSuccess":"Votre compte a ete supprimer",
-		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes..."
+		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes...",
+		"update":"Mettre à jour ",
+		"placeholder":"Entrez votre nouveau",
+		"btn_update":"Mettre à jour",
+		"update_successfull":" a été mis à jour avec succès"
+	},
+	"social":{
+		"all":"Tous les amis",
+		"blocked":"Utilisateur bloques",
+		"pending":"Demande en attente",
+		"add":"Ajouter",
+		"search":"Rechercher",
+		"type":"Cherche tes amis connard"
+	},
+	"colorblindMode":{
+		"on":"Mode Daltonien : Activé",
+		"off":"Mode Daltonien : Désactivé"
 	},
 	"pong":{
 		"pongHome":"Pong",
@@ -60,7 +85,21 @@
 		"pongFourPlayer":"4 joueurs",
 		"waiting":"En attente de joueurs",
 		"playercounter":"Joueurs dans la file: ",
-		"quit":"Retour"
+		"quit":"Retour",
+		"start":"Commencer",
+		"pause":"Pause",
+		"playAgain":"Recommencer",
+		"score": "Score",
+		"left": "gauche",
+		"right": "droite",
+		"top":"Haut",
+		"bottom":"Bas",
+		"playerSide": "côté du joueur",
+		"gameState": "État du jeu",
+		"pauseRemaining": "Pause : Temps restant",
+		"playersDisconnected": "Joueurs déconnectés",
+		"youWin": "Vous avez gagné !",
+		"gameOver": "Partie terminée"
 	},
 	"cookie":{
 		"banner":"En continuant à naviguer sur ce site, vous acceptez que nous utilisions des cookies pour le bon fonctionnement du site. Nous n'utilisons pas de cookies à des fins de suivi ou de publicité.",
@@ -87,5 +126,23 @@
 		"contact_phone":"Numero de telephone: ",
 		"contact_email":"Email: ",
 		"contact_text":"Pour toute question et/ou commentaire concernant notre politique en matière de cookies et la présente déclaration, veuillez nous contacter en utilisant les informations fournies ci-dessus."
+	},
+	"profil":{
+		"total":"Total des Match",
+		"victories":"Victoires",
+		"friends":"Amis",
+		"overview":"Vue d'ensemble",
+		"wins":"Victoires",
+		"loss":"Défaites",
+		"save":"Enregistrer les modifications",
+		"cancel":"Annuler les modifications",
+		"edit":"Modifier",
+		"online":"En ligne",
+		"offline":"Hors ligne",
+		"addFriendPlaceholder":"Nom d'utilisateur",
+		"addFriend":"Ajouter un ami",
+		"matchHistory":"Historique des matchs",
+		"winner":"Gagnant",
+		"score":"Score"
 	}
 }

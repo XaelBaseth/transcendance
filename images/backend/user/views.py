@@ -37,6 +37,7 @@ class UserRegister(APIView):
                 return Response(None, status=status.
                                 HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+        
 
 
 class ChangeAvatar(APIView):

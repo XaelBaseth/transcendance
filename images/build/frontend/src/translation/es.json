@@ -12,6 +12,12 @@
 		"profile":"Perfil",
 		"social":"Social"
 	},
+	"quote":{
+		"amelieQuote":"Inserte una frase interesante aquí",
+		"axelQuote":"¿Conoces FF14?",
+		"raphaelQuote":"Inserte una frase interesante aquí",
+		"valentinQuote":"Inserte una frase interesante aquí"
+	},
 	"error":{
 		"title":"Error"
 	},
@@ -41,17 +47,36 @@
 		"errorMsg":"Error para registrarse",
 		"passwordMatch":"Ya existe un usuario con este nombre de usuario",
 		"alreadyMsg":"La contraseña es incorrecta",
-		"unknownMsg":"Occurrio un error."
+		"unknownMsg":"Occurrio un error.",
+		"passwordTooShort":"Elija otra contraseña, de 8 caracteres mínimo.",
+		"emailOrUsernameAlreadyUsed":"El nombre de usuario o correo electrónico ya está en uso."
 	},
 	"settings":{
 		"settings":"Parámetros",
 		"language":"Elige tu idioma :",
+		"user":"Usuario",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
 		"irreversible":"Cuidado, esta acción es irreversible",
 		"delete":"Deseas eliminar tu cuenta ?",
 		"deleteSuccess":"Tu cuenta ha sido eliminada",
-		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos"
+		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos",
+		"update":"Actualizar ",
+		"placeholder":"Introduce tu nueva",
+		"btn_update":"Actualizar",
+		"update_successfull":" ha sido actualizado con exito"
+	},
+	"social": {
+		"all": "Todos los amigos",
+		"blocked": "Usuarios bloqueados",
+		"pending": "Solicitudes pendientes",
+		"add": "Añadir",
+		"search": "Buscar",
+		"type": "Busca a tus amigos, idiota"
+	},	
+	"colorblindMode":{
+		"on":"Modo daltónico: habilitado",
+		"off":"Modo daltónico: deshabilitado"
 	},
 	"pong":{
 		"pongHome":"Casa de Pong",
@@ -59,7 +84,21 @@
 		"pongFourPlayer":"4 jugadores",
 		"waiting":"A la espera de un jugador",
 		"playercounter":"Jugador en espera: ",
-		"quit":"Regresar"
+		"quit":"Regresar",
+		"start": "Iniciar",
+		"pause": "Pausar",
+		"playAgain":"Empezar de nuevo",
+		"score": "Puntuación",
+		"left": "izquierda",
+		"right": "derecha",
+		"top":"Arriba",
+		"bottom":"Abajo",
+		"playerSide": "lado del jugador",
+		"gameState": "Estado del juego",
+		"pauseRemaining": "Pausa: Tiempo restante",
+		"playersDisconnected": "Jugadores desconectados",
+		"youWin": "¡Ganaste!",
+		"gameOver": "Juego terminado"
 	},
 	"cookie":{
 		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",
@@ -86,5 +125,24 @@
 		"contact_phone":"Número de teléfono: ",
 		"contact_email":"Email: ",
 		"contact_text":"Para preguntas y/o comentarios sobre nuestra Política de Cookies y esta declaración, póngase en contacto con nosotros utilizando la información proporcionada anteriormente."
+	},
+	"profil":{
+		"bio":"Biografía",
+		"total":"Total de partidos",
+		"victories":"Victorias",
+		"friends":"Amigos",
+		"overview":"Resumen",
+		"wins":"Victorias",
+		"loss":"Derrotas",
+		"save":"Guardar cambios",
+		"cancel":"Cancelar cambios",
+		"edit":"Editar",
+		"online":"En línea",
+		"offline":"Desconectado",
+		"addFriendPlaceholder":"Nombre de usuario",
+		"addFriend":"Añadir amigo",
+		"matchHistory":"Historial de partidos",
+		"winner":"Ganador",
+		"score":"Puntuación"
 	}
 }
