@@ -41,8 +41,7 @@ class UserRegister(APIView):
                                 HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
         
-
-
+# Post request to change user avatar
 class ChangeAvatar(APIView):
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = (MultiPartParser, FormParser)
@@ -140,10 +139,12 @@ class UpdateProfileView(APIView):
 
     def put(self, request):
         user = request.user
+        print(f"User attempting to update profile: {user.username}")  # Add this line
         serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+        print(f"Serializer errors: {serializer.errors}")  # Add this line
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FriendRequestView(APIView):

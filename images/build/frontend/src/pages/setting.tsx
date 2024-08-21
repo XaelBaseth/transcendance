@@ -242,30 +242,24 @@ export function TextCardSettings({ property }: { property: string }) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
     };
-
-
+    
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         if (validator.isEmpty(userInput)) {
-            setErrorMsg('Field is empty');
-            return;
+          setErrorMsg('Field is empty');
+          return;
         }
-
         if (property === 'email' && !validator.isEmail(userInput)) {
-            setErrorMsg('Invalid email');
-            return;
+          setErrorMsg('Invalid email');
+          return;
         }
-
-        // Simulating an API call with setTimeout
-        setTimeout(() => {
-            console.log(`Property: ${property}, New Value: ${userInput}`);
-            setPropertyChange(true);
-            setErrorMsg('');
-        }, 1000);
         try {
-            await api.updateUserProfile({ [property]: userInput });
+          await api.updateUserProfile({ [property]: userInput });
+          setPropertyChange(true);
+          setErrorMsg('');
         } catch (error) {
-            console.error('Error updating user profile:', error);
+          console.error('Error updating user profile:', error);
+          setErrorMsg('Failed to update profile. Please try again.');
         }
     };
 
