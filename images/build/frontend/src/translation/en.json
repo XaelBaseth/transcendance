@@ -53,7 +53,8 @@
 		"unknownMsg":"An error occured.",
 		"passwordTooShort":"choose another password, min 8 characters",
 		"invalidEmail":"Invalid email address",
-		"fieldsNotEmpty":"Email, username, and password fields cannot be empty."
+		"fieldsNotEmpty":"Email, username, and password fields cannot be empty.",
+		"emailAlreadyUsed": "This email is already in use.",
 	},
 	"settings":{
 		"settings":"Settings",
@@ -79,6 +80,7 @@
 		"quit":"Back",
 		"start":"start",
 		"pause":"pause",
+		"playAgain":"Restart",
 		"score": "Score",
 		"left": "left",
 		"right": "right",

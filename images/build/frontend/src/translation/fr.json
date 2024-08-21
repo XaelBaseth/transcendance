@@ -49,7 +49,8 @@
 		"alreadyMsg":"Un utilisateur avec ce nom d'utilisateur existe deja",
 		"passwordMatch":"Le mot de passe est erroné",
 		"unknownMsg":"Une erreur s'est produite.",
-		"passwordTooShort":"Choisissez un autre mot de passe, 8 caractères minimum."
+		"passwordTooShort":"Choisissez un autre mot de passe, 8 caractères minimum.",
+		"emailAlreadyUsed": "Cet e-mail est déjà utilisé."
 	},
 	"settings":{
 		"language":"Choix de langue",
@@ -74,6 +75,7 @@
 		"quit":"Retour",
 		"start":"Commencer",
 		"pause":"Pause",
+		"playAgain":"Recommencer",
 		"score": "Score",
 		"left": "gauche",
 		"right": "droite",
