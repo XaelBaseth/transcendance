@@ -100,5 +100,23 @@
 		"contact_phone":"Numero de telephone: ",
 		"contact_email":"Email: ",
 		"contact_text":"Pour toute question et/ou commentaire concernant notre politique en matière de cookies et la présente déclaration, veuillez nous contacter en utilisant les informations fournies ci-dessus."
+	},
+	"profil":{
+		"total":"Total des Match",
+		"victories":"Victoires",
+		"friends":"Amis",
+		"overview":"Vue d'ensemble",
+		"wins":"Victoires",
+		"loss":"Défaites",
+		"save":"Enregistrer les modifications",
+		"cancel":"Annuler les modifications",
+		"edit":"Modifier",
+		"online":"En ligne",
+		"offline":"Hors ligne",
+		"addFriendPlaceholder":"Nom d'utilisateur",
+		"addFriend":"Ajouter un ami",
+		"matchHistory":"Historique des matchs",
+		"winner":"Gagnant",
+		"score":"Score"
 	}
 }
