@@ -61,6 +61,10 @@
 		"deleteSuccess":"Votre compte a ete supprimer",
 		"redirection":"Vous allez maintenant etre rediriger vers la page de login dans quelques secondes..."
 	},
+	"colorblindMode":{
+		"on":"Mode Daltonien : Activé",
+		"off":"Mode Daltonien : Désactivé"
+	},
 	"pong":{
 		"pongHome":"Pong",
 		"pongTwoPlayer":"2 joueurs",

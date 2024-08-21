@@ -100,6 +100,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 			if (res.status >= 200 && res.status < 300) {
 				setSuccessMsg(t('signup.succesMsg'));
 				navigate('/login');
+			} else if (res.status === 409) {
+				setErrorMsg(t('signup.emailAlreadyUsed')); 
 			} else {
 				setErrorMsg(t('signup.errorMsg'));
 			}

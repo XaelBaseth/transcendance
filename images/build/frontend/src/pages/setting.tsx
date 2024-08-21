@@ -41,12 +41,15 @@ function LanguageSwitcher() {
 
 
 function ColorBlindSwitcher() {
+    const { t } = useTranslation();
     const [isColorBlind, setIsColorBlind] = useState(false);
 
     const toggleColorBlindMode = () => {
-        setIsColorBlind(!isColorBlind);
+        const newColorBlindState = !isColorBlind; // Inverser l'état ici
 
-        if (!isColorBlind) {
+        setIsColorBlind(newColorBlindState);
+
+        if (newColorBlindState) {
             // Activer le mode daltonien
             document.documentElement.style.setProperty('--linen', 'var(--linen-D)');
             document.documentElement.style.setProperty('--olive_green', 'var(--olive_green-D)');
@@ -60,16 +63,16 @@ function ColorBlindSwitcher() {
             document.documentElement.style.setProperty('--ok', 'var(--ok-D)');
         } else {
             // Désactiver le mode daltonien et revenir aux couleurs normales
-            document.documentElement.style.setProperty('--linen', '#f7f2e8 !important');
-            document.documentElement.style.setProperty('--olive_green', '#5c775b !important');
-            document.documentElement.style.setProperty('--light_teal', '#a0ced9 !important');
-            document.documentElement.style.setProperty('--pink', '#e27396 !important');
-            document.documentElement.style.setProperty('--light_pink', '#ea9ab2 !important');
-            document.documentElement.style.setProperty('--clear_beige', '#f7f2e8ce !important');
-            document.documentElement.style.setProperty('--clear_yellow', '#fcf5c7a6 !important');
-            document.documentElement.style.setProperty('--clear_teal', '#f7f2e8af !important');
-            document.documentElement.style.setProperty('--error', '#f03e3e !important');
-            document.documentElement.style.setProperty('--ok', '#90be8e !important');
+            document.documentElement.style.setProperty('--linen', '#f7f2e8');
+            document.documentElement.style.setProperty('--olive_green', '#5c775b');
+            document.documentElement.style.setProperty('--light_teal', '#a0ced9');
+            document.documentElement.style.setProperty('--pink', '#e27396');
+            document.documentElement.style.setProperty('--light_pink', '#ea9ab2');
+            document.documentElement.style.setProperty('--clear_beige', '#f7f2e8ce');
+            document.documentElement.style.setProperty('--clear_yellow', '#fcf5c7a6');
+            document.documentElement.style.setProperty('--clear_teal', '#f7f2e8af');
+            document.documentElement.style.setProperty('--error', '#f03e3e');
+            document.documentElement.style.setProperty('--ok', '#90be8e');
         }
     };
 
@@ -77,7 +80,7 @@ function ColorBlindSwitcher() {
         <label className="switch">
             <input type="checkbox" checked={isColorBlind} onChange={toggleColorBlindMode} />
             <span className="slider round"></span>
-            <span>{isColorBlind ? 'Colorblind Mode: On' : 'Colorblind Mode: Off'}</span>
+            <span>{isColorBlind ? t('colorblindMode.on') : t('colorblindMode.off')}</span>
         </label>
     );
 }

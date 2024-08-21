@@ -66,6 +66,10 @@
 		"deleteSuccess":"Your account was successfully deleted!",
 		"redirection":"You will now be redirected to the login page in a few seconds..."
 	},
+	"colorblindMode":{
+		"on":"Colorblind Mode: On",
+		"off":"Colorblind Mode: Off"
+	},
 	"pong":{
 		"pongHome":"Pong Home",
 		"pongTwoPlayer":"2 players",

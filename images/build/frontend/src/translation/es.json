@@ -60,6 +60,10 @@
 		"deleteSuccess":"Tu cuenta ha sido eliminada",
 		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos"
 	},
+	"colorblindMode":{
+		"on":"Modo daltónico: habilitado",
+		"off":"Modo daltónico: deshabilitado"
+	},
 	"pong":{
 		"pongHome":"Casa de Pong",
 		"pongTwoPlayer":"2 jugadores",
