@@ -90,24 +90,39 @@ export const AuthProvider: React.FC = ({ children }) => {
 			setErrorMsg(t('signup.passwordTooShort'));
 			return;
 		}
-
+	
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
-			setErrorMsg(t('signup.invalidEmail')); // Assurez-vous que cette clé est définie dans vos traductions
+			setErrorMsg(t('signup.invalidEmail'));
 			return;
 		}
+	
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
 			if (res.status >= 200 && res.status < 300) {
 				setSuccessMsg(t('signup.succesMsg'));
 				navigate('/login');
 			} else if (res.status === 409) {
-				setErrorMsg(t('signup.emailAlreadyUsed')); 
+				setErrorMsg(t('signup.emailAlreadyUsed'));
 			} else {
 				setErrorMsg(t('signup.errorMsg'));
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error("Error during registration:", error);
-			setErrorMsg(t('signup.unknownMsg'));
+			
+			// Check if the error message contains specific keywords
+			if (error.response && error.response.status === 500) {
+				const responseText = error.response.data;
+	
+				// Look for specific text in the response that might indicate the email is already in use
+				if (responseText && responseText.includes("email")) {
+					setErrorMsg(t('signup.emailAlreadyUsed'));
+				} else {
+					setErrorMsg(t('signup.errorMsg'));
+				}
+			} else {
+				setErrorMsg(t('signup.unknownMsg'));
+			}
 		}
 	};
 
