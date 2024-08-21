@@ -9,7 +9,7 @@ from rest_framework.decorators import authentication_classes
 from .validations import custom_validation, validate_email, validate_password
 from django.db.models import Q
 from django.middleware.csrf import get_token
-import sys
+from django.http import HttpResponse
 import json
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -22,6 +22,9 @@ from rest_framework.parsers import MultiPartParser, FormParser
 #from ..GameServer import test
 
 # Create your views here.
+
+def home(request):
+    return HttpResponse("Welcome to the home page!")
 
 # Post request to create a new user
 @authentication_classes([])
@@ -100,7 +103,7 @@ class UserLogout(APIView):
         try:
             request.user.auth_token.delete()
         except Exception as error:
-            logger.info("LOGOUT ERRRO : %s", error)
+            logger.info("LOGOUT ERRROR : %s", error)
 
         logout(request)
         return Response(status=status.HTTP_200_OK)
