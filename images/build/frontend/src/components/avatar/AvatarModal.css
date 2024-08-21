@@ -1,3 +1,4 @@
+
 .modal {
     display: flex;
     justify-content: center;
@@ -13,17 +14,23 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--linen);
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 300px;
+    border: 6px solid var(--olive_green);
+    min-width: 400px;
     border-radius: 10px;
     text-align: center;
 }
 
+.avatar-text {
+    color: var(--pink);
+    font-family: 'VT323';
+    font-size: 20px;
+}
+
 .close {
-    color: #aaa;
+    color: var(--olive_green);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -31,26 +38,45 @@
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: var(--light_pink);
     text-decoration: none;
     cursor: pointer;
 }
 
 .avatar-options {
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    justify-content: center;
+    overflow: hidden;
+    gap: 10px;
+    padding: 10px;
+    width: 80%;
 }
 
 .avatar-option {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 1px solid var(--olive_green);
     transition: border-color 0.3s ease;
 }
 
 .avatar-option:hover {
-    border-color: #3498db;
+    transform: scale(1.1);
+    border: 1px solid var(--pink);
+}
+
+.avatar-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--pink);
 }

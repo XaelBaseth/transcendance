@@ -92,12 +92,6 @@ body {
 	gap: 10px;
 }
 
-button {
-	padding: 5px 10px;
-	font-size: 16px;
-	cursor: pointer;
-}
-
 .four-player-game-over {
 	width: 500px;
 	height: 500px;
@@ -111,17 +105,21 @@ button {
 .game-loose {
 	position: absolute;
 	display: flex;
-	background-color: red;
+	background-color: var(--error);
 	justify-content: center;
 	align-items: center;
-	color: white;
+	color: var(--linen);
+	font-size: 30px;
+	font-family: 'VT323';
 }
 
 .game-win {
 	display: flex;
 	position: absolute;
-	background-color: green;
+	background-color: var(--ok);
 	justify-content: center;
 	align-items: center;
-	color: white;
+	color: var(--linen);
+	font-size: 30px;
+	font-family: 'VT323';
 }

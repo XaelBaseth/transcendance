@@ -1,6 +1,6 @@
-*******************************
-/* ***      MAIN SETTINGS       ***/
-/* ********************************/
+/**********************************/
+/****      MAIN SETTINGS       ***/
+/*********************************/
 
 .settings__flex {
 	height: 92vh;
@@ -14,7 +14,7 @@
 }
 
 .navigation button {
-    background-color: var(--linen);
+    background-color: var(--white);
     border: none;
     outline: none;
     cursor: pointer;
@@ -54,6 +54,119 @@
     font-family: 'VT323';
     color: var(--pink);
     margin-bottom: 20px; /* Add spacing below the title */
+}
+
+
+
+.title_user {
+	font-family: 'VT323';
+	font-size: 16px;
+	color: var(--pink);
+}
+
+.button_user {
+	background-color: var(--white);
+	border: 3px solid var(--light_teal);
+	color: var(--pink);
+	font-family: 'VT323';
+	font-size: 18px;
+	border-radius: 10px;
+}
+
+.button_user:hover{
+	background-color: var(--light_teal);
+	border: 3px solid var(--white);
+}
+.button_password {
+	background-color: var(--white);
+	border: 3px solid var(--light_teal);
+	color: var(--pink);
+	font-family: 'VT323';
+	font-size: 16px;
+	position: absolute;
+	left: 1%;
+  	top: 95%;
+	border-radius: 10px;
+}
+
+.button_password:hover{
+	background-color: var(--light_teal);
+	border: 3px solid var(--linen);
+}
+
+.show-password {
+	color: var(--light_teal);
+	font-family: 'VT323';
+	font-size: 20px;
+	position: absolute;
+	left: 39%;
+	top: 20%;
+	background-color: var(--white);
+	border-radius: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 2px solid var(--light_teal);
+}
+
+.show-password:hover {
+	color: var(--pink);
+}
+
+.settings_input {
+	width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.info_user {
+	position: relative;
+}
+
+.input_user {
+	display: block;
+	height: 50px;
+	width: 40%;
+	background-color: var(--white);
+	border-radius: 3px;
+	padding: 0 10px;
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: var(--light_pink);
+	font-family: 'VT323';
+
+}
+
+.password_input {
+	display: block;
+	height: 50px;
+	width: 40%;
+	background-color: var(--white);
+	border-radius: 3px;
+	padding: 0 10px;
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: var(--light_pink);
+	font-family: 'VT323';
+
+}
+
+.error_msg {
+	color: var(--error);
+	font-family: 'VT323';
+	font-size: 14px;
+}
+
+.independent_password {
+	position: absolute;
+  	left: 60%;
+  	width: 80%;
+  	top: 40%;
+  	margin: 10px auto;
 }
 
 
@@ -155,7 +268,7 @@
 
 .delete_settings {
 	text-align: center;
-	transform: translateY(-150%) translateX(5%);
+	transform: translateY(130%) translateX(5%);
 }
 
 .delete_settings__title {
@@ -188,7 +301,9 @@
 	border-radius: 50px;
 	color: var(--error);
 	background-color: transparent;
-	transform: translateY(650%) translateX(110%);
+	position: relative;
+	transform: translateY(350%);
+	left: 21%;
 }
 
 

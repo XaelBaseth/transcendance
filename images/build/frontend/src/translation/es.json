@@ -53,14 +53,27 @@
 	},
 	"settings":{
 		"settings":"Parámetros",
-		"language":"Elige tu idioma",
+		"language":"Elige tu idioma :",
+		"user":"Usuario",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
 		"irreversible":"Cuidado, esta acción es irreversible",
 		"delete":"Deseas eliminar tu cuenta ?",
 		"deleteSuccess":"Tu cuenta ha sido eliminada",
-		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos"
+		"redirection":"Vas a ser redirigido a la pagina de inicio en 5 segundos",
+		"update":"Actualizar ",
+		"placeholder":"Introduce tu nueva",
+		"btn_update":"Actualizar",
+		"update_successfull":" ha sido actualizado con exito"
 	},
+	"social": {
+		"all": "Todos los amigos",
+		"blocked": "Usuarios bloqueados",
+		"pending": "Solicitudes pendientes",
+		"add": "Añadir",
+		"search": "Buscar",
+		"type": "Busca a tus amigos, idiota"
+	},	
 	"colorblindMode":{
 		"on":"Modo daltónico: habilitado",
 		"off":"Modo daltónico: deshabilitado"
@@ -112,5 +125,24 @@
 		"contact_phone":"Número de teléfono: ",
 		"contact_email":"Email: ",
 		"contact_text":"Para preguntas y/o comentarios sobre nuestra Política de Cookies y esta declaración, póngase en contacto con nosotros utilizando la información proporcionada anteriormente."
+	},
+	"profil":{
+		"bio":"Biografía",
+		"total":"Total de partidos",
+		"victories":"Victorias",
+		"friends":"Amigos",
+		"overview":"Resumen",
+		"wins":"Victorias",
+		"loss":"Derrotas",
+		"save":"Guardar cambios",
+		"cancel":"Cancelar cambios",
+		"edit":"Editar",
+		"online":"En línea",
+		"offline":"Desconectado",
+		"addFriendPlaceholder":"Nombre de usuario",
+		"addFriend":"Añadir amigo",
+		"matchHistory":"Historial de partidos",
+		"winner":"Ganador",
+		"score":"Puntuación"
 	}
 }
