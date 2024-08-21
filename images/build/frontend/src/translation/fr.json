@@ -50,7 +50,7 @@
 		"passwordMatch":"Le mot de passe est erroné",
 		"unknownMsg":"Une erreur s'est produite.",
 		"passwordTooShort":"Choisissez un autre mot de passe, 8 caractères minimum.",
-		"emailAlreadyUsed": "Cet e-mail est déjà utilisé."
+		"emailOrUsernameAlreadyUsed":"Le nom d'utilisateur ou le mail est deja utilisé."
 	},
 	"settings":{
 		"language":"Choix de langue",

@@ -78,8 +78,9 @@ export const AuthProvider: React.FC = ({ children }) => {
 
 	// Sign up
 	const signup = async (email: string, username: string, password: string, confirmPassword: string) => {
+		// Vérifications côté client
 		if (email === "" || username === "" || password === "") {
-			setErrorMsg(t('signup.fieldsNotEmpty')); 
+			setErrorMsg(t('signup.fieldsNotEmpty'));
 			return;
 		}
 		if (password !== confirmPassword) {
@@ -100,23 +101,26 @@ export const AuthProvider: React.FC = ({ children }) => {
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
 			if (res.status >= 200 && res.status < 300) {
-				setSuccessMsg(t('signup.succesMsg'));
+				setSuccessMsg(t('signup.successMsg'));
 				navigate('/login');
-			} else if (res.status === 409) {
-				setErrorMsg(t('signup.emailAlreadyUsed'));
 			} else {
-				setErrorMsg(t('signup.errorMsg'));
+				// Regrouper les erreurs d'email et d'username
+				const errorMessage = res.data.message || ''; // Extraire le message de la réponse
+	
+				if (errorMessage.includes("already exists")) {
+					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
+				} else {
+					setErrorMsg(t('signup.errorMsg'));
+				}
 			}
 		} catch (error: any) {
 			console.error("Error during registration:", error);
-			
-			// Check if the error message contains specific keywords
+	
 			if (error.response && error.response.status === 500) {
 				const responseText = error.response.data;
 	
-				// Look for specific text in the response that might indicate the email is already in use
-				if (responseText && responseText.includes("email")) {
-					setErrorMsg(t('signup.emailAlreadyUsed'));
+				if (responseText && (responseText.includes("email") || responseText.includes("username"))) {
+					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
 				} else {
 					setErrorMsg(t('signup.errorMsg'));
 				}
@@ -125,6 +129,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 			}
 		}
 	};
+	
 
 	// Logout
 	const logout = () => {
