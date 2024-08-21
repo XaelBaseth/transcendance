@@ -1,5 +1,7 @@
 #environment
 .env
+.vscode
+README/
 
 #42 setup
 $HOME
@@ -21,7 +23,7 @@ ssl/certs
 ssl/private
 
 #volume
-volume
+volume/
 volume/postgres-data
 volume/vaul-data
 volume/db-data

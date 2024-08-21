@@ -17,6 +17,13 @@ from datetime import timedelta
 import dotenv
 from .vault import fetch_secrets_from_vault
 
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
+DATABASE_URL = os.getenv('DATABASE_URL')
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 dotenv.load_dotenv()
 
 database_secret_path = 'django/'
@@ -52,15 +59,6 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 	'USER_ID_FIELD': 'user_id',
 }
-
-
-
-# SIMPLE_JWT = {
-#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-#     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-# 	'USER_ID_FIELD': 'user_id',
-# }
-
 
 # Application definition
 
@@ -116,13 +114,6 @@ ASGI_APPLICATION = 'source.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
 
 DATABASES = {
     'default' : {

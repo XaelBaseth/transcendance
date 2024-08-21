@@ -12,6 +12,12 @@
 		"profile":"Perfil",
 		"social":"Social"
 	},
+	"quote":{
+		"amelieQuote":"Inserte una frase interesante aquí",
+		"axelQuote":"¿Conoces FF14?",
+		"raphaelQuote":"Inserte una frase interesante aquí",
+		"valentinQuote":"Inserte una frase interesante aquí"
+	},
 	"error":{
 		"title":"Error"
 	},
@@ -41,7 +47,9 @@
 		"errorMsg":"Error para registrarse",
 		"passwordMatch":"Ya existe un usuario con este nombre de usuario",
 		"alreadyMsg":"La contraseña es incorrecta",
-		"unknownMsg":"Occurrio un error."
+		"unknownMsg":"Occurrio un error.",
+		"passwordTooShort":"Elija otra contraseña, de 8 caracteres mínimo.",
+		"emailAlreadyUsed": "Este correo electrónico ya está en uso."
 	},
 	"settings":{
 		"settings":"Parámetros",
@@ -66,13 +74,31 @@
 		"search": "Buscar",
 		"type": "Busca a tus amigos, idiota"
 	},	
+	"colorblindMode":{
+		"on":"Modo daltónico: habilitado",
+		"off":"Modo daltónico: deshabilitado"
+	},
 	"pong":{
 		"pongHome":"Casa de Pong",
 		"pongTwoPlayer":"2 jugadores",
 		"pongFourPlayer":"4 jugadores",
 		"waiting":"A la espera de un jugador",
 		"playercounter":"Jugador en espera: ",
-		"quit":"Regresar"
+		"quit":"Regresar",
+		"start": "Iniciar",
+		"pause": "Pausar",
+		"playAgain":"Empezar de nuevo",
+		"score": "Puntuación",
+		"left": "izquierda",
+		"right": "derecha",
+		"top":"Arriba",
+		"bottom":"Abajo",
+		"playerSide": "lado del jugador",
+		"gameState": "Estado del juego",
+		"pauseRemaining": "Pausa: Tiempo restante",
+		"playersDisconnected": "Jugadores desconectados",
+		"youWin": "¡Ganaste!",
+		"gameOver": "Juego terminado"
 	},
 	"cookie":{
 		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",

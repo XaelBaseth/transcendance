@@ -4,12 +4,13 @@ import AxelImage from "../assets/acharlot.jpg"
 import RaphaelImage from "../assets/rrault.jpg"
 import ValentinImage from "../assets/vmalassi.jpg"
 import '../styles/About.css';
+import { useTranslation } from 'react-i18next';
 
 interface Member {
 	name: string;
 	github: string;
 	image: string;
-	quote: string;
+	quote: string; 
 }
 
 const teamMembers: Member[] = [
@@ -17,41 +18,42 @@ const teamMembers: Member[] = [
 		name: 'Amelie',
 		github: 'https://github.com/Sireas03',
 		image: AmelieImage,
-		quote: 'inserez phrase cool ici'
+		quote: 'quote.amelieQuote',
 	},
 	{
 		name: 'Axel',
 		github: 'https://github.com/XaelBaseth',
 		image: AxelImage,
-		quote: 'Vous connaissez FF14 ?',
+		quote: 'quote.axelQuote',
 	},
 	{
 		name: 'Raphael',
 		github: 'https://github.com/xXCARRELAGEXx',
 		image: RaphaelImage,
-		quote: 'inserez phrase cool ici'
+		quote: 'quote.raphaelQuote',
 	},
 	{
 		name: 'Valentin',
 		github: 'https://github.com/ValentinMalassigne',
 		image: ValentinImage,
-		quote: 'inserez phrase cool ici',
+		quote: 'quote.valentinQuote', 
 	},
 ];
 
-
 function About() {
+	const { t } = useTranslation();
+
 	return (
 		<div className='aboutus'>
 			<div className='staff'>
 				{teamMembers.map((member, index) => (
 					<div className='container_staff' key={index}>
-					<img className='image' src={member.image} alt={member.name} />
-					<div className='text'>
-						<h2>{member.name}</h2>
-						<p><a href={member.github} >{member.github}</a></p>
-						<h3>{member.quote}</h3>
-					</div>
+						<img className='image' src={member.image} alt={member.name} />
+						<div className='text'>
+							<h2>{member.name}</h2>
+							<p><a href={member.github} >{member.github}</a></p>
+							<h3>{t(member.quote)}</h3> 
+						</div>
 					</div>
 				))}	
 			</div>

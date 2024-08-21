@@ -41,10 +41,17 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, [location]);
 
+
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 	// Login
 	const login = async (email: string, password: string) => {
 		if (email === "" || password === "") {
 			setErrorMsg(t('login.notEmpty'));
+			return;
+		}
+		if (!emailRegex.test(email)) {
+			setErrorMsg(t('login.invalidCredentials'));
 			return;
 		}
 		try {
@@ -59,16 +66,33 @@ export const AuthProvider: React.FC = ({ children }) => {
 			} else {
 				setErrorMsg(t('login.errorMsg'));
 			}
-		} catch (error) {
+		} catch (error: any) {
 			console.error(error);
-			setErrorMsg(t('login.unknownMsg'));
+			if (error.response && error.response.status === 401) {
+				setErrorMsg(t('login.invalidCredentials')); 
+			} else {
+				setErrorMsg(t('login.unknownMsg'));
+			}
 		}
 	};
 
 	// Sign up
 	const signup = async (email: string, username: string, password: string, confirmPassword: string) => {
+		if (email === "" || username === "" || password === "") {
+			setErrorMsg(t('signup.fieldsNotEmpty')); 
+			return;
+		}
 		if (password !== confirmPassword) {
 			setErrorMsg(t('signup.passwordMatch'));
+			return;
+		}
+		if (password.length < 8) {
+			setErrorMsg(t('signup.passwordTooShort'));
+			return;
+		}
+
+		if (!emailRegex.test(email)) {
+			setErrorMsg(t('signup.invalidEmail')); // Assurez-vous que cette clé est définie dans vos traductions
 			return;
 		}
 		try {
@@ -76,6 +100,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 			if (res.status >= 200 && res.status < 300) {
 				setSuccessMsg(t('signup.succesMsg'));
 				navigate('/login');
+			} else if (res.status === 409) {
+				setErrorMsg(t('signup.emailAlreadyUsed')); 
 			} else {
 				setErrorMsg(t('signup.errorMsg'));
 			}
