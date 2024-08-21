@@ -92,6 +92,25 @@
 		"contact_phone":"Phone number: ",
 		"contact_email":"Email: ",
 		"contact_text":"For questions and/or comments about our Cookie Policy and this statement, please contact us using the information provided above."
+	},
+	"profil":{
+		"bio":"Bio",
+		"total":"Total Matches",
+		"victories":"Victories",
+		"friends":"Friends",
+		"overview":"Overview",
+		"wins":"Wins",
+		"loss":"Losses",
+		"save":"Save changes",
+		"cancel":"Cancel changes",
+		"edit":"Edit",
+		"online":"Online",
+		"offline":"Offline",
+		"addFriendPlaceholder":"Add Friends placeholder",
+		"addFriend":"Add Friend",
+		"matchHistory":"Match History",
+		"winner":"Winner",
+		"score":"Score"
 	}
 }
 	

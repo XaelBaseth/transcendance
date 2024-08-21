@@ -91,5 +91,24 @@
 		"contact_phone":"Número de teléfono: ",
 		"contact_email":"Email: ",
 		"contact_text":"Para preguntas y/o comentarios sobre nuestra Política de Cookies y esta declaración, póngase en contacto con nosotros utilizando la información proporcionada anteriormente."
+	},
+	"profil":{
+		"bio":"Biografía",
+		"total":"Total de partidos",
+		"victories":"Victorias",
+		"friends":"Amigos",
+		"overview":"Resumen",
+		"wins":"Victorias",
+		"loss":"Derrotas",
+		"save":"Guardar cambios",
+		"cancel":"Cancelar cambios",
+		"edit":"Editar",
+		"online":"En línea",
+		"offline":"Desconectado",
+		"addFriendPlaceholder":"Nombre de usuario",
+		"addFriend":"Añadir amigo",
+		"matchHistory":"Historial de partidos",
+		"winner":"Ganador",
+		"score":"Puntuación"
 	}
 }
