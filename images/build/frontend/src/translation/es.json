@@ -12,6 +12,12 @@
 		"profile":"Perfil",
 		"social":"Social"
 	},
+	"quote":{
+		"amelieQuote":"Inserte una frase interesante aquí",
+		"axelQuote":"¿Conoces FF14?",
+		"raphaelQuote":"Inserte una frase interesante aquí",
+		"valentinQuote":"Inserte una frase interesante aquí"
+	},
 	"error":{
 		"title":"Error"
 	},
@@ -46,7 +52,7 @@
 	},
 	"settings":{
 		"settings":"Parámetros",
-		"Choose your language":"Elige tu idioma",
+		"language":"Elige tu idioma",
 		"privacy":"Vida privada y seguridad",
 		"accessibility":"Accesibilidad",
 		"irreversible":"Cuidado, esta acción es irreversible",
@@ -60,7 +66,20 @@
 		"pongFourPlayer":"4 jugadores",
 		"waiting":"A la espera de un jugador",
 		"playercounter":"Jugador en espera: ",
-		"quit":"Regresar"
+		"quit":"Regresar",
+		"start": "Iniciar",
+		"pause": "Pausar",
+		"score": "Puntuación",
+		"left": "izquierda",
+		"right": "derecha",
+		"top":"Arriba",
+		"bottom":"Abajo",
+		"playerSide": "lado del jugador",
+		"gameState": "Estado del juego",
+		"pauseRemaining": "Pausa: Tiempo restante",
+		"playersDisconnected": "Jugadores desconectados",
+		"youWin": "¡Ganaste!",
+		"gameOver": "Juego terminado"
 	},
 	"cookie":{
 		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",

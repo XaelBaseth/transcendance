@@ -17,6 +17,13 @@ from datetime import timedelta
 import dotenv
 from .vault import fetch_secrets_from_vault
 
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
+DATABASE_URL = os.getenv('DATABASE_URL')
+SECRET_KEY = os.getenv('SECRET_KEY')
+
 dotenv.load_dotenv()
 
 database_secret_path = 'django/'
@@ -31,6 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = database_secrets.get('SECRET_KEY')
+#SECRET_KEY = $SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

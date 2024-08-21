@@ -12,6 +12,12 @@
 		"profile":"Profile",
 		"social":"Social"
 	},
+	"quote":{
+		"amelieQuote":"Insert cool phrase here",
+		"axelQuote":"Do you know ff14 ?",
+		"raphaelQuote":"Insert cool phrase here",
+		"valentinQuote":"Insert cool phrase here"
+	},  
 	"error":{
 		"title":"Error"
 	},
@@ -51,7 +57,7 @@
 	},
 	"settings":{
 		"settings":"Settings",
-		"Choose your language":"Choose your language",
+		"language":"Choose your language",
 		"user":"User",
 		"privacy":"Privacy",
 		"accessibility":"Accessibility",
@@ -66,7 +72,20 @@
 		"pongFourPlayer":"4 players",
 		"waiting":"Waitings for other players",
 		"playercounter":"PLayers in queue: ",
-		"quit":"Back"
+		"quit":"Back",
+		"start":"start",
+		"pause":"pause",
+		"score": "Score",
+		"left": "left",
+		"right": "right",
+		"top":"Top",
+		"bottom":"Bottom",
+		"playerSide": "player side",
+		"gameState": "Game state",
+		"pauseRemaining": "Pause : Remaining time",
+		"playersDisconnected": "Players disconnected",
+		"youWin": "You win!",
+		"gameOver": "Game Over"
 	},
 	"cookie":{
 		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes.",

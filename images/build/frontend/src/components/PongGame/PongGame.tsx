@@ -2,23 +2,25 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import '../../styles/PongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
+import { useTranslation } from 'react-i18next';
 
 const PongGame = () => {
-	const MAP_HEIGHT = 400
-	const MAP_WIDTH = 600
-	const BALL_DIAMETER = 20
-	const PADDLE_HEIGHT = 100
-	const PADDLE_WIDTH = 20
-	const TPS = 10
+	const { t } = useTranslation(); // Importer la fonction t pour la traduction
+	const MAP_HEIGHT = 400;
+	const MAP_WIDTH = 600;
+	const BALL_DIAMETER = 20;
+	const PADDLE_HEIGHT = 100;
+	const PADDLE_WIDTH = 20;
+	const TPS = 10;
 	const params = useParams();
-	const initialBallState = { x: MAP_WIDTH / 2 - BALL_DIAMETER / 2, y: MAP_HEIGHT / 2 - BALL_DIAMETER / 2};
+	const initialBallState = { x: MAP_WIDTH / 2 - BALL_DIAMETER / 2, y: MAP_HEIGHT / 2 - BALL_DIAMETER / 2 };
 	const initialPaddleState = { left: (MAP_HEIGHT - PADDLE_HEIGHT) / 2, right: (MAP_HEIGHT - PADDLE_HEIGHT) / 2 };
 	const [ball, setBall] = useState(initialBallState);
 	const [paddles, setPaddles] = useState(initialPaddleState);
 	const [gameOver, setGameOver] = useState(false);
 	const [gameState, setGameState] = useState("initial");
 	const [pause, setPause] = useState(false);
-	const [player_side, setPlayerSide] = useState("spectator"); //left, right or spectator
+	const [player_side, setPlayerSide] = useState("spectator");
 	const [score, setScore] = useState({ left: 0, right: 0 });
 	const [winner, setWinner] = useState("");
 	const [remaining_time, setRemainingTime] = useState(0);
@@ -32,7 +34,7 @@ const PongGame = () => {
 			const port = window.location.port;
 
 			const token = localStorage.getItem(ACCESS_TOKEN);
-			socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/pong/' + params.roomCode + '/?token=' + token);
+			socketRef.current = new WebSocket('wss://' + hostname + ':' + port + '/ws/pong/' + params.roomCode + '/?token=' + token);
 
 			socketRef.current.onopen = () => {
 				if (socketRef.current) {
@@ -50,9 +52,9 @@ const PongGame = () => {
 
 		return () => {
 			if (socketRef.current) {
-                socketRef.current.close();
-                console.log('WebSocket connection closed');
-            };
+				socketRef.current.close();
+				console.log('WebSocket connection closed');
+			};
 		};
 	}, []);
 
@@ -75,12 +77,10 @@ const PongGame = () => {
 			}
 		};
 
-		//très import qu'il soit dans un useEffect qui dépend de paddles
 		if (socketRef.current) {
 			socketRef.current.onmessage = (event) => {
 				const data = JSON.parse(event.data);
-				if (data.type != "game_state")
-				{
+				if (data.type != "game_state") {
 					console.log('Received message', data);
 				}
 				switch (data.type) {
@@ -128,8 +128,8 @@ const PongGame = () => {
 						setPlayersDisconnected(data.players);
 						break;
 					case 'join_game':
-						const side = data.side
-						const state = data.state
+						const side = data.side;
+						const state = data.state;
 						setGameState(state);
 						setPlayerSide(side);
 						if (side === 'spectator') {
@@ -168,17 +168,17 @@ const PongGame = () => {
 
 	return (<>
 		<div className="controls">
-			{gameState === "initial" && <button onClick={startGame}>Start</button>}
-			{gameState === "running" && <button onClick={pauseGame}>Pause</button>}
+			{gameState === "initial" && <button onClick={startGame}>{t('pong.start')}</button>}
+			{gameState === "running" && <button onClick={pauseGame}>{t('pong.pause')}</button>}
 		</div>
 		<div className="controls">
-			<p>Score : left : {score.left} right : {score.right}</p>
-			<p>player side : {player_side}</p>
-			<p>Game state : {gameState}</p>
-			{remaining_time !== 0 && <p>Pause : Remaining time : {remaining_time}</p>}
-			{players_disconnected.length > 0 && <p>Players disconnected : {players_disconnected.join(', ')}</p>}
+			<p>{t('pong.score')} : {t('pong.left')} : {score.left} {t('pong.right')} : {score.right}</p>
+			<p>{t('pong.playerSide')} : {t(`pong.${player_side}`)}</p>
+			<p>{t('pong.gameState')} : {gameState}</p>
+			{remaining_time !== 0 && <p>{t('pong.pauseRemaining')} : {remaining_time}</p>}
+			{players_disconnected.length > 0 && <p>{t('pong.playersDisconnected')} : {players_disconnected.join(', ')}</p>}
 		</div>
-		<div className="ping-pong-container" tabIndex={0} style={{width: MAP_WIDTH, height: MAP_HEIGHT}}>
+		<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 			<div
 				className={`paddle paddle-left`}
 				id="paddle-left"
@@ -187,20 +187,23 @@ const PongGame = () => {
 			<div
 				className={`paddle paddle-right`}
 				id="paddle-right"
-				style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH-PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
+				style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH - PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
 			/>
 			<div
 				className={`ball`}
 				ref={ballRef}
-				style={{ top: `${ball.y}px`, left: `${ball.x}px`,
-				width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
-				transition: `top ${1/TPS}s, left ${1/TPS}s`,
-				transitionTimingFunction: 'linear' }} 
+				style={{
+					top: `${ball.y}px`, left: `${ball.x}px`,
+					width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
+					transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
+					transitionTimingFunction: 'linear'
+				}}
 			/>
-			{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2 }px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>You win !</div>}
-			{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0 }px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>Game Over</div>}
+			{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.youWin')}</div>}
+			{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.gameOver')}</div>}
 		</div>
 	</>
 	);
 };
+
 export default PongGame;
