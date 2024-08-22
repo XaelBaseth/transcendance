@@ -1,7 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
 import { useTranslation } from 'react-i18next';
 import frenchFlag from '../assets/fr.png'
 import spanishFlag from '../assets/es.png'
@@ -9,7 +6,6 @@ import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import api from '../api';
 import '../styles/Setting.css';
 
@@ -19,7 +15,6 @@ function LanguageSwitcher() {
     const changeLanguage = (language: string) => {
         i18n.changeLanguage(language);
     };
-
     return (
         <div className="language-switcher">
             <p className="language-title">{t('settings.language')}</p>
@@ -89,13 +84,13 @@ function ColorBlindSwitcher() {
 
 const Settings: React.FC = () => {
     const { t } = useTranslation();
-	const [currentSection, setCurrentSection] = useState('ACCESSIBILITY');
+    const [currentSection, setCurrentSection] = useState('ACCESSIBILITY');
 
-	const handleSectionChange = (section: string) => {
-		setCurrentSection(section);
-	};
+    const handleSectionChange = (section: string) => {
+        setCurrentSection(section);
+    };
 
-	return (
+    return (
         <div className='settings__flex'>
             <div className='settings'>
                 <h1>{t('settings.settings')}</h1>
@@ -149,9 +144,9 @@ function UserSettings() {
 }
 
 export function DeleteAccountCardSettings() {
-	const { t } = useTranslation();
-	const [isDeleted, setDeleted] = useState<boolean>(false);
-	const navigate = useNavigate();
+    const { t } = useTranslation();
+    const [isDeleted, setDeleted] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isDeleted) {
@@ -242,24 +237,25 @@ export function TextCardSettings({ property }: { property: string }) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
     };
-    
+
+
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         if (validator.isEmpty(userInput)) {
-          setErrorMsg('Field is empty');
-          return;
+            setErrorMsg('Field is empty');
+            return;
         }
         if (property === 'email' && !validator.isEmail(userInput)) {
-          setErrorMsg('Invalid email');
-          return;
+            setErrorMsg('Invalid email');
+            return;
         }
         try {
-          await api.updateUserProfile({ [property]: userInput });
-          setPropertyChange(true);
-          setErrorMsg('');
+            await api.updateUserProfile({ [property]: userInput });
+            setPropertyChange(true);
+            setErrorMsg('');
         } catch (error) {
-          console.error('Error updating user profile:', error);
-          setErrorMsg('Failed to update profile. Please try again.');
+            console.error('Error updating user profile:', error);
+            setErrorMsg('Failed to update profile. Please try again.');
         }
     };
 

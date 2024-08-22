@@ -1,0 +1,509 @@
+.
+  |-.git
+  |  |-description
+  |  |-info
+  |  |  |-exclude
+  |  |-hooks
+  |  |  |-update.sample
+  |  |  |-push-to-checkout.sample
+  |  |  |-prepare-commit-msg.sample
+  |  |  |-commit-msg.sample
+  |  |  |-pre-receive.sample
+  |  |  |-post-update.sample
+  |  |  |-pre-push.sample
+  |  |  |-fsmonitor-watchman.sample
+  |  |  |-pre-rebase.sample
+  |  |  |-pre-applypatch.sample
+  |  |  |-pre-commit.sample
+  |  |  |-applypatch-msg.sample
+  |  |  |-pre-merge-commit.sample
+  |  |-branches
+  |  |-refs
+  |  |  |-heads
+  |  |  |  |-master
+  |  |  |  |-amelie
+  |  |  |  |-robin3
+  |  |  |-tags
+  |  |  |-remotes
+  |  |  |  |-origin
+  |  |  |  |  |-HEAD
+  |  |  |  |  |-robin2
+  |  |  |  |  |-master
+  |  |  |  |  |-robin3
+  |  |  |-stash
+  |  |-HEAD
+  |  |-config
+  |  |-objects
+  |  |  |-pack
+  |  |  |  |-pack-b8516cdb85e736be789beda512b536b2c57cba90.pack
+  |  |  |  |-pack-b8516cdb85e736be789beda512b536b2c57cba90.idx
+  |  |  |-info
+  |  |  |-e9
+  |  |  |  |-de1270d82cc6756e3fae1794ceef3cea70ca97
+  |  |  |-c6
+  |  |  |  |-18162970e92f89c3c46140d87574d620ed64d2
+  |  |  |-dd
+  |  |  |  |-6d8a13f88a265ea4a78688e13fe9fb38583155
+  |  |  |-cd
+  |  |  |  |-8d36d511f96ffd8374f2bafb1c5d210eceb0d6
+  |  |  |-d3
+  |  |  |  |-f5a5907afe632671f442bbd85877f2d2a1a9ff
+  |  |  |-b7
+  |  |  |  |-09e4a5b772a5112a84ae808cfd940a66365af6
+  |  |  |-d7
+  |  |  |  |-da49120a6a166b739e2335a80daab5610d1885
+  |  |  |  |-dbcd04d8fe9eb6fc9781bf6342637d89052eea
+  |  |  |-9a
+  |  |  |  |-f6bcff56f95e606025a03a9082aae6ebf3395d
+  |  |  |-f7
+  |  |  |  |-4d1a2532e0d5e73ec1cd434e8fdf680a168d08
+  |  |  |-cb
+  |  |  |  |-b415f00e77fdf16b1e8bb657540f9ba085e0cc
+  |  |  |-b1
+  |  |  |  |-96785fcf7f97aa494413ee0fe24aba9d1d2711
+  |  |  |-da
+  |  |  |  |-c3a73798b255f6ff8543ac3fa313bfde38695b
+  |  |  |-56
+  |  |  |  |-3941e287cf5b89e900c8b2c6a7b03eb34cf300
+  |  |  |-30
+  |  |  |  |-1868dbc57a8e7b1370dda9810aebf869039001
+  |  |  |-ad
+  |  |  |  |-2f27da48cc3e9d8f0dfaa590b5c2ce80b0dd8c
+  |  |  |-93
+  |  |  |  |-a636ab2e2548b69ad2fd6d54763a721f5ae5cd
+  |  |  |-5f
+  |  |  |  |-c254f3537484ad7110fdeb7869f1ccedb60f81
+  |  |  |-2d
+  |  |  |  |-15a9e857fa6ea15b16dfac4dc2bf16254956d2
+  |  |  |-31
+  |  |  |  |-6e3b031fdb10e08238db06495c2289b478cad7
+  |  |  |-c7
+  |  |  |  |-604bf5edfb0e57efb3ebcca8b4d3aecb13198f
+  |  |  |-7c
+  |  |  |  |-5c5285664b484f0080b2f8cebf8d0e4e1e0fd5
+  |  |  |-f6
+  |  |  |  |-9f402fdc7b93d201a746ed971bf16908e7a22d
+  |  |  |-45
+  |  |  |  |-d4ca82d6f33655c9146315491a8cb2c72f16af
+  |  |  |-9d
+  |  |  |  |-912da7247ea393bd4be6290d3eafaea3c371eb
+  |  |  |-8a
+  |  |  |  |-0d9ae4d2c1870970fe67c2eddf90ddc1711dd2
+  |  |  |-f5
+  |  |  |  |-56f7957368f2fc8781acec77f9b34f3884bf2f
+  |  |  |-c0
+  |  |  |  |-2e24a5cb7fd8dfa2e97e2164818ad72bf24c62
+  |  |  |-64
+  |  |  |  |-4a82605f7193e649d690a5a2e70c463c1448dc
+  |  |  |-6b
+  |  |  |  |-25e5f32a341c5c4b90539188e248773e1e78cf
+  |  |  |-0f
+  |  |  |  |-773ab7a5c298e743a8787fb2998f2a03e4f126
+  |  |  |-d4
+  |  |  |  |-a9fbbea9bfd8c2f56bca3925c6dbb38bbc0895
+  |  |  |-a1
+  |  |  |  |-79929b35a17b0d7667e0c9682ad74767c8d3d2
+  |  |  |-09
+  |  |  |  |-ccff23a0df51992d457282102552b79aad798f
+  |  |  |-b8
+  |  |  |  |-0c150e720911ac82861968135d9bfd082ff4c6
+  |  |  |-e1
+  |  |  |  |-78456bac1d672482aaeed502095910ff8b5e11
+  |  |  |-af
+  |  |  |  |-25d91f660ae0bdc14c0cd51234c42829d7d532
+  |  |  |-ec
+  |  |  |  |-80f73cce23ab8f9f693ac96fb889a0a943ab46
+  |  |  |-8b
+  |  |  |  |-158bde43ad9768b047c848ce097ab771667627
+  |  |  |-4d
+  |  |  |  |-f87ceae70fa4206ca639c97036d82f0636249d
+  |  |  |-d5
+  |  |  |  |-dc5d36f4f3b874a0ca572243c9820e89ae3042
+  |  |  |-92
+  |  |  |  |-0de1790f9d1584630bda521e779ff8b7cccf60
+  |  |-packed-refs
+  |  |-logs
+  |  |  |-refs
+  |  |  |  |-remotes
+  |  |  |  |  |-origin
+  |  |  |  |  |  |-HEAD
+  |  |  |  |  |  |-robin2
+  |  |  |  |  |  |-master
+  |  |  |  |  |  |-robin3
+  |  |  |  |-heads
+  |  |  |  |  |-master
+  |  |  |  |  |-amelie
+  |  |  |  |  |-robin3
+  |  |  |  |-stash
+  |  |  |-HEAD
+  |  |-index
+  |  |-FETCH_HEAD
+  |  |-ORIG_HEAD
+  |  |-COMMIT_EDITMSG
+  |-.gitignore
+  |-Makefile
+  |-README
+  |  |-AccessDB.md
+  |  |-ModSec_&_Vaul.md
+  |  |-RGPD_&_JWT.md
+  |-docker-compose.yml
+  |-images
+  |  |-backend
+  |  |  |-.DS_Store
+  |  |  |-Dockerfile
+  |  |  |-chat
+  |  |  |  |-__init__.py
+  |  |  |  |-consumers.py
+  |  |  |  |-migrations
+  |  |  |  |  |-__init__.py
+  |  |  |  |-models.py
+  |  |  |  |-routing.py
+  |  |  |  |-views.py
+  |  |  |-init.sh
+  |  |  |-manage.py
+  |  |  |-matchmaking
+  |  |  |  |-__init__.py
+  |  |  |  |-consumers.py
+  |  |  |  |-migrations
+  |  |  |  |  |-__init__.py
+  |  |  |  |-routing.py
+  |  |  |-pong
+  |  |  |  |-__init__.py
+  |  |  |  |-consumers.py
+  |  |  |  |-migrations
+  |  |  |  |  |-__init__.py
+  |  |  |  |-models.py
+  |  |  |  |-routing.py
+  |  |  |  |-serializer.py
+  |  |  |  |-urls.py
+  |  |  |  |-views.py
+  |  |  |-requirements.txt
+  |  |  |-source
+  |  |  |  |-__init__.py
+  |  |  |  |-__pycache__
+  |  |  |  |  |-__init__.cpython-310.pyc
+  |  |  |  |  |-__init__.cpython-311.pyc
+  |  |  |  |  |-__init__.cpython-312.pyc
+  |  |  |  |  |-settings.cpython-310.pyc
+  |  |  |  |  |-settings.cpython-311.pyc
+  |  |  |  |  |-settings.cpython-312.pyc
+  |  |  |  |  |-urls.cpython-310.pyc
+  |  |  |  |  |-urls.cpython-311.pyc
+  |  |  |  |  |-wsgi.cpython-310.pyc
+  |  |  |  |  |-wsgi.cpython-311.pyc
+  |  |  |  |-asgi.py
+  |  |  |  |-settings.py
+  |  |  |  |-vault.py
+  |  |  |  |-wsgi.py
+  |  |  |  |-urls.py
+  |  |  |-static
+  |  |  |  |-images
+  |  |  |  |  |-close.png
+  |  |  |  |  |-default.jpg
+  |  |  |  |  |-default.svg
+  |  |  |-user
+  |  |  |  |-__init__.py
+  |  |  |  |-__pycache__
+  |  |  |  |  |-__init__.cpython-310.pyc
+  |  |  |  |  |-__init__.cpython-311.pyc
+  |  |  |  |  |-admin.cpython-310.pyc
+  |  |  |  |  |-admin.cpython-311.pyc
+  |  |  |  |  |-apps.cpython-310.pyc
+  |  |  |  |  |-apps.cpython-311.pyc
+  |  |  |  |  |-models.cpython-310.pyc
+  |  |  |  |  |-models.cpython-311.pyc
+  |  |  |  |  |-serializers.cpython-311.pyc
+  |  |  |  |  |-urls.cpython-310.pyc
+  |  |  |  |  |-urls.cpython-311.pyc
+  |  |  |  |  |-views.cpython-310.pyc
+  |  |  |  |  |-views.cpython-311.pyc
+  |  |  |  |-admin.py
+  |  |  |  |-apps.py
+  |  |  |  |-decorators.py
+  |  |  |  |-media
+  |  |  |  |  |-profilIcon.png
+  |  |  |  |-migrations
+  |  |  |  |  |-0001_initial.py
+  |  |  |  |  |-0002_alter_appuser_username.py
+  |  |  |  |  |-0003_alter_appuser_username.py
+  |  |  |  |  |-__init__.py
+  |  |  |  |  |-__pycache__
+  |  |  |  |  |  |-0001_initial.cpython-311.pyc
+  |  |  |  |  |  |-0002_alter_appuser_username.cpython-311.pyc
+  |  |  |  |  |  |-0003_alter_appuser_username.cpython-311.pyc
+  |  |  |  |  |  |-__init__.cpython-310.pyc
+  |  |  |  |  |  |-__init__.cpython-311.pyc
+  |  |  |  |-models.py
+  |  |  |  |-serializers.py
+  |  |  |  |-tests.py
+  |  |  |  |-validations.py
+  |  |  |  |-urls.py
+  |  |  |  |-views.py
+  |  |-build
+  |  |  |-Dockerfile
+  |  |  |-frontend
+  |  |  |  |-.eslintrc.cjs
+  |  |  |  |-.gitignore
+  |  |  |  |-README.md
+  |  |  |  |-build
+  |  |  |  |  |-assets
+  |  |  |  |  |  |-BG(2).mp4
+  |  |  |  |  |  |-BG.mp4
+  |  |  |  |  |  |-history_icone.png
+  |  |  |  |  |  |-icone_profil.png
+  |  |  |  |  |  |-icone_settings.png
+  |  |  |  |  |  |-leaderboard_icone.png
+  |  |  |  |  |  |-leaderboard_icons.webp
+  |  |  |  |  |  |-pokeball.png
+  |  |  |  |  |  |-settings_icons.png
+  |  |  |  |  |  |-social_icone.png
+  |  |  |  |  |  |-social_icons.png
+  |  |  |  |  |-manifest.json
+  |  |  |  |  |-robots.txt
+  |  |  |  |-index.html
+  |  |  |  |-package-lock.json
+  |  |  |  |-package.json
+  |  |  |  |-src
+  |  |  |  |  |-App.css
+  |  |  |  |  |-App.tsx
+  |  |  |  |  |-assets
+  |  |  |  |  |  |-1.png
+  |  |  |  |  |  |-2.png
+  |  |  |  |  |  |-3.png
+  |  |  |  |  |  |-4.png
+  |  |  |  |  |  |-5.png
+  |  |  |  |  |  |-6.png
+  |  |  |  |  |  |-7.png
+  |  |  |  |  |  |-8.png
+  |  |  |  |  |  |-9.png
+  |  |  |  |  |  |-BG.mp4
+  |  |  |  |  |  |-acharlot.jpg
+  |  |  |  |  |  |-amphinobi.png
+  |  |  |  |  |  |-aramier.jpg
+  |  |  |  |  |  |-emolga.png
+  |  |  |  |  |  |-es.png
+  |  |  |  |  |  |-florizarre.png
+  |  |  |  |  |  |-fr.png
+  |  |  |  |  |  |-giratina.png
+  |  |  |  |  |  |-icone_about.webp
+  |  |  |  |  |  |-icone_local.webp
+  |  |  |  |  |  |-icone_online.webp
+  |  |  |  |  |  |-icone_profil.png
+  |  |  |  |  |  |-icone_profile.png
+  |  |  |  |  |  |-icone_setting.webp
+  |  |  |  |  |  |-icone_social.png
+  |  |  |  |  |  |-icone_tournament.webp
+  |  |  |  |  |  |-manaphy.png
+  |  |  |  |  |  |-mimiqui1.png
+  |  |  |  |  |  |-mimiqui2.png
+  |  |  |  |  |  |-momartik.png
+  |  |  |  |  |  |-pingoleon.png
+  |  |  |  |  |  |-pokeball.png
+  |  |  |  |  |  |-profilIcon.png
+  |  |  |  |  |  |-rluiz.jpg
+  |  |  |  |  |  |-rrault.jpg
+  |  |  |  |  |  |-simiabraz.png
+  |  |  |  |  |  |-uk.png
+  |  |  |  |  |  |-vmalassi.jpg
+  |  |  |  |  |-components
+  |  |  |  |  |  |-CSRFToken.tsx
+  |  |  |  |  |  |-Chat
+  |  |  |  |  |  |  |-ChatComponent.tsx
+  |  |  |  |  |  |  |-ChatProvider.tsx
+  |  |  |  |  |  |  |-FloatingChat.tsx
+  |  |  |  |  |  |  |-useChat.tsx
+  |  |  |  |  |  |-FriendList.tsx
+  |  |  |  |  |  |-LanguageSwitcher
+  |  |  |  |  |  |  |-i18n.ts
+  |  |  |  |  |  |  |-languageSwitcher.tsx
+  |  |  |  |  |  |-Navbar
+  |  |  |  |  |  |  |-Navbar.css
+  |  |  |  |  |  |  |-Navbar.tsx
+  |  |  |  |  |  |  |-Sidebar.tsx
+  |  |  |  |  |  |  |-SidebarElem.tsx
+  |  |  |  |  |  |-PongGame
+  |  |  |  |  |  |  |-FourPlayersPongGame.tsx
+  |  |  |  |  |  |  |-PongGame.tsx
+  |  |  |  |  |  |  |-PongLocal.tsx
+  |  |  |  |  |  |-ProtectedRoute.tsx
+  |  |  |  |  |  |-avatar
+  |  |  |  |  |  |  |-Avatar.css
+  |  |  |  |  |  |  |-Avatar.tsx
+  |  |  |  |  |  |  |-AvatarModal.css
+  |  |  |  |  |  |  |-AvatarModal.tsx
+  |  |  |  |  |  |-matchhistory.tsx
+  |  |  |  |  |-constants.ts
+  |  |  |  |  |-main.tsx
+  |  |  |  |  |-pages
+  |  |  |  |  |  |-LocalPongPage.tsx
+  |  |  |  |  |  |-PongHome.tsx
+  |  |  |  |  |  |-about.tsx
+  |  |  |  |  |  |-error.tsx
+  |  |  |  |  |  |-gamepage.tsx
+  |  |  |  |  |  |-home.tsx
+  |  |  |  |  |  |-login.tsx
+  |  |  |  |  |  |-pong.tsx
+  |  |  |  |  |  |-profile.tsx
+  |  |  |  |  |  |-setting.tsx
+  |  |  |  |  |  |-signUp.tsx
+  |  |  |  |  |  |-social.tsx
+  |  |  |  |  |-styles
+  |  |  |  |  |  |-About.css
+  |  |  |  |  |  |-Error.css
+  |  |  |  |  |  |-FourPlayersPongGame.css
+  |  |  |  |  |  |-Friend.css
+  |  |  |  |  |  |-GameChat.css
+  |  |  |  |  |  |-Gamepage.css
+  |  |  |  |  |  |-Home.css
+  |  |  |  |  |  |-Login.css
+  |  |  |  |  |  |-Pong.css
+  |  |  |  |  |  |-PongGame.css
+  |  |  |  |  |  |-PongGameLocal.css
+  |  |  |  |  |  |-Profile.css
+  |  |  |  |  |  |-Setting.css
+  |  |  |  |  |  |-SignUp.css
+  |  |  |  |  |  |-Social.css
+  |  |  |  |  |  |-colors.css
+  |  |  |  |  |-translation
+  |  |  |  |  |  |-en.json
+  |  |  |  |  |  |-es.json
+  |  |  |  |  |  |-fr.json
+  |  |  |  |  |-types
+  |  |  |  |  |  |-auth.ts
+  |  |  |  |  |-context.tsx
+  |  |  |  |  |-api.tsx
+  |  |  |  |-vite.config.js
+  |  |  |-init.sh
+  |  |  |-nginx
+  |  |  |  |-default.conf
+  |  |  |  |-entrypoint.sh
+  |  |  |  |-modsecurity
+  |  |  |  |  |-modsec
+  |  |  |  |  |  |-main.conf
+  |  |  |  |  |  |-modsecurity.conf
+  |  |  |  |  |  |-unicode.mapping
+  |  |  |  |  |-modules
+  |  |  |  |  |  |-test.conf
+  |  |-vault
+  |  |  |-start-vault.sh
+  |  |  |-vault-config.hcl
+  |  |  |-vault-init.sh
+  |-scripts
+  |  |-cleaner.sh
+  |  |-generate_cert.sh
+  |-volume
+  |  |-db_data
+  |  |-vault-data
+  |  |  |-keys
+  |  |  |-core
+  |  |  |  |-_keyring
+  |  |  |  |-_master
+  |  |  |  |-_shamir-kek
+  |  |  |  |-_seal-config
+  |  |  |  |-hsm
+  |  |  |  |  |-_barrier-unseal-keys
+  |  |  |  |-cluster
+  |  |  |  |  |-local
+  |  |  |  |  |  |-_info
+  |  |  |  |  |-_feature-flags
+  |  |  |  |-wrapping
+  |  |  |  |  |-_jwtkey
+  |  |  |  |-_mounts
+  |  |  |  |-_local-mounts
+  |  |  |  |-_auth
+  |  |  |  |-_local-auth
+  |  |  |  |-_index-header-hmac-key
+  |  |  |  |-_audit
+  |  |  |  |-_local-audit
+  |  |  |  |-versions
+  |  |  |  |  |-_1.16.3
+  |  |  |-sys
+  |  |  |  |-policy
+  |  |  |  |  |-_default
+  |  |  |  |  |-_response-wrapping
+  |  |  |  |  |-_control-group
+  |  |  |  |  |-_django-backend
+  |  |  |  |  |-_react-frontend
+  |  |  |  |-token
+  |  |  |  |  |-_salt
+  |  |  |  |  |-accessor
+  |  |  |  |  |  |-_004e89122ee8d02d7df3a854efbe017bd2c09c30
+  |  |  |  |  |  |-_fe03694dbfaaeb55ad186e2420aa68f2908f6cf5
+  |  |  |  |  |-id
+  |  |  |  |  |  |-_hc43b00dbe16ddc3b17b0736a47c3c48f504e446bdfb63e483ca12308d1b5577b
+  |  |  |  |  |  |-_a80e1640469cb66a9694f53fca65811899b8a854
+  |  |  |  |  |-parent
+  |  |  |  |  |  |-hc43b00dbe16ddc3b17b0736a47c3c48f504e446bdfb63e483ca12308d1b5577b
+  |  |  |  |  |  |  |-_a80e1640469cb66a9694f53fca65811899b8a854
+  |  |  |  |-expire
+  |  |  |  |  |-id
+  |  |  |  |  |  |-auth
+  |  |  |  |  |  |  |-token
+  |  |  |  |  |  |  |  |-create
+  |  |  |  |  |  |  |  |  |-_a80e1640469cb66a9694f53fca65811899b8a854
+  |  |  |-logical
+  |  |  |  |-248e2306-aa31-efb4-e45e-8e90d404630d
+  |  |  |  |  |-oidc_provider
+  |  |  |  |  |  |-provider
+  |  |  |  |  |  |  |-_default
+  |  |  |  |  |  |-assignment
+  |  |  |  |  |  |  |-_allow_all
+  |  |  |  |  |-oidc_tokens
+  |  |  |  |  |  |-named_keys
+  |  |  |  |  |  |  |-_default
+  |  |  |  |  |  |-public_keys
+  |  |  |  |  |  |  |-_804a8546-7341-d127-84c4-3f7aea0551ba
+  |  |  |  |  |  |  |-_c975606f-c072-db92-83ca-e03791bcf631
+  |  |  |  |  |-packer
+  |  |  |  |  |  |-buckets
+  |  |  |  |  |  |  |-_199
+  |  |  |  |  |  |  |-_244
+  |  |  |  |-a7630cc6-7165-2383-8410-950c8a0d5210
+  |  |  |  |  |-21e61ddb-11d4-4484-9e30-6c75f3bec754
+  |  |  |  |  |  |-_upgrading
+  |  |  |  |  |  |-archive
+  |  |  |  |  |  |  |-_metadata
+  |  |  |  |  |  |-policy
+  |  |  |  |  |  |  |-_metadata
+  |  |  |  |  |  |-_salt
+  |  |  |  |  |  |-versions
+  |  |  |  |  |  |  |-783
+  |  |  |  |  |  |  |  |-_8aa8374f7284b689b53967218a9661523e9fbc047869e7778f48cc5ee28a9
+  |  |  |  |  |  |  |-ca5
+  |  |  |  |  |  |  |  |-_c6018def90364023c73530380470e4c84747f35170e11c09dc2afe61407b2
+  |  |  |  |  |  |-metadata
+  |  |  |  |  |  |  |-_p0CXqkL6N6vccSuBQ84eXWtxw1GbvKFOmVtNm10hy17uKea6CQrOjnP1DcZcUGPb8mN
+  |  |  |  |  |  |  |-_5kL7zfyQ6ra5lQxHOqIVZ92Cmb6TLEEv96PXy2MBbXd2WBE0wFmFYqNbBsTOF3
+  |  |  |-django-backend.hcl
+  |  |  |-auth
+  |  |  |  |-230c7367-f390-85be-11c9-cbc4b07ef5c2
+  |  |  |  |  |-_salt
+  |  |  |  |  |-role
+  |  |  |  |  |  |-_django-backend
+  |  |  |  |  |  |-_react-frontend
+  |  |  |  |  |-role_id
+  |  |  |  |  |  |-_a3a245e16acd674aa677787ee73f09e499f5aaf0c98e668e1aba18b931a0653c
+  |  |  |  |  |  |-_d62197da289b0a73c9fe1321fa6b71e1c018e50b484e52185ddc595e1db12703
+  |  |  |  |  |-accessor
+  |  |  |  |  |  |-_85b6ff827f0665cc9b791f09de0af3938962b1a616f3e98d77e8dd61caf004b6
+  |  |  |  |  |  |-_75113d60439d22532eecbb1f3ee7f3d07612eab18ad4c93ee1b2f6f2d1faedd1
+  |  |  |  |  |-secret_id
+  |  |  |  |  |  |-65ed26aba035cede9f4627f42be0e04de2f9b762816eef3c1e831d78fc93fee5
+  |  |  |  |  |  |  |-_a677b3ac7eeb932f834ec7d0ec5481ded3d7f6cd5002d41d12f12e93a15c47ec
+  |  |  |  |  |  |-90e561976e3d23efba08118dfebd4eb63167e629b84422936bece34612c18843
+  |  |  |  |  |  |  |-_fcd2326459e750f109122e73620ae53274538b0b3fbdbec11a7e507475a27181
+  |  |  |-react-frontend.hcl
+  |  |  |-env_vars.sh
+  |  |  |-status
+  |-.env
+  |-ssl
+  |  |-certs
+  |  |  |-ca.crt
+  |  |  |-vault.csr
+  |  |  |-vault.crt
+  |  |-private
+  |  |  |-ca.key
+  |  |  |-vault.key
+  |-output
+  |-tree
+  |-tree.txt
