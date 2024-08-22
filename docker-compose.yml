@@ -36,7 +36,7 @@ services:
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
     networks:
-      - main 
+      - main
     healthcheck:
       test: ["CMD-SHELL", "curl -f localhost:8000/api/user/ || exit 1"]
       interval: 10s
@@ -45,11 +45,6 @@ services:
 
   nginx:
     container_name: nginx
-    depends_on:
-      django:
-        condition: service_healthy
-      vault:
-        condition: service_healthy
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
     build:
@@ -70,6 +65,11 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
+    depends_on:
+      django:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
 
   vault:
     image: hashicorp/vault:1.16
@@ -129,6 +129,54 @@ services:
       timeout: 10s
       retries: 3
 
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.0
+    restart: on-failure
+    networks:
+      - main
+    volumes:
+      - ./volume/elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_USERNAME=${ELASTIC_USERNAME}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+  
+  logstash:
+    container_name: logstash
+    build: 
+      context: ./images/logstash
+      dockerfile: Dockerfile
+    restart: on-failure
+    networks:
+      - main
+    volumes:
+      - ./volume/logs-data:/var/log
+    ports:
+      - 9600:9600
+    environment:
+      - ELASTICSEARCH_HOST=${ELASTICSEARCH_HOST_LOGSTASH}
+      - ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT_LOGSTASH}
+    depends_on:
+      - elasticsearch
+  
+  kibana:
+    container_name: kibana
+    image: kibana:8.6.0
+    restart: on-failure
+    networks:
+      - main
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=${ELASTICSEARCH_HOST_KIBANA}
+    depends_on:
+      - elasticsearch
+
+
 networks:
   main:
     name: main
@@ -137,3 +185,7 @@ networks:
 volumes:
   vault-data:
   postgres-data:
+  elasticsearch-data:
+  logs-data:
+
+
