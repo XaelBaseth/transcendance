@@ -5,9 +5,11 @@ import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../api';
 import '../styles/Setting.css';
+import React from 'react';
+
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
@@ -237,7 +239,6 @@ export function TextCardSettings({ property }: { property: string }) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(event.target.value);
     };
-
 
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();

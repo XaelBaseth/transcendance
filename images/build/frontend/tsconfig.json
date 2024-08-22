@@ -5,7 +5,8 @@
 		"lib": [
 			"DOM",
 			"DOM.Iterable",
-			"ESNext"
+			"ESNext",
+			"ES2015"
 		],
 		"allowJs": false,
 		"skipLibCheck": true,
@@ -30,5 +31,6 @@
 		{
 			"path": "./tsconfig.node.json"
 		}
-	]
+	],
+	"types": ["vite/client", "react"]
 }

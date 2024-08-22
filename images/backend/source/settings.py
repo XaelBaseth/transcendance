@@ -43,6 +43,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+]
 # JWT
 
 REST_FRAMEWORK = {
@@ -55,11 +61,17 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-	'USER_ID_FIELD': 'user_id',
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'USER_ID_FIELD': 'user_id',  # Change this to match your AppUser model
+    'USER_ID_CLAIM': 'user_id',  # Change this to match your AppUser model
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -173,16 +185,18 @@ STATIC_ROOT = BASE_DIR / 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_WHITELIST = (
-  'https://localhost:8000',
-  'https://localhost:8200',
-)
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:3000",
+    "https://localhost:8000",
+    "https://localhost:8200",
+]
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
+    'https://localhost:3000',
 ]
-CORS_ALLOW_CREDENTIALS = True
 
 CHANNEL_LAYERS = {
     "default": {

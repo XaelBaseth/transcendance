@@ -55,21 +55,15 @@ export const AuthProvider: React.FC = ({ children }) => {
 			return;
 		}
 		try {
-			const res = await api.post("/api/token/", { email, password });
-			if (res.status >= 200 && res.status < 300) {
-				const decodedToken = jwtDecode(res.data.access) as User;
-				setUser({ ...decodedToken });
-				setSuccessMsg(t('login.successMsg'));
-				localStorage.setItem(ACCESS_TOKEN, res.data.access);
-				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-				navigate("/");
-			} else {
-				setErrorMsg(t('login.errorMsg'));
-			}
+			const response = await api.login(email, password);
+			const decodedToken = jwtDecode(response.access) as User;
+			setUser({ ...decodedToken });
+			setSuccessMsg(t('login.successMsg'));
+			navigate("/");
 		} catch (error: any) {
-			console.error(error);
+			console.error('Login error:', error);
 			if (error.response && error.response.status === 401) {
-				setErrorMsg(t('login.invalidCredentials')); 
+				setErrorMsg(t('login.invalidCredentials'));
 			} else {
 				setErrorMsg(t('login.unknownMsg'));
 			}
@@ -91,13 +85,13 @@ export const AuthProvider: React.FC = ({ children }) => {
 			setErrorMsg(t('signup.passwordTooShort'));
 			return;
 		}
-	
+
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
 			setErrorMsg(t('signup.invalidEmail'));
 			return;
 		}
-	
+
 		try {
 			const res = await api.post("/api/user/register", { email, username, password });
 			if (res.status >= 200 && res.status < 300) {
@@ -106,7 +100,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 			} else {
 				// Regrouper les erreurs d'email et d'username
 				const errorMessage = res.data.message || ''; // Extraire le message de la réponse
-	
+
 				if (errorMessage.includes("already exists")) {
 					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
 				} else {
@@ -115,10 +109,10 @@ export const AuthProvider: React.FC = ({ children }) => {
 			}
 		} catch (error: any) {
 			console.error("Error during registration:", error);
-	
+
 			if (error.response && error.response.status === 500) {
 				const responseText = error.response.data;
-	
+
 				if (responseText && (responseText.includes("email") || responseText.includes("username"))) {
 					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
 				} else {
@@ -129,7 +123,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 			}
 		}
 	};
-	
+
 
 	// Logout
 	const logout = () => {

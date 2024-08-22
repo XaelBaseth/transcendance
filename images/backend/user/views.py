@@ -17,10 +17,35 @@ from .models import AppUser, Friendship, MatchHistory
 from .serializers import UserSerializer, FriendshipSerializer, MatchHistorySerializer
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.decorators import parser_classes
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 import logging
+import traceback
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
+
+logger = logging.getLogger(__name__)
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['email'] = user.email
+        token['username'] = user.username
+        return token
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            response = super().post(request, *args, **kwargs)
+            return response
+        except Exception as e:
+            logger.error(f"Error in token creation: {str(e)}")
+            logger.error(f"Request data: {request.data}")
+            raise
 
 # Post request to create a new user
 @authentication_classes([])
@@ -131,6 +156,7 @@ class DeleteAccountView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class UpdateProfileView(APIView):
+    permission_classes = [IsAuthenticated]
     def put(self, request):
         user = request.user
         serializer = UserSerializer(user, data=request.data, partial=True)
