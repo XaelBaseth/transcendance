@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState } from 'react';
 import './AvatarModal.css'; // Import your custom styles
 
