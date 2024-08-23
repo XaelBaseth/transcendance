@@ -209,17 +209,17 @@ LOGGING = {
             },
         },
         'handlers': {
-            'console': {
-                'level': 'DEBUG',
-                'class': 'logging.StreamHandler',
-                'formatter': 'default',
-            }
-        },
-        'loggers': {
-            '*': {
-                'handlers': ['console'],
-                'level': 'DEBUG',
-                'propagate': True,
-            }
+			'file': {
+				'level': 'DEBUG',
+				'class': 'logging.FileHandler',
+				'filename': '/var/log/django/debug.log',
+			},
+		},
+		'loggers': {
+			'django': {
+				'handlers': ['file'],
+				'level': 'DEBUG',
+				'propagate': True,
+			},
         },
     }

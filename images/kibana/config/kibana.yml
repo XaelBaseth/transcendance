@@ -1,0 +1,55 @@
+# ======================= Kibana Server ======================
+
+# The server host and port to use for internal communications
+# This can be configured to a value other than localhost to allow the Elasticsearch _nodes special API to work
+server.host: "localhost"
+
+# ===================== Elasticsearch ======================
+
+# The URLs of the Elasticsearch instances to use for indexing
+# Elasticsearch must be accessible from this host
+elasticsearch.hosts: ["http://localhost:9200"]
+
+# ==================== Kibana Settings ====================
+
+# Enable SSL for Kibana
+server.ssl.enabled: true
+
+# Paths to a PEM-encoded X.509 server certificate and its corresponding private key
+# These are used by Kibana to establish trust when receiving inbound SSL/TLS connections from users
+server.ssl.certificate: /usr/share/kibana/config/ssl.crt
+server.ssl.key: /usr/share/kibana/config/ssl.key
+
+# Optional: Specify a passphrase for the keystore
+# server.ssl.keystore.passphrase: "passphrase"
+
+# Optional: Specify a passphrase for the truststore
+# server.ssl.truststore.passphrase: "passphrase"
+
+# Optional: Specify a list of protocols supported by the server
+# server.ssl.supportedProtocols: TLSv1.2,TLSv1.3
+
+# Optional: Specify a cipher suite to restrict the ciphers used by the server
+# server.ssl.cipherSuites: [ ... ]
+
+# ===================== Web Server ======================
+
+# The server host and port to use for web traffic
+# This must be set to a value other than localhost to be accessible over the internet
+server.web.host: "0.0.0.0"
+
+# ==================== Logging ======================
+
+# Configure the logging level and log format
+logging.level: info
+logging.toFiles: false
+logging.files:
+  name: "kibana"
+  keepFiles: 10
+  compress: false
+  permissions: null
+
+# ==================== Monitoring ======================
+
+# Enable monitoring of Kibana
+monitoring.ui.containerEl: "#container"

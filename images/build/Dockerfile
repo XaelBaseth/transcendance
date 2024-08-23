@@ -84,6 +84,8 @@ COPY ./nginx/modsecurity/modules/test.conf /etc/nginx/modules-enabled/test.conf
 WORKDIR /app
 RUN rm -rf /var/www/html
 RUN mkdir -p /etc/nginx/ssl
+RUN mkdir -p /var/log/nginx
+RUN chmod -R 755 /var/log/nginx
 COPY --from=build /app/frontend/dist /var/www/html
 COPY ./nginx/default.conf /etc/nginx/default.conf
 

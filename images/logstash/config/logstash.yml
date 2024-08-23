@@ -1,0 +1,92 @@
+# ============================== Logstash Settings ===============================
+
+# Node ID setting used to identify the node when part of a cluster
+node.id: ""
+
+# Cluster name
+cluster.name: "logstash"
+
+# Path to various log files
+path.logs: "/var/lib/logstash/logs"
+
+# Location of Logstash config files
+path.config: "/etc/logstash/conf.d/*.conf"
+
+# Location of Logstash keystore files
+path.keystore: "/etc/pki/logstash"
+
+# List of paths to custom plugin directories
+path.plugins: []
+
+# Number of pipeline workers
+pipeline.workers: 2
+
+# Pipeline batch size
+pipeline.batch.size: 125
+
+# Adjust the frequency of flushing events to Elasticsearch
+pipeline.batch.delay: 50
+
+# Maximum number of events to bulk flush to Elasticsearch
+pipeline.bulk.flush.size: 0
+
+# Number of events to buffer internally before sending to Elasticsearch
+pipeline.batch.max_by_peer: 512
+
+# Number of events to buffer internally before sending to Elasticsearch
+pipeline.batch.max_events: 128
+
+# ======================== X-Pack Settings ===================================
+
+# Enable or disable X-Pack
+xpack.enabled: false
+
+# Enable or disable monitoring
+xpack.monitoring.enabled: false
+
+# Monitoring Elasticsearch hosts
+xpack.monitoring.elasticsearch.hosts: ["https://localhost:9200"]
+
+# Monitoring Elasticsearch username and password
+xpack.monitoring.elasticsearch.username: ""
+xpack.monitoring.elasticsearch.password: ""
+
+# SSL settings for Beats input
+xpack.beats.ssl.enabled: true
+xpack.beats.ssl.verification_mode: certificate
+xpack.beats.ssl.keystore.path: "/etc/pki/logstash/beats.p12"
+xpack.beats.ssl.keystore.password: "password"
+xpack.beats.ssl.truststore.path: "/etc/pki/logstash/beats-truststore.p12"
+xpack.beats.ssl.truststore.password: "password"
+
+# SSL settings for HTTP input
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.keystore.path: /usr/share/logstash/config/keystore.jks
+xpack.security.transport.ssl.truststore.path: /usr/share/logstash/config/truststore.jks
+
+# ========================= General Settings ================================
+
+# Logstash Process ID
+process.id: ""
+
+# Logstash Process Name
+process.name: ""
+
+# ============================= Pipeline Settings ============================
+
+# Pipeline settings
+pipeline.settings:
+  id: "main_pipeline"
+  batch:
+    size: 125
+    delay: 50
+  worker: 2
+  timeout: 30
+  max_queue_size: 10000
+  max_event_age: 180000
+  codec: plain { charset => "UTF-8" }
+
+# =============================== Outputs ===================================
+output.logstash:
+  hosts: ["localhost:9600"]
