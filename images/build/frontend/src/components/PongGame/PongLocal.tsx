@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/PongGameLocal.css';
+import { Participant } from '../tournament/provider/TournamentContextProvider';
 
-const LocalPongGame = () => {
+interface LocalPongGameProps {
+	isInTournament?: boolean;
+	players?: Participant[];
+	manageGameResult?: (winnerSide: string, score: {left: number, right: number}) => void;
+	pointsToWin?: number;
+}
+
+const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, manageGameResult, pointsToWin = 3, players }) => {
 	const BALL_SPEED = 10
 	const TPS = 10
 	const MAP_HEIGHT = 400
@@ -9,7 +17,7 @@ const LocalPongGame = () => {
 	const BALL_DIAMETER = 20
 	const PADDLE_HEIGHT = 100
 	const PADDLE_WIDTH = 20
-	const WIN_SCORE = 3
+	const WIN_SCORE = pointsToWin
 	const initialBallState = { x: MAP_WIDTH / 2 - BALL_DIAMETER / 2, y: MAP_HEIGHT / 2 - BALL_DIAMETER / 2, x_direction: Math.random() < 0.5 ? 1 : -1, y_direction: Math.random() < 0.5 ? 1 : -1, last_collision: "" };
 	const initialPaddleState = { left: (MAP_HEIGHT - PADDLE_HEIGHT) / 2, right: (MAP_HEIGHT - PADDLE_HEIGHT) / 2 };
 	const [ball, setBall] = useState(initialBallState);
@@ -114,8 +122,16 @@ const LocalPongGame = () => {
 				}
 				// check for collisions with left and right walls
 				if (ball.x <= 0) {
-					setScore((prevScore) => ({ ...prevScore, right: prevScore.right + 1 }));
-					if (score.right >= WIN_SCORE - 1) {
+					const currentScore = score;
+					currentScore.right += 1; 
+					setScore(currentScore);
+					if (currentScore.right >= WIN_SCORE) {
+						if (isInTournament) {
+							console.log("game over: right wins");
+							if (manageGameResult) {
+								manageGameResult("right", currentScore);
+							}
+						}
 						setGameOver(true);
 						setGameRunning(false);
 					} else {
@@ -123,8 +139,16 @@ const LocalPongGame = () => {
 						setPaddles(initialPaddleState);
 					}
 				} else if (ball.x >= MAP_WIDTH - BALL_DIAMETER) {
-					setScore((prevScore) => ({ ...prevScore, left: prevScore.left + 1 }));
-					if (score.left >= WIN_SCORE - 1) {
+					const currentScore = score;
+					currentScore.left += 1; 
+					setScore(currentScore);
+					if (currentScore.left >= WIN_SCORE) {
+						if (isInTournament) {
+							console.log("game over: left wins");
+							if (manageGameResult) {
+								manageGameResult("left", currentScore);
+							}
+						}
 						setGameOver(true);
 						setGameRunning(false);
 					} else {
@@ -167,7 +191,8 @@ const LocalPongGame = () => {
 			
 		</div>
 		<div className="controls">
-			<p>Score : left : {score.left} right : {score.right}</p>
+			{isInTournament && players && players.length > 1 && <p>Score : left {players[0].name} : {score.left} vs right : {players[1].name} : {score.right}</p>}
+			{!isInTournament && <p>Score : left : {score.left} right : {score.right}</p>}
 		</div>
 		<div className="ping-pong-container" tabIndex={0} style={{width: MAP_WIDTH, height: MAP_HEIGHT}}>
 			<div

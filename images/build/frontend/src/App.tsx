@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next';
 import Pong from "./pages/pong"
 
 import './App.css'
+import TournamentPage from "./pages/TournamentPage"
 
 function RegisterAndLogout() {
 	localStorage.clear()
@@ -52,6 +53,7 @@ function App() {
 								<Route path="/login" element={<Login />} />
 								<Route path="/*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
+								<Route path="/tournament" element={<TournamentPage />} />
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 								{/** <Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
