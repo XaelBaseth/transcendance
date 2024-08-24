@@ -54,7 +54,7 @@
 		"passwordTooShort":"choose another password, min 8 characters",
 		"invalidEmail":"Invalid email address",
 		"fieldsNotEmpty":"Email, username, and password fields cannot be empty.",
-		"emailAlreadyUsed": "This email is already in use.",
+		"emailAlreadyUsed": "This email is already in use."
 	},
 	"settings":{
 		"settings":"Settings",
