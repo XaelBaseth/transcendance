@@ -19,10 +19,6 @@ export default function Login() {
 
 	const handleLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!email || !password) {
-			setLocalError(t('login.fillAllFields'));
-			return;
-		}
 		try {
 			await login(email, password);
 		} catch (error) {

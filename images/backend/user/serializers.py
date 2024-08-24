@@ -18,6 +18,25 @@ UserModel = get_user_model()
 #             instance.set_password(password)
 #             instance.save()
 #         return instance
+class UserUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppUser
+        fields = ('username', 'email', 'bio', 'avatar', 'current_password', 'new_password')
+    
+    def update(self, instance, validated_data):
+        if 'current_password' in validated_data:
+            print("here:",validated_data)
+            if not instance.check_password(validated_data['current_password']):
+                raise serializers.ValidationError({"current_password": "Wrong password."})
+            if 'new_password' in validated_data:
+                instance.set_password(validated_data['new_password'])
+        if 'avatar' in validated_data:
+            instance.avatar = validated_data['avatar']
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.bio = validated_data.get('bio', instance.bio)
+        instance.save()
+        return instance
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,7 +58,8 @@ class UserLoginSerializer(serializers.Serializer):
         if not user:
             raise ValidationError('user not found')
         return user
-    
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppUser

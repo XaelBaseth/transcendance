@@ -8,6 +8,10 @@ import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import api from '../api';
+import '../styles/Setting.css';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
@@ -39,12 +43,15 @@ function LanguageSwitcher() {
 }
 
 function ColorBlindSwitcher() {
+    const { t } = useTranslation();
     const [isColorBlind, setIsColorBlind] = useState(false);
 
     const toggleColorBlindMode = () => {
-        setIsColorBlind(!isColorBlind);
+        const newColorBlindState = !isColorBlind; // Inverser l'état ici
 
-        if (!isColorBlind) {
+        setIsColorBlind(newColorBlindState);
+
+        if (newColorBlindState) {
             // Activer le mode daltonien
             document.documentElement.style.setProperty('--linen', 'var(--linen-D)');
             document.documentElement.style.setProperty('--olive_green', 'var(--olive_green-D)');
@@ -58,16 +65,16 @@ function ColorBlindSwitcher() {
             document.documentElement.style.setProperty('--ok', 'var(--ok-D)');
         } else {
             // Désactiver le mode daltonien et revenir aux couleurs normales
-            document.documentElement.style.setProperty('--linen', '#f7f2e8 !important');
-            document.documentElement.style.setProperty('--olive_green', '#5c775b !important');
-            document.documentElement.style.setProperty('--light_teal', '#a0ced9 !important');
-            document.documentElement.style.setProperty('--pink', '#e27396 !important');
-            document.documentElement.style.setProperty('--light_pink', '#ea9ab2 !important');
-            document.documentElement.style.setProperty('--clear_beige', '#f7f2e8ce !important');
-            document.documentElement.style.setProperty('--clear_yellow', '#fcf5c7a6 !important');
-            document.documentElement.style.setProperty('--clear_teal', '#f7f2e8af !important');
-            document.documentElement.style.setProperty('--error', '#f03e3e !important');
-            document.documentElement.style.setProperty('--ok', '#90be8e !important');
+            document.documentElement.style.setProperty('--linen', '#f7f2e8');
+            document.documentElement.style.setProperty('--olive_green', '#5c775b');
+            document.documentElement.style.setProperty('--light_teal', '#a0ced9');
+            document.documentElement.style.setProperty('--pink', '#e27396');
+            document.documentElement.style.setProperty('--light_pink', '#ea9ab2');
+            document.documentElement.style.setProperty('--clear_beige', '#f7f2e8ce');
+            document.documentElement.style.setProperty('--clear_yellow', '#fcf5c7a6');
+            document.documentElement.style.setProperty('--clear_teal', '#f7f2e8af');
+            document.documentElement.style.setProperty('--error', '#f03e3e');
+            document.documentElement.style.setProperty('--ok', '#90be8e');
         }
     };
 
@@ -75,7 +82,7 @@ function ColorBlindSwitcher() {
         <label className="switch">
             <input type="checkbox" checked={isColorBlind} onChange={toggleColorBlindMode} />
             <span className="slider round"></span>
-            <span>{isColorBlind ? 'Colorblind Mode: On' : 'Colorblind Mode: Off'}</span>
+            <span>{isColorBlind ? t('colorblindMode.on') : t('colorblindMode.off')}</span>
         </label>
     );
 }
@@ -236,6 +243,7 @@ export function TextCardSettings({ property }: { property: string }) {
         setUserInput(event.target.value);
     };
 
+
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         if (validator.isEmpty(userInput)) {
@@ -254,6 +262,11 @@ export function TextCardSettings({ property }: { property: string }) {
             setPropertyChange(true);
             setErrorMsg('');
         }, 1000);
+        try {
+            await api.updateUserProfile({ [property]: userInput });
+        } catch (error) {
+            console.error('Error updating user profile:', error);
+        }
     };
 
     return (

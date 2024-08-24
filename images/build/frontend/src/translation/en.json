@@ -12,6 +12,12 @@
 		"profile":"Profile",
 		"social":"Social"
 	},
+	"quote":{
+		"amelieQuote":"Insert cool phrase here",
+		"axelQuote":"Do you know ff14 ?",
+		"raphaelQuote":"Insert cool phrase here",
+		"valentinQuote":"Insert cool phrase here"
+	},  
 	"error":{
 		"title":"Error"
 	},
@@ -29,9 +35,11 @@
 		"signup":"Sign up",
 		"notEmpty":"Please enter an username and a password",
 		"successMsg":"Successfully logged in!",
-		"errorMsg":"Invalid username or password",
+		"invalidCredentials":"Invalid username or password",
 		"unknownMsg":"An error occured.",
-		"notExistingMsg":"User does not exist: please sign up before"
+		"notExistingMsg":"User does not exist: please sign up before",
+		"errorMsg":"UISGBESBFESFBISEFBSEBHFLHSEHSL",
+		"invalidEmailFormat":"Invalid email address"
 	},
 	"signup":{
 		"email":"Email",
@@ -42,7 +50,11 @@
 		"errorMsg":"Registration failed.",
 		"alreadyMsg":"A user with this username already exists",
 		"passwordMatch":"Password does not match",
-		"unknownMsg":"An error occured."
+		"unknownMsg":"An error occured.",
+		"passwordTooShort":"choose another password, min 8 characters",
+		"invalidEmail":"Invalid email address",
+		"fieldsNotEmpty":"Email, username, and password fields cannot be empty.",
+		"emailAlreadyUsed": "This email is already in use.",
 	},
 	"settings":{
 		"settings":"Settings",
@@ -53,7 +65,23 @@
 		"irreversible":"Beware this action is irreversible",
 		"delete":"Do you want to delete your account?",
 		"deleteSuccess":"Your account was successfully deleted!",
-		"redirection":"You will now be redirected to the login page in a few seconds..."
+		"redirection":"You will now be redirected to the login page in a few seconds...",
+		"update":"Update ",
+		"placeholder":"Enter your new",
+		"btn_update":"Update",
+		"update_successfull":" has been updated successfully"
+	},
+	"social": {
+		"all": "All friends",
+		"blocked": "Blocked users",
+		"pending": "Pending requests",
+		"add": "Add",
+		"search": "Search",
+		"type": "Search for your friends, idiot"
+	},	
+	"colorblindMode":{
+		"on":"Colorblind Mode: On",
+		"off":"Colorblind Mode: Off"
 	},
 	"pong":{
 		"pongHome":"Pong Home",
@@ -61,7 +89,21 @@
 		"pongFourPlayer":"4 players",
 		"waiting":"Waitings for other players",
 		"playercounter":"PLayers in queue: ",
-		"quit":"Back"
+		"quit":"Back",
+		"start":"start",
+		"pause":"pause",
+		"playAgain":"Restart",
+		"score": "Score",
+		"left": "left",
+		"right": "right",
+		"top":"Top",
+		"bottom":"Bottom",
+		"playerSide": "player side",
+		"gameState": "Game state",
+		"pauseRemaining": "Pause : Remaining time",
+		"playersDisconnected": "Players disconnected",
+		"youWin": "You win!",
+		"gameOver": "Game Over"
 	},
 	"cookie":{
 		"banner":"By continuing to browse this website, you agree to our use of cookies for the proper functioning of the site. We do not use cookies for tracking or advertising purposes.",
@@ -88,6 +130,25 @@
 		"contact_phone":"Phone number: ",
 		"contact_email":"Email: ",
 		"contact_text":"For questions and/or comments about our Cookie Policy and this statement, please contact us using the information provided above."
+	},
+	"profil":{
+		"bio":"Bio",
+		"total":"Total Matches",
+		"victories":"Victories",
+		"friends":"Friends",
+		"overview":"Overview",
+		"wins":"Wins",
+		"loss":"Losses",
+		"save":"Save changes",
+		"cancel":"Cancel changes",
+		"edit":"Edit",
+		"online":"Online",
+		"offline":"Offline",
+		"addFriendPlaceholder":"Add Friends placeholder",
+		"addFriend":"Add Friend",
+		"matchHistory":"Match History",
+		"winner":"Winner",
+		"score":"Score"
 	}
 }
 	
