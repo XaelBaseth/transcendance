@@ -1,10 +1,7 @@
-# Use the official Kibana image as the base image
-FROM docker.elastic.co/kibana/kibana:8.6.0
+ARG ELASTIC_VERSION
 
-COPY ./config/kibana.yml /usr/share/kibana/config/kibana.yml
+# https://www.docker.elastic.co/
+FROM docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}
 
-# Expose the Kibana port
-EXPOSE 5601
-
-# Start Kibana
-CMD ["bin/kibana"]
+# Add your kibana plugins setup here
+# Example: RUN kibana-plugin install <name|url>
