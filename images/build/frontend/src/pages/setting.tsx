@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
+//import LanguageSwitcher from '../components/LanguageSwitcher/languageSwitcher';
 import { useTranslation } from 'react-i18next';
 import frenchFlag from '../assets/fr.png'
 import spanishFlag from '../assets/es.png'
