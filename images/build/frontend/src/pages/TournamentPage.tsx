@@ -7,7 +7,9 @@ const TournamentPage = () => {
 	return(
 		<>
 			<TournamentContextProvider>
-				<Tournament />
+				 <div className="centered-div">
+					<Tournament />
+				</div>
 			</TournamentContextProvider>
 		</>
 	);

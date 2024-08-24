@@ -14,7 +14,6 @@ const Tournament = () => {
       {tournamentState === "running" && <RunningTournament />}
       {tournamentState === "playing" && <PlayingTournament />}
       {tournamentState === "finished" && <FinishedTournament />}
-
     </div>
   );
 }
