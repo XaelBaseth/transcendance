@@ -24,10 +24,12 @@ if [ ! -f "${CERTS_DIR}/vault.crt" ]; then
 
     openssl x509 -req -days 365 -in "${CERTS_DIR}/vault.csr" -CA "${CERTS_DIR}/ca.crt" -CAkey "${PRIVATE_KEY_DIR}/ca.key" \
         -CAcreateserial -out "${CERTS_DIR}/vault.crt" -extfile <(printf "subjectAltName=DNS:vault,DNS:localhost,DNS:www.transcendance.ff")
-
-#Give the correct rights to the file.
-    chmod 644 ${PRIVATE_KEY_DIR}/ca.key
-    chmod 644 ${PRIVATE_KEY_DIR}/vault.key
 else
     printf "\033[1;92mServer certificate is already present.\n"
 fi
+
+# Set the permissions
+chmod 644 "${CERTS_DIR}/ca.crt"
+chmod 644 "${CERTS_DIR}/vault.crt"
+chmod 644 "${PRIVATE_KEY_DIR}/vault.key"
+chmod 644 "${PRIVATE_KEY_DIR}/ca.key"

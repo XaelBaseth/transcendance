@@ -8,7 +8,7 @@ services:
     networks:
       - main
     volumes:
-      - ./volume/db_data:/var/lib/postgresql/data
+      - ./volume/db-data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
       interval: 10s
@@ -132,71 +132,49 @@ services:
       retries: 3
 
   elasticsearch:
-    build:
-      context: ./images/elasticsearch/
-      args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=changeme
+    ports:
+      - "9200:9200"
+      - "9300:9300"
     networks:
       - main
-    restart: unless-stopped
     volumes:
-      - ./images/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
-      - ./volume/elasticsearch-data:/usr/share/elasticsearch/data:Z
-      - ./ssl/certs:/usr/share/elasticsearch/config/certs:ro,z
-      - ./ssl/private:/usr/share/elasticsearch/config/private:ro,z
-    ports:
-      - 9200:9200
-      - 9300:9300
-    environment:
-      node.name: elasticsearch
-      ES_JAVA_OPTS: -Xms512m -Xmx512m
-      # Bootstrap password.
-      # Used to initialize the keystore during the initial startup of
-      # Elasticsearch. Ignored on subsequent runs.
-      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
-      # Use single node discovery in order to disable production mode and avoid bootstrap checks.
-      # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
-      discovery.type: single-node
+      - ./volume/es-data:/usr/share/elasticsearch/data
+      - ./volume/es-certs:/usr/share/elasticsearch/config/certs/
 
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.15.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=/usr/share/kibana/config/certs/ca-certificates.pem
+      - ELASTICSEARCH_SSL_VERIFICATIONMODE=none
+      - ELASTIC_PASSWORD=changeme
+    ports:
+      - "5601:5601"
+    networks:
+      - main
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./volume/es-certs:/usr/share/kibana/config/certs
 
   logstash:
-    build:
-      context: ./images/logstash/
-      args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    image: docker.elastic.co/logstash/logstash:8.15.0
+    container_name: logstash
+    ports:
+      - "5044:5044"
     networks:
       - main
-    restart: unless-stopped
     volumes:
-      - ./images/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
-      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
-      - ./ssl/certs/ca.crt:/usr/share/logstash/config/ca.crt:ro,z
-    ports:
-      - 9600:9600
-    environment:
-      LS_JAVA_OPTS: -Xms256m -Xmx256m
-      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      - ./images/ELK/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./volume/es-certs:/usr/share/logstash/config/certs
     depends_on:
       - elasticsearch
-  
-  kibana:
-    build:
-      context: ./images/kibana/
-      args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
-    volumes:
-      - ./images/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
-      - ./ssl/certs/ca.crt:/usr/share/kibana/config/kibana.crt:ro,Z
-      - ./ssl/private/private.key:/usr/share/kibana/config/kibana.key:ro,Z
-    ports:
-      - 5601:5601
-    environment:
-      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
-    networks:
-      - main
-    depends_on:
-      - elasticsearch
-    restart: unless-stopped
 
 networks:
   main:
@@ -206,6 +184,7 @@ networks:
 volumes:
   vault-data:
   postgres-data:
-  elasticsearch-data:
   logs-data:
-  db_data:
+  db-data:
+  es-data:
+  es-certs:
