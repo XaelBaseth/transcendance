@@ -9,5 +9,6 @@ xpack.security.transport.ssl.keystore.path: certs/elastic-certificates.p12
 xpack.security.transport.ssl.truststore.path: certs/elastic-certificates.p12
 
 xpack.security.http.ssl.enabled: true
+xpack.security.transport.ssl.certificate_authorities: [ "certs/ca-certificates.pem" ]
 xpack.security.http.ssl.keystore.path: certs/elastic-certificates.p12
 xpack.security.http.ssl.truststore.path: certs/elastic-certificates.p12

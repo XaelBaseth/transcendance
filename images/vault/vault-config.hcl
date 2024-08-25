@@ -11,4 +11,4 @@ storage "file" {
 api_addr = "https://127.0.0.1:8200"
 ui = true
 disable_mlock = "true"
-log_requests_level = "trace"
+log_requests_level = "info"

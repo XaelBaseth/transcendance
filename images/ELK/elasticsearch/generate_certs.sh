@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-CERTS_DIR="/usr/share/elasticsearch/config/certs"
+CERTS_DIR="/usr/share/elasticsearch/config/certs/"
 
 # Generate the CA certificate and key
 echo "Generating CA certificate..."
@@ -23,3 +23,4 @@ else
     echo "Failed to create certificates in ${CERTS_DIR}."
     exit 1
 fi
+# End of snippet

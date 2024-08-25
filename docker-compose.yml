@@ -9,6 +9,7 @@ services:
       - main
     volumes:
       - ./volume/db-data:/var/lib/postgresql/data
+      - ./volume/logs-data/postgres:/var/log/postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d ${POSTGRES_DB} -U ${POSTGRES_USER}"]
       interval: 10s
@@ -35,7 +36,7 @@ services:
       - ./volume/vault-data:/vault/file
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
-      - ./volume/logs-data:/var/log/django
+      - ./volume/logs-data/django:/var/log/django
     networks:
       - main
     healthcheck:
@@ -61,7 +62,7 @@ services:
       - ./ssl/certs:/etc/ssl/certs
       - ./ssl/private:/etc/ssl/private
       - ./volume/vault-data:/vault/file
-      - ./volume/logs-data:/var/log/nginx
+      - ./volume/logs-data/nginx:/var/log/nginx
     healthcheck:
       test: ["CMD-SHELL", "curl -fk https://localhost:8000/ || exit 1"]
       interval: 10s
@@ -115,6 +116,7 @@ services:
       - ./volume/vault-data:/vault/file/
       - ./ssl/certs:/etc/vault/certs
       - ./ssl/private:/etc/vault/private
+      - ./volume/logs-data/vault:/var/log/vault
     command: /usr/local/bin/vault-init.sh
     depends_on:
       - vault
@@ -125,6 +127,8 @@ services:
     restart: always
     networks:
       - main
+    volumes:
+      - ./volume/logs-data/redis:/var/log/redis
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 30s
@@ -136,7 +140,8 @@ services:
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
-      - ELASTIC_PASSWORD=changeme
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTIC_USERNAME=${ELASTIC_USERNAME}
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -144,16 +149,23 @@ services:
       - main
     volumes:
       - ./volume/es-data:/usr/share/elasticsearch/data
-      - ./volume/es-certs:/usr/share/elasticsearch/config/certs/
+      - ./volume/logs-data:/var/log/elasticsearch
+      - ./volume/es-snapshots:/usr/share/elasticsearch/volume/snapshots
+      - ./volume/es-certif:/usr/share/elasticsearch/config/certs/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.15.0
     container_name: kibana
     environment:
-      - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
-      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=/usr/share/kibana/config/certs/ca-certificates.pem
+      - ELASTICSEARCH_HOSTS=${KIBANA_ELASTIC_HOST}
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=${KIBANA_SSL_PATH}
       - ELASTICSEARCH_SSL_VERIFICATIONMODE=none
-      - ELASTIC_PASSWORD=changeme
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     ports:
       - "5601:5601"
     networks:
@@ -161,18 +173,24 @@ services:
     depends_on:
       - elasticsearch
     volumes:
-      - ./volume/es-certs:/usr/share/kibana/config/certs
+      - ./volume/es-certif:/usr/share/kibana/config/certs
+      - ./volume/logs-data:/var/log/kibana
 
   logstash:
     image: docker.elastic.co/logstash/logstash:8.15.0
     container_name: logstash
+    environment:
+      - ELASTICSEARCH_HOSTS=${KIBANA_ELASTIC_HOST}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTIC_USERNAME=${ELASTIC_USERNAME}
     ports:
       - "5044:5044"
     networks:
       - main
     volumes:
       - ./images/ELK/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-      - ./volume/es-certs:/usr/share/logstash/config/certs
+      - ./volume/es-certif:/usr/share/logstash/config/certs
+      - ./volume/logs-data:/usr/share/logstash/logs
     depends_on:
       - elasticsearch
 
@@ -182,9 +200,11 @@ networks:
     driver: bridge
 
 volumes:
+  es-snapshots:
+  es-certif:
+  es-data:
   vault-data:
   postgres-data:
   logs-data:
   db-data:
-  es-data:
-  es-certs:
+
