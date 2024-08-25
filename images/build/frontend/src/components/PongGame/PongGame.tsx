@@ -58,24 +58,52 @@ const PongGame = () => {
 		};
 	}, []);
 
+	const pressedKeys = useRef(new Set());
+	const pausePressed = useRef(false);
+
 	useEffect(() => {
-		const handleKeyPress = (e: { key: any; }) => {
-			if (player_side === 'spectator' || gameState !== 'running') {
+		const handleKeyDown = (e) => {
+			const key = e.key.toLowerCase();
+			pressedKeys.current.add(key);
+		};
+
+		const handleKeyUp = (e) => {
+			const key = e.key.toLowerCase();
+			if (key === ' ') {
+				pausePressed.current = false;
+			}
+			pressedKeys.current.delete(key);
+		};
+
+		const handleKeyPress = () => {
+			if (pause && !pressedKeys.current.has(' ')) {
 				return;
 			}
-			if (socketRef.current) {
-				switch (e.key) {
-					case 'ArrowUp':
+
+			pressedKeys.current.forEach(key => {
+				switch (key) {
+					case 'arrowup':
 						socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "up" }));
 						break;
-					case 'ArrowDown':
+					case 'arrowdown':
 						socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "down" }));
+						break;
+					case ' ':
+						if (pausePressed.current === false) {
+							pauseGame();
+							pausePressed.current = true;
+						}
 						break;
 					default:
 						break;
 				}
-			}
+			});
 		};
+
+		window.addEventListener('keydown', handleKeyDown);
+		window.addEventListener('keyup', handleKeyUp);
+
+		const interval = setInterval(handleKeyPress, 50);
 
 		if (socketRef.current) {
 			socketRef.current.onmessage = (event) => {
@@ -143,10 +171,10 @@ const PongGame = () => {
 			};
 		}
 
-		window.addEventListener('keydown', handleKeyPress);
-
 		return () => {
-			window.removeEventListener('keydown', handleKeyPress);
+			window.removeEventListener('keydown', handleKeyDown);
+			window.removeEventListener('keyup', handleKeyUp);
+			clearInterval(interval);
 		};
 	}, [paddles, socketRef, player_side]);
 

@@ -54,7 +54,7 @@ class PongConsumer(AsyncWebsocketConsumer):
 			else:
 				room = await sync_to_async(room_result.__getitem__)(0)
 				if await self.find_room_by_code(PongConsumer.pong_rooms, room.code) is None:
-					PongConsumer.pong_rooms.append(PongGameData(room.code, room.player_limit))
+					PongConsumer.pong_rooms.append(PongGameData(room.code, room.player_limit, room.players_id))
 		self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
 		self.room_group_name = f"pong_{self.room_name}"
 
@@ -131,40 +131,35 @@ class PongConsumer(AsyncWebsocketConsumer):
 				await self.send_message({"message": "Invalid message type"})
 
 	async def join_game(self, event):
+		logger = logging.getLogger(__name__)
 		code = self.room_name
-
-		async with PongConsumer.pong_rooms_lock:
-			room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
-			if room is None:
-				await self.send_message({"message": "Room not found"})
-				return
-			else:
-				players = room.players
-				#check if player is already in the room
-				if self.username in players:
-					if self.username in room.disconnected_players:
-						room.disconnected_players.remove(self.username)
-						await self.update_room(room)
-						await self.channel_layer.group_send(
-							self.room_group_name, {"type": "send_message", "message":  {"type":"players_disconnected", "players": room.disconnected_players }}
-						)
-				else:
-					players_count = len(players)
-					if players_count < room.player_limit:
-						await sync_to_async(room.players.append)(self.username)
-						# update the room in pong_rooms
-						await self.update_room(room)
-					else:
-						await self.send_message({"message" : {"type" : "join_game", "side": "spectator", "state": room.state}})
-						return
+		room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
+		logger.info(str(self.username) + " veut join " + str(code))
+		logger.info("il y a les players : " + str(room.players))
+		if room is None:
+			await self.send_message({"message": "Room not found"})
+		else:
+			players = room.players
+			#check if player is in the room
+			if self.username in players:
+				if self.username in room.disconnected_players:
+					room.disconnected_players.remove(self.username)
+					await self.update_room(room)
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"players_disconnected", "players": room.disconnected_players }}
+					)
 				if room.players[0] == self.username:
 					await self.send_message({"message" : {"type" : "join_game", "side": "left", "state": room.state}})
 				elif room.players[1] == self.username:
-					await self.send_message({"message" : {"type" : "join_game", "side": "right", "state": room.state}})
+						await self.send_message({"message" : {"type" : "join_game", "side": "right", "state": room.state}})
 				elif room.players[2] == self.username:
 					await self.send_message({"message" : {"type" : "join_game", "side": "top", "state": room.state}})
 				elif room.players[3] == self.username:
 					await self.send_message({"message" : {"type" : "join_game", "side": "bottom", "state": room.state}})
+			else:
+				await self.send_message({"message" : {"type" : "join_game", "side": "spectator", "state": room.state}})
+
+
 		
 
 	async def pause_game(self, event):

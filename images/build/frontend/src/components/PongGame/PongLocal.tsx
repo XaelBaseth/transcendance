@@ -43,14 +43,16 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 
 	useEffect(() => {
 		const handleKeyDown = (e) => {
-			pressedKeys.current.add(e.key);
+			const key = e.key.toLowerCase();
+			pressedKeys.current.add(key);
 		};
 
 		const handleKeyUp = (e) => {
-			if (e.key === ' ') {
+			const key = e.key.toLowerCase();
+			if (key === ' ') {
 				pausePressed.current = false;
 			}
-			pressedKeys.current.delete(e.key);
+			pressedKeys.current.delete(key);
 		};
 
 		const handleKeyPress = () => {
@@ -60,27 +62,25 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 
 			pressedKeys.current.forEach(key => {
 				switch (key) {
-					case 'E':
 					case 'e':
 						setPaddles(prev => ({
 							...prev,
 							left: Math.max(prev.left - 10, 0),
 						}));
 						break;
-					case 'D':
 					case 'd':
 						setPaddles(prev => ({
 							...prev,
 							left: Math.min(prev.left + 10, MAP_HEIGHT - PADDLE_HEIGHT),
 						}));
 						break;
-					case 'ArrowUp':
+					case 'arrowup':
 						setPaddles(prev => ({
 							...prev,
 							right: Math.max(prev.right - 10, 0),
 						}));
 						break;
-					case 'ArrowDown':
+					case 'arrowdown':
 						setPaddles(prev => ({
 							...prev,
 							right: Math.min(prev.right + 10, MAP_HEIGHT - PADDLE_HEIGHT),
