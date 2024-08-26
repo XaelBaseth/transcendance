@@ -1,8 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/PongGameLocal.css';
 import { useTranslation } from 'react-i18next';
+import { Participant } from '../tournament/provider/TournamentContextProvider';
 
-const LocalPongGame = () => {
+interface LocalPongGameProps {
+	isInTournament?: boolean;
+	players?: Participant[];
+	manageGameResult?: (winnerSide: string, score: {left: number, right: number}) => void;
+	pointsToWin?: number;
+}
+
+const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, manageGameResult, pointsToWin = 3, players }) => {
 	const { t } = useTranslation();
 	const BALL_SPEED = 10;
 	const TPS = 10;
@@ -11,7 +19,7 @@ const LocalPongGame = () => {
 	const BALL_DIAMETER = 20;
 	const PADDLE_HEIGHT = 100;
 	const PADDLE_WIDTH = 21;
-	const WIN_SCORE = 3;
+	const WIN_SCORE = pointsToWin;
 	const initialBallState = {
 		x: MAP_WIDTH / 2 - BALL_DIAMETER / 2,
 		y: MAP_HEIGHT / 2 - BALL_DIAMETER / 2,
@@ -144,11 +152,16 @@ const LocalPongGame = () => {
 				}
 
 				if (ball.x <= 0) {
-					setScore(prevScore => ({
-						...prevScore,
-						right: prevScore.right + 1,
-					}));
-					if (score.right >= WIN_SCORE - 1) {
+					const currentScore = score;
+					currentScore.right += 1; 
+					setScore(currentScore);
+					if (currentScore.right >= WIN_SCORE) {
+						if (isInTournament) {
+							console.log("game over: right wins");
+							if (manageGameResult) {
+								manageGameResult("right", currentScore);
+							}
+						}
 						setGameOver(true);
 						setGameRunning(false);
 					} else {
@@ -156,11 +169,16 @@ const LocalPongGame = () => {
 						setPaddles(initialPaddleState);
 					}
 				} else if (ball.x >= MAP_WIDTH - BALL_DIAMETER) {
-					setScore(prevScore => ({
-						...prevScore,
-						left: prevScore.left + 1,
-					}));
-					if (score.left >= WIN_SCORE - 1) {
+					const currentScore = score;
+					currentScore.left += 1; 
+					setScore(currentScore);
+					if (currentScore.left >= WIN_SCORE) {
+						if (isInTournament) {
+							console.log("game over: left wins");
+							if (manageGameResult) {
+								manageGameResult("left", currentScore);
+							}
+						}
 						setGameOver(true);
 						setGameRunning(false);
 					} else {
@@ -204,7 +222,8 @@ const LocalPongGame = () => {
 				{gameOver && <button className="button_start" onClick={restartGame}>{t('pong.playAgain')}</button>}
 			</div>
 			<div className="controls score-text">
-				<p>{score.left} - {score.right}</p>
+				{isInTournament && players && players.length > 1 && <p>Score : left {players[0].name} : {score.left} vs right : {players[1].name} : {score.right}</p>}
+				{!isInTournament && <p>{score.left} - {score.right}</p>}
 			</div>
 			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div

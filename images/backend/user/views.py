@@ -15,13 +15,9 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from .models import AppUser, Friendship, MatchHistory
 from .serializers import UserSerializer, FriendshipSerializer, MatchHistorySerializer
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.decorators import parser_classes
 import logging
-from rest_framework.parsers import MultiPartParser, FormParser
-#from ..GameServer import test
-
-# Create your views here.
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
@@ -135,16 +131,12 @@ class DeleteAccountView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class UpdateProfileView(APIView):
-    permission_classes = [IsAuthenticated]
-
     def put(self, request):
         user = request.user
-        print(f"User attempting to update profile: {user.username}")  # Add this line
         serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        print(f"Serializer errors: {serializer.errors}")  # Add this line
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FriendRequestView(APIView):
