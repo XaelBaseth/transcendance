@@ -25,7 +25,7 @@ ssl/private
 #volume
 volume/
 volume/postgres-data
-volume/vaul-data
+volume/vault-data
 volume/db-data
 
 #MISC

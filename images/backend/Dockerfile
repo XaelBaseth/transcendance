@@ -17,10 +17,3 @@ EXPOSE 8000
 RUN chmod +x /app/backend/init.sh
 
 ENTRYPOINT ["/app/backend/init.sh"]
-
-
-CMD python3 manage.py makemigrations --noinput \
-	&& python3 manage.py migrate --noinput \
-	&& python manage.py createsuperuser --noinput --username $DJANGO_SUPERUSER_USERNAME --email $DJANGO_SUPERUSER_EMAIL \
-	&& daphne -b 0.0.0.0 -p 8000 source.asgi:application
-	
