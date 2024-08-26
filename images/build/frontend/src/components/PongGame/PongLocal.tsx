@@ -18,7 +18,8 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 	const MAP_WIDTH = 600;
 	const BALL_DIAMETER = 20;
 	const PADDLE_HEIGHT = 100;
-	const PADDLE_WIDTH = 21;
+	const PADDLE_MARGIN = 10;
+	const PADDLE_WIDTH = 20 + PADDLE_MARGIN;
 	const WIN_SCORE = pointsToWin;
 	const initialBallState = {
 		x: MAP_WIDTH / 2 - BALL_DIAMETER / 2,
@@ -248,7 +249,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 				/>
 				{gameOver && (
 					<div
-						className="game-win"
+						className="game-win-local"
 						style={{
 							left: `${score.left >= WIN_SCORE ? 0 : MAP_WIDTH / 2}px`,
 							width: MAP_WIDTH / 2,
@@ -260,7 +261,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 				)}
 				{gameOver && (
 					<div
-						className="game-loose"
+						className="game-loose-local"
 						style={{
 							left: `${score.left >= WIN_SCORE ? MAP_WIDTH / 2 : 0}px`,
 							width: MAP_WIDTH / 2,
@@ -269,7 +270,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 					>
 						{t('pong.gameOver')}
 					</div>
-					)}
+				)}
 			</div>
 		</>
 	);

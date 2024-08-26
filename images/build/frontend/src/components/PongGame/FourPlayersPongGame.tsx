@@ -66,30 +66,6 @@ const FourPlayersPongGame = () => {
 	const pausePressed = useRef(false);
 
 	useEffect(() => {
-		// const handleKeyPress = (e: { key: string; }) => {
-		// 	if (player_side === 'spectator' || gameState !== 'running') {
-		// 		return;
-		// 	}
-		// 	if (socketRef.current) {
-		// 		switch (e.key) {
-		// 			case 'ArrowUp':
-		// 				socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "up" }));
-		// 				break;
-		// 			case 'ArrowDown':
-		// 				socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "down" }));
-		// 				break;
-		// 			case 'ArrowLeft':
-		// 				socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "left" }));
-		// 				break;
-		// 			case 'ArrowRight':
-		// 				socketRef.current.send(JSON.stringify({ type: 'update_paddle', side: player_side, direction: "right" }));
-		// 				break;
-		// 			default:
-		// 				break;
-		// 		}
-		// 	}
-		// };
-
 		const handleKeyDown = (e) => {
 			const key = e.key.toLowerCase();
 			pressedKeys.current.add(key);
@@ -104,7 +80,7 @@ const FourPlayersPongGame = () => {
 		};
 
 		const handleKeyPress = () => {
-			if (pause && !pressedKeys.current.has(' ')) {
+			if ((remaining_time != 0 || pause) && !pressedKeys.current.has(' ')) {
 				return;
 			}
 
@@ -211,7 +187,7 @@ const FourPlayersPongGame = () => {
 			window.removeEventListener('keyup', handleKeyUp);
 			clearInterval(interval);
 		};
-	}, [gameState, pause, player_side]);
+	}, [gameState, pause, player_side, pause, remaining_time]);
 
 	const startGame = () => {
 		if (gameState === "initial" && ['left', 'right', 'top', 'bottom'].includes(player_side)) {

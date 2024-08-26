@@ -120,9 +120,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 
 		match text_data_json["type"]:
 			case "join_game":
-				await self.join_game(event=text_data_json)
+				await self.join_game()
 			case "start_game":
-				await self.start_game(event=text_data_json)
+				await self.start_game()
 			case "update_paddle":
 				await self.update_paddle(event=text_data_json)
 			case "pause":
@@ -130,24 +130,18 @@ class PongConsumer(AsyncWebsocketConsumer):
 			case _:
 				await self.send_message({"message": "Invalid message type"})
 
-	async def join_game(self, event):
-		logger = logging.getLogger(__name__)
+	async def join_game(self):
 		code = self.room_name
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
-		logger.info(str(self.username) + " veut join " + str(code))
-		logger.info("il y a les players : " + str(room.players))
+		logger = logging.getLogger(__name__)
+		logger.info(" join game a pour rooms.players : " + str(room.players))
 		if room is None:
 			await self.send_message({"message": "Room not found"})
 		else:
-			players = room.players
 			#check if player is in the room
-			if self.username in players:
-				if self.username in room.disconnected_players:
-					room.disconnected_players.remove(self.username)
-					await self.update_room(room)
-					await self.channel_layer.group_send(
-						self.room_group_name, {"type": "send_message", "message":  {"type":"players_disconnected", "players": room.disconnected_players }}
-					)
+			logger.info(" join game save rooms.players before condi: " + str(room.players))
+			if self.username in room.players:
+				logger.info(" join game save rooms.players after condi: " + str(room.players))
 				if room.players[0] == self.username:
 					await self.send_message({"message" : {"type" : "join_game", "side": "left", "state": room.state}})
 				elif room.players[1] == self.username:
@@ -156,6 +150,18 @@ class PongConsumer(AsyncWebsocketConsumer):
 					await self.send_message({"message" : {"type" : "join_game", "side": "top", "state": room.state}})
 				elif room.players[3] == self.username:
 					await self.send_message({"message" : {"type" : "join_game", "side": "bottom", "state": room.state}})
+				logger.info(" join game save rooms.players0 : " + str(room.players))
+				if self.username in room.disconnected_players:
+					logger.info(" join game save rooms.players1 : " + str(room.players))
+					room.disconnected_players.remove(self.username)
+					logger.info(" join game save rooms.players2 : " + str(room.players))
+					await self.update_room(room)
+					await self.channel_layer.group_send(
+						self.room_group_name, {"type": "send_message", "message":  {"type":"players_disconnected", "players": room.disconnected_players }}
+					)
+					if room.state == 'initial' and len(room.disconnected_players) == 0:
+						logger.info(" join game avant le call start pour rooms.players : " + str(room.players))
+						await self.start_game()
 			else:
 				await self.send_message({"message" : {"type" : "join_game", "side": "spectator", "state": room.state}})
 
@@ -175,8 +181,14 @@ class PongConsumer(AsyncWebsocketConsumer):
 
 		if pause == "true" or pause:
 			room.pause = True
+			await self.channel_layer.group_send(
+				self.room_group_name, {"type": "send_message", "message":  {"type":"pause", "pause": True }}
+			)
 		elif pause == "false" or not pause:
-			room.pause = False 
+			room.pause = False
+			await self.channel_layer.group_send(
+				self.room_group_name, {"type": "send_message", "message":  {"type":"pause", "pause": False }}
+			)
 		await self.update_room(room)
 
 	async def update_paddle(self, event):
@@ -190,7 +202,8 @@ class PongConsumer(AsyncWebsocketConsumer):
 		if self.username not in room.players:
 			await self.send_message({"message": "You are not a player"})
 			return
-		elif room.pause:
+		elif room.pause == True:
+			await self.send_message({"message": "Game is paused"})
 			return
 		
 		if not "side" in text_data_json or not "direction" in text_data_json:
@@ -228,12 +241,17 @@ class PongConsumer(AsyncWebsocketConsumer):
 			return
 		await self.update_room(room)
 
-	async def start_game(self, event):
+	async def start_game(self):
+		logger = logging.getLogger(__name__)
+		logger.info("start game suis call")			
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
+		logger.info(" start game a pour rooms.players : " + str(room.players))
+		
 		if room is None:
 			await self.send_message({"message": "Room not found"})
 			return
 		if self.username not in room.players:
+			logger.info("username : " + self.username + " not in room.players : " + str(room.players))	
 			await self.send_message({"message": "You are not a player"})
 			return
 		if room.state == "initial":
@@ -249,9 +267,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 				db_room.state = 'playing'
 				await sync_to_async(db_room.save)()
 			if room.player_limit <= 2:
-				asyncio.ensure_future(self.game_loop_2_players(event=event))
+				asyncio.ensure_future(self.game_loop_2_players())
 			else:
-				asyncio.ensure_future(self.game_loop_4_players(event=event))
+				asyncio.ensure_future(self.game_loop_4_players())
 		else:
 			await self.send_message({"message": "Game already started"})
 
@@ -273,23 +291,23 @@ class PongConsumer(AsyncWebsocketConsumer):
 
 	# Concidérer que le x et y de la balle sont le haut gauche de la balle, et donc tapper les murs bas et droit à BALL_DIAMETER de distance
 	# le y du paddle est le haut du paddle
-	async def game_loop_2_players(self, event):
+	async def game_loop_2_players(self):
 			MAP_HEIGHT = 400
 			MAP_WIDTH = 600
 			BALL_DIAMETER = 20
-			BALL_SPEED = 20
+			BALL_SPEED = 10
 			PADDLE_HEIGHT = 100
 			TPS = 10
 			WIN_SCORE = 2
 
 			room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
 
+			ball_last_hit = "None"
 			ball_direction = {"x": random.choice([-1, 1]), "y": random.choice([-1, 1])}
 			ball_position = {"x": 290.0, "y": 190.0}
 			left_paddle_position = 150
 			right_paddle_position = 150
 			room.pause = False
-			ball_last_hit = "None"
 			room.score = {"left": 0, "right": 0}
 			await self.update_room(room)
 
@@ -297,8 +315,20 @@ class PongConsumer(AsyncWebsocketConsumer):
 			for player in room.players:
 				players_break_time[player] = 15
 
+			# Wait 3 seconds before starting the game
+			remaining_time = 3
+			while remaining_time > 0:
+				await self.channel_layer.group_send(
+					self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_time", "remaining_time": remaining_time }}
+				)
+				await asyncio.sleep(1)
+				remaining_time -= 1
 			await self.channel_layer.group_send(
-				self.room_group_name, {"type": "send_message", "message":  {"type":"game_state", "ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position,  "timestamp": datetime.datetime.now().isoformat()}}
+				self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_time", "remaining_time": 0 }}
+			)
+
+			await self.channel_layer.group_send(
+				self.room_group_name, {"type": "send_message", "message":  {"type":"game_state", "ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position}}
 			)
 
 			while True:
@@ -437,7 +467,7 @@ class PongConsumer(AsyncWebsocketConsumer):
 				)
 				await asyncio.sleep(1/TPS)
 
-	async def game_loop_4_players(self, event):
+	async def game_loop_4_players(self):
 			MAP_HEIGHT = 500
 			MAP_WIDTH = 500
 			BALL_DIAMETER = 20
@@ -467,8 +497,20 @@ class PongConsumer(AsyncWebsocketConsumer):
 			for player in room.players:
 				players_break_time[player] = 15
 
+			# Wait 3 seconds before starting the game
+			remaining_time = 3
+			while remaining_time > 0:
+				await self.channel_layer.group_send(
+					self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_time", "remaining_time": remaining_time }}
+				)
+				await asyncio.sleep(1)
+				remaining_time -= 1
 			await self.channel_layer.group_send(
-				self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position, "top_paddle_position": top_paddle_position, "bottom_paddle_position": bottom_paddle_position, "timestamp": datetime.datetime.now().isoformat()}}
+				self.room_group_name, {"type": "send_message", "message":  {"type":"remaining_time", "remaining_time": 0 }}
+			)
+
+			await self.channel_layer.group_send(
+				self.room_group_name, {"type": "send_message", "message":  {"type":"game_state","ball_position": ball_position, "ball_direction": ball_direction, "right_paddle_position": right_paddle_position, "left_paddle_position": left_paddle_position, "top_paddle_position": top_paddle_position, "bottom_paddle_position": bottom_paddle_position}}
 			)
 
 			while True:

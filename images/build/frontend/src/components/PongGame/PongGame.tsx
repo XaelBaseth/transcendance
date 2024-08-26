@@ -76,7 +76,7 @@ const PongGame = () => {
 		};
 
 		const handleKeyPress = () => {
-			if (pause && !pressedKeys.current.has(' ')) {
+			if ((remaining_time != 0 || pause) && !pressedKeys.current.has(' ')) {
 				return;
 			}
 
@@ -176,7 +176,7 @@ const PongGame = () => {
 			window.removeEventListener('keyup', handleKeyUp);
 			clearInterval(interval);
 		};
-	}, [paddles, socketRef, player_side]);
+	}, [paddles, socketRef, player_side, pause, remaining_time]);
 
 	const startGame = () => {
 		if (gameState === "initial" && (player_side === 'left' || player_side === 'right')) {

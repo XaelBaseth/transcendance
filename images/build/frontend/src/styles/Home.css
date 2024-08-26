@@ -21,16 +21,12 @@
     transition: .5s;
     top:45%;
     left:46.5%;
+    color: var(--pink);
+    font-size: 30px;
+    text-decoration: none;
 }
 
 .btn__play:hover {
     background-color: var(--light_teal);
     border: 6px solid var(--white);
-}
-
-.link {
-    font-weight: bold;
-    color: var(--pink);
-    font-size: 30px;
-    text-decoration: none;
 }
