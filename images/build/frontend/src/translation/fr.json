@@ -145,6 +145,7 @@
 		"minPlayersError": "Au moins 3 joueurs sont requis pour créer un bracket",
 		"playerExistsError": "Le joueur existe déjà",
 		"enterPlayerName": "Entrez le nom du joueur",
+		"maxPlayersError": "Vous ne pouvez pas ajouter plus de 4 joueurs.",
 		"addPlayerButton": "Ajouter un joueur",
 		"playersTitle": "Joueurs",
 		"pointsPerGameTitle": "Points par partie de pong",

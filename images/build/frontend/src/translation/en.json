@@ -147,6 +147,7 @@
 	"tournament": {
 		"minPlayersError": "Minimum 3 players required to build bracket",
 		"playerExistsError": "Player already exists",
+		"maxPlayersError": "You cannot add more than 4 players.",
 		"enterPlayerName": "Enter player name",
 		"addPlayerButton": "Add Player",
 		"playersTitle": "Players",

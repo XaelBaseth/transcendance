@@ -18,7 +18,7 @@ export default function Sidebar () {
 		  	<SidebarElem title={t('navbar.profile')} path="/profile" image={profileIcon} /> 
 			<SidebarElem title={t('navbar.local')} path="/localpong" image={localIcon} />
 			<SidebarElem title={t('navbar.network')} path="/pong" image={networkIcon} />
-			<SidebarElem title={t('navbar.tournament')} path="" image={tournamentIcon} />
+			<SidebarElem title={t('navbar.tournament')} path="/tournament" image={tournamentIcon} />
 			<SidebarElem title={t('navbar.social')} path="/social" image={socialIcon} />
 			<SidebarElem title={t('navbar.about')} path="/about" image={aboutIcon} />
 		  </ul>
