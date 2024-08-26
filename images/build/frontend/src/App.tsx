@@ -62,7 +62,7 @@ function App() {
 								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 								{/* PONG */}
 								<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
-								<Route path="/localpong" element={<ProtectedRoute><LocalPongPage /></ProtectedRoute>} />
+								<Route path="/localpong" element={<LocalPongPage />} />
 								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />
 							</Routes>
 					</AuthProvider>

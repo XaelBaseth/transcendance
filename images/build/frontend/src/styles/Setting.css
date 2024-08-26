@@ -87,7 +87,7 @@
 	font-size: 16px;
 	position: absolute;
 	left: 1%;
-  	top: 95%;
+  	top: 99%;
 	border-radius: 10px;
 }
 
@@ -117,7 +117,6 @@
 .settings_input {
 	width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
     border-radius: 4px;
 }
 

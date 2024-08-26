@@ -66,9 +66,9 @@ const AddPlayerComponent = () => {
                 </div>
                 <div>
                     <h2 className="points_title">{t("tournament.pointsPerGameTitle")}</h2>
-                    <button className="button_points" onClick={() => setPointsToWin(1)} style={pointsToWin === 1 ? { backgroundColor: 'blue', color: 'white' } : {}}>1</button>
-                    <button className="button_points" onClick={() => setPointsToWin(3)} style={pointsToWin === 3 ? { backgroundColor: 'blue', color: 'white' } : {}}>3</button>
-                    <button className="button_points" onClick={() => setPointsToWin(5)} style={pointsToWin === 5 ? { backgroundColor: 'blue', color: 'white' } : {}}>5</button>
+                    <button className="button_points" onClick={() => setPointsToWin(1)} style={pointsToWin === 1 ? { backgroundColor: 'var(--pink)', color: 'var(--white)' } : {}}>1</button>
+                    <button className="button_points" onClick={() => setPointsToWin(3)} style={pointsToWin === 3 ? { backgroundColor: 'var(--pink)', color: 'var(--white)' } : {}}>3</button>
+                    <button className="button_points" onClick={() => setPointsToWin(5)} style={pointsToWin === 5 ? { backgroundColor: 'var(--pink)', color: 'var(--white)' } : {}}>5</button>
                 </div>
                 <br/>
                 <button className="button_start_tournament" onClick={handleBuildBracket}>{t("tournament.startTournamentButton")}</button>

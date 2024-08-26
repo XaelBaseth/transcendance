@@ -37,11 +37,11 @@ class PongRoom(models.Model):
     )
 
 class PongGameData:
-	def __init__(self, code, player_limit):
+	def __init__(self, code, player_limit, players):
 		self.code = code
 		self.player_limit = player_limit
-		self.players = []
-		self.disconnected_players = []
+		self.players = players
+		self.disconnected_players = players.copy()
 		self.score = {}
 		self.left_paddle_position = 150
 		self.right_paddle_position = 150
