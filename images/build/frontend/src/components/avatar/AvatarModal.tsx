@@ -15,7 +15,7 @@ import manaphy from '../../assets/manaphy.png';
 import momartik from '../../assets/momartik.png';
 import simiabraz from '../../assets/simiabraz.png';
 import florizarre from '../../assets/florizarre.png';
-import flapple from '../../assets/flapple.png';
+import flapple from '../../assets/flapple.gif';
 
 
 const avatars = [

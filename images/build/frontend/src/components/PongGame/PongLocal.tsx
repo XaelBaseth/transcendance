@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/PongGameLocal.css';
 import { useTranslation } from 'react-i18next';
 import { Participant } from '../tournament/provider/TournamentContextProvider';
+import pokemon5 from '../../assets/pikachu.gif';
+import pokemon6 from '../../assets/Pachrisu.gif';
 
 interface LocalPongGameProps {
 	isInTournament?: boolean;
@@ -221,6 +223,8 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 				{gameRunning && <button className="button_start" onClick={pauseGame}>{t('pong.pause')}</button>}
 				{gameOver && <button className="button_start" onClick={restartGame}>{t('pong.playAgain')}</button>}
 			</div>
+			<img src={pokemon5} alt="Yuki" className="pokemon3" />
+			<img src={pokemon6} alt="Shinx" className="pokemon4" />
 			<div className="controls score-text">
 				{isInTournament && players && players.length > 1 && <p>Score : left {players[0].name} : {score.left} vs right : {players[1].name} : {score.right}</p>}
 				{!isInTournament && <p>{score.left} - {score.right}</p>}
