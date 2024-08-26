@@ -18,6 +18,8 @@ from .serializers import UserSerializer, FriendshipSerializer, MatchHistorySeria
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.decorators import parser_classes
 import logging
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
@@ -52,6 +54,7 @@ class ChangeAvatar(APIView):
         return Response({'error': 'No avatar provided'}, status=status.HTTP_400_BAD_REQUEST)
 
 # Post request to login user
+@method_decorator(csrf_exempt, name='dispatch')
 @authentication_classes([])
 class UserLogin(APIView):
     permission_classes = [permissions.AllowAny]
@@ -104,6 +107,7 @@ class UserLogout(APIView):
         return Response(status=status.HTTP_200_OK)
 
 # Get info of user connected
+@method_decorator(csrf_exempt, name='dispatch')
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
     
@@ -130,6 +134,7 @@ class DeleteAccountView(APIView):
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+@method_decorator(csrf_exempt, name='dispatch')
 class UpdateProfileView(APIView):
     def put(self, request):
         user = request.user

@@ -1,30 +1,62 @@
-import axios from "axios"
+import axios from "axios";
 import { ACCESS_TOKEN } from "./constants";
-import { AxiosRequestConfig } from "axios";
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-axios.defaults.withCredentials = true;
 
 const BASE_URL = import.meta.env.VITE_API_URL || '';
 
-/** Give the user a JWT to identify him and stores it into localStorage (check if cookies better or nah) */
 const api = axios.create({
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
+  withCredentials: true, // This is important for sending cookies
 });
 
+function getCookie(name: string): string | null {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+  return null;
+}
+
 api.interceptors.request.use(
-	(config: AxiosRequestConfig) => {
-		const token = localStorage.getItem(ACCESS_TOKEN);
-		if (token) {
-			config.headers.Authorization = `Bearer ${token}`;
-		}
-		return config;
-	},
-	(error: any) => {
-		console.error('Error with request:', error.response?.data || error.message);
-		return console.error('Error with request:', error.response?.data || error.message);
-	}
+  (config) => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    const csrfToken = getCookie('csrftoken');
+
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    if (csrfToken) {
+      config.headers['X-CSRFToken'] = csrfToken;
+    }
+
+    return config;
+  },
+  (error) => {
+    console.error('Error in request interceptor:', error);
+    throw error;
+  }
 );
+
+// Example of how to handle errors without using Promise
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('Error in response:', error.response?.data || error.message);
+    throw error;
+  }
+);
+
+// Example of how to make an API call without using Promise
+api.login = async (email: string, password: string) => {
+  try {
+    const response = await api.post('/api/user/login', { email, password });
+    const { access, refresh } = response.data;
+    localStorage.setItem(ACCESS_TOKEN, access);
+    localStorage.setItem('refreshToken', refresh);
+    return response.data;
+  } catch (error: any) {
+    console.error('Login error:', error.response?.data || error.message);
+    throw error;
+  }
+};
 
 api.updateUserProfile = async (userData: any) => {
 	try {
