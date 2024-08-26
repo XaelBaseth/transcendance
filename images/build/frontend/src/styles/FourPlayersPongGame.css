@@ -29,11 +29,10 @@ body {
 
 .four-player-ping-pong-container {
 	position: relative;
-	width: 500px;
-	height: 500px;
 	border: 1px solid #ccc;
 	margin: 20px auto;
 	overflow: hidden;
+	top: 11%;
 
 }
 
@@ -147,12 +146,14 @@ body {
     font-weight: bold;
     text-align: center;
 	background-color: var(--white);
-	width: 350px;
 	border: 5px solid var(--light_teal);
 	border-radius: 100px;
 	font-family: 'VT323';
 	padding-right: 10px;
 	padding-left: 10px;
+	width: 40%;
+	position: absolute;
+  	left: 29%;
 }
 
 .pokemon3 {

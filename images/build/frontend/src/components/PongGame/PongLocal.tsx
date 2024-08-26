@@ -3,7 +3,7 @@ import '../../styles/PongGameLocal.css';
 import { useTranslation } from 'react-i18next';
 import { Participant } from '../tournament/provider/TournamentContextProvider';
 import pokemon5 from '../../assets/pikachu.gif';
-import pokemon6 from '../../assets/Pachrisu.gif';
+import pokemon6 from '../../assets/Pachirisu.gif';
 
 interface LocalPongGameProps {
 	isInTournament?: boolean;
