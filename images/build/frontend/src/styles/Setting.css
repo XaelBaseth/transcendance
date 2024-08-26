@@ -71,11 +71,13 @@
 	font-family: 'VT323';
 	font-size: 18px;
 	border-radius: 10px;
+	top: 25%;
+	position: relative;
 }
 
 .button_user:hover{
 	background-color: var(--light_teal);
-	border: 3px solid var(--white);
+	border: 3px solid var(--pink);
 }
 .button_password {
 	background-color: var(--white);
@@ -91,7 +93,7 @@
 
 .button_password:hover{
 	background-color: var(--light_teal);
-	border: 3px solid var(--linen);
+	border: 3px solid var(--pink);
 }
 
 .show-password {
@@ -149,7 +151,6 @@
 	margin-top: 10px;
 	font-size: 16px;
 	font-weight: bold;
-	margin-bottom: 10px;
 	color: var(--light_pink);
 	font-family: 'VT323';
 

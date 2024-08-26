@@ -123,3 +123,35 @@ body {
 	font-size: 30px;
 	font-family: 'VT323';
 }
+
+.button_start_multi {
+	padding: 5px 10px;
+	font-size: 25px;
+	cursor: pointer;
+	background-color: var(--clear_beige);
+	border: 4px solid var(--light_teal);
+	border-radius: 20px;
+	margin: 15px;
+	font-family: 'VT323';
+	color: var(--pink);
+}
+
+.button_start_multi:hover 
+{
+	background-color: var(--light_teal);
+	border: 4px solid var(--pink);
+}
+
+.score-text_multi {
+    font-size: 24px;
+    color: var(--pink);
+    font-weight: bold;
+    text-align: center;
+	background-color: var(--white);
+	width: 350px;
+	border: 5px solid var(--light_teal);
+	border-radius: 100px;
+	font-family: 'VT323';
+	margin: 10px auto;
+	margin-top: 40px;
+}

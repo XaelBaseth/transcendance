@@ -17,9 +17,9 @@
 #main-dashboard {
 	width: 40%;
 	height: 67%;
-	background-color: #f7f2e8af;
+	background-color: var(--linen);
     backdrop-filter: blur(10px);
-	border: 5px solid var(--light_teal);
+	border: 6px solid var(--olive_green);
 	border-radius: 20px;
 	position: absolute;
 	left : 20%;
@@ -132,7 +132,7 @@
 	height : 100%;
 	width : 100%;
 	border-radius: 50%;
-	background-color: var(--light_teal);
+	background-color: var(--light_pink);
 	left: -3%;
 	top: 5%;
 }
@@ -179,7 +179,7 @@
 	font-weight: bold;
 	font-size: 20px;
 	color: var(--pink);
-	background-color: var(--linen);
+	background-color: var(--white);
 	border: 3px solid var(--light_teal);
 	border-radius: 10px;
 	padding: 10px 30px;
@@ -193,6 +193,6 @@
 
 .challenge-btn:hover {
 	color: var(--pink);
-	border: 3px solid var(--linen);
-	background-color: var(--light_teal);
+	border: 3px solid var(--pink);
+	background-color: var(--white);
 }

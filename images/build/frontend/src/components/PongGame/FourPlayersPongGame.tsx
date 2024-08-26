@@ -180,15 +180,11 @@ const FourPlayersPongGame = () => {
 	return (
 		<>
 			<div className="controls">
-				{gameState === "initial" && <button onClick={startGame}>{t('pong.start')}</button>}
-				{gameState === "running" && <button onClick={pauseGame}>{t('pong.pause')}</button>}
+				{gameState === "initial" && <button className="button_start_multi" onClick={startGame}>{t('pong.start')}</button>}
+				{gameState === "running" && <button className="button_start_multi" onClick={pauseGame}>{t('pong.pause')}</button>}
 			</div>
-			<div className="controls">
-				<p>{t('pong.score')}: {t('pong.left')} : {score.left} {t('pong.right')} : {score.right} {t('pong.top')} : {score.top} {t('pong.bottom')} : {score.bottom}</p>
-				<p>{t('pong.playerSide')}: {player_side}</p>
-				<p>{t('pong.gameState')}: {gameState}</p>
-				{remaining_time !== 0 && <p>{t('pong.pauseRemaining')}: {remaining_time}</p>}
-				{players_disconnected.length > 0 && <p>{t('pong.playersDisconnected')}: {players_disconnected.join(', ')}</p>}
+			<div className="score-text_multi">
+   				<p>{t('pong.score')}: {t('pong.left')} : {score.left} {t('pong.right')} : {score.right}</p>
 			</div>
 			<div className="four-player-ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div

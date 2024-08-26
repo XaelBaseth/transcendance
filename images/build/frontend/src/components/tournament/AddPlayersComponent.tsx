@@ -41,32 +41,34 @@ const AddPlayerComponent = () =>
     };
 
     return (
-        <div>
-            <input
-                type="text"
-                value={playerName}
-                onChange={(e) => handleSetPlayerName(e.target.value)}
-                placeholder="Enter player name"
-            />
-            {addPlayerError !== "" && <p style={{ color: 'red' }}>{addPlayerError}</p>}
-            <button onClick={addPlayer}>Add Player</button>
+        <div className="tournament_BG">
+            <div className="content">
+                <input className="input_tournament"
+                    type="text"
+                    value={playerName}
+                    onChange={(e) => handleSetPlayerName(e.target.value)}
+                    placeholder="Enter player name"
+                />
+                {addPlayerError !== "" && <p style={{ color: 'red' }}>{addPlayerError}</p>}
+                <button className="button_add" onClick={addPlayer}>Add Player</button>
             <div>
-                <h2>Players</h2>
-                <ul>
-                {players.map((player) => (
-                    <li key={player.toString()}>{player}</li>
-                ))}
-                </ul>
+                    <h2 className="players_list_title">Players</h2>
+                    <ul>
+                    {players.map((player) => (
+                        <li className="players_list" key={player.toString()}>{player}</li>
+                    ))}
+                    </ul>
+                </div>
+                <div>
+                    <h2 className="points_title">Points per pong game</h2>
+                    <button className="button_points" onClick={() => setPointsToWin(1)} style={pointsToWin === 1 ? { backgroundColor: 'blue', color: 'white' } : {}}>1</button>
+                    <button className="button_points" onClick={() => setPointsToWin(3)} style={pointsToWin === 3 ? { backgroundColor: 'blue', color: 'white' } : {}}>3</button>
+                    <button className="button_points" onClick={() => setPointsToWin(5)} style={pointsToWin === 5 ? { backgroundColor: 'blue', color: 'white' } : {}}>5</button>
+                </div>
+                <br/>
+                <button className="button_start_tournament" onClick={handleBuildBracket}>Start tournament</button>
+                {buildBracketError !== "" && <p style={{ color: 'red' }}>{buildBracketError}</p>}
             </div>
-            <div>
-                <h2>Points per pong game</h2>
-                <button onClick={() => setPointsToWin(1)} style={pointsToWin === 1 ? { backgroundColor: 'blue', color: 'white' } : {}} >1</button>
-                <button onClick={() => setPointsToWin(3)} style={pointsToWin === 3 ? { backgroundColor: 'blue', color: 'white' } : {}}>3</button>
-                <button onClick={() => setPointsToWin(5)} style={pointsToWin === 5 ? { backgroundColor: 'blue', color: 'white' } : {}}>5</button>
-            </div>
-            <br/>
-            <button onClick={handleBuildBracket}>Start tournament</button>
-            {buildBracketError !== "" && <p style={{ color: 'red' }}>{buildBracketError}</p>}
         </div>
     );
 }

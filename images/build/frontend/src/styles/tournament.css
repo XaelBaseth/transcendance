@@ -36,7 +36,7 @@
     background-color: var(--light_teal);
 }
 
-.tournament {
+.tournament_BG {
 	box-sizing: border-box;
     width: calc(140vh);
     height: calc(75vh); 
@@ -48,4 +48,95 @@
 	border: 6px solid var(--olive_green);
 	padding: 30px 30px;
 	overflow: hidden;
+}
+
+.input_tournament {
+    background-color: var(--white);
+    color: var(--light_pink);
+    font-size: 20px;
+    font-family: 'VT323';
+    font-weight: bold;
+    position: relative;
+    width: 40%;
+    margin: 20px;
+    left: 25%;
+}
+
+.button_add {
+    background-color: var(--white);
+    color: var(--pink);
+    font-size: 18px;
+    font-family: VT323;
+    font-weight: 700;
+    border: 5px solid var(--light_teal);
+    border-radius: 10px;
+    padding: 5px 10px;
+    position: relative;
+    top: 2%;
+    left: 27%;
+}
+
+.button_add:hover {
+    background-color: var(--light_teal);
+    border: 5px solid var(--pink);
+}
+
+.players_list {
+    font-family: 'VT323';
+    font-size: 20px;
+    color: var(--pink);
+    padding: 10px;
+    margin: 5px;
+}
+
+.players_list_title {
+    font-weight: bold;
+    font-family: 'VT323';
+    font-size: 30px;
+    color: var(--pink);
+    position: relative;
+    left: 27%;
+}
+
+.points_title {
+    font-weight: bold;
+    font-family: 'VT323';
+    font-size: 30px;
+    color: var(--pink);
+}
+
+.button_points {
+    background-color: var(--white);
+    color: var(--pink);
+    font-size: 20px;
+    font-family: 'VT323';
+    font-weight: 700;
+    border: 5px solid var(--light_teal);
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.button_points:hover {
+    background-color: var(--light_teal);
+    border: 5px solid var(--pink);
+}
+
+.button_start_tournament {
+    background-color: var(--white);
+    color: var(--pink);
+    font-size: 20px;
+    font-family: 'VT323';
+    font-weight: bold;
+    border: 5px solid var(--light_teal);
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button_start:hover {
+    background-color: var(--light_teal);
+    border: 5px solid var(--pink);
 }

@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { ACCESS_TOKEN } from '../constants';
+import '../styles/Gamepage.css';
+import pokemon1 from '../assets/ronflex.gif';
+import pokemon2 from '../assets/loklass.gif';
 
 const PongHomePage = () => {
 	const { t } = useTranslation();
@@ -75,28 +78,37 @@ const PongHomePage = () => {
 	
 	return (
 		<div id="play-screen2">
-			{
-				inQueue !== "0" && 
-				<div>
-					<h3>{t('pong.waiting')}</h3>
-					<h3>{t('pong.playercounter')} {inQueue}</h3>
-					<button onClick={leaveMatchMaking}>{t('pong.quit')}</button>
-				</div>
-			}
-			{
-				inQueue === "0" && 
-				<div>
-					<h1 classname="home-text">{t('pong.pongHome')}</h1>
-					<br /> <br />
-					<button onClick={()=> joinMatchMaking(2)}>{t('pong.pongTwoPlayer')}</button>
-					<br /> <br />
-					<button onClick={()=> joinMatchMaking(4)}>{t('pong.pongFourPlayer')}</button>
-				</div>
-
-			}
-			
+			<div className="BGmutliplayers">
+				<img src={pokemon1} alt="Ronflex" className="pokemon1" />
+				<img src={pokemon2} alt="Loklass" className="pokemon2" />
+				
+				{inQueue !== "0" && (
+					<>
+						<div className="waiting_title">
+							<h3>{t('pong.waiting')}</h3>
+						</div>
+						<div className="counter_title">
+							<h3>{t('pong.playercounter')} {inQueue}</h3>
+						</div>
+						<div>
+							<button className="button_quit" onClick={leaveMatchMaking}>{t('pong.quit')}</button>
+						</div>
+					</>
+				)}
+	
+				{inQueue === "0" && (
+					<div className="home_container">
+						<h1 className="home_text">{t('pong.pongHome')}</h1>
+						<br /> <br />
+						<button className="button_2players" onClick={() => joinMatchMaking(2)}>{t('pong.pongTwoPlayer')}</button>
+						<br /> <br />
+						<button className="button_4players" onClick={() => joinMatchMaking(4)}>{t('pong.pongFourPlayer')}</button>
+					</div>
+				)}
+			</div>
 		</div>
 	);
+	
 }
 
 export default PongHomePage;

@@ -5,6 +5,20 @@
 	align-items: center;
 }
 
+.BGmutliplayers {
+	box-sizing: border-box;
+    width: calc(140vh);
+    height: calc(75vh); 
+    background-color: var(--linen);
+	position: absolute;
+	top: 15%;
+	left: 20%;
+	border-radius: 10px;
+	border: 6px solid var(--olive_green);
+	padding: 30px 30px;
+	overflow: hidden;
+}
+
 .button1 {
 	position: absolute;
 	font-family: 'VT323';
@@ -12,7 +26,7 @@
 	font-weight: bold;
 	display: flex;
 	justify-content: left;
-	background-color: var(--linen);
+	background-color: var(--white);
     border: 6px solid var(--light_teal);
 	color: var(--pink);
 	border-radius:15px;
@@ -30,7 +44,7 @@
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
-	background-color: var(--linen);
+	background-color: var(--white);
     border: 6px solid var(--light_teal);
 	color: var(--pink);
 	margin-left: 100px;
@@ -49,7 +63,7 @@
 	font-size: 20px;
 	font-weight: bold;
 	display: flex;
-	background-color: var(--linen);
+	background-color: var(--white);
     border: 6px solid var(--light_teal);
 	color: var(--pink);
 	margin-left: 100px;
@@ -63,18 +77,18 @@
 } 
 
 .button1:hover {
-	background-color: var(--linen);
-	border : 6px solid var(--light_teal);
+	background-color: var(--white);
+	border : 6px solid var(--light_pink);
 }
 
 .button2:hover {
-	background-color: var(--linen);
-	border : 6px solid var(--light_teal);
+	background-color: var(--white);
+	border : 6px solid var(--light_pink);
 }
 
 .button3:hover {
-	background-color: var(--linen);
-	border : 6px solid var(--light_teal);
+	background-color: var(--white);
+	border : 6px solid var(--light_pink);
 }
 
 
@@ -144,4 +158,116 @@
 	
 .button3:hover::after {
 	display: block;
+}
+
+.waiting_title {
+	position: absolute;
+	font-size: 40px;
+	font-family: 'VT323';
+	color: var(--pink);
+	left: 30%;
+	top: 26%;
+}
+
+.status_container {
+	position: relative;
+}
+
+.button_quit {
+	background-color: var(--white);
+	border: 3px solid var(--light_teal);
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'VT323';
+	border-radius: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: absolute;
+	left: 47%;
+	top: 60%;
+	color: var(--pink);
+}
+.button_quit:hover {
+	background-color: var(--light_teal);
+	border: 3px solid var(--light_pink);
+}
+
+.counter_title {
+	position: absolute;
+	font-size: 40px;
+	font-family: 'VT323';
+	color: var(--pink);
+	left: 35%;
+	top: 36%;
+}
+
+.home_text {
+	position: absolute;
+	font-size: 40px;
+	font-family: 'VT323';
+	color: var(--pink);
+	left: 45%;
+	top: 26%;
+}
+
+.button_2players {
+	background-color: var(--white);
+	border: 2px solid var(--light_teal);
+	border-radius: 20px;
+	font-size: 20px;
+	font-family: VT323;
+	color: var(--pink);
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: absolute;
+	left: 47%;
+	top: 45%;
+}
+
+.button_2players:hover {
+	background-color: var(--light_teal);
+	border: 2px solid var(--light_pink);
+}
+
+.button_4players {
+	background-color: var(--white);
+	border: 2px solid var(--light_teal);
+	border-radius: 20px;
+	font-size: 20px;
+	font-family: VT323;
+	color: var(--pink);
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: absolute;
+	left: 47%;
+	top: 55%;
+}
+
+.button_4players:hover {
+	background-color: var(--light_teal);
+	border: 2px solid var(--light_pink);
+}
+
+.pokemon1 {
+    position: absolute;
+	left: 5%;
+	bottom: 0;
+	width: 250px;
+	height: auto;
+}
+
+.pokemon2 {
+    position: absolute;
+    right: 5%;
+    bottom: 0;
+    width: 250px;
+    height: auto;
 }
