@@ -14,9 +14,10 @@
 	},
 	"quote":{
 		"amelieQuote":"Insert cool phrase here",
-		"axelQuote":"Do you know ff14 ?",
-		"raphaelQuote":"Insert cool phrase here",
-		"valentinQuote":"Insert cool phrase here"
+		"axelQuote":"Do you know FF14 ?",
+		"raphaelQuote":"Expert Geoguessr 🌍",
+		"valentinQuote":"Insert cool phrase here",
+		"robinQuote":"Insert cool phrase here"
 	},  
 	"error":{
 		"title":"Error"

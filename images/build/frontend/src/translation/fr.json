@@ -16,8 +16,9 @@
 	"quote":{
 		"amelieQuote":"Insérez une phrase cool ici",
 		"axelQuote":"Vous connaissez FF14 ?",
-		"raphaelQuote":"Insérez une phrase cool ici",
-		"valentinQuote":"Insérez une phrase cool ici"
+		"raphaelQuote":"Expert Geoguessr 🌍",
+		"valentinQuote":"Insérez une phrase cool ici",
+		"robinQuote":"Insérez une phrase cool ici"
 	},
 	"error":{
 		"title":"Erreur"
@@ -119,7 +120,7 @@
 		"off":"Mode Daltonien : Désactivé"
 	},
 	"pong":{
-		"pongHome":"Pong",
+		"pongHome":"Pong menu",
 		"pongTwoPlayer":"2 joueurs",
 		"pongFourPlayer":"4 joueurs",
 		"waiting":"En attente de joueurs",
