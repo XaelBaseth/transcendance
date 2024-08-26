@@ -41,12 +41,19 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = '__all__'
-    def create(self, clean_data):
-        user_obj = UserModel.objects.create_user(email=clean_data['email'], username=clean_data['username'],
-                                                 password=clean_data['password'])
-        user_obj.save()
-        return user_obj
+        fields = ['email', 'username', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        try:
+            user = UserModel.objects.create_user(
+                email=validated_data['email'],
+                username=validated_data['username'],
+                password=validated_data['password']
+            )
+            return user
+        except Exception as e:
+            raise serializers.ValidationError(f"Error creating user: {str(e)}")
 
 class UserLoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -63,13 +70,8 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppUser
-        fields = ('user_id', 'email', 'username', 'avatar', 'wins', 'losses', 'is_online')
-        read_only_fields = ('user_id', 'email', 'wins', 'losses', 'is_online')
-        
-    def update_avatar(self, instance, validated_data):
-        instance.avatar = validated_data.get('avatar', instance.avatar)
-        instance.save()
-        return instance
+        fields = ('id', 'user_id', 'email', 'username', 'avatar', 'wins', 'losses', 'is_online')
+        read_only_fields = ('id', 'user_id', 'email', 'wins', 'losses', 'is_online')
 
 class FriendshipSerializer(serializers.ModelSerializer):
     friend = UserSerializer(read_only=True)

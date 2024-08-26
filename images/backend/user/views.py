@@ -20,24 +20,49 @@ from rest_framework.decorators import parser_classes
 import logging
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
 
+class UserRootView(APIView):
+    def get(self, request):
+        return Response({
+            "message": "Welcome to the User API",
+            "endpoints": {
+                "register": "/api/user/register/",
+                "login": "/api/user/login/",
+                "logout": "/api/user/logout/",
+                "profile": "/api/user/profile/",
+                "update_profile": "/api/user/profile/update/",
+                "delete_account": "/api/user/profile/delete/",
+                "friend_request": "/api/user/friends/request/",
+                "friend_list": "/api/user/friends/",
+                "match_history": "/api/user/match-history/",
+                "change_avatar": "/api/user/change-avatar/"
+            }
+        })
+        
+    
 # Post request to create a new user
-@authentication_classes([])
+logger = logging.getLogger(__name__)
+
 class UserRegister(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
-        clean_data = custom_validation(request.data)
-        serializer = UserRegisterSerializer(data=clean_data)
-        if serializer.is_valid(raise_exception=True):
-            user = serializer.create(clean_data)
-            if user:
-                return Response(None, status=status.
-                                HTTP_201_CREATED)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            clean_data = custom_validation(request.data)
+            serializer = UserRegisterSerializer(data=clean_data)
+            if serializer.is_valid(raise_exception=True):
+                user = serializer.create(clean_data)
+                if user:
+                    return Response(None, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logger.error(f"Error in UserRegister: {str(e)}", exc_info=True)
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 # Post request to change user avatar
 class ChangeAvatar(APIView):
@@ -55,34 +80,26 @@ class ChangeAvatar(APIView):
 
 # Post request to login user
 @method_decorator(csrf_exempt, name='dispatch')
-@authentication_classes([])
 class UserLogin(APIView):
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
         data = request.data
-        logger = logging.getLogger(__name__)
         assert validate_email(data)
         assert validate_password(data)
         serializer = UserLoginSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.check_user(data)
-
-            try:
-                from . models import AppUser
-                user_obj = AppUser.objects.get(email=data.get("email"))
-                if user_obj:
-                    user_obj.isOnline = True
-                    user_obj.save()
-            except Exception as error:
-                pass
-
-            token = create_user_token(user)
-            return Response(json.dumps({"token": token.key}), status=status.HTTP_200_OK)
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            }, status=status.HTTP_200_OK)
 
 # Post request to logout user
 class UserLogout(APIView):
-    permission_classes = [permissions.AllowAny]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         logger = logging.getLogger(__name__)
@@ -109,24 +126,26 @@ class UserLogout(APIView):
 # Get info of user connected
 @method_decorator(csrf_exempt, name='dispatch')
 class UserView(APIView):
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
         if not request.user.is_authenticated:
-            raise NotAuthenticated("User is not authenticated")
+            return Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
         serializer = UserSerializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request):
         if not request.user.is_authenticated:
-            raise NotAuthenticated("User is not authenticated")
-        serializer = UserUpdateSerializer(request.user, data=request.data, partial=True)
+            raise Response({"detail": "Authentication credentials were not provided."}, status=status.HTTP_401_UNAUTHORIZED)
+        serializer = UserSerializer(request.user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(UserSerializer(request.user).data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
 class DeleteAccountView(APIView):
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, *args, **kwargs):
@@ -136,6 +155,8 @@ class DeleteAccountView(APIView):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UpdateProfileView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     def put(self, request):
         user = request.user
         serializer = UserSerializer(user, data=request.data, partial=True)
