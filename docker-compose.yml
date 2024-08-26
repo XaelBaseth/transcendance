@@ -27,9 +27,6 @@ services:
       dockerfile: ./images/backend/Dockerfile
     environment:
       - VAULT_ADDR=${VAULT_INIT_ADDR}
-      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
-      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
-      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
     restart: always
     volumes:
       - ./volume/vault-data:/vault/file

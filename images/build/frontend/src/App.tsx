@@ -13,14 +13,13 @@ import Navbar from "./components/Navbar/Navbar"
 import ProtectedRoute from "./components/ProtectedRoute"
 import LocalPongPage from "./pages/LocalPongPage"
 import PongHomePage from "./pages/PongHome"
-import { Profile } from "./pages/profile"
-import { Social } from "./pages/social"
 import { AuthProvider } from "./context"
 import { useTranslation } from 'react-i18next';
+import TournamentPage from "./pages/TournamentPage"
 import Pong from "./pages/pong"
 
 import './App.css'
-import TournamentPage from "./pages/TournamentPage"
+
 
 function RegisterAndLogout() {
     localStorage.clear()
@@ -55,8 +54,6 @@ function App() {
 								<Route path="/tournament" element={<TournamentPage />} />
 								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-								<Route path="/social" element={<ProtectedRoute><Social /></ProtectedRoute>} />
-								<Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 								<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
 								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
