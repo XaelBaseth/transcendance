@@ -159,7 +159,7 @@ body {
 .pokemon3 {
     position: absolute;
 	left: 5%;
-	bottom: 0;
+	bottom: 5%;
 	width: 250px;
 	height: auto;
 }
@@ -167,7 +167,7 @@ body {
 .pokemon4 {
     position: absolute;
 	right: 5%;
-	bottom: 0;
+	bottom: 3%;
 	width: 250px;
 	height: auto;
 }
