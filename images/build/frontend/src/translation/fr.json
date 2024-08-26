@@ -65,7 +65,46 @@
 		"update":"Mettre à jour ",
 		"placeholder":"Entrez votre nouveau",
 		"btn_update":"Mettre à jour",
-		"update_successfull":" a été mis à jour avec succès"
+		"update_successfull":" a été mis à jour avec succès",
+		"deleteButton":"Supprimer",
+		"deleteAccount":"Supprimer votre compte",
+		"updateError": "Échec de la mise à jour du profil. Veuillez réessayer.",
+		"updatePassword": "Mettre à jour le mot de passe",
+		"enterNewPassword": "Entrez un nouveau mot de passe",
+		"confirmNewPassword": "Confirmez le nouveau mot de passe",
+		"showPassword": "Afficher",
+		"hidePassword": "Masquer",
+		"bothFieldsRequired": "Les deux champs sont requis",
+		"passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+		"passwordNotStrongEnough": "Le mot de passe n'est pas assez fort",
+		"passwordUpdateSuccess": "Mot de passe mis à jour avec succès !",
+		"username": "nom d'utilisateur",
+		"email": "e-mail",
+		"password": "mot de passe",
+		"bio": "Bio",
+		"updateTitle": "Mettre à jour {{property}}",
+		"enterNew": "Entrez un nouveau {{property}}",
+		"updateButton": "Mettre à jour",
+		"fieldEmpty": "Le champ est vide",
+		"invalidEmail": "Adresse e-mail invalide",
+		"updateFailed": "Échec de la mise à jour. Veuillez réessayer.",
+		"updateSuccess": "{{property}} mis à jour avec succès!"
+	},
+	"profile": {
+		"bio": "Biographie",
+		"total": "Total",
+		"victories": "Victoires",
+		"friends": "Amis",
+		"overview": "Vue d'ensemble",
+		"wins": "Victoires",
+		"loss": "Défaites",
+		"rank": "Rang",
+		"aces": "As",
+		"challenge": "Défi",
+		"winrate":"Taux de victoire"
+	},
+	"avatar": {
+		"chooseAvatar": "Choisissez votre avatar"
 	},
 	"social":{
 		"all":"Tous les amis",
@@ -73,7 +112,7 @@
 		"pending":"Demande en attente",
 		"add":"Ajouter",
 		"search":"Rechercher",
-		"type":"Cherche tes amis connard"
+		"type":"Rechercher des amis"
 	},
 	"colorblindMode":{
 		"on":"Mode Daltonien : Activé",

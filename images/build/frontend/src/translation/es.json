@@ -64,7 +64,46 @@
 		"update":"Actualizar ",
 		"placeholder":"Introduce tu nueva",
 		"btn_update":"Actualizar",
-		"update_successfull":" ha sido actualizado con exito"
+		"update_successfull":" ha sido actualizado con exito",
+		"deleteButton":"Borrar",
+		"deleteAccount":"Eliminar tu cuenta",
+		"updateError": "Error al actualizar el perfil. Inténtalo de nuevo.",
+		"updatePassword": "Actualizar la contraseña",
+		"enterNewPassword": "Introduce una nueva contraseña",
+		"confirmNewPassword": "Confirma la nueva contraseña",
+		"showPassword": "Mostrar",
+		"hidePassword": "Ocultar",
+		"bothFieldsRequired": "Ambos campos son obligatorios",
+		"passwordsDoNotMatch": "Las contraseñas no coinciden",
+		"passwordNotStrongEnough": "La contraseña no es lo suficientemente fuerte",
+		"passwordUpdateSuccess": "¡Contraseña actualizada con éxito!",
+		"username": "nombre de usuario",
+		"email": "correo electrónico",
+		"password": "contraseña",
+		"bio": "Bio",
+		"updateTitle": "Actualizar {{property}}",
+		"enterNew": "Ingrese un nuevo {{property}}",
+		"updateButton": "Actualizar",
+		"fieldEmpty": "El campo está vacío",
+		"invalidEmail": "Correo electrónico inválido",
+		"updateFailed": "Error al actualizar. Por favor, inténtelo de nuevo.",
+		"updateSuccess": "{{property}} actualizado con éxito!"
+	},
+	"avatar": {
+		"chooseAvatar": "Elige tu avatar"
+	},
+	"profile": {
+		"bio": "Biografía",
+		"total": "Total",
+		"victories": "Victorias",
+		"friends": "Amigos",
+		"overview": "Visión general",
+		"wins": "Victorias",
+		"loss": "Derrotas",
+		"rank": "Rango",
+		"aces": "Aces",
+		"challenge": "Desafiar",
+		"winrate":"Taza de victoria"
 	},
 	"social": {
 		"all": "Todos los amigos",
@@ -72,7 +111,7 @@
 		"pending": "Solicitudes pendientes",
 		"add": "Añadir",
 		"search": "Buscar",
-		"type": "Busca a tus amigos, idiota"
+		"type": "buscar amigos"
 	},	
 	"colorblindMode":{
 		"on":"Modo daltónico: habilitado",

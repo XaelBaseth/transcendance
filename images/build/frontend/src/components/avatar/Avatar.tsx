@@ -30,11 +30,9 @@ export default function Avatar() {
 
     const handleAvatarSelect = (avatar: string) => {
         setShowModal(false);
-        // Mettre à jour l'avatar de l'utilisateur dans l'état et localStorage
         setAvatarSrc(avatar);
         localStorage.setItem('userAvatar', avatar);
         setUser({ ...user, avatar });
-        // Vous pouvez aussi faire une requête API pour sauvegarder cet avatar sur le serveur
     };
 
     return (

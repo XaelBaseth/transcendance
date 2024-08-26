@@ -69,7 +69,42 @@
 		"update":"Update ",
 		"placeholder":"Enter your new",
 		"btn_update":"Update",
-		"update_successfull":" has been updated successfully"
+		"update_successfull":" has been updated successfully",
+		"deleteButton":"Delete",
+		"deleteAccount":"Delete your account",
+		"updatePassword": "Update Password",
+		"enterNewPassword": "Enter new password",
+		"confirmNewPassword": "Confirm new password",
+		"showPassword": "Show",
+		"hidePassword": "Hide",
+		"bothFieldsRequired": "Both fields are required",
+		"passwordsDoNotMatch": "Passwords do not match",
+		"passwordNotStrongEnough": "Password is not strong enough",
+		"passwordUpdateSuccess": "Password updated successfully!",
+		"username": "username",
+		"email": "email",
+		"password": "password",
+		"bio": "Bio",
+		"updateTitle": "Update {{property}}",
+		"enterNew": "Enter new {{property}}",
+		"updateButton": "Update",
+		"fieldEmpty": "Field is empty",
+		"invalidEmail": "Invalid email",
+		"updateFailed": "Failed to update profile. Please try again.",
+		"updateSuccess": "{{property}} updated successfully!"
+		},
+	"profile": {
+		"bio": "Bio",
+		"total": "Total",
+		"victories": "Victories",
+		"friends": "Friends",
+		"overview": "Overview",
+		"wins": "Wins",
+		"loss": "Loss",
+		"rank": "Rank",
+		"aces": "Aces",
+		"challenge": "Challenge",
+		"winrate":"Winrate"
 	},
 	"social": {
 		"all": "All friends",
@@ -77,8 +112,11 @@
 		"pending": "Pending requests",
 		"add": "Add",
 		"search": "Search",
-		"type": "Search for your friends, idiot"
-	},	
+		"type": "Search for friends"
+	},
+	"avatar": {
+		"chooseAvatar": "Choose your avatar"
+	},
 	"colorblindMode":{
 		"on":"Colorblind Mode: On",
 		"off":"Colorblind Mode: Off"

@@ -166,8 +166,8 @@ export function DeleteAccountCardSettings() {
             <h2 className="delete_settings__title">{t('settings.delete')}</h2>
             <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
             <button className="delete_settings__btn">
-                Delete
-                <span>Delete your account</span>
+                {t('settings.deleteButton')}
+                <span>{t('settings.deleteAccount')}</span>
             </button>
             {isDeleted && (
                 <div className="delete_settings__alert">
@@ -177,8 +177,7 @@ export function DeleteAccountCardSettings() {
             )}
         </div>
     );
-};
-
+} 
 export function CookieSettings() {
     const { t } = useTranslation();
 
@@ -233,8 +232,8 @@ export function CookieSettings() {
         </div>
     );
 }
-
 export function TextCardSettings({ property }: { property: string }) {
+    const { t } = useTranslation();
     const [userInput, setUserInput] = useState<string>("");
     const [errorMsg, setErrorMsg] = useState<string>("");
     const [propertyChanged, setPropertyChange] = useState<boolean>(false);
@@ -246,11 +245,11 @@ export function TextCardSettings({ property }: { property: string }) {
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         if (validator.isEmpty(userInput)) {
-          setErrorMsg('Field is empty');
+          setErrorMsg(t('settings.fieldEmpty'));
           return;
         }
         if (property === 'email' && !validator.isEmail(userInput)) {
-          setErrorMsg('Invalid email');
+          setErrorMsg(t('settings.invalidEmail'));
           return;
         }
         try {
@@ -259,35 +258,36 @@ export function TextCardSettings({ property }: { property: string }) {
           setErrorMsg('');
         } catch (error) {
           console.error('Error updating user profile:', error);
-          setErrorMsg('Failed to update profile. Please try again.');
+          setErrorMsg(t('settings.updateFailed'));
         }
     };
 
     return (
         <div className={`text_settings ${property === 'password' ? 'independent_password' : ''}`}>
             <div className="title_user">
-                <h2>{`Update ${property}`}</h2>
+                <h2>{t('settings.updateTitle', { property: t(`settings.${property}`) })}</h2>
             </div>
             <div className="info_user">
                 <input
                     className="input_user"
                     type="text"
-                    placeholder={`Enter new ${property}`}
+                    placeholder={t('settings.enterNew', { property: t(`settings.${property}`) })}
                     onChange={handleChange}
                 />
             </div>
             <div>
                 <button className="button_user" onClick={handleUpdate}>
-                    Update
+                    {t('settings.updateButton')}
                 </button>
             </div>
             {errorMsg && <div className="error_msg">{errorMsg}</div>}
-            {propertyChanged && <div className="success_msg">{`${property} updated successfully!`}</div>}
+            {propertyChanged && <div className="success_msg">{t('settings.updateSuccess', { property: t(`settings.${property}`) })}</div>}
         </div>
     );
 };
 
 export function PasswordCardSettings() {
+    const { t } = useTranslation();
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [errorMsg, setErrorMsg] = useState<string>("");
@@ -305,17 +305,17 @@ export function PasswordCardSettings() {
     const handleUpdate = async (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
         if (validator.isEmpty(password) || validator.isEmpty(confirmPassword)) {
-            setErrorMsg('Both fields are required');
+            setErrorMsg(t('settings.bothFieldsRequired'));
             return;
         }
 
         if (password !== confirmPassword) {
-            setErrorMsg('Passwords do not match');
+            setErrorMsg(t('settings.passwordsDoNotMatch'));
             return;
         }
 
         if (!validator.isStrongPassword(password)) {
-            setErrorMsg('Password is not strong enough');
+            setErrorMsg(t('settings.passwordNotStrongEnough'));
             return;
         }
 
@@ -330,32 +330,32 @@ export function PasswordCardSettings() {
     return (
         <div className="independent_password">
             <div className="title_user">
-                <h2>Update Password</h2>
+                <h2>{t('settings.updatePassword')}</h2>
             </div>
             <div className="settings_input">
                 <input
                     className="password_input"
                     type={showPassword ? 'text' : 'password'} // Afficher ou cacher le mot de passe
-                    placeholder="Enter new password"
+                    placeholder={t('settings.enterNewPassword')}
                     onChange={handlePasswordChange}
                 />
                 <input
                     className="password_input"
                     type={showPassword ? 'text' : 'password'} // Afficher ou cacher le mot de passe
-                    placeholder="Confirm new password"
+                    placeholder={t('settings.confirmNewPassword')}
                     onChange={handleConfirmPasswordChange}
                 />
                 <button className="show-password" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? 'Hide' : 'Show'}
+                    {showPassword ? t('settings.hidePassword') : t('settings.showPassword')}
                 </button>
             </div>
             <div>
                 <button className="button_password" onClick={handleUpdate}>
-                    Update Password
+                    {t('settings.updatePassword')}
                 </button>
             </div>
             {errorMsg && <div className="error_msg">{errorMsg}</div>}
-            {passwordChanged && <div className="success_msg">Password updated successfully!</div>}
+            {passwordChanged && <div className="success_msg">{t('settings.passwordUpdateSuccess')}</div>}
         </div>
     );
 }
