@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useTournamentContext } from "./provider/TournamentContextProvider";
+import { useTranslation } from "react-i18next"; // Importation de useTranslation
 import "../../styles/tournament.css";
 
-const AddPlayerComponent = () => 
-{
+const AddPlayerComponent = () => {
+    const { t } = useTranslation(); // Initialisation de useTranslation
     const { buildBracket, setPointsToWin, pointsToWin } = useTournamentContext();
     const [players, setPlayers] = useState<string[]>([]);
     const [playerName, setPlayerName] = useState("");
@@ -13,29 +14,29 @@ const AddPlayerComponent = () =>
 
     const handleBuildBracket = () => {
         if (players.length < 3) {
-            setBuildBracketError("Minimum 3 players required to build bracket");
+            setBuildBracketError(t("tournament.minPlayersError")); // Utilisation de la clé de traduction
             return;
         }
         buildBracket(players);
     };
 
-    const handleSetPlayerName = (name:string) => {
+    const handleSetPlayerName = (name: string) => {
         setPlayerName(name);
         if (!players.includes(name.trim())) {
             setAddPlayerError("");
         }
-    } 
-    
+    };
+
     const addPlayer = () => {
         const trimmedName = playerName.trim();
         if (trimmedName) {
             // check if playerName already exists
             if (players.includes(trimmedName)) {
-                setAddPlayerError("Player already exists");
+                setAddPlayerError(t("tournament.playerExistsError")); // Utilisation de la clé de traduction
             } else {
-            setPlayers([...players, trimmedName]);
-            setPlayerName("");
-            setBuildBracketError("");
+                setPlayers([...players, trimmedName]);
+                setPlayerName("");
+                setBuildBracketError("");
             }
         }
     };
@@ -47,12 +48,12 @@ const AddPlayerComponent = () =>
                     type="text"
                     value={playerName}
                     onChange={(e) => handleSetPlayerName(e.target.value)}
-                    placeholder="Enter player name"
+                    placeholder={t("tournament.enterPlayerName")} // Utilisation de la clé de traduction
                 />
                 {addPlayerError !== "" && <p style={{ color: 'red' }}>{addPlayerError}</p>}
-                <button className="button_add" onClick={addPlayer}>Add Player</button>
+                <button className="button_add" onClick={addPlayer}>{t("tournament.addPlayerButton")}</button> {/* Utilisation de la clé de traduction */}
             <div>
-                    <h2 className="players_list_title">Players</h2>
+                    <h2 className="players_list_title">{t("tournament.playersTitle")}</h2>
                     <ul>
                     {players.map((player) => (
                         <li className="players_list" key={player.toString()}>{player}</li>
@@ -60,13 +61,13 @@ const AddPlayerComponent = () =>
                     </ul>
                 </div>
                 <div>
-                    <h2 className="points_title">Points per pong game</h2>
+                    <h2 className="points_title">{t("tournament.pointsPerGameTitle")}</h2>
                     <button className="button_points" onClick={() => setPointsToWin(1)} style={pointsToWin === 1 ? { backgroundColor: 'blue', color: 'white' } : {}}>1</button>
                     <button className="button_points" onClick={() => setPointsToWin(3)} style={pointsToWin === 3 ? { backgroundColor: 'blue', color: 'white' } : {}}>3</button>
                     <button className="button_points" onClick={() => setPointsToWin(5)} style={pointsToWin === 5 ? { backgroundColor: 'blue', color: 'white' } : {}}>5</button>
                 </div>
                 <br/>
-                <button className="button_start_tournament" onClick={handleBuildBracket}>Start tournament</button>
+                <button className="button_start_tournament" onClick={handleBuildBracket}>{t("tournament.startTournamentButton")}</button>
                 {buildBracketError !== "" && <p style={{ color: 'red' }}>{buildBracketError}</p>}
             </div>
         </div>
