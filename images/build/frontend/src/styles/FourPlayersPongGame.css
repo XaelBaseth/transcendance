@@ -6,7 +6,7 @@ body {
 }
 
 #main {
-	position: fix;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	left: 0;
@@ -33,7 +33,6 @@ body {
 	margin: 20px auto;
 	overflow: hidden;
 	top: 11%;
-
 }
 
 .paddle-vertical {
@@ -134,17 +133,16 @@ body {
 	color: var(--pink);
 }
 
-.button_start_multi:hover 
-{
+.button_start_multi:hover {
 	background-color: var(--light_teal);
 	border: 4px solid var(--pink);
 }
 
 .score-text_multi {
-    font-size: 24px;
-    color: var(--pink);
-    font-weight: bold;
-    text-align: center;
+	font-size: 24px;
+	color: var(--pink);
+	font-weight: bold;
+	text-align: center;
 	background-color: var(--white);
 	border: 5px solid var(--light_teal);
 	border-radius: 100px;
@@ -153,11 +151,11 @@ body {
 	padding-left: 10px;
 	width: 40%;
 	position: absolute;
-  	left: 29%;
+	left: 29%;
 }
 
 .pokemon3 {
-    position: absolute;
+	position: absolute;
 	left: 5%;
 	bottom: 0;
 	width: 250px;
@@ -165,9 +163,31 @@ body {
 }
 
 .pokemon4 {
-    position: absolute;
+	position: absolute;
 	right: 5%;
 	bottom: 0;
 	width: 250px;
 	height: auto;
+}
+
+/* New CSS for Game Over Overlay */
+
+.game-over-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+}
+
+.game-win-message {
+	color: white;
+	font-size: 2rem;
+	font-weight: bold;
+	font-family: 'VT323';
 }

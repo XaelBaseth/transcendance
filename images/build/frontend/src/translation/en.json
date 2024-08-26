@@ -137,6 +137,7 @@
 		"right": "right",
 		"top":"Top",
 		"bottom":"Bottom",
+		"win":"Win",
 		"playerSide": "player side",
 		"gameState": "Game state",
 		"pauseRemaining": "Pause : Remaining time",
