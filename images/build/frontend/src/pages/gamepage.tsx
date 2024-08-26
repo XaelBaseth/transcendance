@@ -11,6 +11,10 @@ export default function GamePage() {
 	const pongGameModeButtonPressed = () => {
 		navigate('/pong');
 	}
+	const pongGameModeButtonPressed2 = () => {
+		navigate('/tournament');
+	}
+
 
 	return (
 		<div id="play-screen2">
@@ -20,7 +24,8 @@ export default function GamePage() {
 				{t('gamepage.pong')}
 			</div>
 			<div className="button3" data-text="MODE TOURNAMENT"
-				title={t('gamepage.tournamentLower')}>
+				title={t('gamepage.tournamentLower')}
+				onClick={pongGameModeButtonPressed2}>
 				{t('gamepage.tournament')}
 			</div>
 		</div>
