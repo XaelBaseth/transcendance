@@ -1,6 +1,8 @@
 import React from 'react';
 import PongLocal from '../PongGame/PongLocal';
 import { useTournamentContext } from './provider/TournamentContextProvider';
+import "../../styles/tournament.css";
+import "../../styles/Pong.css";
 
 const PlayingTournament = () => {
     const { manageGameResult, pointsToWin,getCurrentPlayers } = useTournamentContext();
@@ -8,7 +10,7 @@ const PlayingTournament = () => {
     return (
         <div>
 			{/* Fond d'arrière-plan */}
-			<div className="background" />
+			<div className="tournament" />
 
 			{/* Terrain de football */}
 			<div className="football-field">

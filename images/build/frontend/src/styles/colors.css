@@ -17,6 +17,8 @@
     --error: #f03e3e;
     --ok : #90be8e;
     --white: #f5efe6;
+    --looser: #EA5863;
+    --winner: #BED3C3;
 
     --error-D:#adba3e;
     --ok-D:#a19d9c;
@@ -29,4 +31,6 @@
     --clear_yellow-D:#FBDADC;
     --clear_teal-D: #F6ECEC;
     --white-D: #f5f5e8;
+    --looser-D: #B3Be5f;
+    --winner-D: #c5c4c7;
 }

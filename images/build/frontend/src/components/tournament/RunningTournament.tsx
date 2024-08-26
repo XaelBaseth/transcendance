@@ -14,8 +14,13 @@ const RunningTournament = () => {
 
     return (
         <>
-            <p>Next game : {players[0].name} vs {players[1].name}</p>
-            <button onClick={handlePlayNextGame}>Play Next Game</button>
+            <div>
+                <p className='tournament_title'>Next game : {players[0].name} vs {players[1].name}</p>
+            </div>
+            <div>
+                <button className="button_next_game" onClick={handlePlayNextGame}>Play Next Game</button>
+            </div>
+            
             <div className="scrollable-container">
                 <TournamentBrackets tournamentBracket={tournamentBracket} />
             </div>
