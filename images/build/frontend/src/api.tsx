@@ -9,7 +9,7 @@ const BASE_URL = import.meta.env.VITE_API_URL || '';
 
 /** Give the user a JWT to identify him and stores it into localStorage (check if cookies better or nah) */
 const api = axios.create({
-  baseURL: BASE_URL
+	baseURL: BASE_URL
 });
 
 api.interceptors.request.use(
@@ -28,15 +28,26 @@ api.interceptors.request.use(
 
 api.updateUserProfile = async (userData: any) => {
 	try {
-	  const response = await api.put('/api/update-profile/', userData, {
-		headers: {
-		  'Content-Type': 'application/json',
-		},
-	  });
-	  return response.data;
+		const response = await api.put('/api/update-profile/', userData, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		return response.data;
 	} catch (error: any) {
-	  console.error('Error updating user profile:', error.response?.data || error.message);
-	  throw error;
+		console.error('Error updating user profile:', error.response?.data || error.message);
+		throw error;
 	}
 };
+
+api.deleteAccount = async () => {
+	try {
+		const response = await api.delete('/api/user/delete-account/');
+		return response.data;
+	} catch (error) {
+		console.error('Error deleting account:', error);
+		throw error;
+	}
+};
+
 export default api;

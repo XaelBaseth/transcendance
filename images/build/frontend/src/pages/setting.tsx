@@ -8,6 +8,7 @@ import '../styles/Setting.css'
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 import '../styles/Setting.css';
+import { useAuth } from '../context';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
@@ -147,6 +148,17 @@ export function DeleteAccountCardSettings() {
     const { t } = useTranslation();
     const [isDeleted, setDeleted] = useState<boolean>(false);
     const navigate = useNavigate();
+    const { logout } = useAuth();
+
+    const handleDeleteAccount = async () => {
+        try {
+            await api.delete('/api/user/delete-account/');
+            setDeleted(true);
+            logout();
+        } catch (error) {
+            console.error('Error deleting account:', error);
+        }
+    };
 
     useEffect(() => {
         if (isDeleted) {
@@ -160,7 +172,7 @@ export function DeleteAccountCardSettings() {
         <div className="delete_settings">
             <h2 className="delete_settings__title">{t('settings.delete')}</h2>
             <h4 className="delete_settings__subtitle">{t('settings.irreversible')}</h4>
-            <button className="delete_settings__btn">
+            <button className="delete_settings__btn" onClick={handleDeleteAccount}>
                 Delete
                 <span>Delete your account</span>
             </button>
@@ -172,8 +184,7 @@ export function DeleteAccountCardSettings() {
             )}
         </div>
     );
-};
-
+}
 export function CookieSettings() {
     const { t } = useTranslation();
 

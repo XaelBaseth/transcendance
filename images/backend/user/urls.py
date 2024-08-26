@@ -3,6 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
 	 path('', views.home, name = 'home'),
     path('register', views.UserRegister.as_view(), name='register'),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('friends', views.FriendListView.as_view(), name='friend_list'),
     path('match-history', views.MatchHistoryView.as_view(), name='match_history'),
     path('user/change-Avatar', views.ChangeAvatar.as_view(), name='change_avatar'),
+    path('delete-account/', views.DeleteAccountView.as_view(), name='delete_account'),
 ]

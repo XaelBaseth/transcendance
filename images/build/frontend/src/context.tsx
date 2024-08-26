@@ -161,7 +161,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	};
 
-	const value = {
+	const value: AuthContextType = {
 		user,
 		setUser,
 		successMsg,
@@ -169,6 +169,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		login,
 		signup,
 		logout,
+		updateProfile,
 	};
 
 	return (
