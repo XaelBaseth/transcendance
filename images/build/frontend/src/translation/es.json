@@ -139,6 +139,25 @@
 		"youWin": "¡Ganaste!",
 		"gameOver": "Juego terminado"
 	},
+	"tournament": {
+		"minPlayersError": "Se requieren al menos 3 jugadores para crear un bracket",
+		"playerExistsError": "El jugador ya existe",
+		"enterPlayerName": "Ingrese el nombre del jugador",
+		"addPlayerButton": "Agregar jugador",
+		"playersTitle": "Jugadores",
+		"pointsPerGameTitle": "Puntos por juego de pong",
+		"pointsOption": "{{count}} punto",
+		"startTournamentButton": "Iniciar torneo"
+	},
+	"finishedTournament": {
+		"title": "Torneo terminado",
+		"congratulation": "¡Felicidades, {{winner}}!",
+		"restartButton": "Reiniciar"
+	},
+	"runningTournament": {
+		"nextGame": "Próximo partido: {{player1}} contra {{player2}}",
+		"playNextGame": "Jugar el siguiente partido"
+	},
 	"cookie":{
 		"banner":"Al continuar navegando por este sitio, acepta que utilicemos cookies para garantizar que el sitio funciona correctamente. No utilizamos cookies con fines de seguimiento o publicidad.",
 		"span":"Puede obtener más información en nuestra",
