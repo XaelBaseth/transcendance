@@ -1,6 +1,7 @@
 import React from 'react';
 import Tournament from '../components/tournament/Tournament';
 import { TournamentContextProvider } from '../components/tournament/provider/TournamentContextProvider';
+import "../styles/tournament.css";
 
 const TournamentPage = () => {
 

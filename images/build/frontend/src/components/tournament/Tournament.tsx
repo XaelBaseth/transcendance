@@ -4,6 +4,7 @@ import AddPlayerComponent from "./AddPlayersComponent";
 import RunningTournament from "./RunningTournament";
 import PlayingTournament from "./PlayingTournament";
 import FinishedTournament from "./FinishedTournament";
+import "../../styles/tournament.css";
 
 const Tournament = () => {
   const { tournamentState } = useTournamentContext();

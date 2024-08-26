@@ -1,3 +1,5 @@
+import "../../styles/tournament.css";
+
 import {
     SingleEliminationBracket,
     Match,
@@ -16,23 +18,36 @@ import {
   }
   
   const GlootTheme = createTheme({
-    textColor: { main: "#000000", highlighted: "#F4F2FE", dark: "#707582" },
-    matchBackground: { wonColor: "#2D2D59", lostColor: "#1B1D2D" },
+    textColor: {
+      main: "var(--pink)", 
+      highlighted: "var(--light_pink)" 
+    },
+    matchBackground: {
+      wonColor: "var(--ok)", 
+      lostColor: "var(--error)",
+      background: "var(--white)"
+    },
     score: {
       background: {
-        wonColor: `#10131C`,
-        lostColor: "#10131C"
+        wonColor: "var(--ok)",
+        lostColor: "var(--error)"
       },
-      text: { highlightedWonColor: "#7BF59D", highlightedLostColor: "#FB7E94" }
+      text: {
+        highlightedWonColor: "var(--pink)",
+        highlightedLostColor: "var(--light_pink)"
+      }
     },
     border: {
-      color: "#292B43",
-      highlightedColor: "RGBA(152,82,242,0.4)"
+      color: "var(--light_teal)",
+      highlightedColor: "var(--olive_green)"
     },
-    roundHeader: { backgroundColor: "#3B3F73", fontColor: "#F4F2FE" },
-    connectorColor: "#3B3F73",
-    connectorColorHighlight: "RGBA(152,82,242,0.4)",
-    svgBackground: "#0F121C"
+    roundHeader: {
+      backgroundColor: "var(--linen)",
+      fontColor: "var(--pink)"
+    },
+    connectorColor: "var(--light_teal)",
+    connectorColorHighlight: "var(--olive_green)",
+    svgBackground: "var(--linen)"
   });
   
   export default TournamentBrackets;

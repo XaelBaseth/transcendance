@@ -1,0 +1,20 @@
+2024-08-24 12:53:17,015 INFO     Starting server at tcp:port=8000:interface=0.0.0.0
+2024-08-24 12:53:17,015 INFO     HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+2024-08-24 12:53:17,015 INFO     Configuring endpoint tcp:port=8000:interface=0.0.0.0
+2024-08-24 12:53:17,016 INFO     Listening on TCP address 0.0.0.0:8000
+Unauthorized: /api/user/
+2024-08-24 12:53:23,710 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:53:33,741 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:53:43,771 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:53:53,806 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:54:03,836 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:54:13,867 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:54:23,899 WARNING  Unauthorized: /api/user/
+Unauthorized: /api/user/
+2024-08-24 12:54:33,929 WARNING  Unauthorized: /api/user/

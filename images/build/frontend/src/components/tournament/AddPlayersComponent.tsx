@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useTournamentContext } from "./provider/TournamentContextProvider";
+import "../../styles/tournament.css";
 
 const AddPlayerComponent = () => 
 {

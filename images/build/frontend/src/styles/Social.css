@@ -314,6 +314,7 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
+	margin-right: 100px;
 }
 
 .friends-list.allFriends {
@@ -331,7 +332,7 @@
 }
 
 .friends-list.blocked {
-    background-color: var(--linen);
+    background-color: var(--white);
 	position: absolute;
 	max-height: 60%;
 	width: 45%;
@@ -345,7 +346,7 @@
 }
 
 .friends-list.pendingRequest {
-    background-color: var(--linen);
+    background-color: var(--white);
 	position: absolute;
 	max-height: 60%;
 	width: 45%;
