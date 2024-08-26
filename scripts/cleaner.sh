@@ -13,8 +13,6 @@ rm -rf ./volume/vault-data
 sleep 1
 rm -rf ./volume/logs-data
 sleep 1
-docker run --rm -v $(pwd):/app -w /app alpine rm -rf ./volume/db_data
-sleep 1
 docker run --rm -v $(pwd):/app -w /app alpine rm -rf ./volume/db-data
 sleep 1
 rm -rf ./ssl/*

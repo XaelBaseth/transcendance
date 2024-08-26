@@ -136,7 +136,9 @@ services:
       retries: 3
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.0
+    build:
+      context: ./images/ELK/
+      dockerfile: Dockerfile
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
@@ -148,10 +150,9 @@ services:
     networks:
       - main
     volumes:
-      #- ./volume/es-data:/usr/share/elasticsearch/data
       - ./volume/logs-data:/var/log/elasticsearch
       - ./volume/es-snapshots:/usr/share/elasticsearch/volume/snapshots
-      #- ./volume/es-certif:/usr/share/elasticsearch/config/certs/
+      - ./ssl/:/usr/share/elasticsearch/config/certs/
     logging:
       driver: "json-file"
       options:
@@ -170,8 +171,6 @@ services:
       - "5601:5601"
     networks:
       - main
-    depends_on:
-      - elasticsearch
     volumes:
       - ./volume/es-certif:/usr/share/kibana/config/certs
       - ./volume/logs-data:/var/log/kibana
@@ -191,8 +190,6 @@ services:
       - ./images/ELK/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
       - ./volume/es-certif:/usr/share/logstash/config/certs
       - ./volume/logs-data:/usr/share/logstash/logs
-    depends_on:
-      - elasticsearch
 
 networks:
   main:
@@ -202,8 +199,6 @@ networks:
 volumes:
   es-snapshots:
   es-certif:
-  es-data:
   vault-data:
   logs-data:
   db-data:
-
