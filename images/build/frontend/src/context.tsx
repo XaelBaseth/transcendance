@@ -71,58 +71,26 @@ export const AuthProvider: React.FC = ({ children }) => {
 	};
 
 	// Sign up
-	const signup = async (email: string, username: string, password: string, confirmPassword: string) => {
-		// Vérifications côté client
-		if (email === "" || username === "" || password === "") {
-			setErrorMsg(t('signup.fieldsNotEmpty'));
-			return;
-		}
-		if (password !== confirmPassword) {
-			setErrorMsg(t('signup.passwordMatch'));
-			return;
-		}
-		if (password.length < 8) {
-			setErrorMsg(t('signup.passwordTooShort'));
-			return;
-		}
-
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		if (!emailRegex.test(email)) {
-			setErrorMsg(t('signup.invalidEmail'));
-			return;
-		}
-
+	const signup = async (email: string, username: string, password: string) => {
 		try {
-			const res = await api.post("/api/user/register", { email, username, password });
-			if (res.status >= 200 && res.status < 300) {
-				setSuccessMsg(t('signup.successMsg'));
-				navigate('/login');
-			} else {
-				// Regrouper les erreurs d'email et d'username
-				const errorMessage = res.data.message || ''; // Extraire le message de la réponse
-
-				if (errorMessage.includes("already exists")) {
-					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
-				} else {
-					setErrorMsg(t('signup.errorMsg'));
-				}
-			}
+		  await api.register(email, username, password);
+		  setSuccessMsg(t('signup.successMsg'));
+		  navigate('/login');
 		} catch (error: any) {
-			console.error("Error during registration:", error);
-
-			if (error.response && error.response.status === 500) {
-				const responseText = error.response.data;
-
-				if (responseText && (responseText.includes("email") || responseText.includes("username"))) {
-					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
-				} else {
-					setErrorMsg(t('signup.errorMsg'));
-				}
+		  console.error("Error during registration:", error);
+		  if (error.response) {
+			if (error.response.status === 404) {
+			  setErrorMsg(t('signup.endpointNotFound'));
+			} else if (error.response.data) {
+			  setErrorMsg(JSON.stringify(error.response.data));
 			} else {
-				setErrorMsg(t('signup.unknownMsg'));
+			  setErrorMsg(t('signup.unknownError'));
 			}
+		  } else {
+			setErrorMsg(t('signup.networkError'));
+		  }
 		}
-	};
+	  };
 
 
 	// Logout

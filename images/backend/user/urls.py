@@ -18,5 +18,6 @@ urlpatterns = [
     path('api/user/match-history', views.MatchHistoryView.as_view(), name='match_history'),
     path('api/user/change-avatar', views.ChangeAvatar.as_view(), name='change_avatar'),
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/user/register', views.UserRegister.as_view(), name='register'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

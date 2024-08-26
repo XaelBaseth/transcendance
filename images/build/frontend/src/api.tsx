@@ -107,6 +107,16 @@ api.updateUserProfile = async (userData: any) => {
 	}
 };
 
+api.register = async (email: string, username: string, password: string) => {
+	try {
+		const response = await api.post('/api/user/register', { email, username, password });
+		return response.data;
+	} catch (error: any) {
+		console.error('Registration error:', error.response?.data || error.message);
+		throw error;
+	}
+};
+
 export default api;
 
 
