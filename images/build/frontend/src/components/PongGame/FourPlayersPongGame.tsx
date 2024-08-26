@@ -219,7 +219,6 @@ const FourPlayersPongGame = () => {
 				/>
 				<img src={pokemon3} alt="Yuki" className="pokemon3" />
 				<img src={pokemon4} alt="Shinx" className="pokemon4" />
-				</div>
 				{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.youWin')}</div>}
 				{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.gameOver')}</div>}
 			</div>
