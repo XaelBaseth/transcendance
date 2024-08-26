@@ -8,6 +8,9 @@ import '../styles/Setting.css'
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 import '../styles/Setting.css';
+mport arena1 from '../assets/arena1.png';
+import arena2 from '../assets/arena2.png';
+import arena3 from '../assets/arena3.png';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
@@ -119,6 +122,42 @@ function PrivacySettings() {
         <div className="privacy_settings">
             <CookieSettings />
             <DeleteAccountCardSettings />
+        </div>
+    );
+}
+
+function ArenaSelection() {
+    const { t } = useTranslation();
+    const [selectedArena, setSelectedArena] = useState<string>(() => localStorage.getItem('selectedArena') || arena1);
+
+    const handleArenaSelection = (arena: string) => {
+        setSelectedArena(arena);
+        localStorage.setItem('selectedArena', arena);
+    };
+
+    return (
+        <div className="arena-selection">
+            <h2>{t('settings.selectArena')}</h2>
+            <div className="arena-thumbnails">
+                <img
+                    src={arena1}
+                    alt="Arena 1"
+                    onClick={() => handleArenaSelection(arena1)}
+                    className={`arena-thumbnail ${selectedArena === arena1 ? 'selected' : ''}`}
+                />
+                <img
+                    src={arena2}
+                    alt="Arena 2"
+                    onClick={() => handleArenaSelection(arena2)}
+                    className={`arena-thumbnail ${selectedArena === arena2 ? 'selected' : ''}`}
+                />
+                <img
+                    src={arena3}
+                    alt="Arena 3"
+                    onClick={() => handleArenaSelection(arena3)}
+                    className={`arena-thumbnail ${selectedArena === arena3 ? 'selected' : ''}`}
+                />
+            </div>
         </div>
     );
 }

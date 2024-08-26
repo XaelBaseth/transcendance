@@ -4,6 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { Participant } from '../tournament/provider/TournamentContextProvider';
 import pokemon5 from '../../assets/pikachu.gif';
 import pokemon6 from '../../assets/Pachirisu.gif';
+import arena1 from "../../assets/default_arena.jpg"
+import arena2 from "../../assets/fire_arena.jpg"
+import arena3 from "../../assets/water_arena.jpg"
+
 
 interface LocalPongGameProps {
 	isInTournament?: boolean;
@@ -39,6 +43,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 	const [gameOver, setGameOver] = useState(false);
 	const [gameRunning, setGameRunning] = useState(false);
 	const [score, setScore] = useState({ left: 0, right: 0 });
+	const [selectedArena, setSelectedArena] = useState(arena1); // Ajout de l'état selectedArena
 	const ballRef = useRef(null);
 
 	const pressedKeys = useRef(new Set());
@@ -217,6 +222,10 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 		setGameRunning(!gameRunning);
 	};
 
+	const handleArenaSelection = (arena) => {
+		setSelectedArena(arena);
+	};
+
 	return (
 		<>
 			<div className="controls">
@@ -224,6 +233,8 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 				{gameRunning && <button className="button_start" onClick={pauseGame}>{t('pong.pause')}</button>}
 				{gameOver && <button className="button_start" onClick={restartGame}>{t('pong.playAgain')}</button>}
 			</div>
+			{/* Modification ici : afficher l'arène sélectionnée */}
+			<img src={selectedArena} alt="selected arena" className="arena-image" />
 			<img src={pokemon5} alt="Yuki" className="pokemon3" />
 			<img src={pokemon6} alt="Shinx" className="pokemon4" />
 			<div className="controls score-text">
