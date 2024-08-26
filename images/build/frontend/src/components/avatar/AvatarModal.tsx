@@ -15,11 +15,12 @@ import manaphy from '../../assets/manaphy.png';
 import momartik from '../../assets/momartik.png';
 import simiabraz from '../../assets/simiabraz.png';
 import florizarre from '../../assets/florizarre.png';
+import flapple from '../../assets/flapple.png';
 
-// Array of imported avatars
+
 const avatars = [
     avatar1, avatar2, avatar3, giratina, amphinobi, emolga,
-    pingoleon, mimiqui1, mimiqui2, manaphy, florizarre, momartik, simiabraz
+    pingoleon, mimiqui1, mimiqui2, manaphy, florizarre, momartik, simiabraz, flapple
 ];
 
 interface AvatarModalProps {
@@ -39,7 +40,7 @@ const AvatarModal: React.FC<AvatarModalProps> = ({ show, onClose, onSelect }) =>
     const handlePrevClick = () => {
         setCurrentIndex((prevIndex) => {
             if (prevIndex === 0) {
-                return avatars.length - 3; // Afficher les 3 derniers avatars
+                return avatars.length - 3;
             }
             return Math.max(prevIndex - 3, 0);
         });

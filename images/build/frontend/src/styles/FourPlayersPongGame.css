@@ -155,3 +155,19 @@ body {
 	margin: 10px auto;
 	margin-top: 40px;
 }
+
+.pokemon3 {
+    position: absolute;
+	left: 5%;
+	bottom: 0;
+	width: 250px;
+	height: auto;
+}
+
+.pokemon4 {
+    position: absolute;
+	right: 5%;
+	bottom: 0;
+	width: 250px;
+	height: auto;
+}

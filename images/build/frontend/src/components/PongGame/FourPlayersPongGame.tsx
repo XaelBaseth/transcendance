@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import '../../styles/FourPlayersPongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import pokemon3 from '../assets/yukiwarashi.gif';
+import pokemon4 from '../assets/Shinx.gif';
 
 const FourPlayersPongGame = () => {
 	const { t } = useTranslation();
@@ -215,6 +217,9 @@ const FourPlayersPongGame = () => {
 					transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
 					transitionTimingFunction: 'linear' }}
 				/>
+				<img src={pokemon3} alt="Yuki" className="pokemon3" />
+				<img src={pokemon4} alt="Shinx" className="pokemon4" />
+				</div>
 				{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.youWin')}</div>}
 				{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.gameOver')}</div>}
 			</div>
