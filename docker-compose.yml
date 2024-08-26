@@ -148,10 +148,10 @@ services:
     networks:
       - main
     volumes:
-      - ./volume/es-data:/usr/share/elasticsearch/data
+      #- ./volume/es-data:/usr/share/elasticsearch/data
       - ./volume/logs-data:/var/log/elasticsearch
       - ./volume/es-snapshots:/usr/share/elasticsearch/volume/snapshots
-      - ./volume/es-certif:/usr/share/elasticsearch/config/certs/
+      #- ./volume/es-certif:/usr/share/elasticsearch/config/certs/
     logging:
       driver: "json-file"
       options:
@@ -204,7 +204,6 @@ volumes:
   es-certif:
   es-data:
   vault-data:
-  postgres-data:
   logs-data:
   db-data:
 

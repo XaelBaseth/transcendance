@@ -46,7 +46,6 @@ logs:
 	@echo "$(BLUE) You can now lookup the logs at $(BOLD).logs$(RESET)"
 
 setup:
-	@mkdir -p volume/db_data
 	if [ ! -f .env ]; then \
 		echo "$(YELLOW)[TRANSCENDENCE] $(ORANGE)==> $(RED)No $(BOLD).env$(RESET)$(RED) file found. Please set one before attempting to build the website.$(RESET)" ;\
 		exit 1; \

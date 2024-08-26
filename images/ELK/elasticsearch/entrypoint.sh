@@ -3,16 +3,6 @@ set -e
 
 CERTS_DIR="/usr/share/elasticsearch/config/certs/"
 
-# Ensure the certificates are present in the expected location
-if [ ! "$(ls -A ${CERTS_DIR})" ]; then
-  echo "Certificates not found in ${CERTS_DIR}. Exiting."
-  exit 1
-fi
-
-# Verify the certificate generation
-echo "Contents of ${CERTS_DIR}:"
-ls -l "${CERTS_DIR}"
-
 # Start Elasticsearch
 echo "Starting Elasticsearch..."
 /usr/local/bin/docker-entrypoint.sh &

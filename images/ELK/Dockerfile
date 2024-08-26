@@ -21,6 +21,10 @@ RUN mkdir -p /usr/share/elasticsearch/config/volume
 COPY ./elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 
 RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/config/certs/
+RUN chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
+
+RUN chmod -R 775 /usr/share/elasticsearch/data
+RUN chmod -R 775 /usr/share/elasticsearch/config/certs
 
 USER elasticsearch
 
