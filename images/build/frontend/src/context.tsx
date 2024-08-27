@@ -6,23 +6,17 @@ import api from './api';
 import { useTranslation } from 'react-i18next';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants";
 
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const useAuth = () => {
-	const context = useContext(AuthContext);
-	if (!context) {
-		throw new Error('useAuth must be used within an AuthProvider');
-	}
-	return context;
-};
+
 
 export const AuthProvider: React.FC = ({ children }) => {
-	const { t } = useTranslation();
-	const [user, setUser] = useState<User | null>(null);
-	const [successMsg, setSuccessMsg] = useState<string>("");
-	const [errorMsg, setErrorMsg] = useState<string>("");
-	const navigate = useNavigate();
-	const location = useLocation();
+    const { t } = useTranslation();
+    const [user, setUser] = useState<User | null>(null);
+    const [successMsg, setSuccessMsg] = useState<string>("");
+    const [errorMsg, setErrorMsg] = useState<string>("");
+    const navigate = useNavigate();
 
 	// Check if the user already has a JWT to stay connected.
 	useEffect(() => {
@@ -62,6 +56,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 				setSuccessMsg(t('login.successMsg'));
 				localStorage.setItem(ACCESS_TOKEN, res.data.access);
 				localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+            
 				navigate("/");
 			} else {
 				setErrorMsg(t('login.errorMsg'));
@@ -160,6 +155,32 @@ export const AuthProvider: React.FC = ({ children }) => {
 			setErrorMsg(t('updateProfile.unknownMsg'));
 		}
 	};
+	const deleteAccount = async () => {
+        try {
+            const res = await api.delete("/api/user/delete-account/");
+            if (res.status === 204) {
+                setSuccessMsg(t('deleteAccount.successMsg'));
+                logout();
+                navigate('/login');
+            } else {
+                setErrorMsg(t('deleteAccount.errorMsg'));
+            }
+        } catch (error: any) {
+            console.error(error);
+            setErrorMsg(t('deleteAccount.unknownError'));
+        }
+    };
+	interface AuthContextType {
+		user: User | null;
+		setUser: React.Dispatch<React.SetStateAction<User | null>>;
+		successMsg: string;
+		errorMsg: string;
+		login: (email: string, password: string) => Promise<void>;
+		signup: (email: string, username: string, password: string, confirmPassword: string) => Promise<void>;
+		logout: () => void;
+		updateProfile: (username: string, email: string, currentPassword: string, newPassword: string, confirmNewPassword: string) => Promise<void>;
+		deleteAccount: () => Promise<void>; // Add this line
+	}
 
 	const value: AuthContextType = {
 		user,
@@ -170,11 +191,19 @@ export const AuthProvider: React.FC = ({ children }) => {
 		signup,
 		logout,
 		updateProfile,
+		deleteAccount,
 	};
-
 	return (
 		<AuthContext.Provider value={value}>
 			{children}
 		</AuthContext.Provider>
 	);
+};
+
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
 };

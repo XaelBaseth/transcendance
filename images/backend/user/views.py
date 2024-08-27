@@ -18,6 +18,7 @@ from .serializers import UserSerializer, FriendshipSerializer, MatchHistorySeria
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.decorators import parser_classes
 import logging
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
@@ -173,10 +174,16 @@ class MatchHistoryView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+logger = logging.getLogger(__name__)
 class DeleteAccountView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def delete(self, request, *args, **kwargs):
+    def delete(self, request):
+        logger.info(f"Delete account request received for user: {request.user}")
+        logger.info(f"Auth: {request.auth}")
+        logger.info(f"Headers: {request.headers}")
+        
         user = request.user
         user.delete()
         return Response({"message": "Account deleted successfully"}, status=status.HTTP_204_NO_CONTENT)

@@ -1,49 +1,24 @@
-import axios from "axios"
+import axios from "axios";
 import { ACCESS_TOKEN } from "./constants";
-import { AxiosRequestConfig } from "axios";
-axios.defaults.xsrfCookieName = 'csrftoken';
-axios.defaults.xsrfHeaderName = 'X-CSRFToken';
-axios.defaults.withCredentials = true;
 
-const BASE_URL = import.meta.env.VITE_API_URL || '';
-
-/** Give the user a JWT to identify him and stores it into localStorage (check if cookies better or nah) */
 const api = axios.create({
-	baseURL: BASE_URL
+	baseURL: import.meta.env.VITE_API_URL || ''
 });
 
 api.interceptors.request.use(
-	(config: AxiosRequestConfig) => {
+	(config) => {
 		const token = localStorage.getItem(ACCESS_TOKEN);
 		if (token) {
 			config.headers.Authorization = `Bearer ${token}`;
 		}
 		return config;
 	},
-	(error: any) => {
-		console.error('Error with request:', error.response?.data || error.message);
-		return console.error('Error with request:', error.response?.data || error.message);
-	}
+	(error) => Promise.reject(error)
 );
 
-api.updateUserProfile = async (userData: any) => {
+export const deleteAccount = async () => {
 	try {
-		const response = await api.put('/api/update-profile/', userData, {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
-		return response.data;
-	} catch (error: any) {
-		console.error('Error updating user profile:', error.response?.data || error.message);
-		throw error;
-	}
-};
-
-api.deleteAccount = async () => {
-	try {
-		const response = await api.delete('/api/user/delete-account/');
-		return response.data;
+		axios.get('/api/user/delete-account/');
 	} catch (error) {
 		console.error('Error deleting account:', error);
 		throw error;

@@ -5,11 +5,14 @@ import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
 import validator from 'validator';
 import '../styles/Setting.css'
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../api';
 import '../styles/Setting.css';
 import { useAuth } from '../context';
-
+import React from 'react/jsx-runtime';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import { deleteAccount } from '../api';
+import axios from 'axios';
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
 
@@ -146,17 +149,21 @@ function UserSettings() {
 
 export function DeleteAccountCardSettings() {
     const { t } = useTranslation();
-    const [isDeleted, setDeleted] = useState<boolean>(false);
+    const [isDeleted, setIsDeleted] = useState<boolean>(false);
+    const { deleteAccount, successMsg, errorMsg } = useAuth();
     const navigate = useNavigate();
-    const { logout } = useAuth();
-
+  
     const handleDeleteAccount = async () => {
         try {
-            await api.delete('/api/user/delete-account/');
-            setDeleted(true);
-            logout();
+            await deleteAccount();
+            setIsDeleted(true);
         } catch (error) {
-            console.error('Error deleting account:', error);
+            console.error('Error in handleDeleteAccount:', error);
+            if (axios.isAxiosError(error)) {
+                console.error('Response data:', error.response?.data);
+                console.error('Response status:', error.response?.status);
+                console.error('Response headers:', error.response?.headers);
+            }
         }
     };
 
@@ -176,15 +183,17 @@ export function DeleteAccountCardSettings() {
                 Delete
                 <span>Delete your account</span>
             </button>
-            {isDeleted && (
+            {successMsg && (
                 <div className="delete_settings__alert">
-                    <h5>{t('settings.deleteSuccess')}</h5>
+                    <h5>{successMsg}</h5>
                     <h6>{t('settings.redirection')}</h6>
                 </div>
             )}
+            {errorMsg && <div className="delete_settings__error">{errorMsg}</div>}
         </div>
     );
 }
+
 export function CookieSettings() {
     const { t } = useTranslation();
 

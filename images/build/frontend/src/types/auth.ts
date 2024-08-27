@@ -9,12 +9,13 @@ export interface User {
 }
 
 export interface AuthContextType {
-	user: User | null;
-	setUser: React.Dispatch<React.SetStateAction<User | null>>;
-	successMsg: string;
-	errorMsg: string;
-	login: (email: string, password: string) => Promise<void>;
-	signup: (email: string, username: string, password: string, confirmPassword: string) => Promise<void>;
-	logout: () => void;
-	updateProfile: (username: string, email: string, currentPassword: string, newPassword: string, confirmNewPassword: string) => Promise<void>;
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+    successMsg: string;
+    errorMsg: string;
+    login: (email: string, password: string) => Promise<void>;
+    signup: (email: string, username: string, password: string, confirmPassword: string) => Promise<void>;
+    logout: () => void;
+    updateProfile: (username: string, email: string, currentPassword: string, newPassword: string, confirmNewPassword: string) => Promise<void>;
+    deleteAccount: () => Promise<void>;
 }
