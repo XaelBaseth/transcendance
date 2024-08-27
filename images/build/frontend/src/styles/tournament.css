@@ -2,16 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust as needed */
+    height: 100vh;
 }
 
 .scrollable-container {
-    max-height: 80vh; /* Maximum height to the viewport height */
-    max-width: 80vw; /* Maximum width to the viewport width */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
-    padding: 10px; /* Optional: Add some padding */
+    max-height: 80vh; 
+	max-width: 80vw;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 
 .tournament_title {

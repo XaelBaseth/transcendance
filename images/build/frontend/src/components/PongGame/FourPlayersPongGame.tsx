@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from "react-router-dom";
-import '../../styles/FourPlayersPongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
 import pokemon3 from '../../assets/Yukiwarashi.gif';
 import pokemon4 from '../../assets/Shinx.gif';
+import arena1 from "../../assets/default_arena.jpg"
+import arena2 from "../../assets/fire_arena.jpg"
+import arena3 from "../../assets/water_arena.jpg"
+import '../../styles/FourPlayersPongGame.css';
+
 
 const FourPlayersPongGame = () => {
 	const { t } = useTranslation();
@@ -27,7 +31,7 @@ const FourPlayersPongGame = () => {
 	const [gameOver, setGameOver] = useState(false);
 	const [gameState, setGameState] = useState("initial");
 	const [pause, setPause] = useState(false);
-	const [player_side, setPlayerSide] = useState("spectator"); // left, right, top, bottom or spectator
+	const [player_side, setPlayerSide] = useState("spectator");
 	const [score, setScore] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
 	const [winner, setWinner] = useState("");
 	const [remaining_time, setRemainingTime] = useState(0);
@@ -217,7 +221,7 @@ const FourPlayersPongGame = () => {
 			<img src={pokemon4} alt="Shinx" className="pokemon4" />
 
 			<div className="score-text_multi">
-   				<p>{t('pong.left')} : {score.left} {t('pong.right')} : {score.right} {t('pong.top')} : {score.top} {t('pong.bottom')} : {score.bottom}</p>
+				<p>{t('pong.left')} : {score.left} {t('pong.right')} : {score.right} {t('pong.top')} : {score.top} {t('pong.bottom')} : {score.bottom}</p>
 			</div>
 			<div className="four-player-ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div
@@ -248,8 +252,13 @@ const FourPlayersPongGame = () => {
 					transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
 					transitionTimingFunction: 'linear' }}
 				/>
-				{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.youWin')}</div>}
-				{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.gameOver')}</div>}
+				{gameOver && (
+					<div className="game-over-overlay">
+						<div className="game-win-message">
+							{winner} {t('pong.win')}
+						</div>
+					</div>
+				)}
 			</div>
 		</>
 	);

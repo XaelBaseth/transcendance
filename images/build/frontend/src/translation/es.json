@@ -133,6 +133,7 @@
 		"right": "derecha",
 		"top":"Arriba",
 		"bottom":"Abajo",
+		"win":"Victoria",
 		"playerSide": "lado del jugador",
 		"gameState": "Estado del juego",
 		"pauseRemaining": "Pausa: Tiempo restante",

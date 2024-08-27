@@ -29,22 +29,11 @@ class AppUserManager(BaseUserManager):
 		user.save()
 		return user
 
-# class AppUser(AbstractBaseUser, PermissionsMixin):
-# 	user_id = models.AutoField(primary_key=True)
-# 	email = models.EmailField(max_length=50, unique=True)
-# 	username = models.CharField(max_length=50, default="username")
-# 	is_staff = models.BooleanField(default=False)
-# 	USERNAME_FIELD = 'email'
-# 	REQUIRED_FIELDS = ['username']
-# 	objects = AppUserManager()
-# 	def __str__(self):
-# 		return f"ID : {self.user_id} | EMAIL : {self.email} |  USERNAME : {self.username}"
 class AppUser(AbstractBaseUser, PermissionsMixin):
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=50, unique=True)
     username = models.CharField(max_length=50, unique=True)
     is_staff = models.BooleanField(default=False)
-    # avatar = models.CharField(max_length=100, default='media/profilIcon.png')
     avatar = models.ImageField(upload_to='media/', null=True, blank=True)
     wins = models.IntegerField(default=0)
     losses = models.IntegerField(default=0)

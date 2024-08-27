@@ -52,12 +52,10 @@ function App() {
 								<Route path="/*" element={<Error />} />
 								<Route path="/signup" element={<RegisterAndLogout />} />
 								<Route path="/tournament" element={<TournamentPage />} />
-								{/** PROTECTED */}
 								<Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
 								<Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 								<Route path="/gamepage" element={<ProtectedRoute><GamePage /></ProtectedRoute>} />
 								<Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-								{/* PONG */}
 								<Route path="/pong" element={<ProtectedRoute><PongHomePage /></ProtectedRoute>} />
 								<Route path="/localpong" element={<LocalPongPage />} />
 								<Route path="/pong/:roomCode" element={<ProtectedRoute><Pong /></ProtectedRoute>} />

@@ -10,7 +10,6 @@ from .serializer import CreatePongRoomSerializer, JoinPongRoomSerializer, PongRo
 
 import logging
 
-# Create your views here.
 class CreatePongRoomView(APIView):
 	serializer_class = CreatePongRoomSerializer
 

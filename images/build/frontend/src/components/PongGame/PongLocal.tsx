@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/PongGameLocal.css';
 import { useTranslation } from 'react-i18next';
 import { Participant } from '../tournament/provider/TournamentContextProvider';
 import pokemon5 from '../../assets/pikachu.gif';
@@ -7,6 +6,8 @@ import pokemon6 from '../../assets/Pachirisu.gif';
 import arena1 from "../../assets/default_arena.jpg"
 import arena2 from "../../assets/fire_arena.jpg"
 import arena3 from "../../assets/water_arena.jpg"
+
+import '../../styles/PongGameLocal.css';
 
 
 interface LocalPongGameProps {
@@ -43,6 +44,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 	const [gameOver, setGameOver] = useState(false);
 	const [gameRunning, setGameRunning] = useState(false);
 	const [score, setScore] = useState({ left: 0, right: 0 });
+	const [selectedArena, setSelectedArena] = useState(arena1);
 	const ballRef = useRef(null);
 
 	const [selectedArena, setSelectedArena] = useState<string>(() => {
@@ -242,6 +244,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 				{gameRunning && <button className="button_start" onClick={pauseGame}>{t('pong.pause')}</button>}
 				{gameOver && <button className="button_start" onClick={restartGame}>{t('pong.playAgain')}</button>}
 			</div>
+			<img src={selectedArena} alt="selected arena" className="arena-image" />
 			<img src={pokemon5} alt="Yuki" className="pokemon3" />
 			<img src={pokemon6} alt="Shinx" className="pokemon4" />
 			<div className="controls score-text">

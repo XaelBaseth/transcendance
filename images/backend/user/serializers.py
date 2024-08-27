@@ -5,19 +5,6 @@ from .models import AppUser, Friendship, MatchHistory
 
 UserModel = get_user_model()
 
-# class UserUpdateSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = AppUser
-#         fields = ['username', 'email', 'password','avatar']
-#         extra_kwargs = {'password': {'write_only': True}}
-
-#     def update(self, instance, validated_data):
-#         password = validated_data.pop('password', None)
-#         instance = super().update(instance, validated_data)
-#         if password:
-#             instance.set_password(password)
-#             instance.save()
-#         return instance
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppUser

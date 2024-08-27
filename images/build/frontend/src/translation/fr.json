@@ -134,6 +134,7 @@
 		"right": "droite",
 		"top":"Haut",
 		"bottom":"Bas",
+		"win":"A gagné",
 		"playerSide": "côté du joueur",
 		"gameState": "État du jeu",
 		"pauseRemaining": "Pause : Temps restant",

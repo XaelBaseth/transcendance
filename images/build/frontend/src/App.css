@@ -12,13 +12,12 @@
     z-index: -10;
 }
 
-/* Style du titre */
 .title {
     position: absolute;
     font-family: "VT323";
     font-size: 27px;
     font-weight: bold;
-    color: var(--linen); /* Couleur du texte */
+    color: var(--linen);
     top: -3%;
     left: 45%;
   }

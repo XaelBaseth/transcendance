@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
-import '../../styles/PongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
 import arena1 from "../../assets/default_arena.jpg"
 import arena2 from "../../assets/fire_arena.jpg"
 import arena3 from "../../assets/water_arena.jpg"
+import '../../styles/PongGame.css';
 
 const PongGame = () => {
-	const { t } = useTranslation(); // Importer la fonction t pour la traduction
+	const { t } = useTranslation();
 	const MAP_HEIGHT = 400;
 	const MAP_WIDTH = 600;
 	const BALL_DIAMETER = 20;
@@ -200,7 +200,6 @@ const PongGame = () => {
 		}
 	};
 	
-
 	return (<>
 		<div
             className="pong-arena_mutli"
@@ -210,42 +209,39 @@ const PongGame = () => {
                 backgroundPosition: 'center',
             }}>
 			</div>
-		<div className="controls">
-			{gameState === "initial" && <button onClick={startGame}>{t('pong.start')}</button>}
-			{gameState === "running" && <button onClick={pauseGame}>{t('pong.pause')}</button>}
-		</div>
-		<div className="controls">
-			<p>{t('pong.score')} : {t('pong.left')} : {score.left} {t('pong.right')} : {score.right}</p>
-			<p>{t('pong.playerSide')} : {t(`pong.${player_side}`)}</p>
-			<p>{t('pong.gameState')} : {gameState}</p>
-			{remaining_time !== 0 && <p>{t('pong.pauseRemaining')} : {remaining_time}</p>}
-			{players_disconnected.length > 0 && <p>{t('pong.playersDisconnected')} : {players_disconnected.join(', ')}</p>}
-		</div>
-		<div className="ping-pong-container_multi" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
-			<div
-				className={`paddle paddle-left`}
-				id="paddle-left"
-				style={{ top: `${paddles.left}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
-			/>
-			<div
-				className={`paddle paddle-right`}
-				id="paddle-right"
-				style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH - PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
-			/>
-			<div
-				className={`ball`}
-				ref={ballRef}
-				style={{
-					top: `${ball.y}px`, left: `${ball.x}px`,
-					width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
-					transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
-					transitionTimingFunction: 'linear'
-				}}
-			/>
-			{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.youWin')}</div>}
-			{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.gameOver')}</div>}
-		</div>
-	</>
+			<div className="controls2">
+				{gameState === "initial" && <button className="button_start_multi" onClick={startGame}>{t('pong.start')}</button>}
+				{gameState === "running" && <button className="button_start_multi" onClick={pauseGame}>{t('pong.pause')}</button>}
+			</div>
+			<div className="score-text_multi2">
+				<p>{t('pong.left')} : {score.left}</p>
+				<p>{t('pong.right')} : {score.right}</p>
+			</div>
+			<div className="ping-pong-container_multi" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+				<div
+					className="paddle paddle-left"
+					id="paddle-left"
+					style={{ top: `${paddles.left}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
+				/>
+				<div
+					className="paddle paddle-right"
+					id="paddle-right"
+					style={{ top: `${paddles.right}px`, left: `${MAP_WIDTH - PADDLE_WIDTH}px`, width: `${PADDLE_WIDTH}px`, height: `${PADDLE_HEIGHT}px` }}
+				/>
+				<div
+					className="ball"
+					ref={ballRef}
+					style={{
+						top: `${ball.y}px`, left: `${ball.x}px`,
+						width: `${BALL_DIAMETER}px`, height: `${BALL_DIAMETER}px`,
+						transition: `top ${1 / TPS}s, left ${1 / TPS}s`,
+						transitionTimingFunction: 'linear'
+					}}
+				/>
+				{gameOver && <div className="game-win" style={{ left: `${winner === "left" ? 0 : MAP_WIDTH / 2}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.youWin')}</div>}
+				{gameOver && <div className="game-loose" style={{ left: `${winner === "left" ? MAP_WIDTH / 2 : 0}px`, width: MAP_WIDTH / 2, height: MAP_HEIGHT }}>{t('pong.gameOver')}</div>}
+			</div>
+		</>
 	);
 };
 
