@@ -43,8 +43,11 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 	const [gameOver, setGameOver] = useState(false);
 	const [gameRunning, setGameRunning] = useState(false);
 	const [score, setScore] = useState({ left: 0, right: 0 });
-	const [selectedArena, setSelectedArena] = useState(arena1); // Ajout de l'état selectedArena
 	const ballRef = useRef(null);
+
+	const [selectedArena, setSelectedArena] = useState<string>(() => {
+		return localStorage.getItem('selectedArena') || arena1;
+	});
 
 	const pressedKeys = useRef(new Set());
 	const pausePressed = useRef(false);
@@ -222,26 +225,30 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 		setGameRunning(!gameRunning);
 	};
 
-	const handleArenaSelection = (arena) => {
-		setSelectedArena(arena);
-	};
-
 	return (
 		<>
+			<div className="pong-game-local">
+        <div
+            className="pong-arena"
+            style={{
+                backgroundImage: `url(${selectedArena})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}>
+			</div>
+		</div>
 			<div className="controls">
 				{!gameRunning && !gameOver && <button className="button_start" onClick={pauseGame}>{t('pong.start')}</button>}
 				{gameRunning && <button className="button_start" onClick={pauseGame}>{t('pong.pause')}</button>}
 				{gameOver && <button className="button_start" onClick={restartGame}>{t('pong.playAgain')}</button>}
 			</div>
-			{/* Modification ici : afficher l'arène sélectionnée */}
-			<img src={selectedArena} alt="selected arena" className="arena-image" />
 			<img src={pokemon5} alt="Yuki" className="pokemon3" />
 			<img src={pokemon6} alt="Shinx" className="pokemon4" />
 			<div className="controls score-text">
 				{isInTournament && players && players.length > 1 && <p>Score : left {players[0].name} : {score.left} vs right : {players[1].name} : {score.right}</p>}
 				{!isInTournament && <p>{score.left} - {score.right}</p>}
 			</div>
-			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+			<div className="ping-pong-container_local" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div
 					className={`paddle paddle-left ${gameRunning ? '' : 'paused'}`}
 					style={{ top: `${paddles.left}px` }}

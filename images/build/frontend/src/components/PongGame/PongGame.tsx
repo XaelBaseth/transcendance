@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import '../../styles/PongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import arena1 from "../../assets/default_arena.jpg"
+import arena2 from "../../assets/fire_arena.jpg"
+import arena3 from "../../assets/water_arena.jpg"
 
 const PongGame = () => {
 	const { t } = useTranslation(); // Importer la fonction t pour la traduction
@@ -27,6 +30,10 @@ const PongGame = () => {
 	const [players_disconnected, setPlayersDisconnected] = useState([]);
 	const ballRef = useRef(null);
 	const socketRef = useRef<WebSocket | null>(null);
+
+	const [selectedArena, setSelectedArena] = useState<string>(() => {
+		return localStorage.getItem('selectedArena') || arena1;
+	});
 
 	useEffect(() => {
 		try {
@@ -192,8 +199,17 @@ const PongGame = () => {
 			}
 		}
 	};
+	
 
 	return (<>
+		<div
+            className="pong-arena_mutli"
+            style={{
+                backgroundImage: `url(${selectedArena})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}>
+			</div>
 		<div className="controls">
 			{gameState === "initial" && <button onClick={startGame}>{t('pong.start')}</button>}
 			{gameState === "running" && <button onClick={pauseGame}>{t('pong.pause')}</button>}
@@ -205,7 +221,7 @@ const PongGame = () => {
 			{remaining_time !== 0 && <p>{t('pong.pauseRemaining')} : {remaining_time}</p>}
 			{players_disconnected.length > 0 && <p>{t('pong.playersDisconnected')} : {players_disconnected.join(', ')}</p>}
 		</div>
-		<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+		<div className="ping-pong-container_multi" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 			<div
 				className={`paddle paddle-left`}
 				id="paddle-left"

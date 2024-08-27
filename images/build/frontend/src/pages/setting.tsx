@@ -8,9 +8,9 @@ import '../styles/Setting.css'
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 import '../styles/Setting.css';
-mport arena1 from '../assets/arena1.png';
-import arena2 from '../assets/arena2.png';
-import arena3 from '../assets/arena3.png';
+import arena1 from '../assets/default_arena.jpg';
+import arena2 from '../assets/fire_arena.jpg';
+import arena3 from '../assets/water_arena.jpg';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
@@ -60,10 +60,13 @@ function ColorBlindSwitcher() {
             document.documentElement.style.setProperty('--clear_yellow', 'var(--clear_yellow-D)');
             document.documentElement.style.setProperty('--clear_teal', 'var(--clear_teal-D)');
             document.documentElement.style.setProperty('--error', 'var(--error-D)');
+            document.documentElement.style.setProperty('--white', 'var(--white-D)');
+            document.documentElement.style.setProperty('--loose', 'var(--loose-D)');
+            document.documentElement.style.setProperty('--winner', 'var(--winner-D)');
             document.documentElement.style.setProperty('--ok', 'var(--ok-D)');
         } else {
             // Désactiver le mode daltonien et revenir aux couleurs normales
-            document.documentElement.style.setProperty('--linen', '#f7f2e8');
+            document.documentElement.style.setProperty('--linen', '#FDF0D5');
             document.documentElement.style.setProperty('--olive_green', '#5c775b');
             document.documentElement.style.setProperty('--light_teal', '#a0ced9');
             document.documentElement.style.setProperty('--pink', '#e27396');
@@ -73,6 +76,9 @@ function ColorBlindSwitcher() {
             document.documentElement.style.setProperty('--clear_teal', '#f7f2e8af');
             document.documentElement.style.setProperty('--error', '#f03e3e');
             document.documentElement.style.setProperty('--ok', '#90be8e');
+            document.documentElement.style.setProperty('--white', '#f5efe6');
+            document.documentElement.style.setProperty('--loose', '#EA5863');
+            document.documentElement.style.setProperty('--winner', '#BED3C3');
         }
     };
 
@@ -137,25 +143,25 @@ function ArenaSelection() {
 
     return (
         <div className="arena-selection">
-            <h2>{t('settings.selectArena')}</h2>
-            <div className="arena-thumbnails">
+            <h2 className="arena_title">{t('settings.selectArena')}</h2>
+            <div className="arena_thumbnails">
                 <img
                     src={arena1}
                     alt="Arena 1"
                     onClick={() => handleArenaSelection(arena1)}
-                    className={`arena-thumbnail ${selectedArena === arena1 ? 'selected' : ''}`}
+                    className={`arena-image ${selectedArena === arena1 ? 'selected' : ''}`}
                 />
                 <img
                     src={arena2}
                     alt="Arena 2"
                     onClick={() => handleArenaSelection(arena2)}
-                    className={`arena-thumbnail ${selectedArena === arena2 ? 'selected' : ''}`}
+                    className={`arena-image ${selectedArena === arena2 ? 'selected' : ''}`}
                 />
                 <img
                     src={arena3}
                     alt="Arena 3"
                     onClick={() => handleArenaSelection(arena3)}
-                    className={`arena-thumbnail ${selectedArena === arena3 ? 'selected' : ''}`}
+                    className={`arena-image ${selectedArena === arena3 ? 'selected' : ''}`}
                 />
             </div>
         </div>
@@ -167,6 +173,7 @@ function AccessibilitySettings() {
         <div className="accessibility_settings">
             <LanguageSwitcher />
             <ColorBlindSwitcher />
+            <ArenaSelection />
         </div>
     );
 }

@@ -271,3 +271,14 @@
     width: 250px;
     height: auto;
 }
+
+.pong-arena_mutli {
+	position: absolute;
+	left: 27%;
+	top: 36%;
+	width: 600px;
+	height: 400px;
+	background-image: url("/assets/default_arena-Bpzs_Icd.jpg");
+	background-size: cover;
+	background-position: center center;
+}

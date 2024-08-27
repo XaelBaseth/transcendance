@@ -27,13 +27,11 @@ body {
 
 /* Pong css */
 
-.ping-pong-container {
+.ping-pong-container_local {
 	position: relative;
-	border: 1px solid #ccc;
 	margin: 20px auto;
 	overflow: hidden;
-	top: 5%;
-	top: -62%;
+	top: 11%;
 }
 
 .paddle {
@@ -87,7 +85,7 @@ body {
 .button_start:hover 
 {
 	background-color: var(--light_teal);
-	border: 4px solid var(--pink);
+	border: 3px solid var(--pink);
 }
 
 .game-loose {
@@ -123,7 +121,6 @@ body {
 	border-radius: 100px;
 	font-family: 'VT323';
 	position: relative;
-	top: -68%;
 	left: 38%;
 }
 
@@ -198,3 +195,15 @@ body {
   	top: 18.5%;
   	left: 25.7%;
 }
+
+.pong-arena {
+	position: absolute;
+	left: 27%;
+	top: 36%;
+	width: 600px;
+	height: 400px;
+	background-image: url("/assets/default_arena-Bpzs_Icd.jpg");
+	background-size: cover;
+	background-position: center center;
+}
+
