@@ -39,7 +39,7 @@ class PongConsumer(AsyncWebsocketConsumer):
 		logger = logging.getLogger(__name__)
 		logger.info("quelqu'un se connecte")
 
-		self.username = "Anonymous"
+		self.username = None
 		if "room_name" not in self.scope["url_route"]["kwargs"] or not self.scope["url_route"]["kwargs"]["room_name"]:
 			self.close(code=4001, reason="No room name")
 			logger.info("quelqu'un se fait no room name")
@@ -111,6 +111,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 		from rest_framework_simplejwt.tokens import UntypedToken
 		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 		from django.conf import settings
+		if not "token" in event:
+			await self.send_message({"message": "Token missing"})
+			return
 		try:
 			token = event["token"]
 			UntypedToken(token)
@@ -121,16 +124,16 @@ class PongConsumer(AsyncWebsocketConsumer):
 		except (InvalidToken, TokenError):
 			self.username = None
 		
-		logger = logging.getLogger(__name__)
-		logger.info("je auth : " + self.username)
-		
 		if self.username is None:
-			await self.close(code=4002, reason="No user found")
+			await self.send_message({"message": "Invalid Token"})
 			return
 		else:
 			await self.join_game()
 
 	async def join_game(self):
+		if self.username is None:
+			await self.send_message({"message": "You are not authenticated"})
+			return
 		code = self.room_name
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, code)
 		logger = logging.getLogger(__name__)
@@ -166,12 +169,19 @@ class PongConsumer(AsyncWebsocketConsumer):
 
 
 	async def pause_game(self, event):
+		if self.username is None:
+			await self.send_message({"message": "You are not authenticated"})
+			return
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
 		if room is None:
 			await self.send_message({"message": "Room not found"})
 			return
 		if self.username not in room.players:
 			await self.send_message({"message": "You are not a player"})
+			return
+		
+		if not "pause" in event:
+			await self.send_message({"message": "Invalid pause request"})
 			return
 		pause = event["pause"]
 
@@ -189,9 +199,15 @@ class PongConsumer(AsyncWebsocketConsumer):
 			await self.channel_layer.group_send(
 				self.room_group_name, {"type": "send_message", "message":  {"type":"pause", "pause": False }}
 			)
+		else:
+			await self.send_message({"message": "Invalid pause request"})
+			return
 		await self.update_room(room)
 
 	async def update_paddle(self, event):
+		if self.username is None:
+			await self.send_message({"message": "You are not authenticated"})
+			return
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
 		if room is None:
 			await self.send_message({"message": "Room not found"})
@@ -212,8 +228,14 @@ class PongConsumer(AsyncWebsocketConsumer):
 		max_distance = 0
 		if room.player_limit == 2:
 			max_distance = 300
+			if text_data_json["direction"] != "up" and text_data_json["direction"] != "down":
+				await self.send_message({"message": "Invalid paddle update request"})
+				return
 		elif room.player_limit == 4:
 			max_distance = 400
+			if text_data_json["direction"] != "up" and text_data_json["direction"] != "down" and text_data_json["direction"] != "left" and text_data_json["direction"] != "right":
+				await self.send_message({"message": "Invalid paddle update request"})
+				return
 
 		if text_data_json["side"] == "left" and self.username == room.players[0]:
 			if text_data_json["direction"] == "up" and room.left_paddle_position > 0:
@@ -241,6 +263,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 		await self.update_room(room)
 
 	async def start_game(self):
+		if self.username is None:
+			await self.send_message({"message": "You are not authenticated"})
+			return
 		logger = logging.getLogger(__name__)
 		logger.info("start game suis call")			
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)

@@ -58,6 +58,9 @@ class MatchMakingConsumer(WebsocketConsumer):
 		from rest_framework_simplejwt.tokens import UntypedToken
 		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 		from django.conf import settings
+		if not "token" in event:
+			self.send_message({"message": "Token missing"})
+			return
 		try:
 			token = event["token"]
 			UntypedToken(token)
@@ -67,12 +70,9 @@ class MatchMakingConsumer(WebsocketConsumer):
 			self.username = f"{user.username}"
 		except (InvalidToken, TokenError):
 			self.username = None
-		
-		logger = logging.getLogger(__name__)
-		logger.info("je auth : " + self.username)
-		
+				
 		if self.username is None:
-			self.close(code=4002, reason="No user found")
+			self.send_message({"message": "Invalid Token"})
 			return
 		else:
 			self.check_game()
