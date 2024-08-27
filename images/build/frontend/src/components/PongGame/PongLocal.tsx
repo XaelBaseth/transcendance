@@ -44,7 +44,6 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 	const [gameOver, setGameOver] = useState(false);
 	const [gameRunning, setGameRunning] = useState(false);
 	const [score, setScore] = useState({ left: 0, right: 0 });
-	const [selectedArena, setSelectedArena] = useState(arena1);
 	const ballRef = useRef(null);
 
 	const [selectedArena, setSelectedArena] = useState<string>(() => {

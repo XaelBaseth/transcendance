@@ -1,14 +1,12 @@
-import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
-
-import frenchFlag from '../assets/fr.png'
-import spanishFlag from '../assets/es.png'
-import ukFlag from '../assets/uk.png'
-import validator from 'validator';
-import '../styles/Setting.css'
 import React, { useState, useEffect } from 'react';
-import api from '../api';
+import { useTranslation } from 'react-i18next';
+
+import frenchFlag from '../assets/fr.png';
+import spanishFlag from '../assets/es.png';
+import ukFlag from '../assets/uk.png';
+import validator from 'validator';
 import '../styles/Setting.css';
+import api from '../api';
 import arena1 from '../assets/default_arena.jpg';
 import arena2 from '../assets/fire_arena.jpg';
 import arena3 from '../assets/water_arena.jpg';
@@ -53,6 +51,15 @@ function ColorBlindSwitcher() {
         }
     };
 
+    return (
+        <div>
+            <button onClick={toggleColorBlindMode}>
+                {isColorBlind ? t('settings.disableColorBlindMode') : t('settings.enableColorBlindMode')}
+            </button>
+        </div>
+    );
+}
+
 const Settings: React.FC = () => {
     const { t } = useTranslation();
     const [currentSection, setCurrentSection] = useState('ACCESSIBILITY');
@@ -80,6 +87,7 @@ const Settings: React.FC = () => {
         </div>
     );
 };
+
 export default Settings;
 
 function AccessibilitySettings() {
@@ -139,7 +147,6 @@ function ArenaSelection() {
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
-
 
     const changeLanguage = (language: string) => {
         i18n.changeLanguage(language);
