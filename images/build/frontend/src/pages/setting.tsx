@@ -11,6 +11,7 @@ import '../styles/Setting.css';
 import arena1 from '../assets/default_arena.jpg';
 import arena2 from '../assets/fire_arena.jpg';
 import arena3 from '../assets/water_arena.jpg';
+import pokemon6 from '../assets/Pachirisu.gif';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();
@@ -127,7 +128,7 @@ function PrivacySettings() {
     return (
         <div className="privacy_settings">
             <CookieSettings />
-            <DeleteAccountCardSettings />
+			<img src={pokemon6} alt="Pachirisu" className="pokemon6" />
         </div>
     );
 }
