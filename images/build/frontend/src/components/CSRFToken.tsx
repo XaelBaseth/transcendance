@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// TypeScript interface for props, though in this case, it's not needed since there are no props.
-// interface CSRFTokenProps {}
-
 const CSRFToken: React.FC = () => {
-    // State to hold the CSRF token
     const [csrftoken, setcsrftoken] = useState<string>('');
 
-    // Function to get a cookie by name
     const getCookie = (name: string): string | null => {
         let cookieValue: string | null = null;
         if (document.cookie && document.cookie !== '') {

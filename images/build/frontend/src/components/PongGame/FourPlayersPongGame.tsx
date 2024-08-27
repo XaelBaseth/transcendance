@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from "react-router-dom";
-import '../../styles/FourPlayersPongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import { useParams } from "react-router-dom";
 import pokemon3 from '../../assets/Yukiwarashi.gif';
 import pokemon4 from '../../assets/Shinx.gif';
 import arena1 from "../../assets/default_arena.jpg"
 import arena2 from "../../assets/fire_arena.jpg"
 import arena3 from "../../assets/water_arena.jpg"
+import '../../styles/FourPlayersPongGame.css';
 
 const FourPlayersPongGame = () => {
 	const { t } = useTranslation();
@@ -30,7 +30,7 @@ const FourPlayersPongGame = () => {
 	const [gameOver, setGameOver] = useState(false);
 	const [gameState, setGameState] = useState("initial");
 	const [pause, setPause] = useState(false);
-	const [player_side, setPlayerSide] = useState("spectator"); // left, right, top, bottom or spectator
+	const [player_side, setPlayerSide] = useState("spectator");
 	const [score, setScore] = useState({ left: 0, right: 0, top: 0, bottom: 0 });
 	const [winner, setWinner] = useState("");
 	const [remaining_time, setRemainingTime] = useState(0);

@@ -19,14 +19,12 @@ class MatchMakingConsumer(WebsocketConsumer):
 		self.room_group_name = "matchmaking"
 		self.queue = None
 		self.username = None
-		# Join room group
 		async_to_sync(self.channel_layer.group_add)(self.room_group_name, self.channel_name)
 		self.accept()
 
 	def disconnect(self, close_code):
 		if hasattr(self, 'queue'):
 			self.leave_queue()
-		# Leave room group
 		if hasattr(self, 'room_group_name'):
 			async_to_sync(self.channel_layer.group_discard)(self.room_group_name, self.channel_name)
 
@@ -57,7 +55,6 @@ class MatchMakingConsumer(WebsocketConsumer):
 				return
 
 	def auth(self, event):
-		# Try to decode the token and get the user_id
 		from rest_framework_simplejwt.tokens import UntypedToken
 		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 		from django.conf import settings
@@ -74,7 +71,6 @@ class MatchMakingConsumer(WebsocketConsumer):
 		logger = logging.getLogger(__name__)
 		logger.info("je auth : " + self.username)
 		
-		# check if player is in queue
 		if self.username is None:
 			self.close(code=4002, reason="No user found")
 			return
@@ -173,7 +169,6 @@ class MatchMakingConsumer(WebsocketConsumer):
 		if self.username is None:
 			self.send_message({"message": "You are not authenticated"})
 			return
-		# check if player is in queue
 		if (self.queue == "duel"):
 			MatchMakingConsumer.duel_queue = [
 				player for player in MatchMakingConsumer.duel_queue 
@@ -197,9 +192,7 @@ class MatchMakingConsumer(WebsocketConsumer):
 					{"type": "send_message", "message": {"type": "queue", "in_queue": str(in_queue), "needed": "4"}}
 				)
 
-	# Receive a message to send to the client
 	def send_message(self, event):
-		# Send message to WebSocket
 		self.send(text_data=json.dumps(event["message"]))
 
 	def get_user_by_id(self, user_id):

@@ -24,7 +24,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	// Check if the user already has a JWT to stay connected.
 	useEffect(() => {
 		const token = localStorage.getItem(ACCESS_TOKEN);
 		if (token) {
@@ -33,7 +32,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	}, []);
 
-	// Clear the message for login and signup.
 	useEffect(() => {
 		if (location.pathname === '/login' || location.pathname === '/signup') {
 			setErrorMsg("");
@@ -44,7 +42,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-	// Login
 	const login = async (email: string, password: string) => {
 		if (email === "" || password === "") {
 			setErrorMsg(t('login.notEmpty'));
@@ -76,9 +73,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	};
 
-	// Sign up
 	const signup = async (email: string, username: string, password: string, confirmPassword: string) => {
-		// Vérifications côté client
 		if (email === "" || username === "" || password === "") {
 			setErrorMsg(t('signup.fieldsNotEmpty'));
 			return;
@@ -104,8 +99,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 				setSuccessMsg(t('signup.successMsg'));
 				navigate('/login');
 			} else {
-				// Regrouper les erreurs d'email et d'username
-				const errorMessage = res.data.message || ''; // Extraire le message de la réponse
+				const errorMessage = res.data.message || '';
 	
 				if (errorMessage.includes("already exists")) {
 					setErrorMsg(t('signup.emailOrUsernameAlreadyUsed'));
@@ -130,8 +124,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 		}
 	};
 	
-
-	// Logout
 	const logout = () => {
 		localStorage.removeItem(ACCESS_TOKEN);
 		localStorage.removeItem(REFRESH_TOKEN);
@@ -139,7 +131,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 		navigate('/login');
 	};
 
-	// Update profile
 	const updateProfile = async (username: string, email: string, currentPassword: string, newPassword: string, confirmNewPassword: string) => {
 		if (newPassword !== confirmNewPassword) {
 			setErrorMsg(t('updateProfile.passwordMatch'));

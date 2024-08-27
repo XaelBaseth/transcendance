@@ -11,7 +11,6 @@ export default function Avatar() {
     const [avatarSrc, setAvatarSrc] = useState<string | null>(null);
 
     useEffect(() => {
-        // Charger l'avatar depuis le localStorage si disponible
         const savedAvatar = localStorage.getItem('userAvatar');
         if (savedAvatar) {
             setAvatarSrc(savedAvatar);
