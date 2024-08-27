@@ -99,6 +99,7 @@
     color: var(--pink);
     position: relative;
     left: 27%;
+    top: 250%;
 }
 
 .points_title {
@@ -106,9 +107,9 @@
     font-family: 'VT323';
     font-size: 30px;
     color: var(--pink);
-    position: absolute;
+    position: relative;
     left: 28%;
-    top: 30%;
+    top: 35%;
 }
 
 .button_points {
@@ -122,8 +123,8 @@
     padding: 5px 10px;
     margin: 5px;
     position: relative;
-    left: 27%;
-    top: 45%;
+    left: 26.5%;
+    top: 100%;
 }
 
 .button_points:hover {
@@ -145,7 +146,7 @@
     padding-right: 10px;
     position: relative;
     left: 27%;
-    top: 15%;
+    top: 40%;
     margin: 15px 0px 10px 0px;
 }
 

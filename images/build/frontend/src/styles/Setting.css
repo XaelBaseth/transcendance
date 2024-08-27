@@ -544,11 +544,11 @@ input:checked + .slider:before {
 }
 
 .arena-image {
-	position: relative;
-  	top: 18.5%;
-  	left: 25.7%;
 	width: 100px;
 	padding: 10px;
+	position: relative;
+	top: -500%;
+	left: -810%;
 }
 
 .arena-image:hover {
@@ -562,16 +562,16 @@ input:checked + .slider:before {
     font-family: 'VT323';
     color: var(--pink);
     white-space: nowrap;
-	position: absolute;
-	left: 550%;
-	top: 381%;
+	position: relative;
+  	left: -50%;
+  	top: -355%;
 	font-weight: lighter;
 }
 
 .pokemon6 {
     position: absolute;
-	right: 25%;
-	bottom: 10%;
+	right: 15%;
+  	bottom: 25%;
 	width: 250px;
 	height: auto;
 }

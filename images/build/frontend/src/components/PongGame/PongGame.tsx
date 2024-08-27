@@ -211,17 +211,17 @@ const PongGame = () => {
             }}>
 			</div>
 		<div className="controls">
-			{gameState === "initial" && <button onClick={startGame}>{t('pong.start')}</button>}
-			{gameState === "running" && <button onClick={pauseGame}>{t('pong.pause')}</button>}
+			{gameState === "initial" && <button className="button_start_online" onClick={startGame}>{t('pong.start')}</button>}
+			{gameState === "running" && <button className="button_start_online" onClick={pauseGame}>{t('pong.pause')}</button>}
 		</div>
-		<div className="controls">
-			<p>{t('pong.score')} : {t('pong.left')} : {score.left} {t('pong.right')} : {score.right}</p>
-			<p>{t('pong.playerSide')} : {t(`pong.${player_side}`)}</p>
-			<p>{t('pong.gameState')} : {gameState}</p>
+		<div className="controls score_text_multi">
+			<p>{t('pong.left')} : {score.left} {t('pong.right')} : {score.right}</p>
+			{/*<p>{t('pong.playerSide')} : {t(`pong.${player_side}`)}</p>
+			<p>{t('pong.gameState')} : {gameState}</p>**/}
 			{remaining_time !== 0 && <p>{t('pong.pauseRemaining')} : {remaining_time}</p>}
 			{players_disconnected.length > 0 && <p>{t('pong.playersDisconnected')} : {players_disconnected.join(', ')}</p>}
 		</div>
-		<div className="ping-pong-container_multi" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+		<div className="ping-pong-container_mutli" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 			<div
 				className={`paddle paddle-left`}
 				id="paddle-left"

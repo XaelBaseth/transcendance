@@ -38,13 +38,11 @@ body {
 	position: absolute;
 	transition: top 0.2s;
 	transition-timing-function: linear;
-	border-radius: 10px;
 }
 
 .paddle-left {
 	left: 0;
 	background-color: var(--pink);
-	margin-left: 5px;
 }
 
 .paddle-right {
@@ -156,38 +154,6 @@ body {
 	left: 24%;
 }
 
-.arena-selection {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	z-index: 10;
-}
-
-.arena-thumbnail {
-	width: 50px;
-	height: 50px;
-	margin-bottom: 10px;
-	cursor: pointer;
-	border: 2px solid transparent;
-	transition: border 0.3s;
-}
-
-.arena-thumbnail:hover {
-	border: 2px solid var(--pink);
-}
-
-.arena-thumbnail.selected {
-	border: 2px solid var(--light_teal);
-}
-
-.arena-image {
-	position: relative;
-  	top: 18.5%;
-  	left: 25.7%;
-}
-
 .pong-arena {
 	position: absolute;
 	left: 27%;
@@ -198,4 +164,3 @@ body {
 	background-size: cover;
 	background-position: center center;
 }
-
