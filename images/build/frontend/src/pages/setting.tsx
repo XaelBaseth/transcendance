@@ -218,9 +218,9 @@ export function CookieSettings() {
                 <section>
                     <h5>{t('cookie.contact_title')}</h5>
                     <ul>
-                        <li>{t('cookie.contact_adress')}</li>
-                        <li>{t('cookie.contact_email')}</li>
-                        <li>{t('cookie.contact_adress')}</li>
+                        <li>{t('cookie.contact_phone')}06 11 23 49 91</li>
+                        <li>{t('cookie.contact_email')}contact@42lehavre.fr</li>
+                        <li>{t('cookie.contact_adress')}20 Quai Frissard, 76600 Le Havre</li>
                     </ul>
                     <p>{t('cookie.contact_text')}</p>
                 </section>
