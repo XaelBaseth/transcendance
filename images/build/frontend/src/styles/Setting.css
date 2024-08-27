@@ -505,3 +505,44 @@ input:checked + .slider:before {
 	color: var(--pink);
 	font-weight: bold;
 }
+
+.arena1 {
+	width: 700px;
+	height: auto;
+	position: relative;
+	z-index: 0;
+	top: 12%;
+	left: 24%;
+}
+
+.arena-selection {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	z-index: 10;
+}
+
+.arena-thumbnail {
+	width: 50px;
+	height: 50px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	transition: border 0.3s;
+}
+
+.arena-thumbnail:hover {
+	border: 2px solid var(--pink);
+}
+
+.arena-thumbnail.selected {
+	border: 2px solid var(--light_teal);
+}
+
+.arena-image {
+	position: relative;
+  	top: 18.5%;
+  	left: 25.7%;
+}
