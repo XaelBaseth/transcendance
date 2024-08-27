@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import './AvatarModal.css'; // Import your custom styles
+import './AvatarModal.css';
 
-import avatar1 from '../../assets/acharlot.jpg';
-import avatar2 from '../../assets/aramier.jpg';
-import avatar3 from '../../assets/rrault.jpg';
 import giratina from '../../assets/giratina.png';
 import amphinobi from '../../assets/amphinobi.png';
 import emolga from '../../assets/emolga.png';
@@ -19,7 +16,7 @@ import flapple from '../../assets/flapple.gif';
 
 
 const avatars = [
-    avatar1, avatar2, avatar3, giratina, amphinobi, emolga,
+    giratina, amphinobi, emolga,
     pingoleon, mimiqui1, mimiqui2, manaphy, florizarre, momartik, simiabraz, flapple
 ];
 
@@ -49,7 +46,7 @@ const AvatarModal: React.FC<AvatarModalProps> = ({ show, onClose, onSelect }) =>
     const handleNextClick = () => {
         setCurrentIndex((prevIndex) => {
             if (prevIndex + 3 >= avatars.length) {
-                return 0; // Réinitialiser au début
+                return 0; 
             }
             return prevIndex + 3;
         });
