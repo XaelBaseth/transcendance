@@ -36,20 +36,20 @@ class PongConsumer(AsyncWebsocketConsumer):
 			return AnonymousUser()
 
 	async def connect(self):
-		from django.conf import settings
-		from rest_framework_simplejwt.tokens import UntypedToken
-		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+		logger = logging.getLogger(__name__)
+		logger.info("quelqu'un se connecte")
 
-		self.user_id = -1
 		self.username = "Anonymous"
 		if "room_name" not in self.scope["url_route"]["kwargs"] or not self.scope["url_route"]["kwargs"]["room_name"]:
 			self.close(code=4001, reason="No room name")
+			logger.info("quelqu'un se fait no room name")
 		else:
 			#check if the room exists
 			PongRoom = apps.get_model('pong', 'PongRoom')
 			room_result = await sync_to_async(PongRoom.objects.filter)(code=self.scope["url_route"]["kwargs"]["room_name"])
 			if not await sync_to_async(room_result.exists)():
 				self.close(code=4002, reason="Room not found")
+				logger.info("quelqu'un se fait no room found")
 				return
 			else:
 				room = await sync_to_async(room_result.__getitem__)(0)
@@ -57,21 +57,6 @@ class PongConsumer(AsyncWebsocketConsumer):
 					PongConsumer.pong_rooms.append(PongGameData(room.code, room.player_limit, room.players_id))
 		self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
 		self.room_group_name = f"pong_{self.room_name}"
-
-		# Get the token from the query string
-		token = self.scope['query_string'].decode().split('token=')[-1]
-
-		# Try to decode the token and get the user_id
-		try:
-			UntypedToken(token)
-			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
-			self.user_id = decoded_data['user_id']
-			user = await self.get_user_by_id(self.user_id)
-			self.username = f"{user.username}"
-		except (InvalidToken, TokenError):
-			# Token is invalid
-			self.user_id = -1
-			self.username = "Anonymous"
 
 		# Join room group
 		await self.channel_layer.group_add(self.room_group_name, self.channel_name)
@@ -119,8 +104,8 @@ class PongConsumer(AsyncWebsocketConsumer):
 			await self.send_message({"message": "'type' field missing"})
 
 		match text_data_json["type"]:
-			case "join_game":
-				await self.join_game()
+			case "auth":
+				await self.auth(event=text_data_json)
 			case "start_game":
 				await self.start_game()
 			case "update_paddle":
@@ -129,6 +114,31 @@ class PongConsumer(AsyncWebsocketConsumer):
 				await self.pause_game(event=text_data_json)
 			case _:
 				await self.send_message({"message": "Invalid message type"})
+
+	async def auth(self, event):
+		# Try to decode the token and get the user_id
+		from rest_framework_simplejwt.tokens import UntypedToken
+		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+		from django.conf import settings
+		try:
+			token = event["token"]
+			UntypedToken(token)
+			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+			user_id = decoded_data['user_id']
+			user = await self.get_user_by_id(user_id)
+			self.username = f"{user.username}"
+		except (InvalidToken, TokenError):
+			self.username = None
+		
+		logger = logging.getLogger(__name__)
+		logger.info("je auth : " + self.username)
+		
+		# check if player is in queue
+		if self.username is None:
+			await self.close(code=4002, reason="No user found")
+			return
+		else:
+			await self.join_game()
 
 	async def join_game(self):
 		code = self.room_name
@@ -166,12 +176,13 @@ class PongConsumer(AsyncWebsocketConsumer):
 				await self.send_message({"message" : {"type" : "join_game", "side": "spectator", "state": room.state}})
 
 
-		
-
 	async def pause_game(self, event):
 		room = await self.find_room_by_code(PongConsumer.pong_rooms, self.room_name)
 		if room is None:
 			await self.send_message({"message": "Room not found"})
+			return
+		if self.username not in room.players:
+			await self.send_message({"message": "You are not a player"})
 			return
 		pause = event["pause"]
 
@@ -276,10 +287,6 @@ class PongConsumer(AsyncWebsocketConsumer):
 
 	# Receive a message to send to the client
 	async def send_message(self, event):
-		if "type" in event["message"] and not event["message"]["type"] == "game_state":
-			logger = logging.getLogger(__name__)
-			logger.info(str(self.username) + " reçoit " + str(event["message"]))
-
 		# Send message to WebSocket
 		await self.send(text_data=json.dumps(event["message"]))
 

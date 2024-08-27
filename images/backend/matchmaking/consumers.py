@@ -16,28 +16,9 @@ class MatchMakingConsumer(WebsocketConsumer):
 	quarrel_queue = []
 
 	def connect(self):
-		from rest_framework_simplejwt.tokens import UntypedToken
-		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
-		from django.conf import settings
-
-		# Try to decode the token and get the user_id
-		try:
-			token = self.scope['query_string'].decode().split('token=')[-1]
-			UntypedToken(token)
-			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
-			user_id = decoded_data['user_id']
-			user = self.get_user_by_id(user_id)
-			self.username = f"{user.username}"
-		except (InvalidToken, TokenError):
-			self.username = None
-		
-		# check if player is in queue
-		if self.username is None:
-			self.close(code=4002, reason="No user found")
-			return
-
 		self.room_group_name = "matchmaking"
 		self.queue = None
+		self.username = None
 		# Join room group
 		async_to_sync(self.channel_layer.group_add)(self.room_group_name, self.channel_name)
 		self.accept()
@@ -63,17 +44,42 @@ class MatchMakingConsumer(WebsocketConsumer):
 			self.send_message({"message": "'type' field missing"})
 
 		match text_data_json["type"]:
+			case "auth":
+				self.auth(event=text_data_json)
 			case "queue_duel":
 				self.join_queue(event="duel")
 			case "queue_quarrel":
 				self.join_queue(event="quarrel")
-			case "check_game":
-				self.check_game()
 			case "leave_queue":
 				self.leave_queue()
 			case _:
 				self.send_message({"message": "Invalid message type"})
 				return
+
+	def auth(self, event):
+		# Try to decode the token and get the user_id
+		from rest_framework_simplejwt.tokens import UntypedToken
+		from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+		from django.conf import settings
+		try:
+			token = event["token"]
+			UntypedToken(token)
+			decoded_data = jwt_decode(token, settings.SECRET_KEY, algorithms=["HS256"])
+			user_id = decoded_data['user_id']
+			user = self.get_user_by_id(user_id)
+			self.username = f"{user.username}"
+		except (InvalidToken, TokenError):
+			self.username = None
+		
+		logger = logging.getLogger(__name__)
+		logger.info("je auth : " + self.username)
+		
+		# check if player is in queue
+		if self.username is None:
+			self.close(code=4002, reason="No user found")
+			return
+		else:
+			self.check_game()
 
 	def check_game(self):
 		rooms = PongConsumer.pong_rooms
@@ -87,6 +93,9 @@ class MatchMakingConsumer(WebsocketConsumer):
 					return
 
 	def join_queue(self, event):
+		if self.username is None:
+			self.send_message({"message": "You are not authenticated"})
+			return
 		queues = MatchMakingConsumer.duel_queue + MatchMakingConsumer.quarrel_queue
 		for player in queues:
 			if player["username"] == self.username:
@@ -161,6 +170,9 @@ class MatchMakingConsumer(WebsocketConsumer):
 			)
 
 	def leave_queue(self):
+		if self.username is None:
+			self.send_message({"message": "You are not authenticated"})
+			return
 		# check if player is in queue
 		if (self.queue == "duel"):
 			MatchMakingConsumer.duel_queue = [
