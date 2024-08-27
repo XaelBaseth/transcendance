@@ -228,7 +228,7 @@ const FourPlayersPongGame = () => {
 				<img src={arena2} alt="Arena 2" onClick={() => handleArenaSelection(arena2)} className="arena-thumbnail" />
 				<img src={arena3} alt="Arena 3" onClick={() => handleArenaSelection(arena3)} className="arena-thumbnail" />
 			</div>
-			<div className="score-text_multi">
+			<div className="4">
 				<p>{t('pong.left')} : {score.left} {t('pong.right')} : {score.right} {t('pong.top')} : {score.top} {t('pong.bottom')} : {score.bottom}</p>
 			</div>
 			<div className="four-player-ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>

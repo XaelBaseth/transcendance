@@ -8,9 +8,9 @@ import '../styles/Setting.css'
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 import '../styles/Setting.css';
-mport arena1 from '../assets/arena1.png';
-import arena2 from '../assets/arena2.png';
-import arena3 from '../assets/arena3.png';
+import arena1 from '../assets/arena1.jpg';
+import arena2 from '../assets/arena2.jpg';
+import arena3 from '../assets/arena3.jpg';
 
 function LanguageSwitcher() {
     const { t, i18n } = useTranslation();

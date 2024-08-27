@@ -33,7 +33,7 @@ body {
 	margin: 20px auto;
 	overflow: hidden;
 	top: 5%;
-	top: -62%;
+	top: 11%;
 }
 
 .paddle {
@@ -113,7 +113,7 @@ body {
 }
 
 .score-text {
-    font-size: 24px;
+    font-size: 16px;
     color: var(--pink);
     font-weight: bold;
     text-align: center;

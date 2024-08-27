@@ -138,8 +138,8 @@ body {
 	border: 4px solid var(--pink);
 }
 
-.score-text_multi {
-	font-size: 24px;
+.score-text_multi4 {
+	font-size: 16px;
 	color: var(--pink);
 	font-weight: bold;
 	text-align: center;
