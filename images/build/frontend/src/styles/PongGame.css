@@ -6,7 +6,7 @@ body {
 }
 
 #main {
-	position: fix;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	left: 0;
@@ -25,6 +25,8 @@ body {
 	transform: translate(-50%, -50%);
 }
 
+/* Pong css */
+
 .ping-pong-container {
 	position: relative;
 	width: 600px;
@@ -32,7 +34,7 @@ body {
 	border: 1px solid #ccc;
 	margin: 20px auto;
 	overflow: hidden;
-
+	top: 11%; /* Ajuster la position pour qu'elle corresponde au design à 4 joueurs */
 }
 
 .paddle {
@@ -67,8 +69,70 @@ body {
 	animation-play-state: paused;
 }
 
-.controls {
+.controls2 {
 	margin-top: 10px;
 	display: flex;
 	gap: 10px;
+}
+
+/* New CSS for Score and Info Text */
+
+.score-text_multi2 {
+	display: flex;
+	justify-content: space-around; /* Espacer les éléments sur toute la largeur */
+	align-items: center; /* Centrer verticalement les éléments */
+	font-size: 16px;
+	color: var(--pink);
+	font-weight: bold;
+	background-color: var(--white);
+	border: 5px solid var(--light_teal);
+	border-radius: 100px;
+	font-family: 'VT323';
+	padding: 8px 13px; /* Ajouter du padding pour une meilleure présentation */
+	width: 45%; /* Prendre une large partie de l'écran pour afficher tous les éléments */
+	position: absolute;
+	left: 26%; /* Centrer horizontalement */
+	top: 13%; /* Positionnement vertical ajusté */
+}
+
+
+/* Game Over and Win Messages */
+
+.game-loose {
+	position: absolute;
+	display: flex;
+	background-color: var(--error);
+	justify-content: center;
+	align-items: center;
+	color: var(--linen);
+	font-size: 30px;
+	font-family: 'VT323';
+}
+
+.game-win {
+	display: flex;
+	position: absolute;
+	background-color: var(--ok);
+	justify-content: center;
+	align-items: center;
+	color: var(--linen);
+	font-size: 30px;
+	font-family: 'VT323';
+}
+
+.button_start_multi {
+	padding: 5px 10px;
+	font-size: 25px;
+	cursor: pointer;
+	background-color: var(--clear_beige);
+	border: 4px solid var(--light_teal);
+	border-radius: 20px;
+	margin: 15px;
+	font-family: 'VT323';
+	color: var(--pink);
+}
+
+.button_start_multi:hover {
+	background-color: var(--light_teal);
+	border: 4px solid var(--pink);
 }
