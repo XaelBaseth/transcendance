@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
-import '../../styles/PongGame.css';
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import '../../styles/PongGame.css';
+
 
 const PongGame = () => {
-	const { t } = useTranslation(); // Importer la fonction t pour la traduction
+	const { t } = useTranslation();
 	const MAP_HEIGHT = 400;
 	const MAP_WIDTH = 600;
 	const BALL_DIAMETER = 20;

@@ -12,14 +12,10 @@ const Pong = () => {
 
 	return(
 		<div>
-			{/* Fond d'arrière-plan */}
 			<div className="background" />
-
-			{/* Terrain de football */}
 			<div className="football-field">
 				{player_limit < 3 ? <PongGame /> : <FourPlayersPongGame />}
 			</div>
-			{/* Contenu du jeu (texte, etc.) */}
 		</div>
 	);
 }

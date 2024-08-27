@@ -36,8 +36,7 @@ class UserRegister(APIView):
                 return Response(None, status=status.
                                 HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
-        
-# Post request to change user avatar
+
 class ChangeAvatar(APIView):
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = (MultiPartParser, FormParser)
@@ -51,7 +50,6 @@ class ChangeAvatar(APIView):
             return Response(UserSerializer(user).data)
         return Response({'error': 'No avatar provided'}, status=status.HTTP_400_BAD_REQUEST)
 
-# Post request to login user
 @authentication_classes([])
 class UserLogin(APIView):
     permission_classes = [permissions.AllowAny]
@@ -77,7 +75,6 @@ class UserLogin(APIView):
             token = create_user_token(user)
             return Response(json.dumps({"token": token.key}), status=status.HTTP_200_OK)
 
-# Post request to logout user
 class UserLogout(APIView):
     permission_classes = [permissions.AllowAny]
 
@@ -103,7 +100,6 @@ class UserLogout(APIView):
         logout(request)
         return Response(status=status.HTTP_200_OK)
 
-# Get info of user connected
 class UserView(APIView):
     permission_classes = [IsAuthenticated]
     

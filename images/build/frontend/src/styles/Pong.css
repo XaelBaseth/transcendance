@@ -1,11 +1,11 @@
 .football-field {
     box-sizing: border-box;
     top: 15%;
-    width: 140vh; /* Largeur du terrain */
-    height: 75vh; /* Hauteur du terrain */
-    background-color: var(--linen); /* Couleur de fond verte pour représenter l'herbe */
+    width: 140vh; 
+    height: 75vh;
+    background-color: var(--linen);
     border: 6px solid var(--olive_green);
-    border-radius: 10px; /* Bords arrondis */
+    border-radius: 10px;
     position: absolute;
     left: 20%;
 } 

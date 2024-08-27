@@ -9,14 +9,11 @@ const PlayingTournament = () => {
 
     return (
         <div>
-			{/* Fond d'arrière-plan */}
 			<div className="tournament" />
 
-			{/* Terrain de football */}
 			<div className="football-field">
 				<PongLocal isInTournament={true} manageGameResult={manageGameResult} pointsToWin={pointsToWin} players={getCurrentPlayers()} />
 			</div>
-			{/* Contenu du jeu (texte, etc.) */}
 		</div>
     );
 }

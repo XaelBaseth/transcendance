@@ -33,12 +33,10 @@ const useTournament = () => {
       picture: "teamlogos/client_team_default_logo"
     }));
 
-    // shuffle the participants
     participants.sort(() => Math.random() - 0.5);
 
     var index = participants.length;
 
-    // fill until the number of players is a power of 2,
     while ((participants.length & (participants.length - 1)) !== 0) {
       const newElement = {
           id: Math.random(),
@@ -113,7 +111,6 @@ const useTournament = () => {
 
     setCurrentMatchId(nextMatchToPlay);
 
-    // check bye matches
     tournament.forEach((match) => {
       if (match.participants.length === 2) {
         const checkRes = checkByeMatch(match.participants[0], match.participants[1]);
@@ -170,12 +167,10 @@ const useTournament = () => {
     console.log("match to update : ", matchToUpdate);
     setTournamentState("running");
 
-    // find next match to play
     let nextMatchToPlay:number = Infinity;
     let round = parseInt(match.tournamentRoundText);
     let maxRound = 0;
 
-    // On cherche
     for (let i = 0; i < tournamentBracket.length; i++) {
       const match = tournamentBracket[i];
       if (parseInt(match.tournamentRoundText) > maxRound) {

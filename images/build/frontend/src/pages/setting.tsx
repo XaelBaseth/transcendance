@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
+
 import frenchFlag from '../assets/fr.png'
 import spanishFlag from '../assets/es.png'
 import ukFlag from '../assets/uk.png'
-import React, { useState } from 'react';
 import arena1 from '../assets/default_arena.jpg';
 import arena2 from '../assets/fire_arena.jpg';
 import arena3 from '../assets/water_arena.jpg';
+
 import '../styles/Setting.css';
 
 const Settings: React.FC = () => {
@@ -123,12 +125,11 @@ function ColorBlindSwitcher() {
     const [isColorBlind, setIsColorBlind] = useState(false);
 
     const toggleColorBlindMode = () => {
-        const newColorBlindState = !isColorBlind; // Inverser l'état ici
+        const newColorBlindState = !isColorBlind;
 
         setIsColorBlind(newColorBlindState);
 
         if (newColorBlindState) {
-            // Activer le mode daltonien
             document.documentElement.style.setProperty('--linen', 'var(--linen-D)');
             document.documentElement.style.setProperty('--olive_green', 'var(--olive_green-D)');
             document.documentElement.style.setProperty('--light_teal', 'var(--light_teal-D)');
@@ -140,7 +141,6 @@ function ColorBlindSwitcher() {
             document.documentElement.style.setProperty('--error', 'var(--error-D)');
             document.documentElement.style.setProperty('--ok', 'var(--ok-D)');
         } else {
-            // Désactiver le mode daltonien et revenir aux couleurs normales
             document.documentElement.style.setProperty('--linen', '#f7f2e8');
             document.documentElement.style.setProperty('--olive_green', '#5c775b');
             document.documentElement.style.setProperty('--light_teal', '#a0ced9');
