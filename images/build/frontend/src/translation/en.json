@@ -60,6 +60,7 @@
 	"settings":{
 		"settings":"Settings",
 		"language":"Choose your language :",
+		"selectArena":"Choose your arena",
 		"user":"User",
 		"privacy":"Privacy",
 		"accessibility":"Accessibility",
