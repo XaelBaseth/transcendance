@@ -47,6 +47,10 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 	const [selectedArena, setSelectedArena] = useState(arena1);
 	const ballRef = useRef(null);
 
+	const [selectedArena, setSelectedArena] = useState<string>(() => {
+		return localStorage.getItem('selectedArena') || arena1;
+	});
+
 	const pressedKeys = useRef(new Set());
 	const pausePressed = useRef(false);
 
@@ -223,12 +227,18 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 		setGameRunning(!gameRunning);
 	};
 
-	const handleArenaSelection = (arena) => {
-		setSelectedArena(arena);
-	};
-
 	return (
 		<>
+			<div className="pong-game-local">
+        <div
+            className="pong-arena"
+            style={{
+                backgroundImage: `url(${selectedArena})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}>
+			</div>
+		</div>
 			<div className="controls">
 				{!gameRunning && !gameOver && <button className="button_start" onClick={pauseGame}>{t('pong.start')}</button>}
 				{gameRunning && <button className="button_start" onClick={pauseGame}>{t('pong.pause')}</button>}
@@ -241,7 +251,7 @@ const LocalPongGame: React.FC<LocalPongGameProps> = ({ isInTournament = false, m
 				{isInTournament && players && players.length > 1 && <p>Score : left {players[0].name} : {score.left} vs right : {players[1].name} : {score.right}</p>}
 				{!isInTournament && <p>{score.left} - {score.right}</p>}
 			</div>
-			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+			<div className="ping-pong-container_local" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div
 					className={`paddle paddle-left ${gameRunning ? '' : 'paused'}`}
 					style={{ top: `${paddles.left}px` }}

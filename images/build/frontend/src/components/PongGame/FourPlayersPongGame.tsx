@@ -9,6 +9,7 @@ import arena2 from "../../assets/fire_arena.jpg"
 import arena3 from "../../assets/water_arena.jpg"
 import '../../styles/FourPlayersPongGame.css';
 
+
 const FourPlayersPongGame = () => {
 	const { t } = useTranslation();
 	const MAP_HEIGHT = 500;
@@ -210,10 +211,6 @@ const FourPlayersPongGame = () => {
 		}
 	};
 
-	const handleArenaSelection = (arena) => {
-		setSelectedArena(arena);
-	};
-
 	return (
 		<>
 			<div className="controls">
@@ -223,11 +220,6 @@ const FourPlayersPongGame = () => {
 			<img src={pokemon3} alt="Yuki" className="pokemon3" />
 			<img src={pokemon4} alt="Shinx" className="pokemon4" />
 
-			<div className="arena-selection">
-				<img src={arena1} alt="Arena 1" onClick={() => handleArenaSelection(arena1)} className="arena-thumbnail" />
-				<img src={arena2} alt="Arena 2" onClick={() => handleArenaSelection(arena2)} className="arena-thumbnail" />
-				<img src={arena3} alt="Arena 3" onClick={() => handleArenaSelection(arena3)} className="arena-thumbnail" />
-			</div>
 			<div className="score-text_multi">
 				<p>{t('pong.left')} : {score.left} {t('pong.right')} : {score.right} {t('pong.top')} : {score.top} {t('pong.bottom')} : {score.bottom}</p>
 			</div>

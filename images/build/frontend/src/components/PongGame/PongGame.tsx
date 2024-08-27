@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { ACCESS_TOKEN } from '../../constants';
 import { useTranslation } from 'react-i18next';
+import arena1 from "../../assets/default_arena.jpg"
+import arena2 from "../../assets/fire_arena.jpg"
+import arena3 from "../../assets/water_arena.jpg"
 import '../../styles/PongGame.css';
-
 
 const PongGame = () => {
 	const { t } = useTranslation();
@@ -28,6 +30,10 @@ const PongGame = () => {
 	const [players_disconnected, setPlayersDisconnected] = useState([]);
 	const ballRef = useRef(null);
 	const socketRef = useRef<WebSocket | null>(null);
+
+	const [selectedArena, setSelectedArena] = useState<string>(() => {
+		return localStorage.getItem('selectedArena') || arena1;
+	});
 
 	useEffect(() => {
 		try {
@@ -193,9 +199,16 @@ const PongGame = () => {
 			}
 		}
 	};
-
-	return (
-		<>
+	
+	return (<>
+		<div
+            className="pong-arena_mutli"
+            style={{
+                backgroundImage: `url(${selectedArena})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}>
+			</div>
 			<div className="controls2">
 				{gameState === "initial" && <button className="button_start_multi" onClick={startGame}>{t('pong.start')}</button>}
 				{gameState === "running" && <button className="button_start_multi" onClick={pauseGame}>{t('pong.pause')}</button>}
@@ -204,7 +217,7 @@ const PongGame = () => {
 				<p>{t('pong.left')} : {score.left}</p>
 				<p>{t('pong.right')} : {score.right}</p>
 			</div>
-			<div className="ping-pong-container" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
+			<div className="ping-pong-container_multi" tabIndex={0} style={{ width: MAP_WIDTH, height: MAP_HEIGHT }}>
 				<div
 					className="paddle paddle-left"
 					id="paddle-left"
@@ -230,8 +243,6 @@ const PongGame = () => {
 			</div>
 		</>
 	);
-	
-	
 };
 
 export default PongGame;
