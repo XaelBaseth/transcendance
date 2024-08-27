@@ -18,13 +18,13 @@ const PongHomePage = () => {
 			const port = window.location.port;
 
 			if (!socketRef.current || socketRef.current.readyState === WebSocket.CLOSED) {
-				const token = localStorage.getItem(ACCESS_TOKEN);
-				socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/matchmaking/' + '?token=' + token);
+				socketRef.current = new WebSocket('wss://'+hostname+':'+port+'/ws/matchmaking/');
 			}
 
 			socketRef.current.onopen = () => {
 				if (socketRef.current) {
-					socketRef.current.send(JSON.stringify({ type: 'check_game'  }));
+					const token = localStorage.getItem(ACCESS_TOKEN);
+					socketRef.current.send(JSON.stringify({ type: 'auth', token: token }));
 				}
 			};
 

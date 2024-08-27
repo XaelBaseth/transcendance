@@ -40,12 +40,12 @@ const FourPlayersPongGame = () => {
 			const hostname = window.location.hostname;
 			const port = window.location.port;
 
-			const token = localStorage.getItem(ACCESS_TOKEN);
-			socketRef.current = new WebSocket(`wss://${hostname}:${port}/ws/pong/${params.roomCode}/?token=${token}`);
+			socketRef.current = new WebSocket(`wss://${hostname}:${port}/ws/pong/${params.roomCode}/`);
 
 			socketRef.current.onopen = () => {
 				if (socketRef.current) {
-					socketRef.current.send(JSON.stringify({ type: 'join_game' }));
+					const token = localStorage.getItem(ACCESS_TOKEN);
+					socketRef.current.send(JSON.stringify({ type: 'auth', token: token }));
 				}
 			};
 
