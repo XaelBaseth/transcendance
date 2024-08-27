@@ -154,3 +154,10 @@
     background-color: var(--light_teal);
     border: 5px solid var(--pink);
 }
+
+.error_tournament {
+    color: var(--error);
+    font-family: VT323;
+    position: relative;
+    left: 40%;
+}

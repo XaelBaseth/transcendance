@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useTournamentContext } from "./provider/TournamentContextProvider";
-import { useTranslation } from "react-i18next"; // Importation de useTranslation
+import { useTranslation } from "react-i18next";
 import "../../styles/tournament.css";
 
 const AddPlayerComponent = () => {
-    const { t } = useTranslation(); // Initialisation de useTranslation
+    const { t } = useTranslation();
     const { buildBracket, setPointsToWin, pointsToWin } = useTournamentContext();
     const [players, setPlayers] = useState<string[]>([]);
     const [playerName, setPlayerName] = useState("");
@@ -13,7 +13,7 @@ const AddPlayerComponent = () => {
 
     const handleBuildBracket = () => {
         if (players.length < 3) {
-            setBuildBracketError(t("tournament.minPlayersError")); // Utilisation de la clé de traduction
+            setBuildBracketError(t("tournament.minPlayersError"));
             return;
         }
         buildBracket(players);
@@ -29,13 +29,11 @@ const AddPlayerComponent = () => {
     const addPlayer = () => {
         const trimmedName = playerName.trim();
         if (trimmedName) {
-            // Vérifier si le nombre maximal de joueurs est atteint
             if (players.length >= 4) {
-                setAddPlayerError(t("tournament.maxPlayersError")); // Utilisation de la clé de traduction pour le message d'erreur
+                setAddPlayerError(t("tournament.maxPlayersError")); 
             } 
-            // Vérifier si le nom du joueur existe déjà
             else if (players.includes(trimmedName)) {
-                setAddPlayerError(t("tournament.playerExistsError")); // Utilisation de la clé de traduction
+                setAddPlayerError(t("tournament.playerExistsError")); 
             } 
             else {
                 setPlayers([...players, trimmedName]);
@@ -52,10 +50,10 @@ const AddPlayerComponent = () => {
                     type="text"
                     value={playerName}
                     onChange={(e) => handleSetPlayerName(e.target.value)}
-                    placeholder={t("tournament.enterPlayerName")} // Utilisation de la clé de traduction
+                    placeholder={t("tournament.enterPlayerName")}
                 />
                 {addPlayerError !== "" && <p style={{ color: 'red' }}>{addPlayerError}</p>}
-                <button className="button_add" onClick={addPlayer}>{t("tournament.addPlayerButton")}</button> {/* Utilisation de la clé de traduction */}
+                <button className="button_add" onClick={addPlayer}>{t("tournament.addPlayerButton")}</button>
                 <div>
                     <h2 className="players_list_title">{t("tournament.playersTitle")}</h2>
                     <ul>
@@ -72,7 +70,7 @@ const AddPlayerComponent = () => {
                 </div>
                 <br/>
                 <button className="button_start_tournament" onClick={handleBuildBracket}>{t("tournament.startTournamentButton")}</button>
-                {buildBracketError !== "" && <p style={{ color: 'red' }}>{buildBracketError}</p>}
+                {buildBracketError !== "" && <p className="error_tournament">{buildBracketError}</p>}
             </div>
         </div>
     );
